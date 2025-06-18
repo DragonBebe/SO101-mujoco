@@ -10,7 +10,8 @@ import mujoco.viewer
 
 def do_interactive_sim(robot_id):
   if robot_id == "6dof":
-      xml_path = "manipulator_grasp/assets/SO101/scene_table.xml"
+    #   xml_path = "manipulator_grasp/assets/SO101/scene_table.xml"
+      xml_path = "manipulator_grasp/assets/SO101/scene_table_cubes.xml"
       try:
           m = mujoco.MjModel.from_xml_path(xml_path)
           print(f"✅ Model loaded successfully from: {xml_path}")
