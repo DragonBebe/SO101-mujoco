@@ -32,6 +32,11 @@
     <!-- Definition position and orientation of lerobot -->
     <body name="base" pos="0.8 0.6 0.71" quat="1 0 0 0.90" childclass="so101_new_calib">
     <!-- <body name="base" pos="0 0 0" quat="1 0 0 0" childclass="so101_new_calib"> -->
+    <!-- <body name="base" pos="0 0 0" quat="0 0 0 1" childclass="so101_new_calib"> -->
+    <!-- Origin-simulation -->
+    <!-- <body name="base"  pos="0 -0.15 0" quat="0 0 0 1" childclass="so101_new_calib"> -->
+    <!-- make base can be changed  -->
+
     <!-- make base can be changed  -->
     <joint type="free"/>
       <inertial pos="0.020739 0.00204287 0.065966" mass="0.147" fullinertia="0.000136117 0.000114686 0.000130364 4.59787e-07 9.75275e-08 -4.97151e-06"/>

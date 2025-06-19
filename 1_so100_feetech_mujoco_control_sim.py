@@ -9,7 +9,8 @@ def do_interactive_sim(robot_id):
     if robot_id == "6dof":
         # m = mujoco.MjModel.from_xml_path("./so100_6dof/so100.xml") 
         # m = mujoco.MjModel.from_xml_path("./so100_6dof/so100_initial.xml") 
-        m = mujoco.MjModel.from_xml_path("./so100_6dof/push_cube_loop.xml") 
+        # m = mujoco.MjModel.from_xml_path("./so100_6dof/push_cube_loop.xml") 
+        m = mujoco.MjModel.from_xml_path("./manipulator_grasp/assets/SO101/push_cube_loop.xml") 
 
     data = mujoco.MjData(m)
     mujoco.mj_resetDataKeyframe(m, data, 0)  # 0 corresponds to the first keyframe
