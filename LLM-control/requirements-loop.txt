@@ -1,0 +1,12 @@
+# Python >=3.12; local Nexus source is added by run_loop.sh/loop.py.
+mujoco==3.3.2
+numpy>=2.0,<3
+scipy>=1.14,<2
+pillow>=10,<13
+gymnasium>=1.0,<2
+glfw>=2.7,<3
+PyOpenGL>=3.1.7,<4
+tyro>=0.9,<2
+huggingface-hub>=0.30,<2
+trimesh>=4,<5
+pytest>=8,<10

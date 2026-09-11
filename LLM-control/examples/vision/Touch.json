@@ -1,0 +1,49 @@
+{
+  "task": "Touch",
+  "seed": 4,
+  "provenance": "Pixel selections and actions issued by the current Codex session after viewing RGB frames. Replay is not new LLM inference.",
+  "source_trace": "runs/nexus-visual-development/actions.jsonl",
+  "commands": [
+    {
+      "action": "observe"
+    },
+    {
+      "action": "propose",
+      "color": "red",
+      "camera": "overhead"
+    },
+    {
+      "action": "localize",
+      "camera": "overhead",
+      "pixel": [
+        316,
+        129
+      ],
+      "save_as": "point-1"
+    },
+    {
+      "action": "move",
+      "point_id": "point-1",
+      "offset": [
+        0,
+        0,
+        0.055
+      ],
+      "seconds": 2
+    },
+    {
+      "action": "move",
+      "point_id": "point-1",
+      "offset": [
+        0,
+        0,
+        0.002
+      ],
+      "linear": true,
+      "seconds": 2
+    },
+    {
+      "action": "finish"
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "task": "LookAt",
+  "seed": 4,
+  "provenance": "Pixel selections and actions issued by the current Codex session after viewing RGB frames. Replay is not new LLM inference.",
+  "source_trace": "runs/nexus-visual-cases/actions.jsonl",
+  "commands": [
+    {
+      "action": "observe"
+    },
+    {
+      "action": "localize",
+      "pixel": [
+        319,
+        231
+      ],
+      "save_as": "point-1"
+    },
+    {
+      "action": "look_at",
+      "point_id": "point-1",
+      "offset": [
+        0,
+        0,
+        -0.0125
+      ],
+      "seconds": 2
+    },
+    {
+      "action": "finish"
+    }
+  ]
+}

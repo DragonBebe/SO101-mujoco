@@ -1,0 +1,114 @@
+{
+  "task": "StackCube",
+  "seed": 4,
+  "provenance": "Pixel selections and actions issued by the current Codex session after viewing RGB frames. Replay is not new LLM inference.",
+  "source_trace": "runs/nexus-visual-development/actions.jsonl",
+  "commands": [
+    {
+      "action": "propose",
+      "color": "red"
+    },
+    {
+      "action": "propose",
+      "color": "blue"
+    },
+    {
+      "action": "localize",
+      "pixel": [
+        316,
+        129
+      ],
+      "save_as": "point-1"
+    },
+    {
+      "action": "localize",
+      "pixel": [
+        431,
+        156
+      ],
+      "save_as": "point-2"
+    },
+    {
+      "action": "move",
+      "point_id": "point-1",
+      "offset": [
+        0.0075,
+        0,
+        0.055
+      ],
+      "seconds": 2
+    },
+    {
+      "action": "move",
+      "point_id": "point-1",
+      "offset": [
+        0.0075,
+        0,
+        -0.0125
+      ],
+      "linear": true,
+      "seconds": 2
+    },
+    {
+      "action": "gripper",
+      "opening": 0,
+      "seconds": 1.5
+    },
+    {
+      "action": "move",
+      "point_id": "point-1",
+      "offset": [
+        0.0075,
+        0,
+        0.055
+      ],
+      "linear": true,
+      "seconds": 2
+    },
+    {
+      "action": "move",
+      "point_id": "point-2",
+      "offset": [
+        0.0062,
+        -0.0043,
+        0.055
+      ],
+      "linear": true,
+      "seconds": 2
+    },
+    {
+      "action": "move",
+      "point_id": "point-2",
+      "offset": [
+        0.0062,
+        -0.0043,
+        0.0125
+      ],
+      "linear": true,
+      "seconds": 2
+    },
+    {
+      "action": "gripper",
+      "opening": 0.75,
+      "seconds": 1.5
+    },
+    {
+      "action": "move",
+      "point_id": "point-2",
+      "offset": [
+        0.0062,
+        -0.0043,
+        0.055
+      ],
+      "linear": true,
+      "seconds": 2
+    },
+    {
+      "action": "wait",
+      "seconds": 2
+    },
+    {
+      "action": "finish"
+    }
+  ]
+}

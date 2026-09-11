@@ -1,0 +1,117 @@
+[
+  {
+    "task": "Touch",
+    "seed": 4,
+    "success": true,
+    "metrics": {
+      "tcp_to_obj_dist": 0.014608599229945287,
+      "success": true
+    },
+    "policy_input": "RGB + optical-depth + camera calibration + robot proprioception",
+    "upstream": "so101-nexus 0.5.4",
+    "simulation_time": 5.959999999999895
+  },
+  {
+    "task": "PickLift",
+    "seed": 4,
+    "success": true,
+    "metrics": {
+      "is_grasped": 1.0,
+      "is_robot_static": true,
+      "lift_height": 0.06835321971422953,
+      "tcp_to_obj_dist": 0.009977610054561051,
+      "success": true
+    },
+    "policy_input": "RGB + optical-depth + camera calibration + robot proprioception",
+    "upstream": "so101-nexus 0.5.4",
+    "simulation_time": 9.920000000000151
+  },
+  {
+    "task": "PickAndPlace",
+    "seed": 4,
+    "success": true,
+    "metrics": {
+      "obj_to_target_dist": 0.0011214073923200756,
+      "is_obj_placed": true,
+      "is_grasped": 0.0,
+      "is_robot_static": true,
+      "is_obj_static": true,
+      "lift_height": -2.2551405187698492e-17,
+      "success": true,
+      "tcp_to_obj_dist": 0.06773219749356116
+    },
+    "policy_input": "RGB + optical-depth + camera calibration + robot proprioception",
+    "upstream": "so101-nexus 0.5.4",
+    "simulation_time": 20.800000000000146
+  },
+  {
+    "task": "StackCube",
+    "seed": 4,
+    "success": true,
+    "metrics": {
+      "cube_a_to_goal_dist": 0.0007387642230996656,
+      "is_stacked": true,
+      "is_grasped": 0.0,
+      "is_robot_static": true,
+      "is_cube_a_static": true,
+      "success": true,
+      "tcp_to_obj_dist": 0.04274073523045642
+    },
+    "policy_input": "RGB + optical-depth + camera calibration + robot proprioception",
+    "upstream": "so101-nexus 0.5.4",
+    "simulation_time": 20.800000000000146
+  },
+  {
+    "task": "LookAt",
+    "seed": 4,
+    "success": true,
+    "metrics": {
+      "orientation_error": 0.08364019163263424,
+      "success": true
+    },
+    "policy_input": "RGB + optical-depth + camera calibration + robot proprioception",
+    "upstream": "so101-nexus 0.5.4",
+    "simulation_time": 3.4999999999999476
+  },
+  {
+    "task": "Move",
+    "seed": 4,
+    "success": true,
+    "metrics": {
+      "tcp_to_target_dist": 0.006133121326331645,
+      "move_displacement": 0.09851298474288508,
+      "success": true
+    },
+    "policy_input": "RGB + optical-depth + camera calibration + robot proprioception",
+    "upstream": "so101-nexus 0.5.4",
+    "simulation_time": 3.4999999999999476
+  },
+  {
+    "task": "PickAndPlace-v2",
+    "seed": 4,
+    "success": true,
+    "metrics": {
+      "obj_to_target_dist": 0.0011204304097107494,
+      "is_obj_placed": true,
+      "is_grasped": 0.0,
+      "is_robot_static": true,
+      "is_obj_static": true,
+      "lift_height": 1.734723475976807e-18,
+      "success": true,
+      "tcp_to_obj_dist": 0.08018481502311178,
+      "supported_by_table": true,
+      "supported_by_robot": false,
+      "supported_by_other": false,
+      "table_support_force": 0.09809999999999999,
+      "robot_support_force": 0.0,
+      "other_support_force": 0.0,
+      "object_linear_speed": 9.031444686981209e-17,
+      "object_angular_speed": 1.0819415079737797e-16,
+      "geometric_placement_ok": true,
+      "placement_dwell": 4.154999999999934
+    },
+    "policy_input": "RGB + optical-depth + camera calibration + robot proprioception",
+    "upstream": "so101-nexus 0.5.4",
+    "simulation_time": 20.800000000000146
+  }
+]

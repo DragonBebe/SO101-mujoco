@@ -73,19 +73,19 @@
 
 		<!-- 立方体堆叠 -->
 				<!-- 红色立方体 -->
-		<body name="RedBox" pos="1.2 0.6 1.2" quat="1 0 0 0">
+		<body name="RedBox" pos="0 0.6 0" quat="1 0 0 0">
 		  <joint name="RedBox" type="free" />
 		  <geom name="RedBox" type="box" size="0.015 0.015 0.015" rgba="1 0 0 1" condim="6"/>
 		</body>
 
 		<!-- 绿色立方体 -->
-		<body name="GreenBox" pos="1.2 0.6 1.0" quat="1 0 0 0">
+		<body name="GreenBox" pos="0 0.6 0.2" quat="1 0 0 0">
 		  <joint name="GreenBox" type="free" />
 		  <geom name="GreenBox" type="box" size="0.015 0.015 0.015" rgba="0 1 0 1" condim="6"/>
 		</body>
 
 		<!-- 蓝色立方体 -->
-		<body name="BlueBox" pos="1.2 0.6 0.8" quat="1 0 0 0">
+		<body name="BlueBox" pos="0 0.6 0.4" quat="1 0 0 0">
 		  <joint name="BlueBox" type="free" />
 		  <geom name="BlueBox" type="box" size="0.015 0.015 0.015" rgba="0 0 1 1" condim="6"/>
 		</body>

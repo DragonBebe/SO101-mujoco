@@ -1,0 +1,219 @@
+[project]
+name = "so101-nexus"
+version = "0.5.4"
+description = "End-to-end simulation and training stack for the SO-101 arm: record demonstrations, clone behavior, and reinforce with GPU-parallel MuJoCo / MuJoCo Warp environments, built on LeRobot"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "numpy<3",
+    "huggingface_hub<2",
+    "trimesh<5",
+    "scipy<2",
+    "mujoco>=3.1.3,<4",
+    "gymnasium>=1.0.0,<2",
+    "tyro>=0.9.0,<2",
+]
+license = "Apache-2.0"
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "License :: OSI Approved :: Apache Software License",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3 :: Only",
+    "Operating System :: OS Independent",
+    "Typing :: Typed",
+]
+
+[project.optional-dependencies]
+decomp = ["coacd>=1.0.13,<2", "rtree>=1.4,<2", "threadpoolctl>=3.1,<4"]
+viz = ["Pillow"]
+teleop = [
+    "lerobot[feetech]>=0.5.0,<0.6",
+    "gradio>=5.0.0",
+    "plotly>=6.0.0",
+    "opencv-python>=4.8.0",
+    "Pillow",
+]
+train = [
+    "tensorboard>=2.0.0",
+    "wandb[media]>=0.16.0",
+    "torch",
+]
+warp = [
+    "mujoco-warp>=3.9.0.1,<3.10",
+    "torch<2.10",
+    "warp-lang>=1.14,<1.16",
+]
+rocm = [
+    "torch; sys_platform == 'linux' and platform_machine == 'x86_64'",
+    "pytorch-triton-rocm; sys_platform == 'linux' and platform_machine == 'x86_64'",
+    "triton-rocm; sys_platform == 'linux' and platform_machine == 'x86_64'",
+]
+
+[tool.uv]
+conflicts = [
+    [{ extra = "rocm" }, { extra = "teleop" }],
+    [{ extra = "rocm" }, { group = "test" }],
+    [{ extra = "rocm" }, { group = "dev" }],
+    [{ extra = "rocm" }, { extra = "warp" }],
+]
+
+[tool.uv.sources]
+torch = [{ index = "pytorch-rocm", extra = "rocm" }]
+pytorch-triton-rocm = [{ index = "pytorch-rocm", extra = "rocm" }]
+triton-rocm = [{ index = "pytorch-rocm", extra = "rocm" }]
+
+[[tool.uv.index]]
+name = "pytorch-rocm"
+url = "https://download.pytorch.org/whl/rocm7.2"
+explicit = true
+
+[project.scripts]
+so101-nexus = "so101_nexus.cli:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/so101_nexus"]
+exclude = ["src/so101_nexus/assets/**/*"]
+
+[tool.hatch.build.targets.wheel.force-include]
+"src/so101_nexus/assets/SO101" = "so101_nexus/assets/SO101"
+"src/so101_nexus/assets/SO101_menagerie" = "so101_nexus/assets/SO101_menagerie"
+"src/so101_nexus/py.typed" = "so101_nexus/py.typed"
+
+[dependency-groups]
+dev = [{ include-group = "test" }, "ruff", "ty"]
+test = [
+    "pytest>=7.0.0",
+    "pytest-cov>=7.0.0",
+    "hypothesis>=6.140.0",
+    "imageio[ffmpeg]",
+    "Pillow",
+    "lerobot[feetech]>=0.5.0,<0.6",
+    "torch<2.10",
+    "torchcodec<0.10",
+]
+visual = ["litellm", "Pillow", "imageio[ffmpeg]"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = [
+    "E",
+    "F",
+    "I",
+    "W",
+    "D",
+    "ERA",
+    "PLR",
+    "PLW",
+    "PLC",
+    "PGH004",
+    "C4",
+    "C90",
+    "SIM",
+    "RUF",
+    "UP",
+    "B",
+    "PIE",
+    "PT",
+    "RET",
+    "TCH",
+]
+ignore = [
+    "F403",
+    "F405",
+    "PLR0913",
+    "PLR2004",
+    "PLC0415",
+    "RUF012",
+    "RUF059",
+]
+
+[tool.ruff.lint.per-file-ignores]
+"**/tests/**/*.py" = ["D", "PT006"]
+".github/**/*.py" = ["D"]
+"examples/**/*.py" = ["D"]
+"scripts/**/*.py" = ["D"]
+
+[tool.ruff.lint.mccabe]
+max-complexity = 12
+
+[tool.ruff.lint.pylint]
+max-args = 8
+max-branches = 10
+max-returns = 6
+
+[tool.ruff.lint.pydocstyle]
+convention = "numpy"
+
+[tool.ruff.lint.isort]
+known-first-party = ["so101_nexus"]
+
+[tool.ty.analysis]
+replace-imports-with-any = [
+    "cv2",
+    "gradio",
+    "gradio.**",
+    "hatchling.metadata.plugin.interface",
+    "mujoco",
+    "mujoco.**",
+    "mujoco_warp",
+    "mujoco_warp.**",
+    "plotly",
+    "plotly.**",
+    "transforms3d",
+    "transforms3d.**",
+    "tyro",
+    "warp",
+    "warp.**",
+]
+
+[tool.ty.environment]
+extra-paths = ["src"]
+
+[tool.ty.src]
+exclude = ["**/tests/**", "**/*.ipynb"]
+
+[tool.coverage.run]
+source = ["so101_nexus"]
+omit = [
+    "**/__init__.py",
+    "**/tests/*",
+    "**/cli.py",
+    "**/warp/*.py",
+]
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "def __repr__",
+    "if __name__ == .__main__.:",
+    "raise NotImplementedError",
+]
+show_missing = true
+
+[tool.coverage.paths]
+package = [
+    "src/so101_nexus",
+    "**/site-packages/so101_nexus",
+]
+
+[tool.pytest.ini_options]
+addopts = ["--import-mode=importlib", "-ra"]
+testpaths = ["tests"]
+pythonpath = ["."]
+markers = [
+    "slow: slower integration tests",
+    "visual: LLM-powered visual verification tests (require ANTHROPIC_API_KEY or VISUAL_TEST_MODEL)",
+    "warp: GPU/Warp backend tests (require mujoco_warp; run on the Warp CPU device)",
+]

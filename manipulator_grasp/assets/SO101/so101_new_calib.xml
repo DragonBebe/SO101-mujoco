@@ -30,8 +30,8 @@
   <worldbody>
     <!-- Link base -->
     <!-- Definition position and orientation of lerobot -->
-    <body name="base" pos="0.8 0.6 0.71" quat="1 0 0 0.90" childclass="so101_new_calib">
-    <!-- <body name="base" pos="0 0 0" quat="1 0 0 0" childclass="so101_new_calib"> -->
+    <!-- <body name="base" pos="0.8 0.6 0.71" quat="1 0 0 0.90" childclass="so101_new_calib"> -->
+    <body name="base" pos="-0.02 -0.02 -0.03" quat="1 0 0 1" childclass="so101_new_calib">
     <!-- <body name="base" pos="0 0 0" quat="0 0 0 1" childclass="so101_new_calib"> -->
     <!-- Origin-simulation -->
     <!-- <body name="base"  pos="0 -0.15 0" quat="0 0 0 1" childclass="so101_new_calib"> -->
