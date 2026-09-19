@@ -1,0 +1,77 @@
+{
+  "image": "mid169-001.png",
+  "saved_at": "2026-09-17T17:28:58.938+02:00",
+  "shape": [
+    540,
+    960,
+    3
+  ],
+  "dtype": "uint8",
+  "camera": {
+    "requested": {
+      "device": "/dev/video0",
+      "width": 960,
+      "height": 540,
+      "fps": 30.0,
+      "fourcc": "MJPG",
+      "autofocus": null,
+      "focus": null,
+      "auto_exposure": null,
+      "exposure": null,
+      "auto_wb": null,
+      "hflip": false
+    },
+    "actual": {
+      "frame_width": 960.0,
+      "frame_height": 540.0,
+      "fps": 30.0,
+      "fourcc": 1196444237.0,
+      "autofocus": -1.0,
+      "focus": -1.0,
+      "auto_exposure": 3.0,
+      "exposure": 156.0,
+      "brightness": 128.0,
+      "contrast": 32.0,
+      "saturation": 64.0,
+      "gain": -1.0,
+      "gamma": 120.0,
+      "sharpness": 3.0,
+      "auto_wb": 1.0,
+      "wb_temperature": 4600.0,
+      "zoom": -1.0,
+      "backend": 200.0,
+      "buffersize": 1.0,
+      "fourcc_text": "MJPG"
+    },
+    "resolution": [
+      960,
+      540
+    ],
+    "pixel_format": "MJPG",
+    "driver_fps": 30.0,
+    "measured_fps": 20.73125715805899,
+    "image_transform": {
+      "hflip": false,
+      "rotation_deg": 0,
+      "crop": null,
+      "resized": false,
+      "note": "raw samples are archived exactly as delivered; apply hflip to reach the frame the calibration describes"
+    },
+    "opened_at": "2026-09-17T17:28:57.000+02:00"
+  },
+  "label": "mid169",
+  "sharpness": 228.20390286278231,
+  "exposure": {
+    "mean": 108.37795717592593,
+    "clipped_high": 0.0,
+    "clipped_low": 0.01693094135802469
+  },
+  "stage": "viewpoint",
+  "image_transform": {
+    "hflip": false,
+    "rotation_deg": 0,
+    "crop": null,
+    "resized": false,
+    "note": "raw samples are archived exactly as delivered; apply hflip to reach the frame the calibration describes"
+  }
+}

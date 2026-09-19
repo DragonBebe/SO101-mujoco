@@ -1,0 +1,80 @@
+{
+  "image": "pose-lift-max-far.png",
+  "saved_at": "2026-09-18T11:04:19.537+02:00",
+  "shape": [
+    1080,
+    1920,
+    3
+  ],
+  "dtype": "uint8",
+  "camera": {
+    "requested": {
+      "device": "/dev/v4l/by-id/usb-046d_HD_Pro_Webcam_C920_B222F89F-video-index0",
+      "width": 1920,
+      "height": 1080,
+      "fps": 30.0,
+      "fourcc": "MJPG",
+      "autofocus": false,
+      "focus": 0.0,
+      "auto_exposure": null,
+      "exposure": null,
+      "auto_wb": null,
+      "hflip": false
+    },
+    "actual": {
+      "frame_width": 1920.0,
+      "frame_height": 1080.0,
+      "fps": 30.0,
+      "fourcc": 1196444237.0,
+      "autofocus": 0.0,
+      "focus": 0.0,
+      "auto_exposure": 3.0,
+      "exposure": 83.0,
+      "brightness": 128.0,
+      "contrast": 128.0,
+      "saturation": 128.0,
+      "gain": 0.0,
+      "gamma": -1.0,
+      "sharpness": 128.0,
+      "auto_wb": 1.0,
+      "wb_temperature": 4704.0,
+      "zoom": 100.0,
+      "backend": 200.0,
+      "buffersize": 1.0,
+      "fourcc_text": "MJPG"
+    },
+    "resolution": [
+      1920,
+      1080
+    ],
+    "pixel_format": "MJPG",
+    "driver_fps": 30.0,
+    "measured_fps": 30.114215177672094,
+    "image_transform": {
+      "hflip": false,
+      "rotation_deg": 0,
+      "crop": null,
+      "resized": false,
+      "note": "raw samples are archived exactly as delivered; apply hflip to reach the frame the calibration describes"
+    },
+    "opened_at": "2026-09-18T11:00:51.480+02:00"
+  },
+  "label": "pose-lift-max-far",
+  "sequence_position": 7,
+  "sharpness": 21.518685357984168,
+  "exposure": {
+    "mean": 125.88804205246913,
+    "clipped_high": 0.0,
+    "clipped_low": 0.00020206404320987655
+  },
+  "stage": "viewpoint",
+  "image_transform": {
+    "hflip": false,
+    "rotation_deg": 0,
+    "crop": null,
+    "resized": false,
+    "note": "raw samples are archived exactly as delivered; apply hflip to reach the frame the calibration describes"
+  },
+  "board_detected": false,
+  "board_note": "only 0 markers, no usable ChArUco corners"
+}

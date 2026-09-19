@@ -1,0 +1,371 @@
+{
+  "intrinsics": "/home/dragon/SO101-mujoco/LLM-control/calib/c920-intrinsics-01/intrinsics.json",
+  "resolution": {
+    "width": 1920,
+    "height": 1080
+  },
+  "model": "standard",
+  "validation": {
+    "images": 9,
+    "rms_px": 0.7617,
+    "worst_px": 1.1363,
+    "per_image": {
+      "validation-005.png": 0.5508,
+      "validation-010.png": 0.6269,
+      "validation-015.png": 0.6535,
+      "validation-020.png": 0.4766,
+      "validation-025.png": 1.1363,
+      "validation-030.png": 1.054,
+      "validation-035.png": 0.4427,
+      "validation-040.png": 0.6422,
+      "validation-045.png": 0.9278
+    },
+    "distance_range_m": [
+      0.5,
+      0.988
+    ]
+  },
+  "calibration": {
+    "images": 36,
+    "rms_px": 0.9151,
+    "worst_px": 1.5949,
+    "per_image": {
+      "calibration-001.png": 0.7037,
+      "calibration-002.png": 0.7524,
+      "calibration-003.png": 0.4353,
+      "calibration-004.png": 0.5265,
+      "calibration-006.png": 0.5022,
+      "calibration-007.png": 0.5949,
+      "calibration-008.png": 0.4924,
+      "calibration-009.png": 0.5674,
+      "calibration-011.png": 0.6679,
+      "calibration-012.png": 0.6075,
+      "calibration-013.png": 0.6241,
+      "calibration-014.png": 0.741,
+      "calibration-016.png": 0.8945,
+      "calibration-017.png": 0.8588,
+      "calibration-018.png": 1.0962,
+      "calibration-019.png": 0.4394,
+      "calibration-021.png": 0.4374,
+      "calibration-022.png": 0.4717,
+      "calibration-023.png": 0.8644,
+      "calibration-024.png": 1.2146,
+      "calibration-026.png": 1.4308,
+      "calibration-027.png": 1.4594,
+      "calibration-028.png": 1.5949,
+      "calibration-029.png": 1.4497,
+      "calibration-031.png": 1.4057,
+      "calibration-032.png": 1.3867,
+      "calibration-033.png": 0.3166,
+      "calibration-034.png": 0.313,
+      "calibration-036.png": 0.4378,
+      "calibration-037.png": 0.8538,
+      "calibration-038.png": 1.2004,
+      "calibration-039.png": 1.094,
+      "calibration-041.png": 0.8998,
+      "calibration-042.png": 1.0628,
+      "calibration-043.png": 0.884,
+      "calibration-044.png": 0.963
+    },
+    "distance_range_m": [
+      0.478,
+      1.014
+    ]
+  },
+  "independent_check": "validation images were held out at capture time and their corners were never used to fit K or D",
+  "radial_profile_validation": [
+    {
+      "radius_px": [
+        0.0,
+        185.5
+      ],
+      "points": 22,
+      "rms_px": 1.3669
+    },
+    {
+      "radius_px": [
+        185.5,
+        371.0
+      ],
+      "points": 129,
+      "rms_px": 0.646
+    },
+    {
+      "radius_px": [
+        371.0,
+        556.5
+      ],
+      "points": 187,
+      "rms_px": 0.8351
+    },
+    {
+      "radius_px": [
+        556.5,
+        742.0
+      ],
+      "points": 94,
+      "rms_px": 0.6145
+    },
+    {
+      "radius_px": [
+        742.0,
+        927.5
+      ],
+      "points": 54,
+      "rms_px": 0.6255
+    }
+  ],
+  "radial_coverage": {
+    "max_observed_radius_px": 983.3,
+    "image_corner_radius_px": 1144.1,
+    "fraction_of_image_radius_covered": 0.859,
+    "note": "distortion beyond the observed radius is extrapolated. Keep localisation inside it, or collect corner samples and re-solve"
+  },
+  "board_right_angles": {
+    "max_angle_error_deg": 0.832,
+    "median_angle_error_deg": 0.428,
+    "per_image": [
+      {
+        "corner_angles_deg": [
+          89.8,
+          90.28,
+          89.61,
+          90.32
+        ],
+        "max_angle_error_deg": 0.395,
+        "opposite_side_ratio": [
+          0.9992,
+          1.0033
+        ],
+        "measured_sides_m": [
+          0.2003,
+          0.1259,
+          0.2005,
+          0.1254
+        ]
+      },
+      {
+        "corner_angles_deg": [
+          89.66,
+          90.43,
+          89.63,
+          90.28
+        ],
+        "max_angle_error_deg": 0.428,
+        "opposite_side_ratio": [
+          0.9991,
+          0.9983
+        ],
+        "measured_sides_m": [
+          0.2002,
+          0.125,
+          0.2004,
+          0.1252
+        ]
+      },
+      {
+        "corner_angles_deg": [
+          89.69,
+          90.45,
+          89.64,
+          90.22
+        ],
+        "max_angle_error_deg": 0.45,
+        "opposite_side_ratio": [
+          0.9985,
+          0.9974
+        ],
+        "measured_sides_m": [
+          0.2001,
+          0.1247,
+          0.2004,
+          0.125
+        ]
+      },
+      {
+        "corner_angles_deg": [
+          89.96,
+          90.3,
+          90.08,
+          89.66
+        ],
+        "max_angle_error_deg": 0.337,
+        "opposite_side_ratio": [
+          0.9972,
+          0.9894
+        ],
+        "measured_sides_m": [
+          0.2,
+          0.1237,
+          0.2005,
+          0.125
+        ]
+      },
+      {
+        "corner_angles_deg": [
+          90.21,
+          89.17,
+          89.86,
+          90.76
+        ],
+        "max_angle_error_deg": 0.832,
+        "opposite_side_ratio": [
+          1.0068,
+          1.0275
+        ],
+        "measured_sides_m": [
+          0.2013,
+          0.1269,
+          0.1999,
+          0.1235
+        ]
+      },
+      {
+        "corner_angles_deg": [
+          89.94,
+          89.55,
+          89.93,
+          90.57
+        ],
+        "max_angle_error_deg": 0.573,
+        "opposite_side_ratio": [
+          1.0055,
+          1.0146
+        ],
+        "measured_sides_m": [
+          0.2009,
+          0.1259,
+          0.1998,
+          0.1241
+        ]
+      },
+      {
+        "corner_angles_deg": [
+          90.07,
+          90.52,
+          89.75,
+          89.66
+        ],
+        "max_angle_error_deg": 0.517,
+        "opposite_side_ratio": [
+          0.9936,
+          0.9926
+        ],
+        "measured_sides_m": [
+          0.1988,
+          0.1246,
+          0.2001,
+          0.1255
+        ]
+      },
+      {
+        "corner_angles_deg": [
+          90.16,
+          89.82,
+          90.03,
+          89.99
+        ],
+        "max_angle_error_deg": 0.184,
+        "opposite_side_ratio": [
+          1.0003,
+          1.0042
+        ],
+        "measured_sides_m": [
+          0.2001,
+          0.1249,
+          0.2001,
+          0.1244
+        ]
+      },
+      {
+        "corner_angles_deg": [
+          90.23,
+          89.76,
+          90.06,
+          89.94
+        ],
+        "max_angle_error_deg": 0.237,
+        "opposite_side_ratio": [
+          1.0001,
+          1.0048
+        ],
+        "measured_sides_m": [
+          0.2004,
+          0.1251,
+          0.2004,
+          0.1245
+        ]
+      }
+    ],
+    "note": "scale-free: tests the camera model, not the printed square size. A square print scale error leaves these angles right"
+  },
+  "undistortion_examples": [
+    {
+      "pair_image": "/home/dragon/SO101-mujoco/LLM-control/calib/c920-intrinsics-01/undistorted/validation-005-undistorted.png",
+      "new_camera_matrix": [
+        [
+          1403.824511533441,
+          0.0,
+          924.5342377547513
+        ],
+        [
+          0.0,
+          1404.6463565172294,
+          511.49455403278915
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "note": "the undistorted image has its OWN intrinsics (new_camera_matrix). Never mix it with K/D of the raw image"
+    },
+    {
+      "pair_image": "/home/dragon/SO101-mujoco/LLM-control/calib/c920-intrinsics-01/undistorted/validation-010-undistorted.png",
+      "new_camera_matrix": [
+        [
+          1403.824511533441,
+          0.0,
+          924.5342377547513
+        ],
+        [
+          0.0,
+          1404.6463565172294,
+          511.49455403278915
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "note": "the undistorted image has its OWN intrinsics (new_camera_matrix). Never mix it with K/D of the raw image"
+    },
+    {
+      "pair_image": "/home/dragon/SO101-mujoco/LLM-control/calib/c920-intrinsics-01/undistorted/validation-015-undistorted.png",
+      "new_camera_matrix": [
+        [
+          1403.824511533441,
+          0.0,
+          924.5342377547513
+        ],
+        [
+          0.0,
+          1404.6463565172294,
+          511.49455403278915
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "note": "the undistorted image has its OWN intrinsics (new_camera_matrix). Never mix it with K/D of the raw image"
+    }
+  ],
+  "verdict": [
+    "PASS: held-out error matches the fitted error",
+    "edge/centre error ratio 0.46: acceptable"
+  ]
+}

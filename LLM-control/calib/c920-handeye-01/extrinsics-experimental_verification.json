@@ -1,0 +1,108 @@
+{
+  "extrinsics": "/home/dragon/SO101-mujoco/LLM-control/calib/c920-handeye-01/extrinsics-experimental.json",
+  "validation": {
+    "poses": 2,
+    "reprojection_rms_px": 136.6886,
+    "reprojection_worst_px": 185.5879,
+    "board_position_error_mm": {
+      "median": 42.1,
+      "max": 57.89
+    },
+    "per_pose_px": {
+      "validation-004.png": 185.588,
+      "validation-008.png": 54.08
+    }
+  },
+  "solve": {
+    "poses": 7,
+    "reprojection_rms_px": 50.3028,
+    "reprojection_worst_px": 72.9513,
+    "board_position_error_mm": {
+      "median": 32.82,
+      "max": 90.58
+    },
+    "per_pose_px": {
+      "solve-001.png": 72.951,
+      "solve-002.png": 38.83,
+      "solve-003.png": 49.011,
+      "solve-005.png": 57.192,
+      "solve-006.png": 40.02,
+      "solve-007.png": 40.534,
+      "solve-009.png": 44.333
+    }
+  },
+  "independent_check": "validation poses were assigned at capture time and were not used in the fit",
+  "camera_position_base_m": [
+    -0.4852377155156375,
+    0.07935104620276069,
+    -0.18378830235993926
+  ],
+  "sign_search": {
+    "patterns_screened": 32,
+    "patterns_fitted": 4,
+    "consistency_ranking_deg": [
+      {
+        "signs": {
+          "shoulder_pan": 1,
+          "shoulder_lift": -1,
+          "elbow_flex": 1,
+          "wrist_flex": -1,
+          "wrist_roll": 1
+        },
+        "median_deg": 3.075,
+        "median_pitch_mm": 2.52
+      },
+      {
+        "signs": {
+          "shoulder_pan": -1,
+          "shoulder_lift": 1,
+          "elbow_flex": -1,
+          "wrist_flex": 1,
+          "wrist_roll": 1
+        },
+        "median_deg": 3.075,
+        "median_pitch_mm": 2.52
+      },
+      {
+        "signs": {
+          "shoulder_pan": -1,
+          "shoulder_lift": -1,
+          "elbow_flex": 1,
+          "wrist_flex": 1,
+          "wrist_roll": -1
+        },
+        "median_deg": 3.068,
+        "median_pitch_mm": 2.56
+      },
+      {
+        "signs": {
+          "shoulder_pan": 1,
+          "shoulder_lift": -1,
+          "elbow_flex": 1,
+          "wrist_flex": -1,
+          "wrist_roll": -1
+        },
+        "median_deg": 3.112,
+        "median_pitch_mm": 2.52
+      }
+    ],
+    "best_rms_px": 50.87489651705447,
+    "runner_up_rms_px": 59.075066369672335,
+    "separation": 1.161183027662159,
+    "meaning": "a wrong sign cannot be absorbed by the unknown transforms; a clear gap to the runner-up is what makes the choice evidence"
+  },
+  "motion_consistency": {
+    "pairs": 6,
+    "median_deg": 3.054829307699702,
+    "max_deg": 36.26377838608967,
+    "median_pitch_mm": 2.8072817867765796,
+    "max_pitch_mm": 61.566589837903315,
+    "meaning": "relative arm motion vs relative board motion, compared as screw parameters. A X = X B makes the two conjugate, so both the rotation angle and the translation along the axis must agree for any correct forward kinematics"
+  },
+  "verdict": [
+    "held-out / fitted reprojection ratio 2.72: held-out much worse",
+    "best sign pattern is 1.2x better than the runner-up (NOT decisive: capture more varied poses)",
+    "arm/board relative rotation agreement 3.05 deg median (forward kinematics still suspect)"
+  ],
+  "status": "EXPERIMENTAL-UNVERIFIED"
+}

@@ -1,0 +1,129 @@
+{
+  "image": "solve-007.png",
+  "saved_at": "2026-09-18T14:17:43.193+02:00",
+  "shape": [
+    1080,
+    1920,
+    3
+  ],
+  "dtype": "uint8",
+  "camera": {
+    "requested": {
+      "device": "/dev/v4l/by-id/usb-046d_HD_Pro_Webcam_C920_B222F89F-video-index0",
+      "width": 1920,
+      "height": 1080,
+      "fps": 30.0,
+      "fourcc": "MJPG",
+      "autofocus": false,
+      "focus": 0.0,
+      "auto_exposure": null,
+      "exposure": null,
+      "auto_wb": null,
+      "hflip": false
+    },
+    "actual": {
+      "frame_width": 1920.0,
+      "frame_height": 1080.0,
+      "fps": 30.0,
+      "fourcc": 1196444237.0,
+      "autofocus": 0.0,
+      "focus": 0.0,
+      "auto_exposure": 3.0,
+      "exposure": 83.0,
+      "brightness": 128.0,
+      "contrast": 128.0,
+      "saturation": 128.0,
+      "gain": 0.0,
+      "gamma": -1.0,
+      "sharpness": 128.0,
+      "auto_wb": 1.0,
+      "wb_temperature": 3776.0,
+      "zoom": 100.0,
+      "backend": 200.0,
+      "buffersize": 1.0,
+      "fourcc_text": "MJPG"
+    },
+    "resolution": [
+      1920,
+      1080
+    ],
+    "pixel_format": "MJPG",
+    "driver_fps": 30.0,
+    "measured_fps": null,
+    "image_transform": {
+      "hflip": false,
+      "rotation_deg": 0,
+      "crop": null,
+      "resized": false,
+      "note": "raw samples are archived exactly as delivered; apply hflip to reach the frame the calibration describes"
+    },
+    "opened_at": "2026-09-18T14:14:18.992+02:00"
+  },
+  "stage": "handeye",
+  "role": "solve",
+  "index": 7,
+  "servo_ticks": {
+    "1": 2010,
+    "2": 1344,
+    "3": 2479,
+    "4": 2381,
+    "5": 3327,
+    "6": 2025
+  },
+  "stability": "stable (0.04 deg, 0.1 mm, 0 ticks)",
+  "held_by_torque": true,
+  "board": {
+    "squares_x": 7,
+    "squares_y": 9,
+    "square": 0.02,
+    "marker": 0.015,
+    "dictionary": "DICT_4X4_50",
+    "first_id": 0,
+    "name": "charuco-7x9-20mm",
+    "kind": "charuco",
+    "size_m": [
+      0.14,
+      0.18
+    ],
+    "marker_ids": [
+      0,
+      30
+    ],
+    "counts": "squares"
+  },
+  "image_transform": {
+    "hflip": false,
+    "rotation_deg": 0,
+    "crop": null,
+    "resized": false,
+    "note": "raw samples are archived exactly as delivered; apply hflip to reach the frame the calibration describes"
+  },
+  "pose_T_camera_board": [
+    [
+      -0.9472787902000923,
+      -0.1387051896310681,
+      -0.28883172264565904,
+      0.17198571249738714
+    ],
+    [
+      0.09652797432297758,
+      -0.9831032968281653,
+      0.1555321765381517,
+      -0.03167454276052037
+    ],
+    [
+      -0.30552453880196273,
+      0.11945199092104597,
+      0.9446618326442782,
+      0.5760445716359995
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ]
+  ],
+  "board_points": 48,
+  "sharpness": 101.38352960865922
+}

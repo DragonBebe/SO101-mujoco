@@ -1,0 +1,551 @@
+{
+  "captured_at": "2026-09-18T17:44:12.114+02:00",
+  "motion_status": {
+    "usable_for_motion": false,
+    "reasons": [
+      "no supervised motion check has passed for this extrinsic yet"
+    ]
+  },
+  "candidates": [
+    {
+      "pixel": [
+        1089,
+        643
+      ],
+      "bbox": [
+        1049,
+        594,
+        1132,
+        693
+      ],
+      "area": 6799,
+      "footprint_m": [
+        0.04600000000000001,
+        0.038
+      ],
+      "plausible_cube": false,
+      "grasp_centre_base": [
+        0.24856754426996328,
+        0.01430182876123292,
+        -0.00028162852735928723
+      ],
+      "footprint_centre_base": [
+        0.24876652772803326,
+        0.01466124445735676,
+        -0.012774875740986109
+      ],
+      "assumptions": {
+        "plane": "measured table + 0 mm (table frame z = support height)",
+        "object_height_m": 0.025,
+        "method": "rgb_two_plane_carve"
+      },
+      "colour": "red",
+      "frames_seen": 5,
+      "jitter_mm": 0.049727564593638876
+    },
+    {
+      "pixel": [
+        205,
+        681
+      ],
+      "bbox": [
+        0,
+        197,
+        517,
+        1080
+      ],
+      "area": 195186,
+      "footprint_m": [
+        0.734,
+        0.21999999999999997
+      ],
+      "plausible_cube": false,
+      "grasp_centre_base": [
+        0.19516705534106957,
+        -0.4095870216290084,
+        -0.013326925511003158
+      ],
+      "footprint_centre_base": [
+        0.19536603879913955,
+        -0.40922760593288454,
+        -0.02582017272462998
+      ],
+      "assumptions": {
+        "plane": "measured table + 0 mm (table frame z = support height)",
+        "object_height_m": 0.025,
+        "method": "rgb_two_plane_carve"
+      },
+      "colour": "yellow",
+      "frames_seen": 5,
+      "jitter_mm": 3.093040133330842
+    },
+    {
+      "pixel": [
+        776,
+        186
+      ],
+      "bbox": [
+        726,
+        148,
+        827,
+        221
+      ],
+      "area": 2305,
+      "footprint_m": [
+        0.08800000000000002,
+        0.05600000000000002
+      ],
+      "plausible_cube": false,
+      "grasp_centre_base": [
+        -0.3142680225289373,
+        -0.20910452867655732,
+        -0.015673200918057434
+      ],
+      "footprint_centre_base": [
+        -0.3140690390708673,
+        -0.2087451129804335,
+        -0.028166448131684257
+      ],
+      "assumptions": {
+        "plane": "measured table + 0 mm (table frame z = support height)",
+        "object_height_m": 0.025,
+        "method": "rgb_two_plane_carve"
+      },
+      "colour": "yellow",
+      "frames_seen": 2,
+      "jitter_mm": 7.9572485496671455
+    },
+    {
+      "pixel": [
+        354,
+        285
+      ],
+      "bbox": [
+        320,
+        250,
+        389,
+        324
+      ],
+      "area": 1613,
+      "footprint_m": [
+        0.06000000000000001,
+        0.02999999999999997
+      ],
+      "plausible_cube": false,
+      "grasp_centre_base": [
+        -0.11964094253078891,
+        -0.4778502152346479,
+        -0.020304810908080274
+      ],
+      "footprint_centre_base": [
+        -0.11944195907271891,
+        -0.477490799538524,
+        -0.032798058121707094
+      ],
+      "assumptions": {
+        "plane": "measured table + 0 mm (table frame z = support height)",
+        "object_height_m": 0.025,
+        "method": "rgb_two_plane_carve"
+      },
+      "colour": "yellow",
+      "frames_seen": 1,
+      "jitter_mm": null
+    },
+    {
+      "pixel": [
+        558,
+        148
+      ],
+      "bbox": [
+        522,
+        117,
+        595,
+        171
+      ],
+      "area": 1357,
+      "footprint_m": [
+        0.05199999999999999,
+        0.04799999999999999
+      ],
+      "plausible_cube": false,
+      "grasp_centre_base": [
+        -0.3921838814814876,
+        -0.4062771816549286,
+        -0.022586608769738344
+      ],
+      "footprint_centre_base": [
+        -0.39198489802341757,
+        -0.40591776595880474,
+        -0.03507985598336516
+      ],
+      "assumptions": {
+        "plane": "measured table + 0 mm (table frame z = support height)",
+        "object_height_m": 0.025,
+        "method": "rgb_two_plane_carve"
+      },
+      "colour": "yellow",
+      "frames_seen": 1,
+      "jitter_mm": null
+    },
+    {
+      "pixel": [
+        540,
+        211
+      ],
+      "bbox": [
+        510,
+        188,
+        580,
+        252
+      ],
+      "area": 1289,
+      "footprint_m": [
+        0.064,
+        0.02799999999999997
+      ],
+      "plausible_cube": false,
+      "grasp_centre_base": [
+        -0.23583664113493616,
+        -0.3785381439303205,
+        -0.01929840359817614
+      ],
+      "footprint_centre_base": [
+        -0.23563765767686617,
+        -0.3781787282341966,
+        -0.03179165081180296
+      ],
+      "assumptions": {
+        "plane": "measured table + 0 mm (table frame z = support height)",
+        "object_height_m": 0.025,
+        "method": "rgb_two_plane_carve"
+      },
+      "colour": "yellow",
+      "frames_seen": 2,
+      "jitter_mm": 7.428656267133932
+    },
+    {
+      "pixel": [
+        768,
+        85
+      ],
+      "bbox": [
+        732,
+        53,
+        809,
+        118
+      ],
+      "area": 1167,
+      "footprint_m": [
+        0.05199999999999999,
+        0.018000000000000016
+      ],
+      "plausible_cube": false,
+      "grasp_centre_base": [
+        -0.5143527123551083,
+        -0.23497642510778788,
+        -0.019604309325227963
+      ],
+      "footprint_centre_base": [
+        -0.5141537288970383,
+        -0.23461700941166402,
+        -0.032097556538854786
+      ],
+      "assumptions": {
+        "plane": "measured table + 0 mm (table frame z = support height)",
+        "object_height_m": 0.025,
+        "method": "rgb_two_plane_carve"
+      },
+      "colour": "yellow",
+      "frames_seen": 2,
+      "jitter_mm": 8.581471474241514
+    },
+    {
+      "pixel": [
+        748,
+        308
+      ],
+      "bbox": [
+        717,
+        283,
+        776,
+        330
+      ],
+      "area": 970,
+      "footprint_m": [
+        0.012000000000000009,
+        0.008000000000000005
+      ],
+      "plausible_cube": false,
+      "grasp_centre_base": [
+        -0.09163171661653201,
+        -0.19495246182113457,
+        -0.011720071987018299
+      ],
+      "footprint_centre_base": [
+        -0.09143273315846201,
+        -0.19459304612501072,
+        -0.024213319200645123
+      ],
+      "assumptions": {
+        "plane": "measured table + 0 mm (table frame z = support height)",
+        "object_height_m": 0.025,
+        "method": "rgb_two_plane_carve"
+      },
+      "colour": "yellow",
+      "frames_seen": 1,
+      "jitter_mm": null
+    },
+    {
+      "pixel": [
+        790,
+        243
+      ],
+      "bbox": [
+        761,
+        223,
+        818,
+        258
+      ],
+      "area": 945,
+      "footprint_m": [
+        0.008000000000000005,
+        0.010000000000000007
+      ],
+      "plausible_cube": false,
+      "grasp_centre_base": [
+        -0.2026527873082168,
+        -0.18209283598182796,
+        -0.013118379800289107
+      ],
+      "footprint_centre_base": [
+        -0.2024538038501468,
+        -0.18173342028570413,
+        -0.02561162701391593
+      ],
+      "assumptions": {
+        "plane": "measured table + 0 mm (table frame z = support height)",
+        "object_height_m": 0.025,
+        "method": "rgb_two_plane_carve"
+      },
+      "colour": "yellow",
+      "frames_seen": 2,
+      "jitter_mm": 0.733368886276134
+    },
+    {
+      "pixel": [
+        807,
+        87
+      ],
+      "bbox": [
+        783,
+        69,
+        829,
+        106
+      ],
+      "area": 899,
+      "footprint_m": [
+        0.012000000000000009,
+        0.02200000000000002
+      ],
+      "plausible_cube": true,
+      "grasp_centre_base": [
+        -0.5413798152237539,
+        -0.2014783426051187,
+        -0.019071078041384647
+      ],
+      "footprint_centre_base": [
+        -0.5411808317656839,
+        -0.20111892690899486,
+        -0.03156432525501147
+      ],
+      "assumptions": {
+        "plane": "measured table + 0 mm (table frame z = support height)",
+        "object_height_m": 0.025,
+        "method": "rgb_two_plane_carve"
+      },
+      "colour": "yellow",
+      "frames_seen": 2,
+      "jitter_mm": 6.1219847463798995
+    },
+    {
+      "pixel": [
+        841,
+        81
+      ],
+      "bbox": [
+        826,
+        67,
+        860,
+        99
+      ],
+      "area": 435,
+      "footprint_m": [
+        0.016000000000000014,
+        0.004000000000000002
+      ],
+      "plausible_cube": false,
+      "grasp_centre_base": [
+        -0.5565950412055304,
+        -0.1812822123550387,
+        -0.01873239684350882
+      ],
+      "footprint_centre_base": [
+        -0.5563960577474604,
+        -0.18092279665891484,
+        -0.03122564405713564
+      ],
+      "assumptions": {
+        "plane": "measured table + 0 mm (table frame z = support height)",
+        "object_height_m": 0.025,
+        "method": "rgb_two_plane_carve"
+      },
+      "colour": "yellow",
+      "frames_seen": 1,
+      "jitter_mm": null
+    },
+    {
+      "pixel": [
+        1777,
+        157
+      ],
+      "bbox": [
+        1563,
+        0,
+        1920,
+        358
+      ],
+      "area": 58232,
+      "footprint_m": [
+        0.7300000000000001,
+        0.504
+      ],
+      "plausible_cube": false,
+      "grasp_centre_base": [
+        -0.4709653272934083,
+        0.6734565313157048,
+        0.007221257286904166
+      ],
+      "footprint_centre_base": [
+        -0.4707663438353383,
+        0.6738159470118287,
+        -0.005271989926722656
+      ],
+      "assumptions": {
+        "plane": "measured table + 0 mm (table frame z = support height)",
+        "object_height_m": 0.025,
+        "method": "rgb_two_plane_carve"
+      },
+      "colour": "blue",
+      "frames_seen": 3,
+      "jitter_mm": 7.0073920357731705
+    },
+    {
+      "pixel": [
+        1880,
+        964
+      ],
+      "bbox": [
+        1809,
+        873,
+        1920,
+        1070
+      ],
+      "area": 12436,
+      "footprint_m": [
+        0.066,
+        0.030000000000000027
+      ],
+      "plausible_cube": false,
+      "grasp_centre_base": [
+        0.42104173601234157,
+        0.3031086386785479,
+        0.010774040937166293
+      ],
+      "footprint_centre_base": [
+        0.4212407194704116,
+        0.3034680543746718,
+        -0.001719206276460529
+      ],
+      "assumptions": {
+        "plane": "measured table + 0 mm (table frame z = support height)",
+        "object_height_m": 0.025,
+        "method": "rgb_two_plane_carve"
+      },
+      "colour": "blue",
+      "frames_seen": 5,
+      "jitter_mm": 1.0364291493450402
+    },
+    {
+      "pixel": [
+        1313,
+        14
+      ],
+      "bbox": [
+        1296,
+        0,
+        1336,
+        41
+      ],
+      "area": 910,
+      "footprint_m": [
+        0.062000000000000055,
+        0.03200000000000003
+      ],
+      "plausible_cube": false,
+      "grasp_centre_base": [
+        -0.7770079045339707,
+        0.3151161431520659,
+        -0.007962190791366463
+      ],
+      "footprint_centre_base": [
+        -0.7768089210759007,
+        0.31547555884818973,
+        -0.020455438004993283
+      ],
+      "assumptions": {
+        "plane": "measured table + 0 mm (table frame z = support height)",
+        "object_height_m": 0.025,
+        "method": "rgb_two_plane_carve"
+      },
+      "colour": "blue",
+      "frames_seen": 5,
+      "jitter_mm": 6.281032366480974
+    },
+    {
+      "pixel": [
+        1161,
+        380
+      ],
+      "bbox": [
+        1152,
+        350,
+        1169,
+        398
+      ],
+      "area": 382,
+      "footprint_m": [
+        0.018000000000000002,
+        0.00599999999999999
+      ],
+      "plausible_cube": false,
+      "grasp_centre_base": [
+        -0.012311657316164588,
+        0.07715809695782078,
+        -0.002628425623357175
+      ],
+      "footprint_centre_base": [
+        -0.012112673858094595,
+        0.07751751265394462,
+        -0.015121672836983997
+      ],
+      "assumptions": {
+        "plane": "measured table + 0 mm (table frame z = support height)",
+        "object_height_m": 0.025,
+        "method": "rgb_two_plane_carve"
+      },
+      "colour": "blue",
+      "frames_seen": 5,
+      "jitter_mm": 0.24343955052699928
+    }
+  ]
+}

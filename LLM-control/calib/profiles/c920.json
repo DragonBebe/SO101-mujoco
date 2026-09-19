@@ -1,0 +1,10 @@
+{
+  "note": "Logitech C920 environment camera. Autofocus off and focus pinned: intrinsics are only valid at this focus. Device by serial so a replug cannot swap cameras.",
+  "device": "/dev/v4l/by-id/usb-046d_HD_Pro_Webcam_C920_B222F89F-video-index0",
+  "width": 1920,
+  "height": 1080,
+  "fps": 30.0,
+  "fourcc": "MJPG",
+  "autofocus": false,
+  "focus": 0.0
+}

@@ -1,0 +1,163 @@
+{
+  "schema": "rgbcal/intrinsics/1",
+  "camera_id": "environment",
+  "device": "/dev/v4l/by-id/usb-046d_HD_Pro_Webcam_C920_B222F89F-video-index0",
+  "device_name": null,
+  "resolution": {
+    "width": 1920,
+    "height": 1080
+  },
+  "pixel_format": "MJPG",
+  "image_transform": {
+    "hflip": false,
+    "rotation_deg": 0,
+    "crop": null,
+    "resized": false,
+    "note": "raw samples are archived exactly as delivered; apply hflip to reach the frame the calibration describes"
+  },
+  "imaging": {
+    "device": "/dev/v4l/by-id/usb-046d_HD_Pro_Webcam_C920_B222F89F-video-index0",
+    "width": 1920,
+    "height": 1080,
+    "autofocus": false,
+    "focus": 0.0,
+    "hflip": false
+  },
+  "model": "standard",
+  "distortion_model": "opencv-5 (k1,k2,p1,p2,k3)",
+  "K": [
+    [
+      1379.9681219659958,
+      0.0,
+      925.3321627764489
+    ],
+    [
+      0.0,
+      1377.8288318329112,
+      514.5844095775346
+    ],
+    [
+      0.0,
+      0.0,
+      1.0
+    ]
+  ],
+  "D": [
+    0.13280146770266701,
+    -0.2615592444470192,
+    -0.003687886299941075,
+    0.00016519952845103054,
+    0.11882282187233081
+  ],
+  "fx": 1379.9681219659958,
+  "fy": 1377.8288318329112,
+  "cx": 925.3321627764489,
+  "cy": 514.5844095775346,
+  "fov_deg": {
+    "horizontal": 69.65021925165648,
+    "vertical": 42.80250784444703
+  },
+  "std_intrinsics": [
+    3.6707736644087605,
+    4.16139354015079,
+    3.3337279108070876,
+    4.83914294153014
+  ],
+  "reprojection_rms_px": 0.9150940193747958,
+  "per_image_rms_px": {
+    "calibration-001.png": 0.703707754611969,
+    "calibration-002.png": 0.7523546814918518,
+    "calibration-003.png": 0.43531081080436707,
+    "calibration-004.png": 0.5265189409255981,
+    "calibration-006.png": 0.5021675825119019,
+    "calibration-007.png": 0.5948566198348999,
+    "calibration-008.png": 0.49244725704193115,
+    "calibration-009.png": 0.5674222707748413,
+    "calibration-011.png": 0.6679340600967407,
+    "calibration-012.png": 0.6074938178062439,
+    "calibration-013.png": 0.6241269707679749,
+    "calibration-014.png": 0.7410165071487427,
+    "calibration-016.png": 0.8944908976554871,
+    "calibration-017.png": 0.8587738275527954,
+    "calibration-018.png": 1.0961893796920776,
+    "calibration-019.png": 0.4394136071205139,
+    "calibration-021.png": 0.4373571276664734,
+    "calibration-022.png": 0.4716853201389313,
+    "calibration-023.png": 0.8644236326217651,
+    "calibration-024.png": 1.2145582437515259,
+    "calibration-026.png": 1.4307560920715332,
+    "calibration-027.png": 1.459365963935852,
+    "calibration-028.png": 1.5949310064315796,
+    "calibration-029.png": 1.4496703147888184,
+    "calibration-031.png": 1.4057201147079468,
+    "calibration-032.png": 1.3866972923278809,
+    "calibration-033.png": 0.316579669713974,
+    "calibration-034.png": 0.31300708651542664,
+    "calibration-036.png": 0.43777039647102356,
+    "calibration-037.png": 0.8537750840187073,
+    "calibration-038.png": 1.200361728668213,
+    "calibration-039.png": 1.0940057039260864,
+    "calibration-041.png": 0.8997542262077332,
+    "calibration-042.png": 1.0627737045288086,
+    "calibration-043.png": 0.8840196132659912,
+    "calibration-044.png": 0.9630109071731567
+  },
+  "planarity_residual_px": {
+    "calibration-001.png": 0.6801022291183472,
+    "calibration-002.png": 0.7097031474113464,
+    "calibration-003.png": 0.42358726263046265,
+    "calibration-004.png": 0.5072034597396851,
+    "calibration-006.png": 0.4900597333908081,
+    "calibration-007.png": 0.5780340433120728,
+    "calibration-008.png": 0.47745370864868164,
+    "calibration-009.png": 0.5510388016700745,
+    "calibration-011.png": 0.6427361965179443,
+    "calibration-012.png": 0.5915091633796692,
+    "calibration-013.png": 0.6132772564888,
+    "calibration-014.png": 0.7242361307144165,
+    "calibration-016.png": 0.8763598203659058,
+    "calibration-017.png": 0.8454523086547852,
+    "calibration-018.png": 1.0789459943771362,
+    "calibration-019.png": 0.4213128387928009,
+    "calibration-021.png": 0.4312254786491394,
+    "calibration-022.png": 0.34457117319107056,
+    "calibration-023.png": 0.8164972066879272,
+    "calibration-024.png": 0.8808563351631165,
+    "calibration-026.png": 1.3245259523391724,
+    "calibration-027.png": 1.3843104839324951,
+    "calibration-028.png": 1.5213704109191895,
+    "calibration-029.png": 1.3214763402938843,
+    "calibration-031.png": 1.387649416923523,
+    "calibration-032.png": 1.3684618473052979,
+    "calibration-033.png": 0.30295607447624207,
+    "calibration-034.png": 0.26687899231910706,
+    "calibration-036.png": 0.38407278060913086,
+    "calibration-037.png": 0.8336063027381897,
+    "calibration-038.png": 1.1355901956558228,
+    "calibration-039.png": 1.0161725282669067,
+    "calibration-041.png": 0.8781948685646057,
+    "calibration-042.png": 1.050971508026123,
+    "calibration-043.png": 0.8668810725212097,
+    "calibration-044.png": 0.9326459765434265
+  },
+  "samples": {
+    "calibration_used": 36,
+    "validation_held_out": 9,
+    "failed_detection": []
+  },
+  "board": {
+    "inner_cols": 9,
+    "inner_rows": 6,
+    "square": 0.025,
+    "name": "chessboard-9x6-25mm",
+    "kind": "chessboard",
+    "size_m": [
+      0.25,
+      0.17500000000000002
+    ],
+    "counts": "inner corners"
+  },
+  "board_scale_note": "square length is the printed nominal value unless it was measured; it does not affect K or D, only metric extrinsics, and rescales them linearly",
+  "source_session": "/home/dragon/SO101-mujoco/LLM-control/calib/c920-intrinsics-01",
+  "valid_for": "this device at this resolution, pixel format and declared transform only; re-calibrate if any of those change"
+}

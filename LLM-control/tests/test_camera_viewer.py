@@ -101,6 +101,7 @@ def test_worker_draws_new_world_even_when_simulation_time_is_unchanged(monkeypat
     stopped = Event()
 
     class Window:
+        def __init__(self, view=None): self.view = view
         def poll(self): return True
         def due(self, simulation_time): return False
         def show(self, cameras, simulation_time): drawn.put(cameras)

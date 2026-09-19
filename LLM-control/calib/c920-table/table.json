@@ -1,0 +1,56 @@
+{
+  "schema": "rgbcal/table/2",
+  "measured_at": "2026-09-18T16:45:21+02:00",
+  "frame": "robot base (the same frame as T_base_camera in the extrinsics)",
+  "plane": {
+    "normal_base": [
+      -0.015918676645599476,
+      -0.028753255689907317,
+      0.9994597770901457
+    ],
+    "offset_m": -0.017149566886206016,
+    "equation": "normal . p = offset  (p in base coordinates, metres)",
+    "z_of_xy": {
+      "a": 0.01592728092764828,
+      "b": 0.028768797253272492,
+      "c_m": -0.017158836482780458,
+      "meaning": "z = a*x + b*y + c"
+    }
+  },
+  "tilt_from_base_z_deg": 1.8834048412557869,
+  "fit_residual_rms_mm": 0.38655634458326726,
+  "fit_residual_max_mm": 1.1200408541895222,
+  "covered_region_base_m": {
+    "x": [
+      0.11869364348988753,
+      0.4510247443277247
+    ],
+    "y": [
+      -0.13461907177777743,
+      0.17209754555219417
+    ]
+  },
+  "board": {
+    "inner_cols": 9,
+    "inner_rows": 6,
+    "square": 0.025,
+    "name": "chessboard-9x6-25mm",
+    "kind": "chessboard",
+    "size_m": [
+      0.25,
+      0.17500000000000002
+    ],
+    "counts": "inner corners"
+  },
+  "board_thickness_m": 0.0001,
+  "sources": [
+    "calib/c920-table-check/frames/view-001.png",
+    "calib/c920-table-check/frames/view-002.png",
+    "calib/c920-table-check/frames/view-003.png",
+    "calib/c920-table-center/table-reference.png"
+  ],
+  "intrinsics": "calib/c920-intrinsics-01/intrinsics.json",
+  "extrinsics": "calib/c920-handeye-03/extrinsics.json",
+  "why_tilted": "the solved base frame is tilted ~2 deg relative to the table; the tilt is identical at every placement, so localisation must intersect rays with THIS plane, not with a horizontal z = const",
+  "limits": "all placements lie near y = 0; the plane is extrapolated for objects far to the side. Valid only while the camera, robot base and table stay as they were"
+}

@@ -1,0 +1,44 @@
+{
+  "image": "estimate-005.png",
+  "saved_at": "2026-09-18T17:13:59.925+02:00",
+  "shape": [
+    1080,
+    1920,
+    3
+  ],
+  "dtype": "uint8",
+  "stage": "point-check",
+  "estimate": {
+    "pixel": [
+      1148,
+      941
+    ],
+    "bbox": [
+      1101,
+      880,
+      1194,
+      1003
+    ],
+    "area": 10046,
+    "footprint_m": [
+      0.03799999999999998,
+      0.036
+    ],
+    "plausible_cube": true,
+    "grasp_centre_base": [
+      0.4219227353291763,
+      0.026681103242223062,
+      0.002835585138593156
+    ],
+    "footprint_centre_base": [
+      0.4221217187872463,
+      0.027040518938346903,
+      -0.009657662075033664
+    ],
+    "assumptions": {
+      "plane": "measured table + 0 mm (table frame z = support height)",
+      "object_height_m": 0.025,
+      "method": "rgb_two_plane_carve"
+    }
+  }
+}

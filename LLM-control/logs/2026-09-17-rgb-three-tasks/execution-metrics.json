@@ -1,0 +1,110 @@
+{
+  "source_session": "/home/dragon/.codex/sessions/2026/09/17/rollout-2026-09-17T10-57-31-01a0ae95-d9a5-70d0-8c2d-b2007fa92d49.jsonl",
+  "scope": "only the three completed robot task turns; excludes log-writing turns and prior failed-to-start attempts",
+  "tasks": [
+    {
+      "task_id": "196620d46da148a8ab20f950c2653452",
+      "turn_id": "01a0af68-f2f8-7843-ba6c-8acfa28e8096",
+      "model": "gpt-6-astra",
+      "reasoning_effort": "low",
+      "user_received_at": "2026-09-17T12:48:05.910Z",
+      "turn_started_at": "2026-09-17T12:48:05.895Z",
+      "turn_completed_at": "2026-09-17T12:49:49.769Z",
+      "user_to_final_seconds": 103.859,
+      "runtime_turn_duration_ms": 103881,
+      "time_to_first_token_ms": 4869,
+      "robot_begin_to_complete_seconds": 80.902,
+      "simulation_elapsed_seconds": 10.92,
+      "requested_command_seconds": 9.5,
+      "model_response_count": 11,
+      "tokens": {
+        "input_tokens": 1144905,
+        "cached_input_tokens": 950656,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 1774,
+        "reasoning_output_tokens": 79,
+        "total_tokens": 1146679
+      },
+      "uncached_input_tokens": 194249,
+      "image_token_breakdown": null,
+      "model_inference_seconds": null,
+      "per_command_execution_wall_seconds": null
+    },
+    {
+      "task_id": "15a06f8978384624ae2a72e5942c2f78",
+      "turn_id": "01a0af6d-2e15-7f11-9f19-14527a25506a",
+      "model": "gpt-6-astra",
+      "reasoning_effort": "low",
+      "user_received_at": "2026-09-17T12:52:43.175Z",
+      "turn_started_at": "2026-09-17T12:52:43.160Z",
+      "turn_completed_at": "2026-09-17T12:54:42.983Z",
+      "user_to_final_seconds": 119.808,
+      "runtime_turn_duration_ms": 119823,
+      "time_to_first_token_ms": 1693,
+      "robot_begin_to_complete_seconds": 105.964,
+      "simulation_elapsed_seconds": 14.38,
+      "requested_command_seconds": 12.5,
+      "model_response_count": 12,
+      "tokens": {
+        "input_tokens": 1378956,
+        "cached_input_tokens": 1367424,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 1883,
+        "reasoning_output_tokens": 83,
+        "total_tokens": 1380839
+      },
+      "uncached_input_tokens": 11532,
+      "image_token_breakdown": null,
+      "model_inference_seconds": null,
+      "per_command_execution_wall_seconds": null
+    },
+    {
+      "task_id": "4571fbe8bbf446dd8dede045854fc504",
+      "turn_id": "01a0af73-5886-7040-8bed-e0ef5685f497",
+      "model": "gpt-6-astra",
+      "reasoning_effort": "low",
+      "user_received_at": "2026-09-17T12:59:27.257Z",
+      "turn_started_at": "2026-09-17T12:59:27.241Z",
+      "turn_completed_at": "2026-09-17T13:03:57.413Z",
+      "user_to_final_seconds": 270.156,
+      "runtime_turn_duration_ms": 270171,
+      "time_to_first_token_ms": 3198,
+      "robot_begin_to_complete_seconds": 253.791,
+      "simulation_elapsed_seconds": 41.06,
+      "requested_command_seconds": 35.0,
+      "model_response_count": 28,
+      "tokens": {
+        "input_tokens": 3686622,
+        "cached_input_tokens": 3658496,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 4466,
+        "reasoning_output_tokens": 12,
+        "total_tokens": 3691088
+      },
+      "uncached_input_tokens": 28126,
+      "image_token_breakdown": null,
+      "model_inference_seconds": null,
+      "per_command_execution_wall_seconds": null
+    }
+  ],
+  "totals": {
+    "user_to_final_seconds": 493.823,
+    "model_response_count": 51,
+    "tokens": {
+      "input_tokens": 6210483,
+      "cached_input_tokens": 5976576,
+      "cache_write_input_tokens": 0,
+      "output_tokens": 8123,
+      "reasoning_output_tokens": 174,
+      "total_tokens": 6218606
+    }
+  },
+  "definitions": {
+    "input_tokens": "Sum across model responses; includes reused conversation context and cached input. Not unique new user text.",
+    "cached_input_tokens": "Subset of input_tokens; not added again to total.",
+    "reasoning_output_tokens": "Reported subset of output_tokens; not added again to total.",
+    "total_tokens": "input_tokens + output_tokens; not a bill or monetary cost.",
+    "time": "Wall time, requested motion durations and simulated elapsed time are separate. Per-event timestamp is a response/log timestamp, not request start.",
+    "unavailable": "No separate image-token or pure model-inference-time breakdown in these records."
+  }
+}

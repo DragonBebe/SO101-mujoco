@@ -1,0 +1,69 @@
+{
+  "image": "candidate-a-004.png",
+  "saved_at": "2026-09-17T17:08:50.287+02:00",
+  "shape": [
+    720,
+    1280,
+    3
+  ],
+  "dtype": "uint8",
+  "camera": {
+    "requested": {
+      "device": "/dev/video0",
+      "width": 1280,
+      "height": 720,
+      "fps": 30.0,
+      "fourcc": "MJPG",
+      "autofocus": null,
+      "focus": null,
+      "auto_exposure": null,
+      "exposure": null,
+      "auto_wb": null
+    },
+    "actual": {
+      "frame_width": 1280.0,
+      "frame_height": 720.0,
+      "fps": 30.0,
+      "fourcc": 1196444237.0,
+      "autofocus": -1.0,
+      "focus": -1.0,
+      "auto_exposure": 3.0,
+      "exposure": 156.0,
+      "brightness": 128.0,
+      "contrast": 32.0,
+      "saturation": 64.0,
+      "gain": -1.0,
+      "gamma": 120.0,
+      "sharpness": 3.0,
+      "auto_wb": 1.0,
+      "wb_temperature": 4600.0,
+      "zoom": -1.0,
+      "backend": 200.0,
+      "buffersize": 1.0,
+      "fourcc_text": "MJPG"
+    },
+    "resolution": [
+      1280,
+      720
+    ],
+    "pixel_format": "MJPG",
+    "driver_fps": 30.0,
+    "measured_fps": 20.74182554134557,
+    "image_transform": {
+      "rotation_deg": 0,
+      "mirrored": false,
+      "crop": null,
+      "resized": false,
+      "note": "frames are stored exactly as delivered"
+    },
+    "opened_at": "2026-09-17T17:00:56.497+02:00"
+  },
+  "label": "candidate-a",
+  "sharpness": 148.78258137129677,
+  "exposure": {
+    "mean": 112.50959201388889,
+    "clipped_high": 0.0,
+    "clipped_low": 0.008481987847222223
+  },
+  "stage": "viewpoint"
+}
