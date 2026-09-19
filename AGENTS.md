@@ -12,6 +12,8 @@ another API model, a keyword-only language parser, or substitute a canned replay
    --viewer --realtime --camera-viewer` in a persistent terminal on a desktop; use
    `MUJOCO_GL=egl` and omit GUI flags headlessly. Omit both camera flags, or pass
    `--camera-modality rgbd --environment-camera overhead`, for the original setup.
+   `--camera-modality rgb --environment-camera calibrated` reproduces the measured
+   real C920 view (RGB only; data from `run_rgbcal.sh sim-camera`).
    Do not delete an existing socket without checking its owning process.
 2. Read current task first. Continue a matching active task; otherwise complete or
    cancel it as appropriate to the user's instruction. `begin` records the user's

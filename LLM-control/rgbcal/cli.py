@@ -347,6 +347,17 @@ def command_point_report(args):
     return 0
 
 
+def command_sim_camera(args):
+    from .simcam import export
+
+    output, record = export(_path(args.output), _path(args.intrinsics),
+                            _path(args.extrinsics), _path(args.table))
+    summary = {key: record[key] for key in ('position', 'look_down_deg', 'fov_deg',
+                                            'fx', 'fy', 'cx', 'cy', 'image')}
+    print(json.dumps({'written': str(output), **summary}, indent=2))
+    return 0
+
+
 def command_table(args):
     from .table import measure
 
@@ -546,6 +557,15 @@ def build_parser():
                                 help='stage 6: measured grasp centre and held-out error')
     sub.add_argument('--session', default=None)
     sub.set_defaults(func=command_point_report)
+
+    sub = subparsers.add_parser('sim-camera',
+                                help='export the calibrated camera for the MuJoCo simulation')
+    sub.add_argument('--intrinsics', default=None)
+    sub.add_argument('--extrinsics', default=None)
+    sub.add_argument('--table', default=None)
+    sub.add_argument('--output', default=None,
+                     help='default: calib/c920-sim-camera/sim_camera.json')
+    sub.set_defaults(func=command_sim_camera)
 
     sub = subparsers.add_parser('table-plane',
                                 help='stage 3: measure the support surface height')

@@ -161,6 +161,15 @@ C920 畸变很小：整幅画面上原始/去畸变像素相差 ≤ 2.4 px（若
     （wrist_flex 板子/舵机比 0.927，wrist_roll 0.958）；
   - 全部 5 次留一端到端误差中位 36 mm。**目前不能用于运动。**
 
+### 3.7 映射到仿真（2026-09-19）
+
+`bash LLM-control/run_rgbcal.sh sim-camera` 把去畸变内参 `K_new` 与桌面系相机位姿
+`T_table_camera` 导出到 `calib/c920-sim-camera/sim_camera.json`；仿真用
+`--camera-modality rgb --environment-camera calibrated` 加载（仅 RGB）。验证：渲染的
+GL 相机回读内参与文件一致；仿真深度反投影地面像素中位误差 0.28 mm；与真机去畸变画面
+叠加时底座、桌面透视重合。**重新标定（外参 / 桌面 / 内参）后需重新导出。**
+详见 `LOOP_README.md`「真机标定机位」。
+
 ## 4. 状态
 
 | 项 | 状态 |
@@ -218,6 +227,8 @@ bash LLM-control/run_rgbcal.sh table-plane --profile c920 --board chessboard \
      --extrinsics LLM-control/calib/c920-handeye-03/extrinsics.json --thickness 0.0001 --session <name>
 bash LLM-control/run_rgbcal.sh point-check  --profile c920 --session <name> [--support-height 0.025]
 bash LLM-control/run_rgbcal.sh point-report --session <name>
+# 导出给仿真的相机（标定更新后重跑）
+bash LLM-control/run_rgbcal.sh sim-camera
 # 测试
 cd LLM-control && PYTHONPATH=. .venv-rgbcal/bin/python -m pytest rgbcal/tests -q
 ```

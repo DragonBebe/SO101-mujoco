@@ -95,8 +95,12 @@ class VisualSimulation:
         self.scratch = mujoco.MjData(self.model)
         self.side_camera_params = None
         self._side_renderer = self._side_cam = None
+        self.calibrated_params = None
+        self._calibrated_renderer = self._calibrated_cam = None
         if suite.placement == 'side':
             self._build_side_camera()
+        elif suite.placement == 'calibrated':
+            self._build_calibrated_camera()
         if viewer:
             import mujoco.viewer as mjviewer
             self.viewer = mjviewer.launch_passive(self.model, self.data)
@@ -130,6 +134,8 @@ class VisualSimulation:
             self.viewer.close()
         if self._side_renderer is not None:
             self._side_renderer.close()
+        if self._calibrated_renderer is not None:
+            self._calibrated_renderer.close()
         self.env.close()
 
     def _build_side_camera(self):
@@ -152,6 +158,48 @@ class VisualSimulation:
         self._side_cam = camera
         self._side_renderer = mujoco.Renderer(self.model, height=self.cameras.height,
                                               width=self.cameras.width)
+
+    def _build_calibrated_camera(self):
+        """World-fixed copy of the measured real camera.
+
+        Pose and intrinsics come from the exported calibration, not from the
+        scene.  The offscreen buffer is enlarged when the calibrated image is
+        bigger than the model's default; other renderers keep their own size.
+        """
+        camera = self.cameras.calibrated_camera()
+        self.calibrated_params = camera
+        visual = self.model.vis.global_
+        visual.offwidth = max(int(visual.offwidth), camera['width'])
+        visual.offheight = max(int(visual.offheight), camera['height'])
+        self._calibrated_cam = mujoco.MjvCamera()
+        self._calibrated_cam.type = mujoco.mjtCamera.mjCAMERA_FREE
+        self._calibrated_renderer = mujoco.Renderer(self.model, height=camera['height'],
+                                                    width=camera['width'])
+
+    def _apply_calibrated_camera(self, renderer):
+        """Replace the scene's GL camera by the calibrated pinhole.
+
+        MuJoCo projects with ``glFrustum(center -/+ frustum_width, bottom,
+        top)`` on the near plane -- ``frustum_width`` is a half-width despite
+        its name -- so an arbitrary ``K`` (fx != fy, off-centre principal
+        point) is set exactly.  With pixel centres at integers, the image's
+        left edge is ``u = -0.5``: ``left = near * (-0.5 - cx) / fx``.
+        """
+        camera = self.calibrated_params
+        width, height = camera['width'], camera['height']
+        fx, fy, cx, cy = (camera[key] for key in ('fx', 'fy', 'cx', 'cy'))
+        rotation = camera['rotation']
+        for eye in renderer.scene.camera:
+            near = float(eye.frustum_near)
+            left, right = near*(-0.5 - cx)/fx, near*(width - 0.5 - cx)/fx
+            eye.pos[:] = camera['position']
+            eye.forward[:] = -rotation[:, 2]
+            eye.up[:] = rotation[:, 1]
+            eye.frustum_center = (left + right)/2
+            eye.frustum_width = (right - left)/2
+            eye.frustum_top = near*(cy + 0.5)/fy
+            eye.frustum_bottom = -near*(height - 0.5 - cy)/fy
+            eye.orthographic = 0
 
     @contextmanager
     def _render_fov(self, fov_deg):
@@ -181,6 +229,8 @@ class VisualSimulation:
         if name == suite.environment_camera:
             if name == 'overhead':
                 return e._overhead_obs_renderer, e._overhead_obs_cam, suite.overhead_fov_deg
+            if name == 'calibrated':
+                return self._calibrated_renderer, self._calibrated_cam, None
             return self._side_renderer, self._side_cam, suite.side_fov_deg
         if name == WRIST:
             return e._wrist_renderer, e._wrist_cam_id, None
@@ -197,9 +247,15 @@ class VisualSimulation:
         up = np.array(left.up, dtype=float)
         rotation = np.column_stack((np.cross(forward, up), up, -forward))
         height, width = shape
-        fy = height*float(left.frustum_near)/(float(left.frustum_top)-float(left.frustum_bottom))
-        return {'width': width, 'height': height, 'fx':fy, 'fy':fy,
-                'cx':(width-1)/2, 'cy':(height-1)/2,
+        near, top = float(left.frustum_near), float(left.frustum_top)
+        fy = height*near/(top-float(left.frustum_bottom))
+        # frustum_width is MuJoCo's horizontal half-width; zero means "derive
+        # from the viewport aspect", i.e. square pixels.
+        span = 2*float(left.frustum_width) or (top-float(left.frustum_bottom))*width/height
+        fx = width*near/span
+        edge = float(left.frustum_center) - span/2
+        return {'width': width, 'height': height, 'fx':fx, 'fy':fy,
+                'cx':-edge*fx/near - 0.5, 'cy':top*fy/near - 0.5,
                 'position':eye.tolist(), 'rotation':rotation.tolist()}
 
     def capture_cameras(self):
@@ -214,6 +270,8 @@ class VisualSimulation:
             with self._render_fov(fov):
                 renderer.disable_depth_rendering()
                 renderer.update_scene(self.data, camera=camera)
+                if name == 'calibrated':
+                    self._apply_calibrated_camera(renderer)
                 rgb = renderer.render().copy()
                 calibration = self._calibration(renderer, rgb.shape[:2])
                 depth = None
@@ -249,7 +307,7 @@ class VisualSimulation:
         return {'modality': suite.modality, 'depth_available': suite.depth_available,
                 'environment_camera': suite.environment_camera,
                 'cameras': list(suite.names),
-                'resolution': {'width': suite.width, 'height': suite.height},
+                'resolution': {name: suite.resolution(name) for name in suite.names},
                 'localize': localize, 'propose': propose,
                 'sources': 'rendered images, camera calibration and robot forward kinematics'}
 
@@ -261,6 +319,14 @@ class VisualSimulation:
             for key in ('lookat', 'eye'):
                 resolved[key] = np.asarray(resolved[key]).tolist()
             report['side_resolved'] = resolved
+        if self.calibrated_params:
+            camera = self.calibrated_params
+            report['calibrated_resolved'] = {
+                key: (np.asarray(camera[key]).tolist() if key in ('position', 'rotation')
+                      else camera[key])
+                for key in ('width', 'height', 'fx', 'fy', 'cx', 'cy', 'position',
+                            'rotation', 'fov_deg', 'full_resolution', 'source',
+                            'robot_base_in_world')}
         return report
 
     def update_camera_viewer(self):

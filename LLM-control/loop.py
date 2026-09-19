@@ -25,7 +25,8 @@ def main():
     server.add_argument('--camera-modality', choices=MODALITIES, default='rgbd',
                         help='rgb: colour only from both cameras; rgbd: colour plus depth')
     server.add_argument('--environment-camera', choices=PLACEMENTS, default='overhead',
-                        help='side: world-fixed oblique desk view; overhead: original top-down view')
+                        help='side: world-fixed oblique desk view; overhead: original top-down view; '
+                             'calibrated: the measured real C920 camera (rgb modality only)')
     server.add_argument('--record', default=str(ROOT / 'runs' / datetime.now().strftime('loop-%Y%m%d-%H%M%S-%f')))
     server.set_defaults(task='workbench')
     client = sub.add_parser('command', help='Send one JSON command; use - for stdin')

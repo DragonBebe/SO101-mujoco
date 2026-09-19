@@ -1,0 +1,125 @@
+{
+  "schema": "rgbcal/sim-camera/1",
+  "exported_at": "2026-09-19T12:27:15+02:00",
+  "camera": "/dev/v4l/by-id/usb-046d_HD_Pro_Webcam_C920_B222F89F-video-index0",
+  "frame": "simulation world == real table frame: z = 0 is the measured table surface, origin on the table below the robot base origin, x = base x projected onto the table",
+  "image": {
+    "width": 1920,
+    "height": 1080,
+    "content": "undistorted frame (alpha = 0), the image the real RGB pipeline gives to perception"
+  },
+  "K": [
+    [
+      1403.824511533441,
+      0.0,
+      924.5342377547513
+    ],
+    [
+      0.0,
+      1404.6463565172294,
+      511.49455403278915
+    ],
+    [
+      0.0,
+      0.0,
+      1.0
+    ]
+  ],
+  "fx": 1403.824511533441,
+  "fy": 1404.6463565172294,
+  "cx": 924.5342377547513,
+  "cy": 511.49455403278915,
+  "pixel_convention": "OpenCV: [0, 0] is the centre of the top-left pixel",
+  "distortion": "none (undistorted K_new; the raw lens K/D are not used here)",
+  "fov_deg": {
+    "horizontal": 68.70967861160291,
+    "vertical": 42.0440647552381
+  },
+  "T_world_camera_opencv": [
+    [
+      -0.03617709872149837,
+      0.5827832133171598,
+      -0.8118219902194205,
+      0.7668524888864684
+    ],
+    [
+      0.9993391036119114,
+      0.018214658340846828,
+      -0.03145762568388452,
+      -0.04483702207660312
+    ],
+    [
+      -0.0035459159939496034,
+      -0.8124235056282235,
+      -0.5830570074894149,
+      0.46098653960407077
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ]
+  ],
+  "position": [
+    0.7668524888864684,
+    -0.04483702207660312,
+    0.46098653960407077
+  ],
+  "rotation_opengl": [
+    [
+      -0.03617709872149837,
+      -0.5827832133171598,
+      0.8118219902194205
+    ],
+    [
+      0.9993391036119114,
+      -0.018214658340846828,
+      0.03145762568388452
+    ],
+    [
+      -0.0035459159939496034,
+      0.8124235056282235,
+      0.5830570074894149
+    ]
+  ],
+  "look_down_deg": 35.6658447708033,
+  "robot_base_in_world": {
+    "T_world_base": [
+      [
+        0.999873289839194,
+        -0.0004577717841722628,
+        0.01591209323567361,
+        3.528472996407448e-20
+      ],
+      [
+        1.0842021724855044e-19,
+        0.9995864348480447,
+        0.02875689948126487,
+        1.4255929584954802e-19
+      ],
+      [
+        -0.015918676645599476,
+        -0.028753255689907317,
+        0.9994597770901457,
+        0.017149566886206016
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "height_m": 0.017149566886206016,
+    "tilt_deg": 1.8834048412557869,
+    "note": "the simulation stands the base upright at the world origin; the calibrated base frame sits this far above and tilted from the table, largely absorbing joint-zero/extrinsic compensation, so the robot as seen by the simulated camera differs from the real image by about this much"
+  },
+  "usable_for_motion": false,
+  "usable_for_motion_note": "a simulation viewpoint only; it says nothing about whether real-arm motion from this camera is safe",
+  "sources": {
+    "intrinsics": "calib/c920-intrinsics-01/intrinsics.json",
+    "extrinsics": "calib/c920-handeye-03/extrinsics.json",
+    "table": "calib/c920-table/table.json"
+  }
+}

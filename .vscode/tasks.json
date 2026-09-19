@@ -30,6 +30,34 @@
       }
     },
     {
+      "label": "SO101: 启动双 RGB + 真机标定 C920 机位",
+      "type": "process",
+      "command": "bash",
+      "args": [
+        "${workspaceFolder}/LLM-control/run_loop.sh",
+        "serve",
+        "--camera-modality",
+        "rgb",
+        "--environment-camera",
+        "calibrated",
+        "--viewer",
+        "--realtime",
+        "--camera-viewer"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}",
+        "env": {
+          "MUJOCO_GL": "glfw"
+        }
+      },
+      "isBackground": true,
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated"
+      }
+    },
+    {
       "label": "SO101: 启动 RGB-D + 侧视环境",
       "type": "process",
       "command": "bash",

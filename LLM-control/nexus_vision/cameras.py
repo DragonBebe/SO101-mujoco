@@ -13,6 +13,11 @@ Two independent choices, both fixed when the service starts:
     world-fixed bystander camera looking obliquely down at the workspace,
     the way a laptop webcam on the corner of the desk would.  It is a
     simulation starting point, not a calibrated copy of real hardware.
+    ``'calibrated'`` reproduces the measured real environment camera
+    (Logitech C920): its undistorted intrinsics, 16:9 image and pose
+    relative to the table, read from the file ``rgbcal sim-camera``
+    exports.  That calibration covers colour only, so this placement is
+    only offered in the ``'rgb'`` modality.
 
 The wrist camera is part of the robot model and rides the arm in either
 placement; only the environment camera moves between the two.
@@ -22,12 +27,19 @@ copied coordinates: :meth:`CameraSuite.side_camera` fits the camera
 distance so the whole reachable workspace stays inside the frustum.
 """
 from dataclasses import dataclass, replace
+from pathlib import Path
+import json
+import math
 
 import numpy as np
 
 MODALITIES = ('rgb', 'rgbd')
-PLACEMENTS = ('overhead', 'side')
+PLACEMENTS = ('overhead', 'side', 'calibrated')
 WRIST = 'wrist'
+#: Written by ``bash LLM-control/run_rgbcal.sh sim-camera``.
+CALIBRATED_CAMERA_FILE = (Path(__file__).resolve().parent.parent /
+                          'calib/c920-sim-camera/sim_camera.json')
+CALIBRATED_SCHEMA = 'rgbcal/sim-camera/1'
 
 
 def _choice(value, allowed, name):
@@ -106,6 +118,45 @@ def fit_orbit_distance(points, azimuth_deg, elevation_deg, fov_deg, aspect, fill
     return lookat, float(max(np.max(needed), 0.05))
 
 
+def load_calibrated_camera(path, scale):
+    """Measured real camera as a simulated pinhole, resampled by ``scale``.
+
+    The file holds the undistorted ``K`` at the calibrated resolution and the
+    camera pose in the table frame, which is the simulation world.  Scaling
+    keeps the field of view and the principal point's place in the image;
+    with pixel centres at integer coordinates a centre ``c`` maps to
+    ``(c + 0.5) * scale - 0.5``.
+    """
+    path = Path(path)
+    if not path.exists():
+        raise ValueError(f'calibrated camera file {path} is missing; export it with '
+                         '`bash LLM-control/run_rgbcal.sh sim-camera`')
+    record = json.loads(path.read_text())
+    if record.get('schema') != CALIBRATED_SCHEMA:
+        raise ValueError(f'{path} is not a {CALIBRATED_SCHEMA} file')
+    full_width, full_height = (int(record['image'][key]) for key in ('width', 'height'))
+    width, height = round(full_width * scale), round(full_height * scale)
+    if width < 16 or height < 16:
+        raise ValueError('calibrated camera scale leaves too small an image')
+    sx, sy = width / full_width, height / full_height
+    fx, fy = float(record['fx']) * sx, float(record['fy']) * sy
+    cx = (float(record['cx']) + 0.5) * sx - 0.5
+    cy = (float(record['cy']) + 0.5) * sy - 0.5
+    position = np.asarray(record['position'], dtype=float)
+    rotation = np.asarray(record['rotation_opengl'], dtype=float)
+    if not (all(math.isfinite(v) and v > 0 for v in (fx, fy)) and
+            np.all(np.isfinite(position)) and position.shape == (3,) and
+            rotation.shape == (3, 3) and np.allclose(rotation.T @ rotation, np.eye(3),
+                                                     atol=1e-6)):
+        raise ValueError(f'{path} does not hold a valid pinhole camera')
+    return {'width': width, 'height': height, 'fx': fx, 'fy': fy, 'cx': cx, 'cy': cy,
+            'position': position, 'rotation': rotation, 'scale': float(scale),
+            'full_resolution': {'width': full_width, 'height': full_height},
+            'fov_deg': record.get('fov_deg'), 'source': str(path),
+            'camera': record.get('camera'), 'exported_at': record.get('exported_at'),
+            'robot_base_in_world': record.get('robot_base_in_world')}
+
+
 @dataclass(frozen=True)
 class CameraSuite:
     """Immutable camera configuration shared by capture, preview and logs.
@@ -134,6 +185,10 @@ class CameraSuite:
     side_height: float = 0.25
     side_fill: float = 0.92
     overhead_fov_deg: float = 45.0
+    #: Calibrated real camera: exported file and the fraction of its native
+    #: 1920x1080 to render (0.5 -> 960x540; same field of view either way).
+    calibrated_file: str = str(CALIBRATED_CAMERA_FILE)
+    calibrated_scale: float = 0.5
     wrist_fov_deg: float = 60.0
     wrist_pitch_deg: float = -32.66
 
@@ -146,6 +201,10 @@ class CameraSuite:
         _angle(self.side_elevation_deg, -89, -1, 'side_elevation_deg')
         _angle(self.side_fov_deg, 5, 150, 'side_fov_deg')
         _angle(self.overhead_fov_deg, 5, 150, 'overhead_fov_deg')
+        _angle(self.calibrated_scale, 0.05, 1.0, 'calibrated_scale')
+        if self.placement == 'calibrated' and self.modality != 'rgb':
+            raise ValueError("the calibrated environment camera is the measured RGB "
+                             "camera; it is only available with camera modality 'rgb'")
 
     @property
     def depth_available(self):
@@ -168,7 +227,21 @@ class CameraSuite:
         return 'world_fixed' if name == self.environment_camera else 'robot_wrist'
 
     def environment_fov_deg(self):
+        """Vertical field of view of the environment camera."""
+        if self.placement == 'calibrated':
+            return self.calibrated_camera()['fov_deg']['vertical']
         return self.side_fov_deg if self.placement == 'side' else self.overhead_fov_deg
+
+    def calibrated_camera(self):
+        """The measured real camera, at the resolution this run renders."""
+        return load_calibrated_camera(self.calibrated_file, self.calibrated_scale)
+
+    def resolution(self, name):
+        """Image size of one camera; only the calibrated camera has its own."""
+        if name == self.environment_camera and self.placement == 'calibrated':
+            camera = self.calibrated_camera()
+            return {'width': camera['width'], 'height': camera['height']}
+        return {'width': self.width, 'height': self.height}
 
     def side_camera(self, spawn_center, spawn_max_radius, spawn_angle_half_deg):
         """Resolve the side view against the live scene scale.
@@ -196,6 +269,23 @@ class CameraSuite:
 
     def describe(self):
         """Configuration as recorded in session state and every event row."""
+        if self.placement == 'calibrated':
+            camera = self.calibrated_camera()
+            return {'modality': self.modality, 'depth_available': self.depth_available,
+                    'environment_camera': self.environment_camera,
+                    'environment_placement': self.placement,
+                    'environment_mounting': 'world_fixed',
+                    'wrist_camera': WRIST, 'wrist_mounting': 'robot_wrist',
+                    'cameras': list(self.names),
+                    'resolution': self.resolution(WRIST),
+                    'environment_resolution': self.resolution(self.environment_camera),
+                    'environment_fov_deg': camera['fov_deg']['vertical'],
+                    'calibrated_source': camera['source'],
+                    'calibrated_scale': self.calibrated_scale,
+                    'note': ('calibrated placement reproduces the measured real RGB '
+                             'camera (undistorted intrinsics and pose relative to the '
+                             'table); simulated images still differ in lighting, '
+                             'texture and the robot model')}
         return {'modality': self.modality, 'depth_available': self.depth_available,
                 'environment_camera': self.environment_camera,
                 'environment_placement': self.placement,

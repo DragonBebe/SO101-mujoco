@@ -16,6 +16,9 @@ bash LLM-control/run_loop.sh serve --camera-modality rgb --environment-camera si
 其他组合：
 
 ```bash
+# 双 RGB + 真机标定机位：环境相机复现实测 C920 的内参与位姿（仅 rgb 模态）
+bash LLM-control/run_loop.sh serve --camera-modality rgb --environment-camera calibrated \
+     --viewer --realtime --camera-viewer
 # RGB-D + 侧视：侧面机位，同时提供深度与三维定位
 bash LLM-control/run_loop.sh serve --camera-modality rgbd --environment-camera side \
      --viewer --realtime --camera-viewer
@@ -57,6 +60,7 @@ bash LLM-control/run_loop.sh serve --viewer --realtime --camera-viewer
 | | `rgbd` | 保留原有彩色 + 光学 Z 深度（默认） |
 | `--environment-camera` | `side` | 新增世界固定侧视机位，从桌面右前方斜向下观察 |
 | | `overhead` | 原有正俯视机位（默认），用于回归与对照 |
+| | `calibrated` | 复现真机标定的 C920 环境相机；**只能与 `rgb` 搭配**（标定只覆盖 RGB） |
 
 环境相机的名称就是机位名：`side` 模式下两路相机是 `side` 与 `wrist`，`overhead`
 模式下是 `overhead` 与 `wrist`。`localize` / `propose` 的 `camera` 默认取环境相机，
@@ -68,6 +72,30 @@ bash LLM-control/run_loop.sh serve --viewer --realtime --camera-viewer
 留在画面内。当前本机解析结果为相机位于 `[0.531, -0.430, 0.475]`、注视点
 `[0.17, 0, 0.125]`。**这是仿真初始配置，并未标定复现任何一台真实笔记本摄像头。**
 腕部相机仍是机器人模型里的 `wrist_cam`，固定连接在 `camera_mount` 刚体上随臂运动。
+
+### 真机标定机位 `calibrated`
+
+`calibrated` 把真机 C920 的标定结果搬进仿真（见 `RGBCAL_SUMMARY.md`）。数据流：
+
+```bash
+# 标定更新后重新导出（使用 .venv-rgbcal，需要 OpenCV）
+bash LLM-control/run_rgbcal.sh sim-camera
+# -> LLM-control/calib/c920-sim-camera/sim_camera.json
+```
+
+- **内参**：用真机管线送给 perception 的**去畸变**内参 `K_new`（alpha=0），不是原始 `K/D`；
+  仿真针孔图像本就无畸变，对应的是去畸变后的真机画面。fx≠fy 和偏离中心的主点都按原值
+  渲染（直接设置 MuJoCo GL 相机的非对称视锥）。视场约 68.7° × 42.0°，16:9。
+- **分辨率**：默认按 0.5 缩放为 960×540（`CameraSuite.calibrated_scale`，视场不变）；腕部相机
+  仍为 640×480。预览窗口按各自宽高比显示，不拉伸。
+- **位姿**：仿真世界 = 真机的**桌面坐标系**（z 为实测桌面法向、z=0 为桌面，原点在底座原点
+  正下方的桌面上，x 为底座 x 在桌面上的投影），相机位于 `T_table_camera`：约
+  `[0.767, -0.045, 0.461]` m，在机器人正前方约 0.77 m、朝向机器人、俯角约 35.7°。
+  因此 `plane_z = 0`、`object_height` 在仿真和真机中含义相同。
+- **已知差异**：标定解出的底座系相对桌面高 17 mm、倾斜 1.9°（主要是外参与关节零位的补偿），
+  仿真中底座直立于原点，所以画面里机械臂相对真机有约这个量级的偏差；桌面、物体的透视一致。
+  仿真光照、纹理、背景与真机不同；生成的物体布局仍是仿真自己的。
+- 不产生深度，也不改变 `rgbd` 模态；选择 `rgbd` + `calibrated` 会直接报错。
 
 `observe` 的返回里每路相机都带 `camera_id`、`placement`、`mounting`、`modality`、
 `width`/`height`、`rgb` 路径与 `calibration`；顶层 `perception` 字段说明当前模态、

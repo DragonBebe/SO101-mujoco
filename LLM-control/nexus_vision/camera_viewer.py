@@ -44,6 +44,17 @@ def panel_size(view):
     return COLUMNS * TILE[0], 40 + rows * (TILE[1] + 28) + legend
 
 
+def fit_tile(width, height):
+    """Largest size of that aspect inside ``TILE``, and its centring offset.
+
+    Cameras need not share an aspect (the calibrated C920 is 16:9, the wrist
+    camera 4:3); stretching both to one tile would distort the geometry.
+    """
+    scale = min(TILE[0] / width, TILE[1] / height)
+    size = (max(1, round(width * scale)), max(1, round(height * scale)))
+    return size, ((TILE[0] - size[0]) // 2, (TILE[1] - size[1]) // 2)
+
+
 def compose_panel(cameras, simulation_time, view=DEFAULT_VIEW):
     cells = panel_cells(view)
     width, height = panel_size(view)
@@ -66,8 +77,9 @@ def compose_panel(cameras, simulation_time, view=DEFAULT_VIEW):
             label, array = f'{name.upper()} / DEPTH (optical Z, metres)', colorize_depth(depth)
             depth_shown = True
         draw.text((x + 12, y), label, fill='white')
-        panel.paste(Image.fromarray(array).resize(TILE, Image.Resampling.NEAREST),
-                    (x, y + 22))
+        tile, offset = fit_tile(array.shape[1], array.shape[0])
+        panel.paste(Image.fromarray(array).resize(tile, Image.Resampling.NEAREST),
+                    (x + offset[0], y + 22 + offset[1]))
     if depth_shown:
         ramp = np.linspace(0.00001, 1, 320)[None, :]
         panel.paste(Image.fromarray(colorize_depth(ramp)).resize((320, 12)), (110, height - 18))
