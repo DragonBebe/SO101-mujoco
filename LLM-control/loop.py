@@ -12,6 +12,7 @@ sys.path.insert(0, str(ROOT / 'third_party/so101-nexus/src'))
 
 
 def main():
+    from nexus_vision.cameras import MODALITIES, PLACEMENTS
     parser = argparse.ArgumentParser(description=__doc__)
     sub = parser.add_subparsers(dest='mode', required=True)
     server = sub.add_parser('serve', help='Keep one multi-object world alive')
@@ -19,6 +20,13 @@ def main():
     server.add_argument('--viewer', action='store_true')
     server.add_argument('--realtime', action='store_true')
     server.add_argument('--camera-viewer', action='store_true')
+    # Modality and environment placement are independent and fixed per run;
+    # the defaults reproduce the original RGB-D overhead setup exactly.
+    server.add_argument('--camera-modality', choices=MODALITIES, default='rgbd',
+                        help='rgb: colour only from both cameras; rgbd: colour plus depth')
+    server.add_argument('--environment-camera', choices=PLACEMENTS, default='overhead',
+                        help='side: world-fixed oblique desk view; overhead: original top-down view; '
+                             'calibrated: the measured real C920 camera (rgb modality only)')
     server.add_argument('--record', default=str(ROOT / 'runs' / datetime.now().strftime('loop-%Y%m%d-%H%M%S-%f')))
     server.set_defaults(task='workbench')
     client = sub.add_parser('command', help='Send one JSON command; use - for stdin')

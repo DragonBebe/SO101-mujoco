@@ -1,0 +1,213 @@
+{
+  "autofocus_after_disable": 0.0,
+  "manual_focus_took_effect": true,
+  "results": [
+    {
+      "focus_requested": 0.0,
+      "focus_reported": 0.0,
+      "board_points": 48,
+      "sharpness": 1504.4731893247708,
+      "region": [
+        655,
+        627,
+        1028,
+        863
+      ]
+    },
+    {
+      "focus_requested": 5.0,
+      "focus_reported": 5.0,
+      "board_points": 44,
+      "sharpness": 924.0358524590616,
+      "region": [
+        655,
+        627,
+        1028,
+        863
+      ]
+    },
+    {
+      "focus_requested": 10.0,
+      "focus_reported": 10.0,
+      "board_points": 0,
+      "sharpness": 224.70528074838992,
+      "region": [
+        655,
+        627,
+        1028,
+        863
+      ]
+    },
+    {
+      "focus_requested": 15.0,
+      "focus_reported": 15.0,
+      "board_points": 0,
+      "sharpness": 45.271683285997796,
+      "region": [
+        655,
+        627,
+        1028,
+        863
+      ]
+    },
+    {
+      "focus_requested": 20.0,
+      "focus_reported": 20.0,
+      "board_points": 0,
+      "sharpness": 19.90740373734218,
+      "region": [
+        655,
+        627,
+        1028,
+        863
+      ]
+    },
+    {
+      "focus_requested": 25.0,
+      "focus_reported": 25.0,
+      "board_points": 0,
+      "sharpness": 7.643706668371931,
+      "region": [
+        655,
+        627,
+        1028,
+        863
+      ]
+    },
+    {
+      "focus_requested": 30.0,
+      "focus_reported": 30.0,
+      "board_points": 0,
+      "sharpness": 5.319402710747638,
+      "region": [
+        655,
+        627,
+        1028,
+        863
+      ]
+    },
+    {
+      "focus_requested": 35.0,
+      "focus_reported": 35.0,
+      "board_points": 0,
+      "sharpness": 4.752010513637984,
+      "region": [
+        655,
+        627,
+        1028,
+        863
+      ]
+    },
+    {
+      "focus_requested": 40.0,
+      "focus_reported": 40.0,
+      "board_points": 0,
+      "sharpness": 3.992930408121299,
+      "region": [
+        655,
+        627,
+        1028,
+        863
+      ]
+    },
+    {
+      "focus_requested": 45.0,
+      "focus_reported": 45.0,
+      "board_points": 0,
+      "sharpness": 3.541340045434595,
+      "region": [
+        655,
+        627,
+        1028,
+        863
+      ]
+    },
+    {
+      "focus_requested": 50.0,
+      "focus_reported": 50.0,
+      "board_points": 0,
+      "sharpness": 3.3882810581783254,
+      "region": [
+        655,
+        627,
+        1028,
+        863
+      ]
+    },
+    {
+      "focus_requested": 55.0,
+      "focus_reported": 55.0,
+      "board_points": 0,
+      "sharpness": 3.1406214250219904,
+      "region": [
+        655,
+        627,
+        1028,
+        863
+      ]
+    },
+    {
+      "focus_requested": 60.0,
+      "focus_reported": 60.0,
+      "board_points": 0,
+      "sharpness": 2.928693746012881,
+      "region": [
+        655,
+        627,
+        1028,
+        863
+      ]
+    },
+    {
+      "focus_requested": 65.0,
+      "focus_reported": 65.0,
+      "board_points": 0,
+      "sharpness": 2.819419869248343,
+      "region": [
+        655,
+        627,
+        1028,
+        863
+      ]
+    },
+    {
+      "focus_requested": 70.0,
+      "focus_reported": 70.0,
+      "board_points": 0,
+      "sharpness": 2.7243914389289867,
+      "region": [
+        655,
+        627,
+        1028,
+        863
+      ]
+    },
+    {
+      "focus_requested": 75.0,
+      "focus_reported": 75.0,
+      "board_points": 0,
+      "sharpness": 2.6205916123438207,
+      "region": [
+        655,
+        627,
+        1028,
+        863
+      ]
+    },
+    {
+      "focus_requested": 80.0,
+      "focus_reported": 80.0,
+      "board_points": 0,
+      "sharpness": 2.6124691415153416,
+      "region": [
+        655,
+        627,
+        1028,
+        863
+      ]
+    }
+  ],
+  "best_focus": 0.0,
+  "best_sharpness": 1504.4731893247708,
+  "note": "use --autofocus 0 --focus <best_focus> for every later capture; the intrinsics are only valid at this focus"
+}

@@ -1,0 +1,270 @@
+{
+  "schema": "rgbcal/extrinsics/1",
+  "status": "solved",
+  "usable_for_motion": false,
+  "usable_for_motion_note": "set only after held-out verification passes and a supervised hover test confirms it",
+  "frames": {
+    "T_base_camera": "maps OpenCV camera coordinates into robot base coordinates: p_base = T_base_camera @ p_camera",
+    "T_gripper_board": "maps board coordinates into gripper-frame coordinates",
+    "gripper_frame": "the model's gripperframe site (the simulation's TCP)"
+  },
+  "T_base_camera": [
+    [
+      0.007800544209174198,
+      0.49137267419862807,
+      -0.8709144886617339,
+      0.7708692302560823
+    ],
+    [
+      0.9999690299599512,
+      -0.0029235088864165704,
+      0.007306997792888237,
+      -0.08132871230903359
+    ],
+    [
+      0.0010443327989435036,
+      -0.8709445149644608,
+      -0.4913802613275436,
+      0.3805245959453361
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ]
+  ],
+  "camera_position_base_m": [
+    0.7708692302560823,
+    -0.08132871230903359,
+    0.3805245959453361
+  ],
+  "camera_rotation_opencv": [
+    [
+      0.007800544209174198,
+      0.49137267419862807,
+      -0.8709144886617339
+    ],
+    [
+      0.9999690299599512,
+      -0.0029235088864165704,
+      0.007306997792888237
+    ],
+    [
+      0.0010443327989435036,
+      -0.8709445149644608,
+      -0.4913802613275436
+    ]
+  ],
+  "camera_rotation_opengl": [
+    [
+      0.007800544209174198,
+      -0.49137267419862807,
+      0.8709144886617339
+    ],
+    [
+      0.9999690299599512,
+      0.0029235088864165704,
+      -0.007306997792888237
+    ],
+    [
+      0.0010443327989435036,
+      0.8709445149644608,
+      0.4913802613275436
+    ]
+  ],
+  "T_gripper_board": [
+    [
+      0.9889096395175561,
+      0.10628974246488004,
+      -0.10373145866133016,
+      -0.05149956693663364
+    ],
+    [
+      0.1368048782754372,
+      -0.3800408727915885,
+      0.9147968956483459,
+      0.011171425904257517
+    ],
+    [
+      0.057811332360537926,
+      -0.9188424378828817,
+      -0.39036703779410253,
+      0.04379685607341936
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ]
+  ],
+  "joint_convention": {
+    "signs": {
+      "shoulder_pan": 1,
+      "shoulder_lift": 1,
+      "elbow_flex": 1,
+      "wrist_flex": 1,
+      "wrist_roll": 1
+    },
+    "zero_offsets_rad": {
+      "shoulder_lift": 0.1344081619649568,
+      "elbow_flex": -0.12600426153785177,
+      "wrist_flex": 0.10455555836273375
+    },
+    "zero_offsets_deg": {
+      "shoulder_lift": 7.701020412702823,
+      "elbow_flex": -7.219512386781514,
+      "wrist_flex": 5.990592218818404
+    },
+    "offsets_fitted": [
+      "shoulder_lift",
+      "elbow_flex",
+      "wrist_flex"
+    ],
+    "offsets_pinned_to_servo_zero": [
+      "shoulder_pan",
+      "wrist_roll"
+    ],
+    "why_pinned": "the first joint's zero is indistinguishable from a rotation of the camera about the base z axis, and the last joint's from the board mounting; fitting them would make the camera pose unidentifiable",
+    "ticks_per_turn": 4095,
+    "solved": true,
+    "note": "sign and zero offset were solved from the observations, not copied from a configuration file"
+  },
+  "fit": {
+    "poses_used": 44,
+    "rms_px": 29.0898421633902,
+    "max_px": 112.84346390877414,
+    "loss": "huber",
+    "loss_scale_px": 15.0,
+    "median_pose_rms_px": 17.220473170725434,
+    "per_pose_rms_px": {
+      "solve-001": 42.85380599145016,
+      "solve-002": 38.00289693738208,
+      "solve-003": 45.48794636764017,
+      "solve-005": 34.21817460297995,
+      "solve-006": 16.968267920347433,
+      "solve-007": 10.719236604742603,
+      "solve-009": 7.436424916725879,
+      "solve-010": 17.47267842110343,
+      "solve-011": 28.182031806756893,
+      "solve-013": 34.84471382961552,
+      "solve-014": 30.708786131252225,
+      "solve-015": 29.748990816904662,
+      "solve-017": 63.437536212371285,
+      "solve-018": 68.87793015964614,
+      "solve-019": 13.180203113261767,
+      "solve-021": 20.12819306174581,
+      "solve-022": 25.837924006576884,
+      "solve-023": 38.9926528593263,
+      "solve-025": 11.29669563031746,
+      "solve-026": 6.414493333782377,
+      "solve-027": 24.757301848876736,
+      "solve-029": 77.09493436459549,
+      "solve-030": 13.905659952958075,
+      "solve-031": 27.434156183329538,
+      "solve-033": 27.161912390600428,
+      "solve-034": 31.464472025084522,
+      "solve-035": 9.617667221541854,
+      "solve-037": 15.037583710158836,
+      "solve-038": 12.05531797757149,
+      "solve-039": 15.216440444343435,
+      "solve-041": 11.855863298164522,
+      "solve-042": 11.034962934556589,
+      "solve-043": 15.411955133524424,
+      "solve-045": 7.921450893347493,
+      "solve-046": 12.58190600789411,
+      "solve-047": 6.097151806724877,
+      "solve-049": 11.467537824568105,
+      "solve-050": 11.228577772323002,
+      "solve-051": 10.96975893487336,
+      "solve-053": 12.574225221556626,
+      "solve-054": 15.441688456804535,
+      "solve-055": 45.85837630432131,
+      "solve-057": 23.624016126688886,
+      "solve-058": 22.7015118296677
+    },
+    "poses_over_3x_median": [
+      "solve-017",
+      "solve-018",
+      "solve-029"
+    ]
+  },
+  "uncertainty": {
+    "resamples": 30,
+    "camera_position_std_mm": [
+      11.952898965738894,
+      30.801056840314118,
+      32.718915202032704
+    ],
+    "camera_position_spread_mm_95": 87.65448127000924,
+    "camera_rotation_spread_deg_95": 7.7665797206564156,
+    "meaning": "how much T_base_camera moves when the fit is repeated on resampled poses: an error bar on the extrinsic itself, not on the images"
+  },
+  "sign_search": {
+    "patterns_screened": 32,
+    "patterns_fitted": 4,
+    "consistency_ranking_deg": [
+      {
+        "signs": {
+          "shoulder_pan": -1,
+          "shoulder_lift": 1,
+          "elbow_flex": 1,
+          "wrist_flex": 1,
+          "wrist_roll": 1
+        },
+        "median_deg": 0.84,
+        "median_pitch_mm": 2.22
+      },
+      {
+        "signs": {
+          "shoulder_pan": -1,
+          "shoulder_lift": 1,
+          "elbow_flex": 1,
+          "wrist_flex": 1,
+          "wrist_roll": -1
+        },
+        "median_deg": 0.855,
+        "median_pitch_mm": 2.22
+      },
+      {
+        "signs": {
+          "shoulder_pan": 1,
+          "shoulder_lift": 1,
+          "elbow_flex": 1,
+          "wrist_flex": 1,
+          "wrist_roll": -1
+        },
+        "median_deg": 0.84,
+        "median_pitch_mm": 2.32
+      },
+      {
+        "signs": {
+          "shoulder_pan": 1,
+          "shoulder_lift": 1,
+          "elbow_flex": 1,
+          "wrist_flex": 1,
+          "wrist_roll": 1
+        },
+        "median_deg": 0.855,
+        "median_pitch_mm": 2.32
+      }
+    ],
+    "best_rms_px": 29.0898421633902,
+    "runner_up_rms_px": 37.697525262504335,
+    "separation": 1.2958999588504807,
+    "meaning": "a wrong sign cannot be absorbed by the unknown transforms; a clear gap to the runner-up is what makes the choice evidence"
+  },
+  "motion_consistency": {
+    "pairs": 43,
+    "median_deg": 0.854901080433595,
+    "max_deg": 10.044486688689677,
+    "median_pitch_mm": 2.3132186724555077,
+    "max_pitch_mm": 23.85986558763296,
+    "meaning": "relative arm motion vs relative board motion, compared as screw parameters. A X = X B makes the two conjugate, so both the rotation angle and the translation along the axis must agree for any correct forward kinematics"
+  },
+  "intrinsics": "/home/dragon/SO101-mujoco/LLM-control/calib/c920-intrinsics-01/intrinsics.json",
+  "source_session": "/home/dragon/SO101-mujoco/LLM-control/calib/c920-handeye-02",
+  "validation_poses_held_out": 14,
+  "valid_while": "the camera, the robot base and the table stay where they were when this was measured"
+}

@@ -1,0 +1,137 @@
+{
+  "schema": "so101-log-metrics/1",
+  "session": "claude-code d188e17d-21cc-454b-9f40-ac84a7a241c6",
+  "source": "~/.claude/projects/-home-dragon-SO101-mujoco/d188e17d-21cc-454b-9f40-ac84a7a241c6.jsonl (per-response message.usage, de-duplicated by message.id)",
+  "timezone": "times are CEST (UTC+02:00); service events keep UTC",
+  "token_fields": "input=uncached input; cache_write=cache_creation_input_tokens; cache_read=cache_read_input_tokens; output=output_tokens (includes thinking)",
+  "phases": [
+    {
+      "id": "T1-P1",
+      "what": "任务设计、实现 joints、测试、重启服务",
+      "model": "claude-sonnet-5",
+      "start": "12:44:05",
+      "end": "12:51:34",
+      "minutes": 7.5,
+      "responses": 49,
+      "input": 98,
+      "cache_write": 167217,
+      "cache_read": 7505890,
+      "output": 36175,
+      "tools": {
+        "Bash": 38,
+        "Edit": 8,
+        "Write": 1,
+        "Read": 3
+      }
+    },
+    {
+      "id": "T1-P2",
+      "what": "任务 A 执行（begin→complete）",
+      "model": "claude-sonnet-5",
+      "start": "12:51:37",
+      "end": "12:58:38",
+      "minutes": 7.0,
+      "service_begin_to_complete_s": 426.4,
+      "responses": 55,
+      "input": 110,
+      "cache_write": 48822,
+      "cache_read": 11639636,
+      "output": 23757,
+      "tools": {
+        "Bash": 35,
+        "Read": 24
+      }
+    },
+    {
+      "id": "T1-P3",
+      "what": "任务 B 执行（begin→complete）",
+      "model": "claude-sonnet-5",
+      "start": "12:58:44",
+      "end": "13:14:27",
+      "minutes": 15.7,
+      "service_begin_to_complete_s": 946.0,
+      "responses": 90,
+      "input": 180,
+      "cache_write": 86036,
+      "cache_read": 24944182,
+      "output": 51695,
+      "tools": {
+        "Bash": 69,
+        "Read": 23
+      }
+    },
+    {
+      "id": "T1-P4",
+      "what": "初版 log、全量测试、汇报",
+      "model": "claude-sonnet-5",
+      "start": "13:14:39",
+      "end": "13:16:55",
+      "minutes": 2.3,
+      "responses": 5,
+      "input": 10,
+      "cache_write": 21949,
+      "cache_read": 1640561,
+      "output": 9279,
+      "tools": {
+        "Bash": 3,
+        "Write": 1
+      }
+    },
+    {
+      "id": "T2",
+      "what": "问答：方块尺寸来源",
+      "model": "claude-sonnet-5",
+      "start": "13:41:35",
+      "end": "13:42:05",
+      "minutes": 0.5,
+      "responses": 2,
+      "input": 4,
+      "cache_write": 3490,
+      "cache_read": 686240,
+      "output": 3105,
+      "tools": {
+        "Bash": 1
+      }
+    },
+    {
+      "id": "T3",
+      "what": "分析：RGB 下能否抓取未知尺寸物体",
+      "model": "claude-sonnet-5",
+      "start": "13:45:51",
+      "end": "13:46:50",
+      "minutes": 1.0,
+      "responses": 2,
+      "input": 4,
+      "cache_write": 6949,
+      "cache_read": 693225,
+      "output": 7246,
+      "tools": {
+        "Bash": 1
+      }
+    },
+    {
+      "id": "T4",
+      "what": "复核、归档、提交（本文件所在轮次）",
+      "model": "claude-opus-5",
+      "note": "本轮在写入本文件时尚未结束，未计入用量"
+    }
+  ],
+  "context": {
+    "id": "T0",
+    "what": "前置：真机 C920 标定映射到仿真（calibrated 机位），同一会话，另见 RGBCAL_SUMMARY §3.7",
+    "model": "claude-opus-5",
+    "start": "12:24:54",
+    "end": "12:42:51",
+    "minutes": 18.0,
+    "responses": 37,
+    "input": 74,
+    "cache_write": 112941,
+    "cache_read": 3419066,
+    "output": 37885
+  },
+  "simulation": {
+    "physics_time_s_end": 159.1,
+    "run": "LLM-control/runs/loop-20260919-125131-033276 (gitignored; archived here)",
+    "images_in_run": 180
+  }
+}

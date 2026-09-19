@@ -1,0 +1,157 @@
+{
+  "extrinsics": "/home/dragon/SO101-mujoco/LLM-control/calib/c920-handeye-02/extrinsics.json",
+  "validation": {
+    "poses": 14,
+    "reprojection_rms_px": 37.5579,
+    "reprojection_worst_px": 83.8564,
+    "board_position_error_mm": {
+      "median": 20.83,
+      "max": 45.39
+    },
+    "per_pose_px": {
+      "validation-004.png": 62.584,
+      "validation-008.png": 20.654,
+      "validation-012.png": 33.694,
+      "validation-016.png": 62.211,
+      "validation-020.png": 18.107,
+      "validation-024.png": 83.856,
+      "validation-028.png": 17.068,
+      "validation-032.png": 24.587,
+      "validation-036.png": 17.547,
+      "validation-040.png": 28.71,
+      "validation-044.png": 12.706,
+      "validation-048.png": 11.223,
+      "validation-052.png": 8.65,
+      "validation-056.png": 25.486
+    }
+  },
+  "solve": {
+    "poses": 44,
+    "reprojection_rms_px": 29.1779,
+    "reprojection_worst_px": 77.0949,
+    "board_position_error_mm": {
+      "median": 21.12,
+      "max": 53.3
+    },
+    "per_pose_px": {
+      "solve-001.png": 42.854,
+      "solve-002.png": 38.003,
+      "solve-003.png": 45.488,
+      "solve-005.png": 34.218,
+      "solve-006.png": 16.968,
+      "solve-007.png": 10.719,
+      "solve-009.png": 7.436,
+      "solve-010.png": 17.473,
+      "solve-011.png": 28.182,
+      "solve-013.png": 34.845,
+      "solve-014.png": 30.709,
+      "solve-015.png": 29.749,
+      "solve-017.png": 63.438,
+      "solve-018.png": 68.878,
+      "solve-019.png": 13.18,
+      "solve-021.png": 20.128,
+      "solve-022.png": 25.838,
+      "solve-023.png": 38.993,
+      "solve-025.png": 11.297,
+      "solve-026.png": 6.414,
+      "solve-027.png": 24.757,
+      "solve-029.png": 77.095,
+      "solve-030.png": 13.906,
+      "solve-031.png": 27.434,
+      "solve-033.png": 27.162,
+      "solve-034.png": 31.464,
+      "solve-035.png": 9.618,
+      "solve-037.png": 15.038,
+      "solve-038.png": 12.055,
+      "solve-039.png": 15.216,
+      "solve-041.png": 11.856,
+      "solve-042.png": 11.035,
+      "solve-043.png": 15.412,
+      "solve-045.png": 7.921,
+      "solve-046.png": 12.582,
+      "solve-047.png": 6.097,
+      "solve-049.png": 11.468,
+      "solve-050.png": 11.229,
+      "solve-051.png": 10.97,
+      "solve-053.png": 12.574,
+      "solve-054.png": 15.442,
+      "solve-055.png": 45.858,
+      "solve-057.png": 23.624,
+      "solve-058.png": 22.702
+    }
+  },
+  "independent_check": "validation poses were assigned at capture time and were not used in the fit",
+  "camera_position_base_m": [
+    0.7708692302560823,
+    -0.08132871230903359,
+    0.3805245959453361
+  ],
+  "sign_search": {
+    "patterns_screened": 32,
+    "patterns_fitted": 4,
+    "consistency_ranking_deg": [
+      {
+        "signs": {
+          "shoulder_pan": -1,
+          "shoulder_lift": 1,
+          "elbow_flex": 1,
+          "wrist_flex": 1,
+          "wrist_roll": 1
+        },
+        "median_deg": 0.84,
+        "median_pitch_mm": 2.22
+      },
+      {
+        "signs": {
+          "shoulder_pan": -1,
+          "shoulder_lift": 1,
+          "elbow_flex": 1,
+          "wrist_flex": 1,
+          "wrist_roll": -1
+        },
+        "median_deg": 0.855,
+        "median_pitch_mm": 2.22
+      },
+      {
+        "signs": {
+          "shoulder_pan": 1,
+          "shoulder_lift": 1,
+          "elbow_flex": 1,
+          "wrist_flex": 1,
+          "wrist_roll": -1
+        },
+        "median_deg": 0.84,
+        "median_pitch_mm": 2.32
+      },
+      {
+        "signs": {
+          "shoulder_pan": 1,
+          "shoulder_lift": 1,
+          "elbow_flex": 1,
+          "wrist_flex": 1,
+          "wrist_roll": 1
+        },
+        "median_deg": 0.855,
+        "median_pitch_mm": 2.32
+      }
+    ],
+    "best_rms_px": 29.0898421633902,
+    "runner_up_rms_px": 37.697525262504335,
+    "separation": 1.2958999588504807,
+    "meaning": "a wrong sign cannot be absorbed by the unknown transforms; a clear gap to the runner-up is what makes the choice evidence"
+  },
+  "motion_consistency": {
+    "pairs": 43,
+    "median_deg": 0.854901080433595,
+    "max_deg": 10.044486688689677,
+    "median_pitch_mm": 2.3132186724555077,
+    "max_pitch_mm": 23.85986558763296,
+    "meaning": "relative arm motion vs relative board motion, compared as screw parameters. A X = X B makes the two conjugate, so both the rotation angle and the translation along the axis must agree for any correct forward kinematics"
+  },
+  "verdict": [
+    "held-out / fitted reprojection ratio 1.29: consistent",
+    "best sign pattern is 1.3x better than the runner-up (NOT decisive: capture more varied poses)",
+    "arm/board relative rotation agreement 0.85 deg median (good)"
+  ],
+  "status": "solved"
+}

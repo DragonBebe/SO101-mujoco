@@ -1,0 +1,2327 @@
+{
+  "directory": "/home/dragon/SO101-mujoco/LLM-control/calib/c920-handeye-03",
+  "camera": {
+    "requested": {
+      "device": "/dev/v4l/by-id/usb-046d_HD_Pro_Webcam_C920_B222F89F-video-index0",
+      "width": 1920,
+      "height": 1080,
+      "fps": 30.0,
+      "fourcc": "MJPG",
+      "autofocus": false,
+      "focus": 0.0,
+      "auto_exposure": null,
+      "exposure": null,
+      "auto_wb": null,
+      "hflip": false
+    },
+    "actual": {
+      "frame_width": 1920.0,
+      "frame_height": 1080.0,
+      "fps": 30.0,
+      "fourcc": 1196444237.0,
+      "autofocus": 0.0,
+      "focus": 0.0,
+      "auto_exposure": 3.0,
+      "exposure": 83.0,
+      "brightness": 128.0,
+      "contrast": 128.0,
+      "saturation": 128.0,
+      "gain": 0.0,
+      "gamma": -1.0,
+      "sharpness": 128.0,
+      "auto_wb": 1.0,
+      "wb_temperature": 3776.0,
+      "zoom": 100.0,
+      "backend": 200.0,
+      "buffersize": 1.0,
+      "fourcc_text": "MJPG"
+    },
+    "resolution": [
+      1920,
+      1080
+    ],
+    "pixel_format": "MJPG",
+    "driver_fps": 30.0,
+    "measured_fps": null,
+    "image_transform": {
+      "hflip": false,
+      "rotation_deg": 0,
+      "crop": null,
+      "resized": false,
+      "note": "raw samples are archived exactly as delivered; apply hflip to reach the frame the calibration describes"
+    },
+    "opened_at": "2026-09-18T14:14:18.992+02:00"
+  },
+  "settings": {
+    "device": "/dev/v4l/by-id/usb-046d_HD_Pro_Webcam_C920_B222F89F-video-index0",
+    "width": 1920,
+    "height": 1080,
+    "fps": 30.0,
+    "fourcc": "MJPG",
+    "autofocus": false,
+    "focus": 0.0,
+    "auto_exposure": null,
+    "exposure": null,
+    "auto_wb": null,
+    "hflip": false
+  },
+  "board": {
+    "squares_x": 7,
+    "squares_y": 9,
+    "square": 0.02,
+    "marker": 0.015,
+    "dictionary": "DICT_4X4_50",
+    "first_id": 0,
+    "name": "charuco-7x9-20mm",
+    "kind": "charuco",
+    "size_m": [
+      0.14,
+      0.18
+    ],
+    "marker_ids": [
+      0,
+      30
+    ],
+    "counts": "squares"
+  },
+  "intrinsics": "/home/dragon/SO101-mujoco/LLM-control/calib/c920-intrinsics-01/intrinsics.json",
+  "port": "/dev/ttyACM0",
+  "joint_models": {
+    "shoulder_pan": {
+      "name": "shoulder_pan",
+      "servo_id": 1,
+      "zero_ticks": 2101.0,
+      "sign": 1,
+      "verified": false,
+      "source": "lerobot calibration follower.json: zero = midpoint of [853, 3349], drive_mode 0; unverified against the kinematic model"
+    },
+    "shoulder_lift": {
+      "name": "shoulder_lift",
+      "servo_id": 2,
+      "zero_ticks": 2087.0,
+      "sign": 1,
+      "verified": false,
+      "source": "lerobot calibration follower.json: zero = midpoint of [919, 3255], drive_mode 0; unverified against the kinematic model"
+    },
+    "elbow_flex": {
+      "name": "elbow_flex",
+      "servo_id": 3,
+      "zero_ticks": 1984.0,
+      "sign": 1,
+      "verified": false,
+      "source": "lerobot calibration follower.json: zero = midpoint of [1003, 2965], drive_mode 0; unverified against the kinematic model"
+    },
+    "wrist_flex": {
+      "name": "wrist_flex",
+      "servo_id": 4,
+      "zero_ticks": 1956.0,
+      "sign": 1,
+      "verified": false,
+      "source": "lerobot calibration follower.json: zero = midpoint of [814, 3098], drive_mode 0; unverified against the kinematic model"
+    },
+    "wrist_roll": {
+      "name": "wrist_roll",
+      "servo_id": 5,
+      "zero_ticks": 2047.5,
+      "sign": 1,
+      "verified": false,
+      "source": "lerobot calibration follower.json: zero = midpoint of [0, 4095], drive_mode 0; unverified against the kinematic model"
+    },
+    "gripper": {
+      "name": "gripper",
+      "servo_id": 6,
+      "zero_ticks": 2743.0,
+      "sign": 1,
+      "verified": false,
+      "source": "lerobot calibration follower.json: zero = midpoint of [2020, 3466], drive_mode 0; unverified against the kinematic model"
+    }
+  },
+  "validation_every": 4,
+  "servo_state_at_start": {
+    "1": {
+      "present_position": 2010,
+      "homing_offset": 2010,
+      "min_position_limit": 853,
+      "max_position_limit": 3349,
+      "torque_enabled": false
+    },
+    "2": {
+      "present_position": 932,
+      "homing_offset": -1051,
+      "min_position_limit": 919,
+      "max_position_limit": 3255,
+      "torque_enabled": false
+    },
+    "3": {
+      "present_position": 2981,
+      "homing_offset": -833,
+      "min_position_limit": 1003,
+      "max_position_limit": 2965,
+      "torque_enabled": false
+    },
+    "4": {
+      "present_position": 2381,
+      "homing_offset": -1639,
+      "min_position_limit": 814,
+      "max_position_limit": 3098,
+      "torque_enabled": false
+    },
+    "5": {
+      "present_position": 3327,
+      "homing_offset": 935,
+      "min_position_limit": 0,
+      "max_position_limit": 4095,
+      "torque_enabled": false
+    },
+    "6": {
+      "present_position": 2025,
+      "homing_offset": 1613,
+      "min_position_limit": 2020,
+      "max_position_limit": 3466,
+      "torque_enabled": false
+    }
+  },
+  "samples": [
+    {
+      "stage": "handeye",
+      "role": "solve",
+      "index": 1,
+      "servo_ticks": {
+        "1": 2013,
+        "2": 1492,
+        "3": 2449,
+        "4": 2381,
+        "5": 3327,
+        "6": 2025
+      },
+      "stability": "stable (0.05 deg, 0.1 mm, 0 ticks)",
+      "held_by_torque": true,
+      "board": {
+        "squares_x": 7,
+        "squares_y": 9,
+        "square": 0.02,
+        "marker": 0.015,
+        "dictionary": "DICT_4X4_50",
+        "first_id": 0,
+        "name": "charuco-7x9-20mm",
+        "kind": "charuco",
+        "size_m": [
+          0.14,
+          0.18
+        ],
+        "marker_ids": [
+          0,
+          30
+        ],
+        "counts": "squares"
+      },
+      "image_transform": {
+        "hflip": false,
+        "rotation_deg": 0,
+        "crop": null,
+        "resized": false,
+        "note": "raw samples are archived exactly as delivered; apply hflip to reach the frame the calibration describes"
+      },
+      "pose_T_camera_board": [
+        [
+          -0.9523421227026343,
+          -0.11747001547728395,
+          -0.2815053761298479,
+          0.16802174238972625
+        ],
+        [
+          0.12952516694848065,
+          -0.9912724828133597,
+          -0.02453764340774781,
+          0.0009518436968100382
+        ],
+        [
+          -0.2761660957706588,
+          -0.05983026224916825,
+          0.9592458638253213,
+          0.5918260907174308
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "board_points": 48,
+      "sharpness": 98.71862699810157
+    },
+    {
+      "stage": "handeye",
+      "role": "solve",
+      "index": 2,
+      "servo_ticks": {
+        "1": 2012,
+        "2": 1538,
+        "3": 2456,
+        "4": 2381,
+        "5": 3327,
+        "6": 2025
+      },
+      "stability": "stable (0.18 deg, 0.2 mm, 0 ticks)",
+      "held_by_torque": true,
+      "board": {
+        "squares_x": 7,
+        "squares_y": 9,
+        "square": 0.02,
+        "marker": 0.015,
+        "dictionary": "DICT_4X4_50",
+        "first_id": 0,
+        "name": "charuco-7x9-20mm",
+        "kind": "charuco",
+        "size_m": [
+          0.14,
+          0.18
+        ],
+        "marker_ids": [
+          0,
+          30
+        ],
+        "counts": "squares"
+      },
+      "image_transform": {
+        "hflip": false,
+        "rotation_deg": 0,
+        "crop": null,
+        "resized": false,
+        "note": "raw samples are archived exactly as delivered; apply hflip to reach the frame the calibration describes"
+      },
+      "pose_T_camera_board": [
+        [
+          -0.9434492700916987,
+          -0.11917141681896376,
+          -0.3093568298531677,
+          0.17481418145533603
+        ],
+        [
+          0.15794696864141322,
+          -0.9820193398794022,
+          -0.10339618561538717,
+          0.013544624029381513
+        ],
+        [
+          -0.2914725199061301,
+          -0.1464110293529281,
+          0.9453081934604123,
+          0.6077035216000253
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "board_points": 48,
+      "sharpness": 95.67679010168006
+    },
+    {
+      "stage": "handeye",
+      "role": "solve",
+      "index": 3,
+      "servo_ticks": {
+        "1": 2012,
+        "2": 1375,
+        "3": 2462,
+        "4": 2381,
+        "5": 3327,
+        "6": 2025
+      },
+      "stability": "stable (0.05 deg, 0.2 mm, 0 ticks)",
+      "held_by_torque": true,
+      "board": {
+        "squares_x": 7,
+        "squares_y": 9,
+        "square": 0.02,
+        "marker": 0.015,
+        "dictionary": "DICT_4X4_50",
+        "first_id": 0,
+        "name": "charuco-7x9-20mm",
+        "kind": "charuco",
+        "size_m": [
+          0.14,
+          0.18
+        ],
+        "marker_ids": [
+          0,
+          30
+        ],
+        "counts": "squares"
+      },
+      "image_transform": {
+        "hflip": false,
+        "rotation_deg": 0,
+        "crop": null,
+        "resized": false,
+        "note": "raw samples are archived exactly as delivered; apply hflip to reach the frame the calibration describes"
+      },
+      "pose_T_camera_board": [
+        [
+          -0.9443001194062012,
+          -0.14175072802740257,
+          -0.2969916086241085,
+          0.1747866636712937
+        ],
+        [
+          0.10477396983202819,
+          -0.985014165168599,
+          0.13700186007075021,
+          -0.028753820461987874
+        ],
+        [
+          -0.31196105483709263,
+          0.09825388298133321,
+          0.9450007802875184,
+          0.5759813932278122
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "board_points": 48,
+      "sharpness": 100.15562209661222
+    },
+    {
+      "stage": "handeye",
+      "role": "validation",
+      "index": 4,
+      "servo_ticks": {
+        "1": 2011,
+        "2": 1618,
+        "3": 2466,
+        "4": 2381,
+        "5": 3327,
+        "6": 2025
+      },
+      "stability": "stable (0.06 deg, 0.1 mm, 0 ticks)",
+      "held_by_torque": true,
+      "board": {
+        "squares_x": 7,
+        "squares_y": 9,
+        "square": 0.02,
+        "marker": 0.015,
+        "dictionary": "DICT_4X4_50",
+        "first_id": 0,
+        "name": "charuco-7x9-20mm",
+        "kind": "charuco",
+        "size_m": [
+          0.14,
+          0.18
+        ],
+        "marker_ids": [
+          0,
+          30
+        ],
+        "counts": "squares"
+      },
+      "image_transform": {
+        "hflip": false,
+        "rotation_deg": 0,
+        "crop": null,
+        "resized": false,
+        "note": "raw samples are archived exactly as delivered; apply hflip to reach the frame the calibration describes"
+      },
+      "pose_T_camera_board": [
+        [
+          -0.9511633457039632,
+          -0.10224061655484537,
+          -0.29126473544823106,
+          0.16985878705960628
+        ],
+        [
+          0.17749627012866956,
+          -0.953118749390263,
+          -0.24507085434859727,
+          0.034544418306310457
+        ],
+        [
+          -0.2525536851436805,
+          -0.2848008179188151,
+          0.9247189466173603,
+          0.6308365463686477
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "board_points": 48,
+      "sharpness": 93.97846635909265
+    },
+    {
+      "stage": "handeye",
+      "role": "solve",
+      "index": 5,
+      "servo_ticks": {
+        "1": 2010,
+        "2": 1352,
+        "3": 2472,
+        "4": 2381,
+        "5": 3327,
+        "6": 2025
+      },
+      "stability": "stable (0.04 deg, 0.1 mm, 0 ticks)",
+      "held_by_torque": true,
+      "board": {
+        "squares_x": 7,
+        "squares_y": 9,
+        "square": 0.02,
+        "marker": 0.015,
+        "dictionary": "DICT_4X4_50",
+        "first_id": 0,
+        "name": "charuco-7x9-20mm",
+        "kind": "charuco",
+        "size_m": [
+          0.14,
+          0.18
+        ],
+        "marker_ids": [
+          0,
+          30
+        ],
+        "counts": "squares"
+      },
+      "image_transform": {
+        "hflip": false,
+        "rotation_deg": 0,
+        "crop": null,
+        "resized": false,
+        "note": "raw samples are archived exactly as delivered; apply hflip to reach the frame the calibration describes"
+      },
+      "pose_T_camera_board": [
+        [
+          -0.945594043441296,
+          -0.14206554280368944,
+          -0.2926931611026014,
+          0.1735412967885866
+        ],
+        [
+          0.09991872963997708,
+          -0.9829589507264321,
+          0.15429824579017332,
+          -0.031614483081984904
+        ],
+        [
+          -0.30962582656405374,
+          0.11665797330094785,
+          0.9436751373167788,
+          0.5753496415698007
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "board_points": 48,
+      "sharpness": 100.75590711568313
+    },
+    {
+      "stage": "handeye",
+      "role": "solve",
+      "index": 6,
+      "servo_ticks": {
+        "1": 2010,
+        "2": 1342,
+        "3": 2613,
+        "4": 2381,
+        "5": 3327,
+        "6": 2025
+      },
+      "stability": "stable (0.05 deg, 0.2 mm, 0 ticks)",
+      "held_by_torque": true,
+      "board": {
+        "squares_x": 7,
+        "squares_y": 9,
+        "square": 0.02,
+        "marker": 0.015,
+        "dictionary": "DICT_4X4_50",
+        "first_id": 0,
+        "name": "charuco-7x9-20mm",
+        "kind": "charuco",
+        "size_m": [
+          0.14,
+          0.18
+        ],
+        "marker_ids": [
+          0,
+          30
+        ],
+        "counts": "squares"
+      },
+      "image_transform": {
+        "hflip": false,
+        "rotation_deg": 0,
+        "crop": null,
+        "resized": false,
+        "note": "raw samples are archived exactly as delivered; apply hflip to reach the frame the calibration describes"
+      },
+      "pose_T_camera_board": [
+        [
+          -0.9380307281766884,
+          -0.13829603838091248,
+          -0.3177617956338632,
+          0.1765411617637185
+        ],
+        [
+          0.15646933738183255,
+          -0.9871555920971983,
+          -0.032267374397682694,
+          0.006459085141841058
+        ],
+        [
+          -0.3092178834666619,
+          -0.07998776631069998,
+          0.9476213683666185,
+          0.6279533428789714
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "board_points": 48,
+      "sharpness": 94.1667414144436
+    },
+    {
+      "stage": "handeye",
+      "role": "solve",
+      "index": 7,
+      "servo_ticks": {
+        "1": 2010,
+        "2": 1344,
+        "3": 2479,
+        "4": 2381,
+        "5": 3327,
+        "6": 2025
+      },
+      "stability": "stable (0.04 deg, 0.1 mm, 0 ticks)",
+      "held_by_torque": true,
+      "board": {
+        "squares_x": 7,
+        "squares_y": 9,
+        "square": 0.02,
+        "marker": 0.015,
+        "dictionary": "DICT_4X4_50",
+        "first_id": 0,
+        "name": "charuco-7x9-20mm",
+        "kind": "charuco",
+        "size_m": [
+          0.14,
+          0.18
+        ],
+        "marker_ids": [
+          0,
+          30
+        ],
+        "counts": "squares"
+      },
+      "image_transform": {
+        "hflip": false,
+        "rotation_deg": 0,
+        "crop": null,
+        "resized": false,
+        "note": "raw samples are archived exactly as delivered; apply hflip to reach the frame the calibration describes"
+      },
+      "pose_T_camera_board": [
+        [
+          -0.9472787902000923,
+          -0.1387051896310681,
+          -0.28883172264565904,
+          0.17198571249738714
+        ],
+        [
+          0.09652797432297758,
+          -0.9831032968281653,
+          0.1555321765381517,
+          -0.03167454276052037
+        ],
+        [
+          -0.30552453880196273,
+          0.11945199092104597,
+          0.9446618326442782,
+          0.5760445716359995
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "board_points": 48,
+      "sharpness": 101.38352960865922
+    },
+    {
+      "stage": "handeye",
+      "role": "validation",
+      "index": 8,
+      "servo_ticks": {
+        "1": 2012,
+        "2": 1342,
+        "3": 2602,
+        "4": 2381,
+        "5": 3327,
+        "6": 2025
+      },
+      "stability": "stable (0.06 deg, 0.1 mm, 0 ticks)",
+      "held_by_torque": true,
+      "board": {
+        "squares_x": 7,
+        "squares_y": 9,
+        "square": 0.02,
+        "marker": 0.015,
+        "dictionary": "DICT_4X4_50",
+        "first_id": 0,
+        "name": "charuco-7x9-20mm",
+        "kind": "charuco",
+        "size_m": [
+          0.14,
+          0.18
+        ],
+        "marker_ids": [
+          0,
+          30
+        ],
+        "counts": "squares"
+      },
+      "image_transform": {
+        "hflip": false,
+        "rotation_deg": 0,
+        "crop": null,
+        "resized": false,
+        "note": "raw samples are archived exactly as delivered; apply hflip to reach the frame the calibration describes"
+      },
+      "pose_T_camera_board": [
+        [
+          -0.9481798720514871,
+          -0.12422389373874412,
+          -0.29244376290290536,
+          0.1698414082455322
+        ],
+        [
+          0.1371543285543884,
+          -0.9902576845277965,
+          -0.024050122503679265,
+          0.005778355217641879
+        ],
+        [
+          -0.2866070836445261,
+          -0.06291377001922793,
+          0.9559802493497168,
+          0.6213039579214781
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "board_points": 48,
+      "sharpness": 97.06740981580737
+    },
+    {
+      "stage": "handeye",
+      "role": "solve",
+      "index": 9,
+      "servo_ticks": {
+        "1": 2009,
+        "2": 1336,
+        "3": 2680,
+        "4": 2381,
+        "5": 3327,
+        "6": 2025
+      },
+      "stability": "stable (0.05 deg, 0.1 mm, 0 ticks)",
+      "held_by_torque": true,
+      "board": {
+        "squares_x": 7,
+        "squares_y": 9,
+        "square": 0.02,
+        "marker": 0.015,
+        "dictionary": "DICT_4X4_50",
+        "first_id": 0,
+        "name": "charuco-7x9-20mm",
+        "kind": "charuco",
+        "size_m": [
+          0.14,
+          0.18
+        ],
+        "marker_ids": [
+          0,
+          30
+        ],
+        "counts": "squares"
+      },
+      "image_transform": {
+        "hflip": false,
+        "rotation_deg": 0,
+        "crop": null,
+        "resized": false,
+        "note": "raw samples are archived exactly as delivered; apply hflip to reach the frame the calibration describes"
+      },
+      "pose_T_camera_board": [
+        [
+          -0.9458153054792704,
+          -0.11866690705511568,
+          -0.30224422755633734,
+          0.1705559112953001
+        ],
+        [
+          0.16426168104941635,
+          -0.977796466202423,
+          -0.13012367509747694,
+          0.023379847101579657
+        ],
+        [
+          -0.2800919635762053,
+          -0.1727201084182918,
+          0.9443072890156038,
+          0.6527877366495892
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "board_points": 48,
+      "sharpness": 95.03912240000072
+    },
+    {
+      "stage": "handeye",
+      "role": "solve",
+      "index": 10,
+      "servo_ticks": {
+        "1": 2008,
+        "2": 1337,
+        "3": 2684,
+        "4": 2185,
+        "5": 3327,
+        "6": 2025
+      },
+      "stability": "stable (0.22 deg, 0.6 mm, 0 ticks)",
+      "held_by_torque": true,
+      "board": {
+        "squares_x": 7,
+        "squares_y": 9,
+        "square": 0.02,
+        "marker": 0.015,
+        "dictionary": "DICT_4X4_50",
+        "first_id": 0,
+        "name": "charuco-7x9-20mm",
+        "kind": "charuco",
+        "size_m": [
+          0.14,
+          0.18
+        ],
+        "marker_ids": [
+          0,
+          30
+        ],
+        "counts": "squares"
+      },
+      "image_transform": {
+        "hflip": false,
+        "rotation_deg": 0,
+        "crop": null,
+        "resized": false,
+        "note": "raw samples are archived exactly as delivered; apply hflip to reach the frame the calibration describes"
+      },
+      "pose_T_camera_board": [
+        [
+          -0.9465041853546192,
+          -0.13925755373974277,
+          -0.2910964802820731,
+          0.1722556537991163
+        ],
+        [
+          0.09985062725291134,
+          -0.9842075293051812,
+          0.14616905108876888,
+          0.009125854533770043
+        ],
+        [
+          -0.30685449213493493,
+          0.10928345247755317,
+          0.9454614998355027,
+          0.5971558674832493
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "board_points": 48,
+      "sharpness": 100.04485240553497
+    },
+    {
+      "stage": "handeye",
+      "role": "solve",
+      "index": 11,
+      "servo_ticks": {
+        "1": 2009,
+        "2": 1341,
+        "3": 2692,
+        "4": 2026,
+        "5": 3327,
+        "6": 2025
+      },
+      "stability": "stable (0.06 deg, 0.3 mm, 0 ticks)",
+      "held_by_torque": true,
+      "board": {
+        "squares_x": 7,
+        "squares_y": 9,
+        "square": 0.02,
+        "marker": 0.015,
+        "dictionary": "DICT_4X4_50",
+        "first_id": 0,
+        "name": "charuco-7x9-20mm",
+        "kind": "charuco",
+        "size_m": [
+          0.14,
+          0.18
+        ],
+        "marker_ids": [
+          0,
+          30
+        ],
+        "counts": "squares"
+      },
+      "image_transform": {
+        "hflip": false,
+        "rotation_deg": 0,
+        "crop": null,
+        "resized": false,
+        "note": "raw samples are archived exactly as delivered; apply hflip to reach the frame the calibration describes"
+      },
+      "pose_T_camera_board": [
+        [
+          -0.9447067498919388,
+          -0.15992355750360496,
+          -0.2862754136561517,
+          0.17637703989542985
+        ],
+        [
+          0.05151999990119622,
+          -0.9345578860613496,
+          0.35206142533757123,
+          -0.011060587859486087
+        ],
+        [
+          -0.32384386101760576,
+          0.31784589560970056,
+          0.8911224047936824,
+          0.5605875788303124
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "board_points": 48,
+      "sharpness": 98.26540991056513
+    },
+    {
+      "stage": "handeye",
+      "role": "validation",
+      "index": 12,
+      "servo_ticks": {
+        "1": 2007,
+        "2": 1343,
+        "3": 2698,
+        "4": 1876,
+        "5": 3327,
+        "6": 2025
+      },
+      "stability": "stable (0.03 deg, 0.1 mm, 0 ticks)",
+      "held_by_torque": true,
+      "board": {
+        "squares_x": 7,
+        "squares_y": 9,
+        "square": 0.02,
+        "marker": 0.015,
+        "dictionary": "DICT_4X4_50",
+        "first_id": 0,
+        "name": "charuco-7x9-20mm",
+        "kind": "charuco",
+        "size_m": [
+          0.14,
+          0.18
+        ],
+        "marker_ids": [
+          0,
+          30
+        ],
+        "counts": "squares"
+      },
+      "image_transform": {
+        "hflip": false,
+        "rotation_deg": 0,
+        "crop": null,
+        "resized": false,
+        "note": "raw samples are archived exactly as delivered; apply hflip to reach the frame the calibration describes"
+      },
+      "pose_T_camera_board": [
+        [
+          -0.9444447236182955,
+          -0.17770179563597913,
+          -0.27648912430204226,
+          0.17850187186506736
+        ],
+        [
+          0.0012530333719641962,
+          -0.8431761445211319,
+          0.5376359541714524,
+          -0.03918034252698386
+        ],
+        [
+          -0.32866790828575004,
+          0.5074209900449802,
+          0.7965559270539903,
+          0.5304010994923842
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "board_points": 48,
+      "sharpness": 90.16779417420038
+    },
+    {
+      "stage": "handeye",
+      "role": "solve",
+      "index": 13,
+      "servo_ticks": {
+        "1": 2354,
+        "2": 1341,
+        "3": 2713,
+        "4": 2239,
+        "5": 3327,
+        "6": 2025
+      },
+      "stability": "stable (0.33 deg, 0.4 mm, 0 ticks)",
+      "held_by_torque": true,
+      "board": {
+        "squares_x": 7,
+        "squares_y": 9,
+        "square": 0.02,
+        "marker": 0.015,
+        "dictionary": "DICT_4X4_50",
+        "first_id": 0,
+        "name": "charuco-7x9-20mm",
+        "kind": "charuco",
+        "size_m": [
+          0.14,
+          0.18
+        ],
+        "marker_ids": [
+          0,
+          30
+        ],
+        "counts": "squares"
+      },
+      "image_transform": {
+        "hflip": false,
+        "rotation_deg": 0,
+        "crop": null,
+        "resized": false,
+        "note": "raw samples are archived exactly as delivered; apply hflip to reach the frame the calibration describes"
+      },
+      "pose_T_camera_board": [
+        [
+          -0.9774163359233958,
+          0.16498347045801864,
+          0.1320521137495024,
+          0.041748682469164335
+        ],
+        [
+          -0.16824081681578162,
+          -0.985648981754898,
+          -0.013824338056171625,
+          0.03049212242444558
+        ],
+        [
+          0.12787624418648694,
+          -0.03572868932889642,
+          0.9911463700844583,
+          0.615260863702852
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "board_points": 48,
+      "sharpness": 102.30260166971178
+    },
+    {
+      "stage": "handeye",
+      "role": "solve",
+      "index": 14,
+      "servo_ticks": {
+        "1": 1766,
+        "2": 1345,
+        "3": 2719,
+        "4": 2239,
+        "5": 3327,
+        "6": 2025
+      },
+      "stability": "stable (0.26 deg, 0.4 mm, 0 ticks)",
+      "held_by_torque": true,
+      "board": {
+        "squares_x": 7,
+        "squares_y": 9,
+        "square": 0.02,
+        "marker": 0.015,
+        "dictionary": "DICT_4X4_50",
+        "first_id": 0,
+        "name": "charuco-7x9-20mm",
+        "kind": "charuco",
+        "size_m": [
+          0.14,
+          0.18
+        ],
+        "marker_ids": [
+          0,
+          30
+        ],
+        "counts": "squares"
+      },
+      "image_transform": {
+        "hflip": false,
+        "rotation_deg": 0,
+        "crop": null,
+        "resized": false,
+        "note": "raw samples are archived exactly as delivered; apply hflip to reach the frame the calibration describes"
+      },
+      "pose_T_camera_board": [
+        [
+          -0.7459787408721692,
+          -0.3304523633702148,
+          -0.5782014819332554,
+          0.2531145842147149
+        ],
+        [
+          0.335896784807565,
+          -0.9363819803626448,
+          0.101794581427854,
+          -0.005041853878389217
+        ],
+        [
+          -0.5750557087123936,
+          -0.11827942507118983,
+          0.8095189370744306,
+          0.6745338025862507
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "board_points": 48,
+      "sharpness": 68.34541174035837
+    },
+    {
+      "stage": "handeye",
+      "role": "solve",
+      "index": 15,
+      "servo_ticks": {
+        "1": 1969,
+        "2": 938,
+        "3": 2957,
+        "4": 2240,
+        "5": 3327,
+        "6": 2025
+      },
+      "stability": "stable (0.03 deg, 0.2 mm, 0 ticks)",
+      "held_by_torque": true,
+      "board": {
+        "squares_x": 7,
+        "squares_y": 9,
+        "square": 0.02,
+        "marker": 0.015,
+        "dictionary": "DICT_4X4_50",
+        "first_id": 0,
+        "name": "charuco-7x9-20mm",
+        "kind": "charuco",
+        "size_m": [
+          0.14,
+          0.18
+        ],
+        "marker_ids": [
+          0,
+          30
+        ],
+        "counts": "squares"
+      },
+      "image_transform": {
+        "hflip": false,
+        "rotation_deg": 0,
+        "crop": null,
+        "resized": false,
+        "note": "raw samples are archived exactly as delivered; apply hflip to reach the frame the calibration describes"
+      },
+      "pose_T_camera_board": [
+        [
+          -0.9319922444236987,
+          -0.19782310409503,
+          -0.3037375113815938,
+          0.18411120350703367
+        ],
+        [
+          0.11864724355952583,
+          -0.958274797971015,
+          0.2600619987028807,
+          0.012938842519964225
+        ],
+        [
+          -0.3425102741959772,
+          0.20633814736935457,
+          0.9165758457489379,
+          0.6292606631902506
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "board_points": 48,
+      "sharpness": 90.8229923635724
+    },
+    {
+      "stage": "handeye",
+      "role": "validation",
+      "index": 16,
+      "servo_ticks": {
+        "1": 1968,
+        "2": 1289,
+        "3": 2702,
+        "4": 2240,
+        "5": 3327,
+        "6": 2025
+      },
+      "stability": "stable (0.02 deg, 0.1 mm, 0 ticks)",
+      "held_by_torque": true,
+      "board": {
+        "squares_x": 7,
+        "squares_y": 9,
+        "square": 0.02,
+        "marker": 0.015,
+        "dictionary": "DICT_4X4_50",
+        "first_id": 0,
+        "name": "charuco-7x9-20mm",
+        "kind": "charuco",
+        "size_m": [
+          0.14,
+          0.18
+        ],
+        "marker_ids": [
+          0,
+          30
+        ],
+        "counts": "squares"
+      },
+      "image_transform": {
+        "hflip": false,
+        "rotation_deg": 0,
+        "crop": null,
+        "resized": false,
+        "note": "raw samples are archived exactly as delivered; apply hflip to reach the frame the calibration describes"
+      },
+      "pose_T_camera_board": [
+        [
+          -0.9197976621327649,
+          -0.19359239910799783,
+          -0.34131253089025276,
+          0.19088249569134338
+        ],
+        [
+          0.16172346377355465,
+          -0.979541104752127,
+          0.11976955108067457,
+          0.004984726993358794
+        ],
+        [
+          -0.3575161283077784,
+          0.05496550835380519,
+          0.9322880514579298,
+          0.6170559540174806
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "board_points": 48,
+      "sharpness": 93.4953925141511
+    },
+    {
+      "stage": "handeye",
+      "role": "solve",
+      "index": 17,
+      "servo_ticks": {
+        "1": 1967,
+        "2": 1286,
+        "3": 2711,
+        "4": 2244,
+        "5": 3091,
+        "6": 2025
+      },
+      "stability": "stable (0.10 deg, 0.2 mm, 0 ticks)",
+      "held_by_torque": true,
+      "board": {
+        "squares_x": 7,
+        "squares_y": 9,
+        "square": 0.02,
+        "marker": 0.015,
+        "dictionary": "DICT_4X4_50",
+        "first_id": 0,
+        "name": "charuco-7x9-20mm",
+        "kind": "charuco",
+        "size_m": [
+          0.14,
+          0.18
+        ],
+        "marker_ids": [
+          0,
+          30
+        ],
+        "counts": "squares"
+      },
+      "image_transform": {
+        "hflip": false,
+        "rotation_deg": 0,
+        "crop": null,
+        "resized": false,
+        "note": "raw samples are archived exactly as delivered; apply hflip to reach the frame the calibration describes"
+      },
+      "pose_T_camera_board": [
+        [
+          -0.9559303144853988,
+          -0.2935460553764611,
+          -0.005286513100916615,
+          0.18971378573373066
+        ],
+        [
+          0.29204936911525653,
+          -0.9525924173063584,
+          0.08529274582172597,
+          -0.0009168355465944847
+        ],
+        [
+          -0.030073241382118684,
+          0.07998999852074345,
+          0.9963419093310408,
+          0.5963077267808582
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "board_points": 48,
+      "sharpness": 91.3435570516704
+    },
+    {
+      "stage": "handeye",
+      "role": "solve",
+      "index": 18,
+      "servo_ticks": {
+        "1": 1964,
+        "2": 1279,
+        "3": 2717,
+        "4": 2244,
+        "5": 2779,
+        "6": 2025
+      },
+      "stability": "stable (0.08 deg, 0.3 mm, 0 ticks)",
+      "held_by_torque": true,
+      "board": {
+        "squares_x": 7,
+        "squares_y": 9,
+        "square": 0.02,
+        "marker": 0.015,
+        "dictionary": "DICT_4X4_50",
+        "first_id": 0,
+        "name": "charuco-7x9-20mm",
+        "kind": "charuco",
+        "size_m": [
+          0.14,
+          0.18
+        ],
+        "marker_ids": [
+          0,
+          30
+        ],
+        "counts": "squares"
+      },
+      "image_transform": {
+        "hflip": false,
+        "rotation_deg": 0,
+        "crop": null,
+        "resized": false,
+        "note": "raw samples are archived exactly as delivered; apply hflip to reach the frame the calibration describes"
+      },
+      "pose_T_camera_board": [
+        [
+          -0.8106282807119771,
+          -0.42326850507925456,
+          0.40463015596704727,
+          0.18396651781627907
+        ],
+        [
+          0.46867761787830614,
+          -0.8832416902078001,
+          0.01501356649117723,
+          -0.021662211157150894
+        ],
+        [
+          0.35103145302075195,
+          0.20181151921246115,
+          0.9143571674697463,
+          0.5641151369707949
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "board_points": 48,
+      "sharpness": 89.60144082263352
+    },
+    {
+      "stage": "handeye",
+      "role": "solve",
+      "index": 19,
+      "servo_ticks": {
+        "1": 1961,
+        "2": 1273,
+        "3": 2723,
+        "4": 2244,
+        "5": 2942,
+        "6": 2025
+      },
+      "stability": "stable (0.15 deg, 0.3 mm, 0 ticks)",
+      "held_by_torque": true,
+      "board": {
+        "squares_x": 7,
+        "squares_y": 9,
+        "square": 0.02,
+        "marker": 0.015,
+        "dictionary": "DICT_4X4_50",
+        "first_id": 0,
+        "name": "charuco-7x9-20mm",
+        "kind": "charuco",
+        "size_m": [
+          0.14,
+          0.18
+        ],
+        "marker_ids": [
+          0,
+          30
+        ],
+        "counts": "squares"
+      },
+      "image_transform": {
+        "hflip": false,
+        "rotation_deg": 0,
+        "crop": null,
+        "resized": false,
+        "note": "raw samples are archived exactly as delivered; apply hflip to reach the frame the calibration describes"
+      },
+      "pose_T_camera_board": [
+        [
+          -0.9178601189292447,
+          -0.35853504791834034,
+          0.17025105430917623,
+          0.1933601919074698
+        ],
+        [
+          0.3796247949823789,
+          -0.9182209306899488,
+          0.11293953018084922,
+          -0.018975597555447213
+        ],
+        [
+          0.11583530167345121,
+          0.16829421219126217,
+          0.9789071667063958,
+          0.5794913786452076
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "board_points": 48,
+      "sharpness": 89.87383770717534
+    },
+    {
+      "stage": "handeye",
+      "role": "validation",
+      "index": 20,
+      "servo_ticks": {
+        "1": 1962,
+        "2": 1267,
+        "3": 2731,
+        "4": 2244,
+        "5": 3439,
+        "6": 2025
+      },
+      "stability": "stable (0.11 deg, 0.3 mm, 0 ticks)",
+      "held_by_torque": true,
+      "board": {
+        "squares_x": 7,
+        "squares_y": 9,
+        "square": 0.02,
+        "marker": 0.015,
+        "dictionary": "DICT_4X4_50",
+        "first_id": 0,
+        "name": "charuco-7x9-20mm",
+        "kind": "charuco",
+        "size_m": [
+          0.14,
+          0.18
+        ],
+        "marker_ids": [
+          0,
+          30
+        ],
+        "counts": "squares"
+      },
+      "image_transform": {
+        "hflip": false,
+        "rotation_deg": 0,
+        "crop": null,
+        "resized": false,
+        "note": "raw samples are archived exactly as delivered; apply hflip to reach the frame the calibration describes"
+      },
+      "pose_T_camera_board": [
+        [
+          -0.8662692360956551,
+          -0.12414342424939286,
+          -0.4839070373634646,
+          0.18257517244425564
+        ],
+        [
+          0.06956118160812634,
+          -0.98917045259951,
+          0.12924030995537664,
+          0.008827266540952125
+        ],
+        [
+          -0.49471087779381956,
+          0.07829575927031948,
+          0.8655234956214376,
+          0.6286161848328305
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "board_points": 48,
+      "sharpness": 94.1868680055432
+    },
+    {
+      "stage": "handeye",
+      "role": "solve",
+      "index": 21,
+      "servo_ticks": {
+        "1": 1964,
+        "2": 1261,
+        "3": 2736,
+        "4": 2244,
+        "5": 3599,
+        "6": 2025
+      },
+      "stability": "stable (0.12 deg, 0.2 mm, 0 ticks)",
+      "held_by_torque": true,
+      "board": {
+        "squares_x": 7,
+        "squares_y": 9,
+        "square": 0.02,
+        "marker": 0.015,
+        "dictionary": "DICT_4X4_50",
+        "first_id": 0,
+        "name": "charuco-7x9-20mm",
+        "kind": "charuco",
+        "size_m": [
+          0.14,
+          0.18
+        ],
+        "marker_ids": [
+          0,
+          30
+        ],
+        "counts": "squares"
+      },
+      "image_transform": {
+        "hflip": false,
+        "rotation_deg": 0,
+        "crop": null,
+        "resized": false,
+        "note": "raw samples are archived exactly as delivered; apply hflip to reach the frame the calibration describes"
+      },
+      "pose_T_camera_board": [
+        [
+          -0.7577167910962234,
+          -0.008695605343376104,
+          -0.652525594086971,
+          0.16476163738358954
+        ],
+        [
+          -0.04830116953637324,
+          -0.9964212735746579,
+          0.06936600456473739,
+          0.01953584535856723
+        ],
+        [
+          -0.6507935629001418,
+          0.08407753573677625,
+          0.7545851220850901,
+          0.6405517088165359
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "board_points": 48,
+      "sharpness": 75.98563167058627
+    },
+    {
+      "stage": "handeye",
+      "role": "solve",
+      "index": 22,
+      "servo_ticks": {
+        "1": 2297,
+        "2": 1258,
+        "3": 2742,
+        "4": 2244,
+        "5": 3599,
+        "6": 2025
+      },
+      "stability": "stable (0.13 deg, 0.2 mm, 0 ticks)",
+      "held_by_torque": true,
+      "board": {
+        "squares_x": 7,
+        "squares_y": 9,
+        "square": 0.02,
+        "marker": 0.015,
+        "dictionary": "DICT_4X4_50",
+        "first_id": 0,
+        "name": "charuco-7x9-20mm",
+        "kind": "charuco",
+        "size_m": [
+          0.14,
+          0.18
+        ],
+        "marker_ids": [
+          0,
+          30
+        ],
+        "counts": "squares"
+      },
+      "image_transform": {
+        "hflip": false,
+        "rotation_deg": 0,
+        "crop": null,
+        "resized": false,
+        "note": "raw samples are archived exactly as delivered; apply hflip to reach the frame the calibration describes"
+      },
+      "pose_T_camera_board": [
+        [
+          -0.9103006490526786,
+          0.3032976209180735,
+          -0.28171489396144583,
+          0.04724304580609622
+        ],
+        [
+          -0.2999344245448537,
+          -0.9523091766217371,
+          -0.056094323197420276,
+          0.02621676305667939
+        ],
+        [
+          -0.2852929534832915,
+          0.033433295791258325,
+          0.9578570589734746,
+          0.6282385875178567
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "board_points": 48,
+      "sharpness": 99.22022858042776
+    },
+    {
+      "stage": "handeye",
+      "role": "solve",
+      "index": 23,
+      "servo_ticks": {
+        "1": 2537,
+        "2": 1257,
+        "3": 2748,
+        "4": 2244,
+        "5": 3599,
+        "6": 2025
+      },
+      "stability": "stable (0.18 deg, 0.4 mm, 0 ticks)",
+      "held_by_torque": true,
+      "board": {
+        "squares_x": 7,
+        "squares_y": 9,
+        "square": 0.02,
+        "marker": 0.015,
+        "dictionary": "DICT_4X4_50",
+        "first_id": 0,
+        "name": "charuco-7x9-20mm",
+        "kind": "charuco",
+        "size_m": [
+          0.14,
+          0.18
+        ],
+        "marker_ids": [
+          0,
+          30
+        ],
+        "counts": "squares"
+      },
+      "image_transform": {
+        "hflip": false,
+        "rotation_deg": 0,
+        "crop": null,
+        "resized": false,
+        "note": "raw samples are archived exactly as delivered; apply hflip to reach the frame the calibration describes"
+      },
+      "pose_T_camera_board": [
+        [
+          -0.8722914593229919,
+          0.4864735421259764,
+          0.04950861342808026,
+          -0.032997920238560144
+        ],
+        [
+          -0.4888882890149523,
+          -0.8656078889520207,
+          -0.10821840623506992,
+          0.010588242681384882
+        ],
+        [
+          -0.009790345049980099,
+          -0.11860217281075436,
+          0.9928935863164643,
+          0.6554301691239334
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "board_points": 48,
+      "sharpness": 87.56091573835715
+    },
+    {
+      "stage": "handeye",
+      "role": "validation",
+      "index": 24,
+      "servo_ticks": {
+        "1": 2835,
+        "2": 1251,
+        "3": 2754,
+        "4": 2244,
+        "5": 3599,
+        "6": 2025
+      },
+      "stability": "stable (0.13 deg, 0.4 mm, 0 ticks)",
+      "held_by_torque": true,
+      "board": {
+        "squares_x": 7,
+        "squares_y": 9,
+        "square": 0.02,
+        "marker": 0.015,
+        "dictionary": "DICT_4X4_50",
+        "first_id": 0,
+        "name": "charuco-7x9-20mm",
+        "kind": "charuco",
+        "size_m": [
+          0.14,
+          0.18
+        ],
+        "marker_ids": [
+          0,
+          30
+        ],
+        "counts": "squares"
+      },
+      "image_transform": {
+        "hflip": false,
+        "rotation_deg": 0,
+        "crop": null,
+        "resized": false,
+        "note": "raw samples are archived exactly as delivered; apply hflip to reach the frame the calibration describes"
+      },
+      "pose_T_camera_board": [
+        [
+          -0.6556603063373676,
+          0.6211243909416482,
+          0.4293181264178767,
+          -0.10962957064718717
+        ],
+        [
+          -0.6962621313645116,
+          -0.7173336445150053,
+          -0.02552424092050276,
+          -0.030872516481606983
+        ],
+        [
+          0.2921106076836941,
+          -0.31565318535409526,
+          0.9027925893883247,
+          0.7115212536905803
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "board_points": 48,
+      "sharpness": 86.14118872421744
+    },
+    {
+      "stage": "handeye",
+      "role": "solve",
+      "index": 25,
+      "servo_ticks": {
+        "1": 1922,
+        "2": 1260,
+        "3": 2769,
+        "4": 2248,
+        "5": 3230,
+        "6": 2025
+      },
+      "stability": "stable (0.15 deg, 0.3 mm, 0 ticks)",
+      "held_by_torque": true,
+      "board": {
+        "squares_x": 7,
+        "squares_y": 9,
+        "square": 0.02,
+        "marker": 0.015,
+        "dictionary": "DICT_4X4_50",
+        "first_id": 0,
+        "name": "charuco-7x9-20mm",
+        "kind": "charuco",
+        "size_m": [
+          0.14,
+          0.18
+        ],
+        "marker_ids": [
+          0,
+          30
+        ],
+        "counts": "squares"
+      },
+      "image_transform": {
+        "hflip": false,
+        "rotation_deg": 0,
+        "crop": null,
+        "resized": false,
+        "note": "raw samples are archived exactly as delivered; apply hflip to reach the frame the calibration describes"
+      },
+      "pose_T_camera_board": [
+        [
+          -0.927079023661763,
+          -0.27552796957686354,
+          -0.2541826545364635,
+          0.2060438450799831
+        ],
+        [
+          0.2708748683675146,
+          -0.9611067992543851,
+          0.053856532694488604,
+          0.01061210351988629
+        ],
+        [
+          -0.259135658629286,
+          -0.018922431340655663,
+          0.965655555578139,
+          0.6360896967302667
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "board_points": 48,
+      "sharpness": 98.71127555880868
+    },
+    {
+      "stage": "handeye",
+      "role": "solve",
+      "index": 26,
+      "servo_ticks": {
+        "1": 1919,
+        "2": 1260,
+        "3": 2644,
+        "4": 2248,
+        "5": 3230,
+        "6": 2025
+      },
+      "stability": "stable (0.13 deg, 0.3 mm, 0 ticks)",
+      "held_by_torque": true,
+      "board": {
+        "squares_x": 7,
+        "squares_y": 9,
+        "square": 0.02,
+        "marker": 0.015,
+        "dictionary": "DICT_4X4_50",
+        "first_id": 0,
+        "name": "charuco-7x9-20mm",
+        "kind": "charuco",
+        "size_m": [
+          0.14,
+          0.18
+        ],
+        "marker_ids": [
+          0,
+          30
+        ],
+        "counts": "squares"
+      },
+      "image_transform": {
+        "hflip": false,
+        "rotation_deg": 0,
+        "crop": null,
+        "resized": false,
+        "note": "raw samples are archived exactly as delivered; apply hflip to reach the frame the calibration describes"
+      },
+      "pose_T_camera_board": [
+        [
+          -0.9209214900526725,
+          -0.30945108028860696,
+          -0.23694648777177435,
+          0.21130824157143446
+        ],
+        [
+          0.2523929432226553,
+          -0.9367589045171706,
+          0.24244701899424545,
+          -0.031085046740635128
+        ],
+        [
+          -0.2969872242548001,
+          0.1634710485560201,
+          0.9407846751055339,
+          0.5894766509232783
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "board_points": 48,
+      "sharpness": 90.75377117451903
+    },
+    {
+      "stage": "handeye",
+      "role": "solve",
+      "index": 27,
+      "servo_ticks": {
+        "1": 1920,
+        "2": 1500,
+        "3": 2637,
+        "4": 2248,
+        "5": 3230,
+        "6": 2025
+      },
+      "stability": "stable (0.08 deg, 0.1 mm, 0 ticks)",
+      "held_by_torque": true,
+      "board": {
+        "squares_x": 7,
+        "squares_y": 9,
+        "square": 0.02,
+        "marker": 0.015,
+        "dictionary": "DICT_4X4_50",
+        "first_id": 0,
+        "name": "charuco-7x9-20mm",
+        "kind": "charuco",
+        "size_m": [
+          0.14,
+          0.18
+        ],
+        "marker_ids": [
+          0,
+          30
+        ],
+        "counts": "squares"
+      },
+      "image_transform": {
+        "hflip": false,
+        "rotation_deg": 0,
+        "crop": null,
+        "resized": false,
+        "note": "raw samples are archived exactly as delivered; apply hflip to reach the frame the calibration describes"
+      },
+      "pose_T_camera_board": [
+        [
+          -0.9243043314997864,
+          -0.2510332266262923,
+          -0.2874783851010809,
+          0.21083633515847575
+        ],
+        [
+          0.28044358961667687,
+          -0.95763621424625,
+          -0.06545436736401355,
+          0.020584158882490836
+        ],
+        [
+          -0.25886849134965373,
+          -0.14112122552508852,
+          0.9555479600170005,
+          0.6346373052380664
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "board_points": 48,
+      "sharpness": 90.20568720954088
+    },
+    {
+      "stage": "handeye",
+      "role": "validation",
+      "index": 28,
+      "servo_ticks": {
+        "1": 1919,
+        "2": 1350,
+        "3": 2640,
+        "4": 2248,
+        "5": 3230,
+        "6": 2025
+      },
+      "stability": "stable (0.04 deg, 0.1 mm, 0 ticks)",
+      "held_by_torque": true,
+      "board": {
+        "squares_x": 7,
+        "squares_y": 9,
+        "square": 0.02,
+        "marker": 0.015,
+        "dictionary": "DICT_4X4_50",
+        "first_id": 0,
+        "name": "charuco-7x9-20mm",
+        "kind": "charuco",
+        "size_m": [
+          0.14,
+          0.18
+        ],
+        "marker_ids": [
+          0,
+          30
+        ],
+        "counts": "squares"
+      },
+      "image_transform": {
+        "hflip": false,
+        "rotation_deg": 0,
+        "crop": null,
+        "resized": false,
+        "note": "raw samples are archived exactly as delivered; apply hflip to reach the frame the calibration describes"
+      },
+      "pose_T_camera_board": [
+        [
+          -0.9231853110309237,
+          -0.2793171169610903,
+          -0.26402808500097336,
+          0.2112555419379707
+        ],
+        [
+          0.2569008229218839,
+          -0.9593707945867185,
+          0.11666038606188178,
+          -0.007300171249404186
+        ],
+        [
+          -0.28588607639896607,
+          0.03987012248028682,
+          0.9574338225979968,
+          0.6057901127430367
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "board_points": 48,
+      "sharpness": 91.10702882361183
+    },
+    {
+      "stage": "handeye",
+      "role": "solve",
+      "index": 29,
+      "servo_ticks": {
+        "1": 2457,
+        "2": 1874,
+        "3": 2299,
+        "4": 2248,
+        "5": 3230,
+        "6": 2025
+      },
+      "stability": "stable (0.11 deg, 0.2 mm, 0 ticks)",
+      "held_by_torque": true,
+      "board": {
+        "squares_x": 7,
+        "squares_y": 9,
+        "square": 0.02,
+        "marker": 0.015,
+        "dictionary": "DICT_4X4_50",
+        "first_id": 0,
+        "name": "charuco-7x9-20mm",
+        "kind": "charuco",
+        "size_m": [
+          0.14,
+          0.18
+        ],
+        "marker_ids": [
+          0,
+          30
+        ],
+        "counts": "squares"
+      },
+      "image_transform": {
+        "hflip": false,
+        "rotation_deg": 0,
+        "crop": null,
+        "resized": false,
+        "note": "raw samples are archived exactly as delivered; apply hflip to reach the frame the calibration describes"
+      },
+      "pose_T_camera_board": [
+        [
+          -0.8866852176192408,
+          0.11497896589464729,
+          0.4478494861639533,
+          -0.03145734120278654
+        ],
+        [
+          -0.19331883205972838,
+          -0.9720542111116656,
+          -0.13318573433795353,
+          0.0587559734176099
+        ],
+        [
+          0.4200204209637693,
+          -0.20467156143899165,
+          0.884133699115436,
+          0.5804877234068936
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "board_points": 48,
+      "sharpness": 104.1872352100009
+    },
+    {
+      "stage": "handeye",
+      "role": "solve",
+      "index": 30,
+      "servo_ticks": {
+        "1": 2456,
+        "2": 1877,
+        "3": 2208,
+        "4": 2248,
+        "5": 3230,
+        "6": 2025
+      },
+      "stability": "stable (0.03 deg, 0.1 mm, 0 ticks)",
+      "held_by_torque": true,
+      "board": {
+        "squares_x": 7,
+        "squares_y": 9,
+        "square": 0.02,
+        "marker": 0.015,
+        "dictionary": "DICT_4X4_50",
+        "first_id": 0,
+        "name": "charuco-7x9-20mm",
+        "kind": "charuco",
+        "size_m": [
+          0.14,
+          0.18
+        ],
+        "marker_ids": [
+          0,
+          30
+        ],
+        "counts": "squares"
+      },
+      "image_transform": {
+        "hflip": false,
+        "rotation_deg": 0,
+        "crop": null,
+        "resized": false,
+        "note": "raw samples are archived exactly as delivered; apply hflip to reach the frame the calibration describes"
+      },
+      "pose_T_camera_board": [
+        [
+          -0.9034872776120507,
+          0.16735241224223438,
+          0.39459334676331087,
+          -0.035700698548183446
+        ],
+        [
+          -0.19113419627661885,
+          -0.9813297704269964,
+          -0.021438299545197367,
+          0.04083127934018695
+        ],
+        [
+          0.3836384472479996,
+          -0.09478951308242863,
+          0.9186057315316183,
+          0.5430444496384985
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "board_points": 48,
+      "sharpness": 105.42396741325264
+    },
+    {
+      "stage": "handeye",
+      "role": "solve",
+      "index": 31,
+      "servo_ticks": {
+        "1": 2447,
+        "2": 1670,
+        "3": 2227,
+        "4": 2247,
+        "5": 3703,
+        "6": 2025
+      },
+      "stability": "stable (0.17 deg, 0.6 mm, 0 ticks)",
+      "held_by_torque": true,
+      "board": {
+        "squares_x": 7,
+        "squares_y": 9,
+        "square": 0.02,
+        "marker": 0.015,
+        "dictionary": "DICT_4X4_50",
+        "first_id": 0,
+        "name": "charuco-7x9-20mm",
+        "kind": "charuco",
+        "size_m": [
+          0.14,
+          0.18
+        ],
+        "marker_ids": [
+          0,
+          30
+        ],
+        "counts": "squares"
+      },
+      "image_transform": {
+        "hflip": false,
+        "rotation_deg": 0,
+        "crop": null,
+        "resized": false,
+        "note": "raw samples are archived exactly as delivered; apply hflip to reach the frame the calibration describes"
+      },
+      "pose_T_camera_board": [
+        [
+          -0.8256935342434064,
+          0.4907578520027545,
+          -0.2781850431031029,
+          -0.03638610552606409
+        ],
+        [
+          -0.47892827478014927,
+          -0.8704186680184013,
+          -0.11401337632568348,
+          -0.012938185518054632
+        ],
+        [
+          -0.29809041434561845,
+          0.039090575113633376,
+          0.9537368776620435,
+          0.5496267179954967
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "board_points": 41,
+      "sharpness": 90.35182288517139
+    }
+  ],
+  "finished_at": "2026-09-18T14:19:38.866+02:00",
+  "rebuilt_at": "2026-09-18T16:20:47.696+02:00"
+}

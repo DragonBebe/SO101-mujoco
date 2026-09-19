@@ -1,8 +1,14 @@
-"""Live RGB-D dashboard. Display only: never creates policy observations."""
+"""Live camera dashboard. Display only: never creates policy observations."""
 import time
 
 import numpy as np
 from PIL import Image, ImageDraw
+
+#: Layout used when no configuration is supplied: the original RGB-D pair.
+DEFAULT_VIEW = {'modality': 'rgbd', 'cameras': ('overhead', 'wrist'),
+                'environment_camera': 'overhead'}
+TILE = (480, 360)
+COLUMNS = 2
 
 
 def colorize_depth(depth):
@@ -17,31 +23,78 @@ def colorize_depth(depth):
     return rgb
 
 
-def compose_panel(cameras, simulation_time):
-    panel = Image.new('RGB', (960, 836), (20, 24, 32))
+def panel_cells(view):
+    """Tiles to draw, as ``(camera name, 'rgb' | 'depth')`` in reading order.
+
+    RGB-D keeps one camera per row with its depth beside it. RGB-only has no
+    depth tile to draw, so the two cameras share a single row instead of
+    leaving half the window blank or filled with a stale depth image.
+    """
+    names = tuple(view.get('cameras', DEFAULT_VIEW['cameras']))
+    if view.get('modality', DEFAULT_VIEW['modality']) == 'rgbd':
+        return [(name, kind) for name in names for kind in ('rgb', 'depth')]
+    return [(name, 'rgb') for name in names]
+
+
+def panel_size(view):
+    """Pixel size of the composed panel, and therefore of the window."""
+    cells = panel_cells(view)
+    rows = -(-len(cells) // COLUMNS)
+    legend = 20 if any(kind == 'depth' for _, kind in cells) else 10
+    return COLUMNS * TILE[0], 40 + rows * (TILE[1] + 28) + legend
+
+
+def fit_tile(width, height):
+    """Largest size of that aspect inside ``TILE``, and its centring offset.
+
+    Cameras need not share an aspect (the calibrated C920 is 16:9, the wrist
+    camera 4:3); stretching both to one tile would distort the geometry.
+    """
+    scale = min(TILE[0] / width, TILE[1] / height)
+    size = (max(1, round(width * scale)), max(1, round(height * scale)))
+    return size, ((TILE[0] - size[0]) // 2, (TILE[1] - size[1]) // 2)
+
+
+def compose_panel(cameras, simulation_time, view=DEFAULT_VIEW):
+    cells = panel_cells(view)
+    width, height = panel_size(view)
+    panel = Image.new('RGB', (width, height), (20, 24, 32))
     draw = ImageDraw.Draw(panel)
-    draw.text((12, 10), f'Live cameras | Simulation {simulation_time:.2f} s | Motion pauses between commands', fill='white')
-    for row, name in enumerate(('overhead', 'wrist')):
+    modality = view.get('modality', DEFAULT_VIEW['modality'])
+    environment = view.get('environment_camera', DEFAULT_VIEW['environment_camera'])
+    draw.text((12, 10), f'Live cameras | mode {modality.upper()} | environment camera '
+                        f'{environment.upper()} (world-fixed) + WRIST (on the arm) | '
+                        f'Simulation {simulation_time:.2f} s | preview only',
+              fill='white')
+    depth_shown = False
+    for index, (name, kind) in enumerate(cells):
         rgb, depth, _ = cameras[name]
-        y = 40 + row * 388
-        draw.text((12, y), f'{name.upper()} / RGB', fill='white')
-        draw.text((492, y), f'{name.upper()} / DEPTH (optical Z, metres)', fill='white')
-        for column, array in enumerate((rgb, colorize_depth(depth))):
-            tile = Image.fromarray(array).resize((480, 360), Image.Resampling.NEAREST)
-            panel.paste(tile, (column * 480, y + 22))
-    ramp = np.linspace(0.00001, 1, 320)[None, :]
-    panel.paste(Image.fromarray(colorize_depth(ramp)).resize((320, 12)), (110, 818))
-    draw.text((12, 818), 'Depth: 0 m', fill='white')
-    draw.text((440, 818), '1 m+     Black: invalid / no surface', fill='white')
+        column, row = index % COLUMNS, index // COLUMNS
+        x, y = column * TILE[0], 40 + row * (TILE[1] + 28)
+        if kind == 'rgb':
+            label, array = f'{name.upper()} / RGB', rgb
+        else:
+            label, array = f'{name.upper()} / DEPTH (optical Z, metres)', colorize_depth(depth)
+            depth_shown = True
+        draw.text((x + 12, y), label, fill='white')
+        tile, offset = fit_tile(array.shape[1], array.shape[0])
+        panel.paste(Image.fromarray(array).resize(tile, Image.Resampling.NEAREST),
+                    (x + offset[0], y + 22 + offset[1]))
+    if depth_shown:
+        ramp = np.linspace(0.00001, 1, 320)[None, :]
+        panel.paste(Image.fromarray(colorize_depth(ramp)).resize((320, 12)), (110, height - 18))
+        draw.text((12, height - 18), 'Depth: 0 m', fill='white')
+        draw.text((440, height - 18), '1 m+     Black: invalid / no surface', fill='white')
     return np.asarray(panel)
 
 
 class CameraViewer:
     """Owns one GLFW window without terminating MuJoCo's GLFW resources."""
-    def __init__(self):
+    def __init__(self, view=DEFAULT_VIEW):
         import glfw
         from OpenGL import GL
         self.glfw, self.gl = glfw, GL
+        self.view = view
         self.window = None
         self.last_update = -float('inf')
         self.last_simulation_time = None
@@ -49,7 +102,11 @@ class CameraViewer:
             raise RuntimeError('Camera viewer requires a working desktop display (GLFW)')
         # No glfw.terminate(): the MuJoCo viewer/renderers share this library.
         glfw.default_window_hints()
-        self.window = glfw.create_window(960, 836, 'SO101 Cameras - RGB + Depth', None, None)
+        width, height = panel_size(view)
+        modality = view.get('modality', DEFAULT_VIEW['modality'])
+        title = ('SO101 Cameras - RGB + Depth' if modality == 'rgbd'
+                 else 'SO101 Cameras - RGB only (no depth)')
+        self.window = glfw.create_window(width, height, title, None, None)
         if not self.window:
             raise RuntimeError('Could not create camera viewer window')
         self._redraw = True
@@ -76,7 +133,7 @@ class CameraViewer:
         if not self.window:
             return
         glfw, gl = self.glfw, self.gl
-        panel = compose_panel(cameras, simulation_time)
+        panel = compose_panel(cameras, simulation_time, self.view)
         previous = glfw.get_current_context()
         try:
             glfw.make_context_current(self.window)
@@ -108,12 +165,12 @@ class CameraViewer:
             self.window = None
 
 
-def _camera_process(frames, ready, stopped):
+def _camera_process(frames, ready, stopped, view=DEFAULT_VIEW):
     """Own the dashboard GLFW event loop separately from MuJoCo's viewer."""
     from queue import Empty
     panel = None
     try:
-        panel = CameraViewer()
+        panel = CameraViewer(view)
         ready.put(None)
         latest = None
         while not stopped.is_set() and panel.poll():
@@ -135,9 +192,10 @@ def _camera_process(frames, ready, stopped):
 
 class ProcessCameraViewer:
     """Bounded latest-frame transport; the physics thread never waits on a GUI."""
-    def __init__(self):
+    def __init__(self, view=DEFAULT_VIEW):
         import multiprocessing
         context = multiprocessing.get_context('spawn')
+        self.view = view
         self.frames = context.Queue(maxsize=1)
         self.ready = context.Queue(maxsize=1)
         self.stopped = context.Event()
@@ -145,7 +203,8 @@ class ProcessCameraViewer:
         self.last_simulation_time = None
         self.pending = None
         self.process = context.Process(target=_camera_process,
-                                       args=(self.frames, self.ready, self.stopped), daemon=True)
+                                       args=(self.frames, self.ready, self.stopped, view),
+                                       daemon=True)
         self.process.start()
         try:
             error = self.ready.get(timeout=15)

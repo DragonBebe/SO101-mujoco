@@ -1,0 +1,34 @@
+{
+  "schema": "rgbcal/table/1",
+  "measured_at": "2026-09-18T16:36:21.004+02:00",
+  "frames_used": 10,
+  "board_surface_z_m": -0.009901873854683801,
+  "board_thickness_m": 0.0001,
+  "plane_z_m": -0.0100018738546838,
+  "plane_z_note": "plane_z is the support surface itself: the measured board surface minus the thickness of whatever the pattern is mounted on",
+  "height_spread_mm": 9.381128631055669,
+  "surface_normal_base": [
+    -0.023792520068443023,
+    -0.03166681023393565,
+    0.9992152566481363
+  ],
+  "tilt_from_base_z_deg": 2.270020910309105,
+  "frames": {
+    "plane_z_m": "height of the support surface in ROBOT BASE coordinates, the value RGB localisation needs"
+  },
+  "intrinsics": "/home/dragon/SO101-mujoco/LLM-control/calib/c920-intrinsics-01/intrinsics.json",
+  "extrinsics": "/home/dragon/SO101-mujoco/LLM-control/calib/c920-handeye-03/extrinsics.json",
+  "board": {
+    "inner_cols": 9,
+    "inner_rows": 6,
+    "square": 0.025,
+    "name": "chessboard-9x6-25mm",
+    "kind": "chessboard",
+    "size_m": [
+      0.25,
+      0.17500000000000002
+    ],
+    "counts": "inner corners"
+  },
+  "uncertainty_note": "plane_z inherits the extrinsic uncertainty; the height spread above is only the spread across frames"
+}

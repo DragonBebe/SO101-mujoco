@@ -5,9 +5,10 @@ import json
 from pathlib import Path
 import uuid
 
-from .workspace import WorkspaceSimulation, SCENE_DESCRIPTION
+from .cameras import suite_from_options
+from .workspace import WorkspaceSimulation, scene_description
 
-MOTION = {'move', 'look_at', 'gripper', 'wait'}
+MOTION = {'move', 'look_at', 'gripper', 'wait', 'joints'}
 ACTIVE = {'running', 'paused'}
 
 
@@ -25,14 +26,19 @@ def integer(value, name, low, high):
 
 class LoopSession:
     def __init__(self, directory, task='workbench', seed=4, viewer=False,
-                 realtime=False, camera_viewer=False):
+                 realtime=False, camera_viewer=False, camera_modality=None,
+                 environment_camera=None):
         if task != 'workbench':
             raise ValueError('Only the workbench scene is supported')
         integer(seed, 'seed', 0, 2**32-1)
+        # Modality and placement are fixed for the life of the service, so
+        # every frame, point and log row in this run shares one camera setup.
+        self.cameras = suite_from_options(camera_modality, environment_camera)
         self.directory = Path(directory).resolve()
         self.directory.mkdir(parents=True, exist_ok=True)
         self.log = (self.directory / 'events.jsonl').open('x', encoding='utf-8')
-        self.options = dict(viewer=viewer, realtime=realtime, camera_viewer=camera_viewer)
+        self.options = dict(viewer=viewer, realtime=realtime, camera_viewer=camera_viewer,
+                            cameras=self.cameras)
         self.seed, self.epoch = seed, 1
         self.task = None
         self.running = True
@@ -45,7 +51,8 @@ class LoopSession:
             raise
 
     def state(self):
-        return {'task': deepcopy(self.task), 'scene': SCENE_DESCRIPTION,
+        return {'task': deepcopy(self.task), 'scene': scene_description(self.cameras),
+                'cameras': self.sim.camera_report(),
                 'world': self.epoch, 'seed': self.seed, 'running': self.running,
                 'frame_id': self.sim.frame_id, 'sequence': self.sequence}
 
@@ -101,7 +108,7 @@ class LoopSession:
                 raise ValueError('Step budget exhausted; complete or cancel this task')
             motion = command.get('command')
             if not isinstance(motion, dict) or motion.get('action') not in MOTION:
-                raise ValueError('step.command must be move, look_at, gripper or wait')
+                raise ValueError('step.command must be move, look_at, gripper, wait or joints')
             self.task['steps'] += 1
             try:
                 obs = self.sim.execute(motion)

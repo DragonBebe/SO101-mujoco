@@ -1,0 +1,137 @@
+{
+  "extrinsics": "/home/dragon/SO101-mujoco/LLM-control/calib/c920-handeye-03/extrinsics.json",
+  "validation": {
+    "poses": 7,
+    "reprojection_rms_px": 7.8577,
+    "reprojection_worst_px": 11.1133,
+    "board_position_error_mm": {
+      "median": 4.27,
+      "max": 11.98
+    },
+    "per_pose_px": {
+      "validation-004.png": 1.602,
+      "validation-008.png": 2.831,
+      "validation-012.png": 10.03,
+      "validation-016.png": 8.925,
+      "validation-020.png": 9.579,
+      "validation-024.png": 11.113,
+      "validation-028.png": 5.109
+    }
+  },
+  "solve": {
+    "poses": 24,
+    "reprojection_rms_px": 10.28,
+    "reprojection_worst_px": 17.3037,
+    "board_position_error_mm": {
+      "median": 5.96,
+      "max": 10.02
+    },
+    "per_pose_px": {
+      "solve-001.png": 8.57,
+      "solve-002.png": 9.158,
+      "solve-003.png": 7.041,
+      "solve-005.png": 3.363,
+      "solve-006.png": 13.734,
+      "solve-007.png": 4.2,
+      "solve-009.png": 6.818,
+      "solve-010.png": 5.589,
+      "solve-011.png": 5.882,
+      "solve-013.png": 4.96,
+      "solve-014.png": 10.24,
+      "solve-015.png": 17.304,
+      "solve-017.png": 12.718,
+      "solve-018.png": 8.978,
+      "solve-019.png": 15.394,
+      "solve-021.png": 11.86,
+      "solve-022.png": 14.294,
+      "solve-023.png": 9.96,
+      "solve-025.png": 10.498,
+      "solve-026.png": 6.811,
+      "solve-027.png": 16.654,
+      "solve-029.png": 7.076,
+      "solve-030.png": 7.46,
+      "solve-031.png": 10.367
+    }
+  },
+  "independent_check": "validation poses were assigned at capture time and were not used in the fit",
+  "camera_position_base_m": [
+    0.7596900236322297,
+    -0.05793128043998047,
+    0.45451005638123587
+  ],
+  "sign_search": {
+    "patterns_screened": 32,
+    "patterns_fitted": 4,
+    "consistency_ranking_deg": [
+      {
+        "signs": {
+          "shoulder_pan": 1,
+          "shoulder_lift": 1,
+          "elbow_flex": 1,
+          "wrist_flex": 1,
+          "wrist_roll": -1
+        },
+        "median_deg": 0.464,
+        "median_pitch_mm": 1.08
+      },
+      {
+        "signs": {
+          "shoulder_pan": 1,
+          "shoulder_lift": -1,
+          "elbow_flex": -1,
+          "wrist_flex": -1,
+          "wrist_roll": 1
+        },
+        "median_deg": 0.489,
+        "median_pitch_mm": 1.11
+      },
+      {
+        "signs": {
+          "shoulder_pan": 1,
+          "shoulder_lift": 1,
+          "elbow_flex": 1,
+          "wrist_flex": 1,
+          "wrist_roll": 1
+        },
+        "median_deg": 0.464,
+        "median_pitch_mm": 1.19
+      },
+      {
+        "signs": {
+          "shoulder_pan": 1,
+          "shoulder_lift": -1,
+          "elbow_flex": -1,
+          "wrist_flex": -1,
+          "wrist_roll": -1
+        },
+        "median_deg": 0.464,
+        "median_pitch_mm": 1.29
+      }
+    ],
+    "best_rms_px": 10.279488452486264,
+    "runner_up_rms_px": 32.83072841252441,
+    "separation": 3.1938095523210355,
+    "meaning": "a wrong sign cannot be absorbed by the unknown transforms; a clear gap to the runner-up is what makes the choice evidence"
+  },
+  "motion_consistency": {
+    "pairs": 23,
+    "median_deg": 0.46384885075535315,
+    "max_deg": 3.4126367988961404,
+    "median_pitch_mm": 1.7754948890345985,
+    "max_pitch_mm": 10.608143326122462,
+    "meaning": "relative arm motion vs relative board motion, compared as screw parameters. A X = X B makes the two conjugate, so both the rotation angle and the translation along the axis must agree for any correct forward kinematics"
+  },
+  "plausibility": {
+    "above_base_plane": true,
+    "looks_down": true,
+    "faces_the_robot": true,
+    "ok": true
+  },
+  "verdict": [
+    "held-out / fitted reprojection ratio 0.76: consistent",
+    "best sign pattern is 3.2x better than the runner-up (decisive)",
+    "arm/board relative rotation agreement 0.46 deg median (good)",
+    "camera pose is physically plausible"
+  ],
+  "status": "solved"
+}

@@ -1,0 +1,129 @@
+{
+  "schema": "rgbcal/intrinsics/1",
+  "camera_id": "environment",
+  "device": "/dev/video0",
+  "device_name": null,
+  "resolution": {
+    "width": 1280,
+    "height": 720
+  },
+  "pixel_format": "MJPG",
+  "image_transform": {
+    "hflip": false,
+    "rotation_deg": 0,
+    "crop": null,
+    "resized": false,
+    "note": "raw samples are archived exactly as delivered; apply hflip to reach the frame the calibration describes"
+  },
+  "model": "standard",
+  "distortion_model": "opencv-5 (k1,k2,p1,p2,k3)",
+  "K": [
+    [
+      1054.677070024312,
+      0.0,
+      730.5745713954896
+    ],
+    [
+      0.0,
+      1049.7632499919837,
+      425.93279503619937
+    ],
+    [
+      0.0,
+      0.0,
+      1.0
+    ]
+  ],
+  "D": [
+    0.186421014964378,
+    -0.19160901171692774,
+    0.019323688455732978,
+    0.040364185265586716,
+    0.04208177812804917
+  ],
+  "fx": 1054.677070024312,
+  "fy": 1049.7632499919837,
+  "cx": 730.5745713954896,
+  "cy": 425.93279503619937,
+  "fov_deg": {
+    "horizontal": 62.5004957646011,
+    "vertical": 37.85721725495597
+  },
+  "std_intrinsics": [
+    10.30623349642906,
+    11.017834335771948,
+    11.802514782733855,
+    9.766891790199562
+  ],
+  "reprojection_rms_px": 2.5452429972272324,
+  "per_image_rms_px": {
+    "calibration-001.png": 1.992156744003296,
+    "calibration-002.png": 4.563314914703369,
+    "calibration-003.png": 2.7661960124969482,
+    "calibration-004.png": 0.9537307024002075,
+    "calibration-006.png": 5.990759372711182,
+    "calibration-007.png": 4.073628902435303,
+    "calibration-008.png": 1.006655216217041,
+    "calibration-009.png": 1.1630953550338745,
+    "calibration-011.png": 0.8474210500717163,
+    "calibration-012.png": 1.912864327430725,
+    "calibration-013.png": 1.2353816032409668,
+    "calibration-014.png": 1.793393611907959,
+    "calibration-016.png": 3.079880952835083,
+    "calibration-017.png": 0.6267422437667847,
+    "calibration-018.png": 1.4115989208221436,
+    "calibration-019.png": 3.9441027641296387,
+    "calibration-021.png": 1.1175243854522705,
+    "calibration-022.png": 0.9126030206680298,
+    "calibration-023.png": 1.4976695775985718,
+    "calibration-024.png": 2.518078088760376,
+    "calibration-026.png": 1.8080347776412964,
+    "calibration-027.png": 1.705790638923645,
+    "calibration-028.png": 2.7212886810302734
+  },
+  "planarity_residual_px": {
+    "calibration-001.png": 1.9858757257461548,
+    "calibration-002.png": 4.46635627746582,
+    "calibration-003.png": 2.3935742378234863,
+    "calibration-004.png": 0.6573529839515686,
+    "calibration-006.png": 5.3965911865234375,
+    "calibration-007.png": 3.334340810775757,
+    "calibration-008.png": 0.34294429421424866,
+    "calibration-009.png": 1.1098425388336182,
+    "calibration-011.png": 0.4919236898422241,
+    "calibration-012.png": 1.8909521102905273,
+    "calibration-013.png": 0.4273473620414734,
+    "calibration-014.png": 1.6239551305770874,
+    "calibration-016.png": 2.8948864936828613,
+    "calibration-017.png": 0.29696163535118103,
+    "calibration-018.png": 1.1410890817642212,
+    "calibration-019.png": 3.930117130279541,
+    "calibration-021.png": 0.9687126874923706,
+    "calibration-022.png": 0.7061904072761536,
+    "calibration-023.png": 1.247497797012329,
+    "calibration-024.png": 2.211618423461914,
+    "calibration-026.png": 1.7649558782577515,
+    "calibration-027.png": 1.7586612701416016,
+    "calibration-028.png": 2.514359951019287
+  },
+  "samples": {
+    "calibration_used": 23,
+    "validation_held_out": 5,
+    "failed_detection": []
+  },
+  "board": {
+    "inner_cols": 9,
+    "inner_rows": 6,
+    "square": 0.025,
+    "name": "chessboard-9x6-25mm",
+    "kind": "chessboard",
+    "size_m": [
+      0.25,
+      0.17500000000000002
+    ],
+    "counts": "inner corners"
+  },
+  "board_scale_note": "square length is the printed nominal value unless it was measured; it does not affect K or D, only metric extrinsics, and rescales them linearly",
+  "source_session": "/home/dragon/SO101-mujoco/LLM-control/calib/intrinsics-01",
+  "valid_for": "this device at this resolution, pixel format and declared transform only; re-calibrate if any of those change"
+}

@@ -1,0 +1,92 @@
+{
+  "image": "calibration-004.png",
+  "saved_at": "2026-09-17T18:07:30.773+02:00",
+  "shape": [
+    720,
+    1280,
+    3
+  ],
+  "dtype": "uint8",
+  "camera": {
+    "requested": {
+      "device": "/dev/video0",
+      "width": 1280,
+      "height": 720,
+      "fps": 30.0,
+      "fourcc": "MJPG",
+      "autofocus": null,
+      "focus": null,
+      "auto_exposure": null,
+      "exposure": null,
+      "auto_wb": null,
+      "hflip": false
+    },
+    "actual": {
+      "frame_width": 1280.0,
+      "frame_height": 720.0,
+      "fps": 30.0,
+      "fourcc": 1196444237.0,
+      "autofocus": -1.0,
+      "focus": -1.0,
+      "auto_exposure": 3.0,
+      "exposure": 156.0,
+      "brightness": 128.0,
+      "contrast": 32.0,
+      "saturation": 64.0,
+      "gain": -1.0,
+      "gamma": 120.0,
+      "sharpness": 3.0,
+      "auto_wb": 1.0,
+      "wb_temperature": 4600.0,
+      "zoom": -1.0,
+      "backend": 200.0,
+      "buffersize": 1.0,
+      "fourcc_text": "MJPG"
+    },
+    "resolution": [
+      1280,
+      720
+    ],
+    "pixel_format": "MJPG",
+    "driver_fps": 30.0,
+    "measured_fps": 20.748365965043416,
+    "image_transform": {
+      "hflip": false,
+      "rotation_deg": 0,
+      "crop": null,
+      "resized": false,
+      "note": "raw samples are archived exactly as delivered; apply hflip to reach the frame the calibration describes"
+    },
+    "opened_at": "2026-09-17T18:06:39.132+02:00"
+  },
+  "stage": "intrinsics",
+  "role": "calibration",
+  "board": {
+    "inner_cols": 9,
+    "inner_rows": 6,
+    "square": 0.025,
+    "name": "chessboard-9x6-25mm",
+    "kind": "chessboard",
+    "size_m": [
+      0.25,
+      0.17500000000000002
+    ],
+    "counts": "inner corners"
+  },
+  "image_transform": {
+    "hflip": false,
+    "rotation_deg": 0,
+    "crop": null,
+    "resized": false,
+    "note": "raw samples are archived exactly as delivered; apply hflip to reach the frame the calibration describes"
+  },
+  "sharpness": 180.94813783245323,
+  "tilt": 1.1273020128425373,
+  "warp_px": 0.4164055287837982,
+  "points": 54,
+  "exposure": {
+    "mean": 92.70288411458333,
+    "clipped_high": 0.0,
+    "clipped_low": 0.11730143229166666
+  }
+}

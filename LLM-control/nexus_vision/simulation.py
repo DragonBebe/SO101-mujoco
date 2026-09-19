@@ -1,4 +1,5 @@
 """Camera/proprioception boundary and bounded low-level robot controls."""
+from contextlib import contextmanager, nullcontext
 from pathlib import Path
 import json
 import math
@@ -21,7 +22,16 @@ from so101_nexus.mujoco.stack_cube import StackCubeEnv
 from so101_nexus.mujoco.touch_env import TouchEnv
 from so101_nexus.mujoco.look_at_env import LookAtEnv
 from so101_nexus.mujoco.move_env import MoveEnv
-from .perception import unproject_pixel, locate_color
+from .cameras import CameraSuite, WRIST
+from .perception import intersect_pixel_with_plane, locate_color, unproject_pixel
+
+#: Arm joint order, matching the MJCF, the real servo bus (ID 1-5) and
+#: extrinsics.json's joint_convention; index 5 in target/low/high is the gripper.
+JOINT_NAMES = ('shoulder_pan', 'shoulder_lift', 'elbow_flex', 'wrist_flex', 'wrist_roll')
+#: Bound on a single 'joints' step with delta_deg: keeps one low-level command
+#: from swinging a joint across a large arc blind, same spirit as 'move's
+#: per-call seconds cap.
+MAX_JOINT_DELTA_DEG = 25.0
 
 TASKS = {
     'Touch': (TouchConfig, TouchEnv), 'LookAt': (LookAtConfig, LookAtEnv),
@@ -40,11 +50,12 @@ def number(value, low, high, name):
 
 class VisualSimulation:
     def __init__(self, task, directory, seed=4, viewer=False, realtime=False, camera_viewer=False,
-                 config_overrides=None):
+                 config_overrides=None, cameras=None):
         if camera_viewer and os.environ.get('MUJOCO_GL', 'glfw').lower() != 'glfw':
             raise ValueError('Use MUJOCO_GL=glfw with --camera-viewer')
         if task not in TASKS:
             raise ValueError(f'Unknown task: {task}')
+        self.cameras = cameras or CameraSuite()
         self.task, self.seed = task, seed
         self.directory = Path(directory).resolve()
         self.directory.mkdir(parents=True, exist_ok=True)
@@ -57,16 +68,25 @@ class VisualSimulation:
         self.camera_viewer = None
         self.realtime = realtime
         config_cls, env_cls = TASKS[task]
+        suite = self.cameras
+        # Only the placement the run actually uses is built: an unused overhead
+        # component would keep a renderer alive whose images nothing may read.
+        observations = [JointPositions(),
+            WristCamera(width=suite.width, height=suite.height,
+                        fov_deg_range=(suite.wrist_fov_deg,)*2,
+                        pitch_deg_range=(suite.wrist_pitch_deg,)*2,
+                        pos_x_noise=0, pos_y_center=0.055, pos_y_noise=0,
+                        pos_z_center=-0.045, pos_z_noise=0)]
+        if suite.placement == 'overhead':
+            observations.append(OverheadCamera(width=suite.width, height=suite.height,
+                                               fov_deg=suite.overhead_fov_deg))
         config_options = dict(
             spawn_center=(0.20, 0) if task == 'LookAt' else (0, 0),
             spawn_half_size=0.03, spawn_min_radius=0.17, spawn_max_radius=0.23,
             spawn_angle_half_range_deg=35, robot_init_qpos_noise=0,
             robot=RobotConfig(rest_qpos_deg=(70, -85, 85, 30, 0, 70)),
             terminate_on_success=False, reset_settle_frames=50,
-            obs_mode='visual', observations=[JointPositions(), OverheadCamera(),
-                WristCamera(fov_deg_range=(60,60), pitch_deg_range=(-32.66,-32.66),
-                            pos_x_noise=0, pos_y_center=0.055, pos_y_noise=0,
-                            pos_z_center=-0.045, pos_z_noise=0)],
+            obs_mode='visual', observations=observations,
         )
         config_options.update(config_overrides or {})
         config = config_cls(**config_options)
@@ -81,6 +101,14 @@ class VisualSimulation:
         self.target = self.data.qpos[self.qadr].copy()
         self.site = self.model.site('gripperframe').id
         self.scratch = mujoco.MjData(self.model)
+        self.side_camera_params = None
+        self._side_renderer = self._side_cam = None
+        self.calibrated_params = None
+        self._calibrated_renderer = self._calibrated_cam = None
+        if suite.placement == 'side':
+            self._build_side_camera()
+        elif suite.placement == 'calibrated':
+            self._build_calibrated_camera()
         if viewer:
             import mujoco.viewer as mjviewer
             self.viewer = mjviewer.launch_passive(self.model, self.data)
@@ -93,7 +121,9 @@ class VisualSimulation:
                 from .camera_viewer import CameraViewer, ProcessCameraViewer
                 # launch_passive owns a GLFW event loop in its render thread.
                 # A second GLFW window must not poll events in this process.
-                self.camera_viewer = ProcessCameraViewer() if viewer else CameraViewer()
+                view = self.cameras.preview_view()
+                self.camera_viewer = (ProcessCameraViewer(view) if viewer
+                                      else CameraViewer(view))
             self.observe()
         except BaseException:
             self.close()
@@ -110,43 +140,202 @@ class VisualSimulation:
             self.camera_viewer.close()
         if self.viewer:
             self.viewer.close()
+        if self._side_renderer is not None:
+            self._side_renderer.close()
+        if self._calibrated_renderer is not None:
+            self._calibrated_renderer.close()
         self.env.close()
 
+    def _build_side_camera(self):
+        """World-fixed bystander camera, framed from the scene's own scale.
+
+        A free ``MjvCamera`` is fixed in world coordinates: its lookat,
+        distance and orbit angles are resolved once, here, from the spawn
+        configuration. Nothing re-aims it at an object afterwards.
+        """
+        config = self.env.config
+        self.side_camera_params = self.cameras.side_camera(
+            config.spawn_center, config.spawn_max_radius,
+            config.spawn_angle_half_range_deg)
+        camera = mujoco.MjvCamera()
+        camera.type = mujoco.mjtCamera.mjCAMERA_FREE
+        camera.lookat[:] = self.side_camera_params['lookat']
+        camera.distance = self.side_camera_params['distance']
+        camera.azimuth = self.side_camera_params['azimuth']
+        camera.elevation = self.side_camera_params['elevation']
+        self._side_cam = camera
+        self._side_renderer = mujoco.Renderer(self.model, height=self.cameras.height,
+                                              width=self.cameras.width)
+
+    def _build_calibrated_camera(self):
+        """World-fixed copy of the measured real camera.
+
+        Pose and intrinsics come from the exported calibration, not from the
+        scene.  The offscreen buffer is enlarged when the calibrated image is
+        bigger than the model's default; other renderers keep their own size.
+        """
+        camera = self.cameras.calibrated_camera()
+        self.calibrated_params = camera
+        visual = self.model.vis.global_
+        visual.offwidth = max(int(visual.offwidth), camera['width'])
+        visual.offheight = max(int(visual.offheight), camera['height'])
+        self._calibrated_cam = mujoco.MjvCamera()
+        self._calibrated_cam.type = mujoco.mjtCamera.mjCAMERA_FREE
+        self._calibrated_renderer = mujoco.Renderer(self.model, height=camera['height'],
+                                                    width=camera['width'])
+
+    def _apply_calibrated_camera(self, renderer):
+        """Replace the scene's GL camera by the calibrated pinhole.
+
+        MuJoCo projects with ``glFrustum(center -/+ frustum_width, bottom,
+        top)`` on the near plane -- ``frustum_width`` is a half-width despite
+        its name -- so an arbitrary ``K`` (fx != fy, off-centre principal
+        point) is set exactly.  With pixel centres at integers, the image's
+        left edge is ``u = -0.5``: ``left = near * (-0.5 - cx) / fx``.
+        """
+        camera = self.calibrated_params
+        width, height = camera['width'], camera['height']
+        fx, fy, cx, cy = (camera[key] for key in ('fx', 'fy', 'cx', 'cy'))
+        rotation = camera['rotation']
+        for eye in renderer.scene.camera:
+            near = float(eye.frustum_near)
+            left, right = near*(-0.5 - cx)/fx, near*(width - 0.5 - cx)/fx
+            eye.pos[:] = camera['position']
+            eye.forward[:] = -rotation[:, 2]
+            eye.up[:] = rotation[:, 1]
+            eye.frustum_center = (left + right)/2
+            eye.frustum_width = (right - left)/2
+            eye.frustum_top = near*(cy + 0.5)/fy
+            eye.frustum_bottom = -near*(height - 0.5 - cy)/fy
+            eye.orthographic = 0
+
+    @contextmanager
+    def _render_fov(self, fov_deg):
+        """Render a free camera at ``fov_deg`` instead of the model default.
+
+        A free ``MjvCamera`` has no FOV of its own; ``mjv_updateCamera`` reads
+        the model's global vertical FOV. Swapping it around ``update_scene``
+        keeps each camera's own field of view without touching the other
+        camera's framing. The viewer lock is held so a passive window never
+        renders a frame with the borrowed value.
+        """
+        model = self.model
+        previous = float(model.vis.global_.fovy)
+        if fov_deg is None or abs(previous - float(fov_deg)) < 1e-9:
+            yield
+            return
+        with self.viewer.lock() if self.viewer else nullcontext():
+            model.vis.global_.fovy = float(fov_deg)
+            try:
+                yield
+            finally:
+                model.vis.global_.fovy = previous
+
     def _camera(self, name):
-        e = self.env
-        if name == 'overhead':
-            return e._overhead_obs_renderer, e._overhead_obs_cam
-        if name == 'wrist':
-            return e._wrist_renderer, e._wrist_cam_id
-        raise ValueError('camera must be overhead or wrist')
+        """Return ``(renderer, camera, render_fov_deg)`` for a configured name."""
+        e, suite = self.env, self.cameras
+        if name == suite.environment_camera:
+            if name == 'overhead':
+                return e._overhead_obs_renderer, e._overhead_obs_cam, suite.overhead_fov_deg
+            if name == 'calibrated':
+                return self._calibrated_renderer, self._calibrated_cam, None
+            return self._side_renderer, self._side_cam, suite.side_fov_deg
+        if name == WRIST:
+            return e._wrist_renderer, e._wrist_cam_id, None
+        raise ValueError(f'Unknown camera {name!r}; this run provides '
+                         f'{" and ".join(suite.names)}')
+
+    @staticmethod
+    def _calibration(renderer, shape):
+        """Pinhole intrinsics and world pose of the frame just rendered."""
+        left, right = renderer.scene.camera
+        # Mono rendering uses the average of stereo eye positions.
+        eye = (left.pos.astype(float) + right.pos.astype(float))/2
+        forward = np.array(left.forward, dtype=float)
+        up = np.array(left.up, dtype=float)
+        rotation = np.column_stack((np.cross(forward, up), up, -forward))
+        height, width = shape
+        near, top = float(left.frustum_near), float(left.frustum_top)
+        fy = height*near/(top-float(left.frustum_bottom))
+        # frustum_width is MuJoCo's horizontal half-width; zero means "derive
+        # from the viewport aspect", i.e. square pixels.
+        span = 2*float(left.frustum_width) or (top-float(left.frustum_bottom))*width/height
+        fx = width*near/span
+        edge = float(left.frustum_center) - span/2
+        return {'width': width, 'height': height, 'fx':fx, 'fy':fy,
+                'cx':-edge*fx/near - 0.5, 'cy':top*fy/near - 0.5,
+                'position':eye.tolist(), 'rotation':rotation.tolist()}
 
     def capture_cameras(self):
-        """Render without changing policy frame IDs, saved images or physics."""
+        """Render without changing policy frame IDs, saved images or physics.
+
+        Depth is ``None`` in the RGB-only modality: no depth buffer is read
+        and no placeholder array is fabricated.
+        """
         cameras = {}
-        for name in ('overhead', 'wrist'):
-            renderer, camera = self._camera(name)
-            renderer.disable_depth_rendering()
-            renderer.update_scene(self.data, camera=camera)
-            rgb = renderer.render().copy()
-            left, right = renderer.scene.camera
-            # Mono rendering uses the average of stereo eye positions.
-            eye = (left.pos.astype(float) + right.pos.astype(float))/2
-            forward = np.array(left.forward, dtype=float)
-            up = np.array(left.up, dtype=float)
-            rotation = np.column_stack((np.cross(forward, up), up, -forward))
-            height, width = rgb.shape[:2]
-            fy = height*float(left.frustum_near)/(float(left.frustum_top)-float(left.frustum_bottom))
-            calibration = {'width': width, 'height': height, 'fx':fy, 'fy':fy,
-                           'cx':(width-1)/2, 'cy':(height-1)/2,
-                           'position':eye.tolist(), 'rotation':rotation.tolist()}
-            renderer.enable_depth_rendering()
-            depth = renderer.render().copy()
-            # A cleared depth buffer is a finite far-plane value, not a hit.
-            depth[(depth >= float(left.frustum_far)*0.9999) |
-                  (depth <= float(left.frustum_near))] = np.nan
-            renderer.disable_depth_rendering()
+        for name in self.cameras.names:
+            renderer, camera, fov = self._camera(name)
+            with self._render_fov(fov):
+                renderer.disable_depth_rendering()
+                renderer.update_scene(self.data, camera=camera)
+                if name == 'calibrated':
+                    self._apply_calibrated_camera(renderer)
+                rgb = renderer.render().copy()
+                calibration = self._calibration(renderer, rgb.shape[:2])
+                depth = None
+                if self.cameras.depth_available:
+                    left = renderer.scene.camera[0]
+                    renderer.enable_depth_rendering()
+                    depth = renderer.render().copy()
+                    # A cleared depth buffer is a finite far-plane value, not a hit.
+                    depth[(depth >= float(left.frustum_far)*0.9999) |
+                          (depth <= float(left.frustum_near))] = np.nan
+                    renderer.disable_depth_rendering()
             cameras[name] = (rgb, depth, calibration)
         return cameras
+
+    def perception_report(self):
+        """What this run can and cannot do with the images it returns."""
+        suite = self.cameras
+        plane = ("method 'plane' with an explicit plane_z: the pixel ray is intersected "
+                 'with that horizontal plane. Depth-free and exact for content that '
+                 'really lies on the plane; wrong by the height error otherwise')
+        carve = ("pass object_height (and plane_z, default 0) to also estimate where an "
+                 'upright object of that height stands on the plane, and a grasp_center '
+                 'at half its height. Depth-free; assumes the object rests on the plane '
+                 'and is not badly occluded')
+        if suite.depth_available:
+            localize = ('methods: depth (default) reprojects registered depth to the '
+                        f'visible surface; {plane}')
+            propose = f'rendered-colour regions with a depth-derived surface point; {carve}'
+        else:
+            localize = (f"method 'depth' is unavailable: no depth is rendered. {plane}. "
+                        'This is the only 3D estimator in the rgb modality')
+            propose = f'rendered-colour regions as pixels and boxes, no surface point; {carve}'
+        return {'modality': suite.modality, 'depth_available': suite.depth_available,
+                'environment_camera': suite.environment_camera,
+                'cameras': list(suite.names),
+                'resolution': {name: suite.resolution(name) for name in suite.names},
+                'localize': localize, 'propose': propose,
+                'sources': 'rendered images, camera calibration and robot forward kinematics'}
+
+    def camera_report(self):
+        """Configuration plus the resolved pose of the environment camera."""
+        report = self.cameras.describe()
+        if self.side_camera_params:
+            resolved = dict(self.side_camera_params)
+            for key in ('lookat', 'eye'):
+                resolved[key] = np.asarray(resolved[key]).tolist()
+            report['side_resolved'] = resolved
+        if self.calibrated_params:
+            camera = self.calibrated_params
+            report['calibrated_resolved'] = {
+                key: (np.asarray(camera[key]).tolist() if key in ('position', 'rotation')
+                      else camera[key])
+                for key in ('width', 'height', 'fx', 'fy', 'cx', 'cy', 'position',
+                            'rotation', 'fov_deg', 'full_resolution', 'source',
+                            'robot_base_in_world')}
+        return report
 
     def update_camera_viewer(self):
         if self.camera_viewer and self.camera_viewer.due(float(self.data.time)):
@@ -159,16 +348,31 @@ class VisualSimulation:
         cameras = {}
         for name, (rgb, depth, calibration) in captured.items():
             rgb_path = self.directory / f'{self.frame_index:04d}-{name}.png'
-            depth_path = self.directory / f'{self.frame_index:04d}-{name}-depth.npy'
             Image.fromarray(rgb).save(rgb_path)
-            np.save(depth_path, depth)
+            entry = {'camera_id':name, 'placement':name, 'modality':self.cameras.modality,
+                     'mounting':self.cameras.mounting(name),
+                     'width':calibration['width'], 'height':calibration['height'],
+                     'rgb':str(rgb_path), 'calibration':calibration}
+            if depth is None:
+                # Explicitly absent, never a stale path and never zeros.
+                entry['depth'] = None
+                entry['depth_note'] = 'no depth in the rgb modality; none is rendered or saved'
+            else:
+                depth_path = self.directory / f'{self.frame_index:04d}-{name}-depth.npy'
+                np.save(depth_path, depth)
+                entry['depth'] = str(depth_path)
             self.frames[name] = (rgb, depth, calibration)
-            cameras[name] = {'rgb':str(rgb_path), 'depth':str(depth_path), 'calibration':calibration}
+            cameras[name] = entry
         obs = {'task':self.task, 'instruction':self.env.task_description,
                'frame_id':self.frame_id, 'time':float(self.data.time),
-               'robot': {'joints':self.data.qpos[self.qadr].tolist(),
+               'robot': {'joint_names':JOINT_NAMES,
+                         'joints':self.data.qpos[self.qadr].tolist(),
+                         'joints_deg':np.degrees(self.data.qpos[self.qadr[:5]]).tolist(),
                          'joint_velocities':self.data.qvel[self.dadr].tolist(),
-                         'tcp':self.env._get_tcp_pose().tolist()}, 'cameras':cameras}
+                         'joint_limits_deg':{'low':np.degrees(self.low[:5]).tolist(),
+                                             'high':np.degrees(self.high[:5]).tolist()},
+                         'tcp':self.env._get_tcp_pose().tolist()},
+               'cameras':cameras, 'perception':self.perception_report()}
         (self.directory/'observation.json').write_text(json.dumps(obs, indent=2)+'\n')
         if self.camera_viewer and self.camera_viewer.poll():
             self.camera_viewer.show(captured, float(self.data.time))
@@ -229,16 +433,55 @@ class VisualSimulation:
         if action == 'observe':return self.observe()
         if action in ('localize','propose'):
             if command.get('frame_id') != self.frame_id:raise ValueError('Stale or missing frame_id')
-            name = command.get('camera','overhead')
-            if name not in self.frames:raise ValueError('Unknown camera')
+            name = command.get('camera',self.cameras.environment_camera)
+            if name not in self.frames:
+                raise ValueError(f'Unknown camera {name!r}; this run provides '
+                                 f'{" and ".join(self.frames)}')
             rgb,depth,cal = self.frames[name]
             if action == 'propose':
-                return {'frame_id':self.frame_id, 'proposals':locate_color(rgb,depth,cal,command.get('color'))}
-            point = unproject_pixel(depth,cal,command.get('pixel'))
+                height = command.get('object_height')
+                if height is not None:
+                    height = number(height,0.002,0.3,'object_height')
+                plane = command.get('plane_z')
+                if plane is not None:
+                    plane = number(plane,-0.05,0.5,'plane_z')
+                if plane is not None and height is None:
+                    raise ValueError('plane_z only applies with object_height')
+                return {'frame_id':self.frame_id, 'camera':name,
+                        'modality':self.cameras.modality,
+                        'depth_available':depth is not None,
+                        'proposals':locate_color(rgb,depth,cal,command.get('color'),
+                                                 plane_z=plane,object_height=height)}
+            method = command.get('method', 'depth' if depth is not None else 'plane')
+            if method not in ('depth','plane'):
+                raise ValueError("localize method must be 'depth' or 'plane'")
             point_id = f'{self.episode_token}:point-{len(self.points)+1}'
+            source = {'camera':name,'pixel':command.get('pixel')}
+            if method == 'depth':
+                if depth is None:
+                    # Never silently substitute: depth reprojection measures the
+                    # surface, and this modality renders none.
+                    raise ValueError(
+                        "localize method 'depth' is not supported in the 'rgb' camera "
+                        'modality: no depth is rendered. Use method "plane" with an '
+                        'explicit plane_z, or restart with --camera-modality rgbd.')
+                point = unproject_pixel(depth,cal,command.get('pixel'))
+                source['method'] = 'depth_reprojection'
+            else:
+                # The plane is an assumption, so the caller has to state it:
+                # a pixel on top of an object needs that object's own height.
+                if 'plane_z' not in command:
+                    raise ValueError(
+                        'plane localization needs an explicit plane_z: use 0 for the '
+                        'support surface, or the top height of whatever the pixel '
+                        'shows. It is wrong wherever that assumption is wrong.')
+                plane = number(command['plane_z'],-0.05,0.5,'plane_z')
+                point = intersect_pixel_with_plane(cal,command.get('pixel'),plane)
+                source['method'] = 'ray_plane_intersection'
+                source['assumed_plane_z'] = plane
             self.points[point_id] = point
-            return {'frame_id':self.frame_id,'point_id':point_id,'surface_world':point.tolist(),
-                    'source':{'camera':name,'pixel':command['pixel']}}
+            return {'frame_id':self.frame_id,'point_id':point_id,
+                    'surface_world':point.tolist(),'source':source}
         if action in ('move','look_at'):
             seconds = number(command.get('seconds',2),0.2,8,'seconds')
             if 'point_id' in command:
@@ -268,6 +511,33 @@ class VisualSimulation:
                         seed=self.solve_ik(start+(position-start)*t,seed=seed,mode=mode);path.append(seed)
                     for q in path:self._move_joints(q,seconds/len(path))
                 else:self._move_joints(end,seconds)
+            self._advance(25)
+        elif action == 'joints':
+            seconds = number(command.get('seconds',2),0.2,8,'seconds')
+            has_delta, has_target = 'delta_deg' in command, 'target_deg' in command
+            if has_delta == has_target:
+                raise ValueError("joints needs exactly one of delta_deg or target_deg")
+            values = command['delta_deg'] if has_delta else command['target_deg']
+            if not isinstance(values,dict) or not values or not set(values) <= set(JOINT_NAMES):
+                raise ValueError(f'joints keys must be a nonempty subset of {JOINT_NAMES}')
+            current_deg = np.degrees(self.target[:5])
+            target_deg = current_deg.copy()
+            for i,name in enumerate(JOINT_NAMES):
+                if name not in values:continue
+                if has_delta:
+                    step = number(values[name],-MAX_JOINT_DELTA_DEG,MAX_JOINT_DELTA_DEG,name)
+                    target_deg[i] = current_deg[i]+step
+                else:
+                    target_deg[i] = number(values[name],-180,180,name)
+            target_rad = np.radians(target_deg)
+            low_deg, high_deg = np.degrees(self.low[:5]), np.degrees(self.high[:5])
+            if not np.all((target_rad >= self.low[:5]) & (target_rad <= self.high[:5])):
+                raise ValueError('target outside joint limits (deg): '
+                                 f'low={low_deg.round(1).tolist()} high={high_deg.round(1).tolist()}')
+            # No inverse kinematics: this sets joint targets directly, the way a
+            # teleoperator or a real per-joint script would, at whatever TCP
+            # pose that produces. The caller reads that pose back from `observe`.
+            self._move_joints(target_rad,seconds)
             self._advance(25)
         elif action == 'gripper':
             opening=number(command.get('opening'),0,1,'opening')
