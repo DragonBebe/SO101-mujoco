@@ -1,0 +1,84 @@
+{
+  "task": {
+    "id": "4571fbe8bbf446dd8dede045854fc504",
+    "instruction": "将红色方块放到绿色方块上；先移开上层绿色方块，再叠放红色方块，保持纯RGB",
+    "status": "succeeded",
+    "steps": 19,
+    "max_steps": 60,
+    "failures": 0,
+    "verification": "codex_visual",
+    "evidence": "先依据已知红色方块25毫米高度与当前RGB堆叠画面，以plane_z=0.025定位上层绿色方块，并用腕部图复核，将其移至经RGB射线与z=0桌面求交确认的旁边空位。释放、退开和等待后重新定位两块方块，抓起红色方块叠在绿色方块上。现已打开夹爪并抬起横向退开，等待2秒后最新侧视RGB显示红色在上、绿色在下，两块直立接合，堆叠与退开前后保持一致，没有倾倒。全程纯RGB、相机标定和明确平面假设，无深度或物体仿真真值。",
+    "evidence_frame": "4f1043b227694006:frame-34"
+  },
+  "scene": {
+    "name": "workbench",
+    "objects": [
+      "red cube (25 mm)",
+      "green cube (25 mm)",
+      "yellow cylinder (diameter/height 25 mm)",
+      "purple cube (35 mm)"
+    ],
+    "regions": [
+      "blue goal disc (radius 35 mm)"
+    ],
+    "coordinates": "world XYZ in meters; z=0 is the support surface",
+    "perception": "RGB only from the side and wrist cameras; no depth. 3D comes from the plane assumption: intersect a pixel ray with a stated horizontal plane, or give propose an object_height to estimate where an upright object of that size stands on the table. Object locations must still be observed, not assumed",
+    "motion": "IK with joint limits; no general collision-free path planner"
+  },
+  "cameras": {
+    "modality": "rgb",
+    "depth_available": false,
+    "environment_camera": "side",
+    "environment_placement": "side",
+    "environment_mounting": "world_fixed",
+    "wrist_camera": "wrist",
+    "wrist_mounting": "robot_wrist",
+    "cameras": [
+      "side",
+      "wrist"
+    ],
+    "resolution": {
+      "width": 640,
+      "height": 480
+    },
+    "environment_fov_deg": 50.0,
+    "side_angles_deg": {
+      "azimuth": 130.0,
+      "elevation": -32.0
+    },
+    "note": "side placement is a simulation starting point, not a calibrated copy of physical hardware",
+    "side_resolved": {
+      "lookat": [
+        0.17,
+        0.0,
+        0.125
+      ],
+      "distance": 0.6613576679335923,
+      "azimuth": 130.0,
+      "elevation": -32.0,
+      "fov_deg": 50.0,
+      "eye": [
+        0.5305158585900223,
+        -0.42964606966184515,
+        0.4754661687863575
+      ],
+      "framed": {
+        "low": [
+          0.0,
+          -0.308144647592461,
+          0.0
+        ],
+        "high": [
+          0.34,
+          0.308144647592461,
+          0.25
+        ]
+      }
+    }
+  },
+  "world": 1,
+  "seed": 4,
+  "running": true,
+  "frame_id": "4f1043b227694006:frame-34",
+  "sequence": 52
+}

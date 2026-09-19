@@ -11,7 +11,8 @@ from nexus_vision.simulation import VisualSimulation
 def test_visual_observation_has_images_and_no_object_coordinates(tmp_path):
     with VisualSimulation('Touch', tmp_path, seed=4) as sim:
         obs = sim.observe()
-        assert set(obs) == {'task', 'instruction', 'frame_id', 'time', 'robot', 'cameras'}
+        assert set(obs) == {'task', 'instruction', 'frame_id', 'time', 'robot',
+                            'cameras', 'perception'}
         for camera in obs['cameras'].values():
             assert Path(camera['rgb']).exists()
             assert np.load(camera['depth']).shape == (480, 640)

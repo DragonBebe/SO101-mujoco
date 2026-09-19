@@ -1,0 +1,109 @@
+{
+  "locked_at": "2026-09-18T11:13:56+02:00",
+  "note": "C920 environment camera on fixed mount, 1920x1080 MJPG, autofocus off, focus 0; viewpoint verified c920-view-03",
+  "device": {
+    "device": "/dev/video0",
+    "node": "video0",
+    "name": "HD Pro Webcam C920",
+    "index": "0",
+    "role_hint": "external_usb",
+    "usb_id": "046d:082d",
+    "usb_product": "HD Pro Webcam C920",
+    "usb_manufacturer": "",
+    "usb_serial": "B222F89F",
+    "usb_path": "3-2.2",
+    "configured_as": "/dev/v4l/by-id/usb-046d_HD_Pro_Webcam_C920_B222F89F-video-index0"
+  },
+  "camera": {
+    "requested": {
+      "device": "/dev/v4l/by-id/usb-046d_HD_Pro_Webcam_C920_B222F89F-video-index0",
+      "width": 1920,
+      "height": 1080,
+      "fps": 30.0,
+      "fourcc": "MJPG",
+      "autofocus": false,
+      "focus": 0.0,
+      "auto_exposure": null,
+      "exposure": null,
+      "auto_wb": null,
+      "hflip": false
+    },
+    "actual": {
+      "frame_width": 1920.0,
+      "frame_height": 1080.0,
+      "fps": 30.0,
+      "fourcc": 1196444237.0,
+      "autofocus": 0.0,
+      "focus": 0.0,
+      "auto_exposure": 3.0,
+      "exposure": 83.0,
+      "brightness": 128.0,
+      "contrast": 128.0,
+      "saturation": 128.0,
+      "gain": 0.0,
+      "gamma": -1.0,
+      "sharpness": 128.0,
+      "auto_wb": 1.0,
+      "wb_temperature": 4675.0,
+      "zoom": 100.0,
+      "backend": 200.0,
+      "buffersize": 1.0,
+      "fourcc_text": "MJPG"
+    },
+    "resolution": [
+      1920,
+      1080
+    ],
+    "pixel_format": "MJPG",
+    "driver_fps": 30.0,
+    "measured_fps": 30.10587282622566,
+    "image_transform": {
+      "hflip": false,
+      "rotation_deg": 0,
+      "crop": null,
+      "resized": false,
+      "note": "raw samples are archived exactly as delivered; apply hflip to reach the frame the calibration describes"
+    },
+    "opened_at": "2026-09-18T11:13:54.930+02:00"
+  },
+  "reference_image": "/home/dragon/SO101-mujoco/LLM-control/calib/setup-02/reference.png",
+  "anchors": [
+    {
+      "x": 96,
+      "y": 21,
+      "w": 180,
+      "h": 120
+    },
+    {
+      "x": 576,
+      "y": 21,
+      "w": 180,
+      "h": 120
+    },
+    {
+      "x": 1344,
+      "y": 21,
+      "w": 180,
+      "h": 120
+    },
+    {
+      "x": 1728,
+      "y": 21,
+      "w": 180,
+      "h": 120
+    },
+    {
+      "x": 96,
+      "y": 270,
+      "w": 180,
+      "h": 120
+    },
+    {
+      "x": 1728,
+      "y": 270,
+      "w": 180,
+      "h": 120
+    }
+  ],
+  "valid_while": "the laptop, its lid angle, the robot base and the table stay exactly as they are; any of those moving invalidates the extrinsics, not the intrinsics"
+}

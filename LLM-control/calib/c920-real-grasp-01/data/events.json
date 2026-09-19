@@ -1,0 +1,886 @@
+[
+ {
+  "id": "E00",
+  "event": "start pose (rest, torque off)",
+  "result": "rest",
+  "servo_ticks_measured": {
+   "1": 1925,
+   "2": 969,
+   "3": 2962,
+   "4": 2694,
+   "5": 2153,
+   "6": 2305
+  },
+  "joint_deg_measured": {
+   "shoulder_pan": -15.47,
+   "shoulder_lift": -95.22,
+   "elbow_flex": 82.42,
+   "wrist_flex": 75.33,
+   "wrist_roll": 9.27
+  },
+  "gripper_ticks": 2305,
+  "fk_grasp_centre_mm": [
+   201.0,
+   46.7,
+   24.4
+  ],
+  "fk_tcp_mm": [
+   164.0,
+   35.7,
+   33.4
+  ]
+ },
+ {
+  "id": "E01",
+  "event": "hover over red, gripper opened",
+  "result": "user: needs +2 cm toward camera",
+  "servo_ticks_measured": {
+   "1": 1966,
+   "2": 1930,
+   "3": 2139,
+   "4": 2896,
+   "5": 2102,
+   "6": 2798
+  },
+  "joint_deg_measured": {
+   "shoulder_pan": -11.87,
+   "shoulder_lift": -10.74,
+   "elbow_flex": 10.07,
+   "wrist_flex": 93.09,
+   "wrist_roll": 4.79
+  },
+  "gripper_ticks": 2798,
+  "fk_grasp_centre_mm": [
+   240.7,
+   40.8,
+   52.5
+  ],
+  "fk_tcp_mm": [
+   212.1,
+   36.4,
+   79.6
+  ],
+  "cmd_grasp_centre_mm": [
+   248.0,
+   40.1,
+   60.5
+  ],
+  "joint_deg_commanded_ik": {
+   "shoulder_pan": -11.37,
+   "shoulder_lift": -10.93,
+   "elbow_flex": 7.56,
+   "wrist_flex": 93.37,
+   "wrist_roll": 4.3
+  },
+  "servo_ticks_commanded_ik": {
+   "1": 1972,
+   "2": 1928,
+   "3": 2110,
+   "4": 2899,
+   "5": 2096
+  },
+  "camera_cube_grasp_centre_mm": [
+   248.0,
+   40.1,
+   0.5
+  ],
+  "cmd_minus_camera_mm": [
+   0.0,
+   0.0,
+   60.0
+  ],
+  "fk_minus_camera_mm": [
+   -7.3,
+   0.7,
+   52.0
+  ],
+  "sag_fk_minus_cmd_mm": [
+   -7.3,
+   0.7,
+   -8.0
+  ]
+ },
+ {
+  "id": "E02",
+  "event": "after user correction +20 mm toward camera",
+  "result": "wrist cam: cube still ahead",
+  "servo_ticks_measured": {
+   "1": 1994,
+   "2": 2042,
+   "3": 1992,
+   "4": 2912,
+   "5": 2096,
+   "6": 2798
+  },
+  "joint_deg_measured": {
+   "shoulder_pan": -9.41,
+   "shoulder_lift": -0.89,
+   "elbow_flex": -2.85,
+   "wrist_flex": 94.5,
+   "wrist_roll": 4.26
+  },
+  "gripper_ticks": 2798,
+  "fk_grasp_centre_mm": [
+   266.6,
+   35.8,
+   58.0
+  ],
+  "fk_tcp_mm": [
+   237.0,
+   32.7,
+   84.2
+  ],
+  "cmd_grasp_centre_mm": [
+   267.6,
+   36.3,
+   60.5
+  ],
+  "joint_deg_commanded_ik": {
+   "shoulder_pan": -9.49,
+   "shoulder_lift": -1.48,
+   "elbow_flex": -2.99,
+   "wrist_flex": 94.47,
+   "wrist_roll": 4.3
+  },
+  "servo_ticks_commanded_ik": {
+   "1": 1993,
+   "2": 2035,
+   "3": 1990,
+   "4": 2912,
+   "5": 2096
+  },
+  "camera_cube_grasp_centre_mm": [
+   248.0,
+   40.1,
+   0.5
+  ],
+  "cmd_minus_camera_mm": [
+   19.6,
+   -3.8,
+   60.0
+  ],
+  "fk_minus_camera_mm": [
+   18.6,
+   -4.3,
+   57.5
+  ],
+  "sag_fk_minus_cmd_mm": [
+   -1.0,
+   -0.5,
+   -2.5
+  ]
+ },
+ {
+  "id": "E03",
+  "event": "RED GRASP #1 closed (success)",
+  "result": "held, gripper 2271",
+  "servo_ticks_measured": {
+   "1": 1998,
+   "2": 2170,
+   "3": 2040,
+   "4": 2749,
+   "5": 2096,
+   "6": 2271
+  },
+  "joint_deg_measured": {
+   "shoulder_pan": -9.05,
+   "shoulder_lift": 10.36,
+   "elbow_flex": 1.37,
+   "wrist_flex": 80.17,
+   "wrist_roll": 4.26
+  },
+  "gripper_ticks": 2271,
+  "fk_grasp_centre_mm": [
+   283.3,
+   37.0,
+   13.6
+  ],
+  "fk_tcp_mm": [
+   254.2,
+   34.2,
+   40.4
+  ],
+  "cmd_grasp_centre_mm": [
+   287.6,
+   36.3,
+   20.5
+  ],
+  "joint_deg_commanded_ik": {
+   "shoulder_pan": -8.74,
+   "shoulder_lift": 8.93,
+   "elbow_flex": 0.9,
+   "wrist_flex": 80.17,
+   "wrist_roll": 4.3
+  },
+  "servo_ticks_commanded_ik": {
+   "1": 2002,
+   "2": 2154,
+   "3": 2035,
+   "4": 2749,
+   "5": 2096
+  },
+  "camera_cube_grasp_centre_mm": [
+   248.0,
+   40.1,
+   0.5
+  ],
+  "cmd_minus_camera_mm": [
+   39.6,
+   -3.8,
+   20.0
+  ],
+  "fk_minus_camera_mm": [
+   35.3,
+   -3.1,
+   13.1
+  ],
+  "sag_fk_minus_cmd_mm": [
+   -4.3,
+   0.7,
+   -6.9
+  ]
+ },
+ {
+  "id": "E04",
+  "event": "red lifted 30 mm",
+  "result": "cube off table",
+  "servo_ticks_measured": {
+   "1": 1998,
+   "2": 2167,
+   "3": 1898,
+   "4": 2892,
+   "5": 2096,
+   "6": 2269
+  },
+  "joint_deg_measured": {
+   "shoulder_pan": -9.05,
+   "shoulder_lift": 10.1,
+   "elbow_flex": -11.12,
+   "wrist_flex": 92.74,
+   "wrist_roll": 4.26
+  },
+  "gripper_ticks": 2269,
+  "fk_grasp_centre_mm": [
+   285.0,
+   37.3,
+   43.9
+  ],
+  "fk_tcp_mm": [
+   255.8,
+   34.5,
+   70.6
+  ],
+  "cmd_grasp_centre_mm": [
+   287.6,
+   36.3,
+   50.5
+  ],
+  "joint_deg_commanded_ik": {
+   "shoulder_pan": -8.74,
+   "shoulder_lift": 8.57,
+   "elbow_flex": -11.38,
+   "wrist_flex": 92.81,
+   "wrist_roll": 4.3
+  },
+  "servo_ticks_commanded_ik": {
+   "1": 2002,
+   "2": 2150,
+   "3": 1895,
+   "4": 2893,
+   "5": 2096
+  },
+  "sag_fk_minus_cmd_mm": [
+   -2.6,
+   1.0,
+   -6.6
+  ]
+ },
+ {
+  "id": "E05",
+  "event": "red lifted 60 mm",
+  "result": "",
+  "servo_ticks_measured": {
+   "1": 1998,
+   "2": 2215,
+   "3": 1685,
+   "4": 3057,
+   "5": 2096,
+   "6": 2269
+  },
+  "joint_deg_measured": {
+   "shoulder_pan": -9.05,
+   "shoulder_lift": 14.32,
+   "elbow_flex": -29.84,
+   "wrist_flex": 107.25,
+   "wrist_roll": 4.26
+  },
+  "gripper_ticks": 2269,
+  "fk_grasp_centre_mm": [
+   286.4,
+   37.5,
+   73.6
+  ],
+  "fk_tcp_mm": [
+   257.3,
+   34.7,
+   100.3
+  ],
+  "cmd_grasp_centre_mm": [
+   287.6,
+   36.3,
+   80.5
+  ],
+  "joint_deg_commanded_ik": {
+   "shoulder_pan": -8.74,
+   "shoulder_lift": 12.5,
+   "elbow_flex": -29.81,
+   "wrist_flex": 107.31,
+   "wrist_roll": 4.3
+  },
+  "servo_ticks_commanded_ik": {
+   "1": 2002,
+   "2": 2194,
+   "3": 1685,
+   "4": 3058,
+   "5": 2096
+  },
+  "sag_fk_minus_cmd_mm": [
+   -1.2,
+   1.2,
+   -6.9
+  ]
+ },
+ {
+  "id": "E06",
+  "event": "first translate step toward green",
+  "result": "",
+  "servo_ticks_measured": {
+   "1": 1939,
+   "2": 2217,
+   "3": 1692,
+   "4": 3057,
+   "5": 2096,
+   "6": 2269
+  },
+  "joint_deg_measured": {
+   "shoulder_pan": -14.24,
+   "shoulder_lift": 14.5,
+   "elbow_flex": -29.23,
+   "wrist_flex": 107.25,
+   "wrist_roll": 4.26
+  },
+  "gripper_ticks": 2269,
+  "fk_grasp_centre_mm": [
+   280.4,
+   59.3,
+   71.2
+  ],
+  "fk_tcp_mm": [
+   251.9,
+   54.0,
+   98.3
+  ],
+  "cmd_grasp_centre_mm": [
+   283.6,
+   60.3,
+   80.5
+  ],
+  "joint_deg_commanded_ik": {
+   "shoulder_pan": -14.28,
+   "shoulder_lift": 12.79,
+   "elbow_flex": -30.19,
+   "wrist_flex": 107.33,
+   "wrist_roll": 4.31
+  },
+  "servo_ticks_commanded_ik": {
+   "1": 1939,
+   "2": 2198,
+   "3": 1681,
+   "4": 3058,
+   "5": 2096
+  },
+  "sag_fk_minus_cmd_mm": [
+   -3.2,
+   -1.0,
+   -9.3
+  ]
+ },
+ {
+  "id": "E07",
+  "event": "RED RELEASED ON GREEN (success)",
+  "result": "green cam pos; red stacked, ok",
+  "servo_ticks_measured": {
+   "1": 1729,
+   "2": 2296,
+   "3": 1709,
+   "4": 2948,
+   "5": 2098,
+   "6": 2497
+  },
+  "joint_deg_measured": {
+   "shoulder_pan": -32.7,
+   "shoulder_lift": 21.44,
+   "elbow_flex": -27.73,
+   "wrist_flex": 97.66,
+   "wrist_roll": 4.44
+  },
+  "gripper_ticks": 2497,
+  "fk_grasp_centre_mm": [
+   266.0,
+   143.7,
+   45.1
+  ],
+  "fk_tcp_mm": [
+   240.2,
+   129.3,
+   71.6
+  ],
+  "cmd_grasp_centre_mm": [
+   268.6,
+   143.8,
+   50.5
+  ],
+  "joint_deg_commanded_ik": {
+   "shoulder_pan": -32.45,
+   "shoulder_lift": 20.48,
+   "elbow_flex": -28.21,
+   "wrist_flex": 97.73,
+   "wrist_roll": 4.3
+  },
+  "servo_ticks_commanded_ik": {
+   "1": 1732,
+   "2": 2285,
+   "3": 1704,
+   "4": 2949,
+   "5": 2096
+  },
+  "camera_cube_grasp_centre_mm": [
+   234.8,
+   145.2,
+   3.3
+  ],
+  "cmd_minus_camera_mm": [
+   33.8,
+   -1.4,
+   47.2
+  ],
+  "fk_minus_camera_mm": [
+   31.2,
+   -1.5,
+   41.8
+  ],
+  "sag_fk_minus_cmd_mm": [
+   -2.6,
+   -0.1,
+   -5.4
+  ]
+ },
+ {
+  "id": "E08",
+  "event": "red re-grasped from stack top",
+  "result": "gripper 2271",
+  "fk_grasp_centre_mm": [
+   265.1,
+   142.2,
+   39.1
+  ],
+  "cmd_grasp_centre_mm": [
+   268.6,
+   143.8,
+   47.5
+  ],
+  "joint_deg_commanded_ik": {
+   "shoulder_pan": -32.45,
+   "shoulder_lift": 20.16,
+   "elbow_flex": -26.43,
+   "wrist_flex": 96.28,
+   "wrist_roll": 4.3
+  },
+  "servo_ticks_commanded_ik": {
+   "1": 1732,
+   "2": 2281,
+   "3": 1724,
+   "4": 2932,
+   "5": 2096
+  },
+  "sag_fk_minus_cmd_mm": [
+   -3.5,
+   -1.6,
+   -8.4
+  ]
+ },
+ {
+  "id": "E09",
+  "event": "red placed back on table",
+  "result": "camera afterwards saw red at this position",
+  "fk_grasp_centre_mm": [
+   283.8,
+   37.2,
+   16.4
+  ],
+  "cmd_grasp_centre_mm": [
+   287.6,
+   36.3,
+   23.5
+  ],
+  "joint_deg_commanded_ik": {
+   "shoulder_pan": -8.74,
+   "shoulder_lift": 8.74,
+   "elbow_flex": -0.13,
+   "wrist_flex": 81.39,
+   "wrist_roll": 4.3
+  },
+  "servo_ticks_commanded_ik": {
+   "1": 2002,
+   "2": 2152,
+   "3": 2023,
+   "4": 2763,
+   "5": 2096
+  },
+  "camera_cube_grasp_centre_mm": [
+   262.4,
+   40.8,
+   0.7
+  ],
+  "cmd_minus_camera_mm": [
+   25.2,
+   -4.5,
+   22.8
+  ],
+  "fk_minus_camera_mm": [
+   21.4,
+   -3.6,
+   15.7
+  ],
+  "sag_fk_minus_cmd_mm": [
+   -3.8,
+   0.9,
+   -7.1
+  ]
+ },
+ {
+  "id": "E10",
+  "event": "GREEN GRASP #1 (success, cube tilted in grip)",
+  "result": "fixed jaw nudged cube ~5 mm -y first; gripper 2272",
+  "fk_grasp_centre_mm": [
+   265.2,
+   148.1,
+   14.3
+  ],
+  "cmd_grasp_centre_mm": [
+   268.6,
+   149.8,
+   20.5
+  ],
+  "joint_deg_commanded_ik": {
+   "shoulder_pan": -33.5,
+   "shoulder_lift": 21.28,
+   "elbow_flex": -16.62,
+   "wrist_flex": 85.34,
+   "wrist_roll": 4.3
+  },
+  "servo_ticks_commanded_ik": {
+   "1": 1720,
+   "2": 2294,
+   "3": 1835,
+   "4": 2808,
+   "5": 2096
+  },
+  "camera_cube_grasp_centre_mm": [
+   234.8,
+   145.2,
+   3.3
+  ],
+  "cmd_minus_camera_mm": [
+   33.8,
+   4.6,
+   17.2
+  ],
+  "fk_minus_camera_mm": [
+   30.4,
+   2.9,
+   11.0
+  ],
+  "sag_fk_minus_cmd_mm": [
+   -3.4,
+   -1.7,
+   -6.2
+  ]
+ },
+ {
+  "id": "E11",
+  "event": "green released over red (FAIL: fell forward, red pushed -42 mm x)",
+  "result": "red cam pos; green ~13 mm +x of red",
+  "fk_grasp_centre_mm": [
+   284.5,
+   31.9,
+   51.5
+  ],
+  "cmd_grasp_centre_mm": [
+   287.6,
+   31.3,
+   55.5
+  ],
+  "joint_deg_commanded_ik": {
+   "shoulder_pan": -7.61,
+   "shoulder_lift": 8.49,
+   "elbow_flex": -13.41,
+   "wrist_flex": 94.92,
+   "wrist_roll": 4.3
+  },
+  "servo_ticks_commanded_ik": {
+   "1": 2014,
+   "2": 2149,
+   "3": 1872,
+   "4": 2917,
+   "5": 2096
+  },
+  "camera_cube_grasp_centre_mm": [
+   262.4,
+   40.8,
+   0.7
+  ],
+  "cmd_minus_camera_mm": [
+   25.2,
+   -9.5,
+   54.8
+  ],
+  "fk_minus_camera_mm": [
+   22.1,
+   -8.9,
+   50.8
+  ],
+  "sag_fk_minus_cmd_mm": [
+   -3.1,
+   0.6,
+   -4.0
+  ]
+ },
+ {
+  "id": "E12",
+  "event": "far green attempt A (MISS)",
+  "result": "gripper 2264 empty; jaws at cube-top height",
+  "fk_grasp_centre_mm": [
+   335.9,
+   75.7,
+   11.5
+  ],
+  "cmd_grasp_centre_mm": [
+   344.0,
+   77.0,
+   28.5
+  ],
+  "joint_deg_commanded_ik": {
+   "shoulder_pan": -14.45,
+   "shoulder_lift": 53.95,
+   "elbow_flex": -73.82,
+   "wrist_flex": 107.13,
+   "wrist_roll": 4.75
+  },
+  "servo_ticks_commanded_ik": {
+   "1": 1937,
+   "2": 2666,
+   "3": 1185,
+   "4": 3056,
+   "5": 2102
+  },
+  "camera_cube_grasp_centre_mm": [
+   314.2,
+   75.0,
+   2.5
+  ],
+  "cmd_minus_camera_mm": [
+   29.8,
+   2.0,
+   26.0
+  ],
+  "fk_minus_camera_mm": [
+   21.7,
+   0.7,
+   9.0
+  ],
+  "sag_fk_minus_cmd_mm": [
+   -8.1,
+   -1.3,
+   -17.0
+  ]
+ },
+ {
+  "id": "E13",
+  "event": "far green attempt B (MISS)",
+  "result": "gripper 2263 empty; then opening low knocked cube",
+  "fk_grasp_centre_mm": [
+   325.6,
+   69.0,
+   12.6
+  ],
+  "cmd_grasp_centre_mm": [
+   326.5,
+   68.7,
+   13.5
+  ],
+  "joint_deg_commanded_ik": {
+   "shoulder_pan": -13.8,
+   "shoulder_lift": 35.74,
+   "elbow_flex": -36.47,
+   "wrist_flex": 90.73,
+   "wrist_roll": 4.3
+  },
+  "servo_ticks_commanded_ik": {
+   "1": 1944,
+   "2": 2459,
+   "3": 1610,
+   "4": 2869,
+   "5": 2096
+  },
+  "camera_cube_grasp_centre_mm": [
+   306.7,
+   60.8,
+   2.0
+  ],
+  "cmd_minus_camera_mm": [
+   19.8,
+   7.9,
+   11.5
+  ],
+  "fk_minus_camera_mm": [
+   18.9,
+   8.2,
+   10.6
+  ],
+  "sag_fk_minus_cmd_mm": [
+   -0.9,
+   0.3,
+   -0.9
+  ]
+ },
+ {
+  "id": "E14",
+  "event": "GREEN GRASP #2 at known site (success)",
+  "result": "gripper 2272",
+  "fk_grasp_centre_mm": [
+   302.7,
+   35.2,
+   12.3
+  ],
+  "cmd_grasp_centre_mm": [
+   308.0,
+   34.6,
+   20.5
+  ],
+  "joint_deg_commanded_ik": {
+   "shoulder_pan": -7.73,
+   "shoulder_lift": 19.6,
+   "elbow_flex": -14.12,
+   "wrist_flex": 84.52,
+   "wrist_roll": 4.3
+  },
+  "servo_ticks_commanded_ik": {
+   "1": 2013,
+   "2": 2275,
+   "3": 1864,
+   "4": 2798,
+   "5": 2096
+  },
+  "camera_cube_grasp_centre_mm": [
+   268.4,
+   38.4,
+   0.7
+  ],
+  "cmd_minus_camera_mm": [
+   39.6,
+   -3.8,
+   19.8
+  ],
+  "fk_minus_camera_mm": [
+   34.3,
+   -3.2,
+   11.6
+  ],
+  "sag_fk_minus_cmd_mm": [
+   -5.3,
+   0.6,
+   -8.2
+  ]
+ },
+ {
+  "id": "E15",
+  "event": "GREEN RELEASED ON RED (success)",
+  "result": "red cam pos; after (-8,-3) mm visual correction",
+  "fk_grasp_centre_mm": [
+   247.3,
+   32.7,
+   46.0
+  ],
+  "cmd_grasp_centre_mm": [
+   249.6,
+   33.1,
+   50.5
+  ],
+  "joint_deg_commanded_ik": {
+   "shoulder_pan": -9.44,
+   "shoulder_lift": -11.04,
+   "elbow_flex": 11.93,
+   "wrist_flex": 89.11,
+   "wrist_roll": 4.3
+  },
+  "servo_ticks_commanded_ik": {
+   "1": 1994,
+   "2": 1927,
+   "3": 2160,
+   "4": 2851,
+   "5": 2096
+  },
+  "camera_cube_grasp_centre_mm": [
+   218.0,
+   39.9,
+   0.0
+  ],
+  "cmd_minus_camera_mm": [
+   31.6,
+   -6.8,
+   50.5
+  ],
+  "fk_minus_camera_mm": [
+   29.3,
+   -7.2,
+   46.0
+  ],
+  "sag_fk_minus_cmd_mm": [
+   -2.3,
+   -0.4,
+   -4.5
+  ]
+ },
+ {
+  "id": "E16",
+  "event": "home (start pose), then torque released",
+  "result": "rest; drift <= 2 ticks",
+  "servo_ticks_measured": {
+   "1": 1927,
+   "2": 974,
+   "3": 2960,
+   "4": 2701,
+   "5": 2149,
+   "6": 2497
+  },
+  "joint_deg_measured": {
+   "shoulder_pan": -15.3,
+   "shoulder_lift": -94.78,
+   "elbow_flex": 82.25,
+   "wrist_flex": 75.95,
+   "wrist_roll": 8.92
+  },
+  "gripper_ticks": 2497,
+  "fk_grasp_centre_mm": [
+   199.4,
+   45.4,
+   22.8
+  ],
+  "fk_tcp_mm": [
+   162.4,
+   34.7,
+   32.4
+  ]
+ }
+]

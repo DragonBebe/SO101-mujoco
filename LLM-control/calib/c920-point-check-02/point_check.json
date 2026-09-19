@@ -1,0 +1,418 @@
+{
+  "records": [
+    {
+      "index": 1,
+      "recorded_at": "2026-09-18T17:31:46.718+02:00",
+      "gripper_locked": true,
+      "grasp_in_gripper_frame_m": [
+        -0.03175345326991745,
+        -5.812479379983712e-05,
+        0.027565969920342576
+      ],
+      "camera_grasp_centre_base_m": [
+        0.23488994294070717,
+        0.015441910097594228,
+        -0.0004666767573287059
+      ],
+      "arm_tcp_base_m": [
+        0.20570363874785663,
+        0.012482255908938785,
+        0.029659191949676048
+      ],
+      "camera_minus_arm_mm": [
+        29.18630419285054,
+        2.959654188655443,
+        -30.125868707004752
+      ],
+      "distance_mm": 42.04958823467501,
+      "horizontal_mm": 29.33598311551925,
+      "servo_ticks": {
+        "1": 2052,
+        "2": 1951,
+        "3": 2361,
+        "4": 2680,
+        "5": 2096,
+        "6": 2304
+      },
+      "joint_angles_rad": {
+        "shoulder_pan": -0.07518341393206342,
+        "shoulder_lift": -0.15514287617707798,
+        "elbow_flex": 0.5163721605404207,
+        "wrist_flex": 1.2933520810195214,
+        "wrist_roll": 0.07441623623887911
+      },
+      "estimate": {
+        "pixel": [
+          1090,
+          625
+        ],
+        "bbox": [
+          1053,
+          581,
+          1128,
+          669
+        ],
+        "area": 6115,
+        "footprint_m": [
+          0.038000000000000006,
+          0.034
+        ],
+        "plausible_cube": true,
+        "grasp_centre_base": [
+          0.23488994294070717,
+          0.015441910097594228,
+          -0.0004666767573287059
+        ],
+        "footprint_centre_base": [
+          0.23508892639877715,
+          0.01580132579371807,
+          -0.012959923970955528
+        ],
+        "assumptions": {
+          "plane": "measured table + 0 mm (table frame z = support height)",
+          "object_height_m": 0.025,
+          "method": "rgb_two_plane_carve"
+        },
+        "frame": "/home/dragon/SO101-mujoco/LLM-control/calib/c920-point-check-02/frames/estimate-002.png"
+      },
+      "frame": "/home/dragon/SO101-mujoco/LLM-control/calib/c920-point-check-02/frames/arm-001.png"
+    },
+    {
+      "index": 2,
+      "recorded_at": "2026-09-18T17:32:48.130+02:00",
+      "gripper_locked": true,
+      "grasp_in_gripper_frame_m": [
+        -0.045326110549349305,
+        -0.0007988451257765194,
+        0.020933684378745147
+      ],
+      "camera_grasp_centre_base_m": [
+        0.1540295556176851,
+        0.008249214145240203,
+        -0.001961488073698633
+      ],
+      "arm_tcp_base_m": [
+        0.1267375582799315,
+        0.00609043469274396,
+        0.0397973450676532
+      ],
+      "camera_minus_arm_mm": [
+        27.291997337753614,
+        2.158779452496243,
+        -41.758833141351836
+      ],
+      "distance_mm": 49.93309115942788,
+      "horizontal_mm": 27.377243239750612,
+      "servo_ticks": {
+        "1": 2055,
+        "2": 1932,
+        "3": 2423,
+        "4": 2946,
+        "5": 2094,
+        "6": 2307
+      },
+      "joint_angles_rad": {
+        "shoulder_pan": -0.07058034777295749,
+        "shoulder_lift": -0.18429562851808215,
+        "elbow_flex": 0.6115021944952764,
+        "wrist_flex": 1.7014906137935801,
+        "wrist_roll": 0.07134752546614181
+      },
+      "estimate": {
+        "pixel": [
+          1067,
+          528
+        ],
+        "bbox": [
+          1035,
+          487,
+          1100,
+          567
+        ],
+        "area": 4806,
+        "footprint_m": [
+          0.038000000000000006,
+          0.034
+        ],
+        "plausible_cube": true,
+        "grasp_centre_base": [
+          0.1540295556176851,
+          0.008249214145240203,
+          -0.001961488073698633
+        ],
+        "footprint_centre_base": [
+          0.1542285390757551,
+          0.008608629841364044,
+          -0.014454735287325455
+        ],
+        "assumptions": {
+          "plane": "measured table + 0 mm (table frame z = support height)",
+          "object_height_m": 0.025,
+          "method": "rgb_two_plane_carve"
+        },
+        "frame": "/home/dragon/SO101-mujoco/LLM-control/calib/c920-point-check-02/frames/estimate-003.png"
+      },
+      "frame": "/home/dragon/SO101-mujoco/LLM-control/calib/c920-point-check-02/frames/arm-002.png"
+    },
+    {
+      "index": 3,
+      "recorded_at": "2026-09-18T17:33:48.590+02:00",
+      "gripper_locked": true,
+      "grasp_in_gripper_frame_m": [
+        -0.028229800617596175,
+        -0.005213237341336866,
+        0.024074786460704198
+      ],
+      "camera_grasp_centre_base_m": [
+        0.3621984514265037,
+        0.03629227706205043,
+        0.002160841601661242
+      ],
+      "arm_tcp_base_m": [
+        0.3319447381493207,
+        0.03698641137559693,
+        0.024249885042055108
+      ],
+      "camera_minus_arm_mm": [
+        30.253713277183014,
+        -0.6941343135465003,
+        -22.089043440393866
+      ],
+      "distance_mm": 37.4659155715545,
+      "horizontal_mm": 30.26167525936465,
+      "servo_ticks": {
+        "1": 2019,
+        "2": 2734,
+        "3": 1204,
+        "4": 2955,
+        "5": 2096,
+        "6": 2307
+      },
+      "joint_angles_rad": {
+        "shoulder_pan": -0.12581714168222857,
+        "shoulder_lift": 1.046257391349568,
+        "elbow_flex": -1.2588770214880973,
+        "wrist_flex": 1.7152998122708978,
+        "wrist_roll": 0.07441623623887911
+      },
+      "estimate": {
+        "pixel": [
+          1158,
+          823
+        ],
+        "bbox": [
+          1113,
+          771,
+          1205,
+          877
+        ],
+        "area": 8869,
+        "footprint_m": [
+          0.035999999999999976,
+          0.034
+        ],
+        "plausible_cube": true,
+        "grasp_centre_base": [
+          0.3621984514265037,
+          0.03629227706205043,
+          0.002160841601661242
+        ],
+        "footprint_centre_base": [
+          0.3623974348845737,
+          0.03665169275817427,
+          -0.01033240561196558
+        ],
+        "assumptions": {
+          "plane": "measured table + 0 mm (table frame z = support height)",
+          "object_height_m": 0.025,
+          "method": "rgb_two_plane_carve"
+        },
+        "frame": "/home/dragon/SO101-mujoco/LLM-control/calib/c920-point-check-02/frames/estimate-004.png"
+      },
+      "frame": "/home/dragon/SO101-mujoco/LLM-control/calib/c920-point-check-02/frames/arm-003.png"
+    },
+    {
+      "index": 4,
+      "recorded_at": "2026-09-18T17:36:18.781+02:00",
+      "gripper_locked": true,
+      "grasp_in_gripper_frame_m": [
+        0.010344440847654898,
+        -0.024834158043356917,
+        0.027654520485878905
+      ],
+      "camera_grasp_centre_base_m": [
+        0.2496479855013151,
+        0.02336567486531658,
+        -3.6640854384865917e-06
+      ],
+      "arm_tcp_base_m": [
+        0.22587883165656567,
+        0.03204346036070908,
+        0.029120874192061233
+      ],
+      "camera_minus_arm_mm": [
+        23.769153844749425,
+        -8.677785495392506,
+        -29.12453827749972
+      ],
+      "distance_mm": 38.58128257947054,
+      "horizontal_mm": 25.303688181753483,
+      "servo_ticks": {
+        "1": 2031,
+        "2": 2115,
+        "3": 2172,
+        "4": 2691,
+        "5": 3081,
+        "6": 2309
+      },
+      "joint_angles_rad": {
+        "shoulder_pan": -0.10740487704580488,
+        "shoulder_lift": 0.09649140718737921,
+        "elbow_flex": 0.22637899251674742,
+        "wrist_flex": 1.3102299902695764,
+        "wrist_roll": 1.5857562918119907
+      },
+      "estimate": {
+        "pixel": [
+          1108,
+          645
+        ],
+        "bbox": [
+          1070,
+          598,
+          1149,
+          693
+        ],
+        "area": 6641,
+        "footprint_m": [
+          0.04200000000000001,
+          0.034
+        ],
+        "plausible_cube": true,
+        "grasp_centre_base": [
+          0.2496479855013151,
+          0.02336567486531658,
+          -3.6640854384865917e-06
+        ],
+        "footprint_centre_base": [
+          0.24984696895938507,
+          0.02372509056144042,
+          -0.012496911299065307
+        ],
+        "assumptions": {
+          "plane": "measured table + 0 mm (table frame z = support height)",
+          "object_height_m": 0.025,
+          "method": "rgb_two_plane_carve"
+        },
+        "frame": "/home/dragon/SO101-mujoco/LLM-control/calib/c920-point-check-02/frames/estimate-005.png"
+      },
+      "frame": "/home/dragon/SO101-mujoco/LLM-control/calib/c920-point-check-02/frames/arm-004.png"
+    },
+    {
+      "index": 5,
+      "recorded_at": "2026-09-18T17:36:56.591+02:00",
+      "gripper_locked": true,
+      "grasp_in_gripper_frame_m": [
+        0.009901732447953223,
+        0.014560682628866662,
+        0.0317407523852857
+      ],
+      "camera_grasp_centre_base_m": [
+        0.2478551493004349,
+        0.021917431421996515,
+        -7.388331326141709e-05
+      ],
+      "arm_tcp_base_m": [
+        0.23552751717106368,
+        0.010786356835830945,
+        0.032200902676944074
+      ],
+      "camera_minus_arm_mm": [
+        12.327632129371214,
+        11.131074586165571,
+        -32.27478599020549
+      ],
+      "distance_mm": 36.29783941329636,
+      "horizontal_mm": 16.60937492381596,
+      "servo_ticks": {
+        "1": 2025,
+        "2": 2134,
+        "3": 2131,
+        "4": 2697,
+        "5": 1043,
+        "6": 2310
+      },
+      "joint_angles_rad": {
+        "shoulder_pan": -0.11661100936401674,
+        "shoulder_lift": 0.1256441595283834,
+        "elbow_flex": 0.16347042167563314,
+        "wrist_flex": 1.3194361225877884,
+        "wrist_roll": -1.5412599856073002
+      },
+      "estimate": {
+        "pixel": [
+          1104,
+          642
+        ],
+        "bbox": [
+          1068,
+          593,
+          1142,
+          692
+        ],
+        "area": 6188,
+        "footprint_m": [
+          0.04400000000000001,
+          0.036
+        ],
+        "plausible_cube": true,
+        "grasp_centre_base": [
+          0.2478551493004349,
+          0.021917431421996515,
+          -7.388331326141709e-05
+        ],
+        "footprint_centre_base": [
+          0.24805413275850488,
+          0.022276847118120356,
+          -0.012567130526888237
+        ],
+        "assumptions": {
+          "plane": "measured table + 0 mm (table frame z = support height)",
+          "object_height_m": 0.025,
+          "method": "rgb_two_plane_carve"
+        },
+        "frame": "/home/dragon/SO101-mujoco/LLM-control/calib/c920-point-check-02/frames/estimate-006.png"
+      },
+      "frame": "/home/dragon/SO101-mujoco/LLM-control/calib/c920-point-check-02/frames/arm-005.png"
+    }
+  ],
+  "motion_status": {
+    "usable_for_motion": false,
+    "reasons": [
+      "no supervised motion check has passed for this extrinsic yet"
+    ]
+  },
+  "support_height_m": 0.0,
+  "calibration": {
+    "intrinsics": "/home/dragon/SO101-mujoco/LLM-control/calib/c920-intrinsics-01/intrinsics.json",
+    "extrinsics": "/home/dragon/SO101-mujoco/LLM-control/calib/c920-handeye-03/extrinsics.json",
+    "table": "/home/dragon/SO101-mujoco/LLM-control/calib/c920-table/table.json"
+  },
+  "finished_at": "2026-09-18T17:37:11.407+02:00",
+  "summary": {
+    "points": 5,
+    "distance_mm": {
+      "median": 38.58128257947054,
+      "max": 49.93309115942788
+    },
+    "horizontal_mm": {
+      "median": 27.377243239750612,
+      "max": 30.26167525936465
+    },
+    "mean_offset_mm": [
+      24.56576015638156,
+      1.3755176836756502,
+      -31.074613911291134
+    ]
+  }
+}

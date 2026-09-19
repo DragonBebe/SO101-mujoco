@@ -1,0 +1,323 @@
+{
+  "directory": "/home/dragon/SO101-mujoco/LLM-control/calib/handeye-02",
+  "camera": {
+    "requested": {
+      "device": "/dev/video0",
+      "width": 1280,
+      "height": 720,
+      "fps": 30.0,
+      "fourcc": "MJPG",
+      "autofocus": null,
+      "focus": null,
+      "auto_exposure": null,
+      "exposure": null,
+      "auto_wb": null,
+      "hflip": false
+    },
+    "actual": {
+      "frame_width": 1280.0,
+      "frame_height": 720.0,
+      "fps": 30.0,
+      "fourcc": 1196444237.0,
+      "autofocus": -1.0,
+      "focus": -1.0,
+      "auto_exposure": 3.0,
+      "exposure": 156.0,
+      "brightness": 128.0,
+      "contrast": 32.0,
+      "saturation": 64.0,
+      "gain": -1.0,
+      "gamma": 120.0,
+      "sharpness": 3.0,
+      "auto_wb": 1.0,
+      "wb_temperature": 4600.0,
+      "zoom": -1.0,
+      "backend": 200.0,
+      "buffersize": 1.0,
+      "fourcc_text": "MJPG"
+    },
+    "resolution": [
+      1280,
+      720
+    ],
+    "pixel_format": "MJPG",
+    "driver_fps": 30.0,
+    "measured_fps": null,
+    "image_transform": {
+      "hflip": false,
+      "rotation_deg": 0,
+      "crop": null,
+      "resized": false,
+      "note": "raw samples are archived exactly as delivered; apply hflip to reach the frame the calibration describes"
+    },
+    "opened_at": "2026-09-17T19:23:58.270+02:00"
+  },
+  "settings": {
+    "device": "/dev/video0",
+    "width": 1280,
+    "height": 720,
+    "fps": 30.0,
+    "fourcc": "MJPG",
+    "autofocus": null,
+    "focus": null,
+    "auto_exposure": null,
+    "exposure": null,
+    "auto_wb": null,
+    "hflip": false
+  },
+  "board": {
+    "squares_x": 7,
+    "squares_y": 9,
+    "square": 0.02,
+    "marker": 0.015,
+    "dictionary": "DICT_4X4_50",
+    "first_id": 0,
+    "name": "charuco-7x9-20mm",
+    "kind": "charuco",
+    "size_m": [
+      0.14,
+      0.18
+    ],
+    "marker_ids": [
+      0,
+      30
+    ],
+    "counts": "squares"
+  },
+  "intrinsics": "/home/dragon/SO101-mujoco/LLM-control/calib/intrinsics-02/intrinsics.json",
+  "port": "/dev/ttyACM0",
+  "joint_models": {
+    "shoulder_pan": {
+      "name": "shoulder_pan",
+      "servo_id": 1,
+      "zero_ticks": 2101.0,
+      "sign": 1,
+      "verified": false,
+      "source": "lerobot calibration follower.json: zero = midpoint of [853, 3349], drive_mode 0; unverified against the kinematic model"
+    },
+    "shoulder_lift": {
+      "name": "shoulder_lift",
+      "servo_id": 2,
+      "zero_ticks": 2087.0,
+      "sign": 1,
+      "verified": false,
+      "source": "lerobot calibration follower.json: zero = midpoint of [919, 3255], drive_mode 0; unverified against the kinematic model"
+    },
+    "elbow_flex": {
+      "name": "elbow_flex",
+      "servo_id": 3,
+      "zero_ticks": 1984.0,
+      "sign": 1,
+      "verified": false,
+      "source": "lerobot calibration follower.json: zero = midpoint of [1003, 2965], drive_mode 0; unverified against the kinematic model"
+    },
+    "wrist_flex": {
+      "name": "wrist_flex",
+      "servo_id": 4,
+      "zero_ticks": 1956.0,
+      "sign": 1,
+      "verified": false,
+      "source": "lerobot calibration follower.json: zero = midpoint of [814, 3098], drive_mode 0; unverified against the kinematic model"
+    },
+    "wrist_roll": {
+      "name": "wrist_roll",
+      "servo_id": 5,
+      "zero_ticks": 2047.5,
+      "sign": 1,
+      "verified": false,
+      "source": "lerobot calibration follower.json: zero = midpoint of [0, 4095], drive_mode 0; unverified against the kinematic model"
+    },
+    "gripper": {
+      "name": "gripper",
+      "servo_id": 6,
+      "zero_ticks": 2743.0,
+      "sign": 1,
+      "verified": false,
+      "source": "lerobot calibration follower.json: zero = midpoint of [2020, 3466], drive_mode 0; unverified against the kinematic model"
+    }
+  },
+  "validation_every": 4,
+  "servo_state_at_start": {
+    "1": {
+      "present_position": 2447,
+      "homing_offset": 2010,
+      "min_position_limit": 853,
+      "max_position_limit": 3349,
+      "torque_enabled": false
+    },
+    "2": {
+      "present_position": 1269,
+      "homing_offset": -1051,
+      "min_position_limit": 919,
+      "max_position_limit": 3255,
+      "torque_enabled": false
+    },
+    "3": {
+      "present_position": 2976,
+      "homing_offset": -833,
+      "min_position_limit": 1003,
+      "max_position_limit": 2965,
+      "torque_enabled": false
+    },
+    "4": {
+      "present_position": 2419,
+      "homing_offset": -1639,
+      "min_position_limit": 814,
+      "max_position_limit": 3098,
+      "torque_enabled": false
+    },
+    "5": {
+      "present_position": 3359,
+      "homing_offset": 935,
+      "min_position_limit": 0,
+      "max_position_limit": 4095,
+      "torque_enabled": false
+    },
+    "6": {
+      "present_position": 2346,
+      "homing_offset": 1613,
+      "min_position_limit": 2020,
+      "max_position_limit": 3466,
+      "torque_enabled": false
+    }
+  },
+  "samples": [
+    {
+      "stage": "handeye",
+      "role": "solve",
+      "index": 1,
+      "servo_ticks": {
+        "1": 2099,
+        "2": 915,
+        "3": 2802,
+        "4": 2414,
+        "5": 3359,
+        "6": 2203
+      },
+      "stability": "stable (0.33 deg, 0.9 mm, 0 ticks)",
+      "board": {
+        "squares_x": 7,
+        "squares_y": 9,
+        "square": 0.02,
+        "marker": 0.015,
+        "dictionary": "DICT_4X4_50",
+        "first_id": 0,
+        "name": "charuco-7x9-20mm",
+        "kind": "charuco",
+        "size_m": [
+          0.14,
+          0.18
+        ],
+        "marker_ids": [
+          0,
+          30
+        ],
+        "counts": "squares"
+      },
+      "image_transform": {
+        "hflip": false,
+        "rotation_deg": 0,
+        "crop": null,
+        "resized": false,
+        "note": "raw samples are archived exactly as delivered; apply hflip to reach the frame the calibration describes"
+      },
+      "pose_T_camera_board": [
+        [
+          0.3604490773049107,
+          0.914856247456217,
+          -0.18197392439678886,
+          -0.14593208446396902
+        ],
+        [
+          -0.8123398678008169,
+          0.40376129022596446,
+          0.42080964781765196,
+          0.00894964398356867
+        ],
+        [
+          0.4584543617977588,
+          -0.003855775589193755,
+          0.8887095876287238,
+          0.31546135330563274
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "board_points": 46,
+      "sharpness": 371.3678880615187
+    },
+    {
+      "stage": "handeye",
+      "role": "solve",
+      "index": 2,
+      "servo_ticks": {
+        "1": 2099,
+        "2": 920,
+        "3": 2847,
+        "4": 2467,
+        "5": 3358,
+        "6": 2229
+      },
+      "stability": "stable (0.34 deg, 0.7 mm, 0 ticks)",
+      "board": {
+        "squares_x": 7,
+        "squares_y": 9,
+        "square": 0.02,
+        "marker": 0.015,
+        "dictionary": "DICT_4X4_50",
+        "first_id": 0,
+        "name": "charuco-7x9-20mm",
+        "kind": "charuco",
+        "size_m": [
+          0.14,
+          0.18
+        ],
+        "marker_ids": [
+          0,
+          30
+        ],
+        "counts": "squares"
+      },
+      "image_transform": {
+        "hflip": false,
+        "rotation_deg": 0,
+        "crop": null,
+        "resized": false,
+        "note": "raw samples are archived exactly as delivered; apply hflip to reach the frame the calibration describes"
+      },
+      "pose_T_camera_board": [
+        [
+          0.39071174526242536,
+          0.8945280355604834,
+          -0.21717257126601472,
+          -0.12616141122841712
+        ],
+        [
+          -0.7763761620706902,
+          0.44698383442119766,
+          0.4443484069224384,
+          0.033065782651991296
+        ],
+        [
+          0.4945547361843531,
+          -0.0050045341867122894,
+          0.8691320771638791,
+          0.3294501283977549
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "board_points": 48,
+      "sharpness": 393.98346456818643
+    }
+  ],
+  "finished_at": "2026-09-17T19:24:52.343+02:00"
+}

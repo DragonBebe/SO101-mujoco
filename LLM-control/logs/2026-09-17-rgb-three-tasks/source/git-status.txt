@@ -1,0 +1,28 @@
+ M AGENTS.md
+ D LLM-control/LOOP_PLAN.md
+ M LLM-control/LOOP_README.md
+ D LLM-control/PLAN.md
+ M LLM-control/README.md
+ D LLM-control/VISION_PLAN.md
+ M LLM-control/VISION_README.md
+ D LLM-control/control.py
+ D LLM-control/examples/pick-place.jsonl
+ M LLM-control/loop.py
+ M LLM-control/nexus_vision/bridge.py
+ M LLM-control/nexus_vision/camera_viewer.py
+ M LLM-control/nexus_vision/evaluate.py
+ M LLM-control/nexus_vision/loop_session.py
+ M LLM-control/nexus_vision/perception.py
+ M LLM-control/nexus_vision/simulation.py
+ M LLM-control/nexus_vision/workspace.py
+ D LLM-control/requirements.txt
+ D LLM-control/simulation.py
+ M LLM-control/tests/test_camera_viewer.py
+ D LLM-control/tests/test_control.py
+ M LLM-control/tests/test_nexus_vision.py
+?? LLM-control/CLEANUP.md
+?? LLM-control/logs/2026-09-17-rgb-three-tasks/
+?? LLM-control/logs/screenshots-2026-09-17/
+?? LLM-control/nexus_vision/cameras.py
+?? LLM-control/tests/test_camera_modes.py
+?? LLM-control/tests/test_plane_localization.py

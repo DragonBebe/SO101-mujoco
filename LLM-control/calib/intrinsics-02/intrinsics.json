@@ -1,0 +1,123 @@
+{
+  "schema": "rgbcal/intrinsics/1",
+  "camera_id": "environment",
+  "device": "/dev/video0",
+  "device_name": null,
+  "resolution": {
+    "width": 1280,
+    "height": 720
+  },
+  "pixel_format": "MJPG",
+  "image_transform": {
+    "hflip": false,
+    "rotation_deg": 0,
+    "crop": null,
+    "resized": false,
+    "note": "raw samples are archived exactly as delivered; apply hflip to reach the frame the calibration describes"
+  },
+  "model": "standard",
+  "distortion_model": "opencv-5 (k1,k2,p1,p2,k3)",
+  "K": [
+    [
+      982.1683838583007,
+      0.0,
+      633.6662563730174
+    ],
+    [
+      0.0,
+      981.7762114058168,
+      376.9599498470085
+    ],
+    [
+      0.0,
+      0.0,
+      1.0
+    ]
+  ],
+  "D": [
+    0.16312028095219638,
+    -0.593536532198227,
+    0.0012459185089039929,
+    -0.0002366675946082833,
+    0.6127277664356703
+  ],
+  "fx": 982.1683838583007,
+  "fy": 981.7762114058168,
+  "cx": 633.6662563730174,
+  "cy": 376.9599498470085,
+  "fov_deg": {
+    "horizontal": 66.17809393251962,
+    "vertical": 40.274190178899815
+  },
+  "std_intrinsics": [
+    1.1710449113097336,
+    1.2536948535361192,
+    0.8658375163881967,
+    0.9521714000746803
+  ],
+  "reprojection_rms_px": 0.29744677126636654,
+  "per_image_rms_px": {
+    "calibration-001.png": 0.4029538631439209,
+    "calibration-002.png": 0.3861868679523468,
+    "calibration-003.png": 0.47811904549598694,
+    "calibration-004.png": 0.2361544370651245,
+    "calibration-006.png": 0.2523896098136902,
+    "calibration-007.png": 0.3117963373661041,
+    "calibration-008.png": 0.2628796100616455,
+    "calibration-009.png": 0.22393403947353363,
+    "calibration-011.png": 0.2804771363735199,
+    "calibration-012.png": 0.4524722099304199,
+    "calibration-013.png": 0.2856956124305725,
+    "calibration-014.png": 0.27010098099708557,
+    "calibration-016.png": 0.2515959143638611,
+    "calibration-017.png": 0.2129366397857666,
+    "calibration-018.png": 0.21906857192516327,
+    "calibration-019.png": 0.2747762203216553,
+    "calibration-021.png": 0.2508566379547119,
+    "calibration-022.png": 0.2537413537502289,
+    "calibration-023.png": 0.21864011883735657,
+    "calibration-024.png": 0.21959105134010315
+  },
+  "planarity_residual_px": {
+    "calibration-001.png": 0.25278329849243164,
+    "calibration-002.png": 0.3764861226081848,
+    "calibration-003.png": 0.4703638255596161,
+    "calibration-004.png": 0.22442477941513062,
+    "calibration-006.png": 0.21442197263240814,
+    "calibration-007.png": 0.27419495582580566,
+    "calibration-008.png": 0.23755484819412231,
+    "calibration-009.png": 0.18097610771656036,
+    "calibration-011.png": 0.1795252412557602,
+    "calibration-012.png": 0.2613532841205597,
+    "calibration-013.png": 0.21699078381061554,
+    "calibration-014.png": 0.216643825173378,
+    "calibration-016.png": 0.2333707958459854,
+    "calibration-017.png": 0.20605377852916718,
+    "calibration-018.png": 0.2139700949192047,
+    "calibration-019.png": 0.26778513193130493,
+    "calibration-021.png": 0.24487163126468658,
+    "calibration-022.png": 0.23469962179660797,
+    "calibration-023.png": 0.2136761099100113,
+    "calibration-024.png": 0.21716952323913574
+  },
+  "samples": {
+    "calibration_used": 20,
+    "validation_held_out": 5,
+    "failed_detection": []
+  },
+  "board": {
+    "inner_cols": 9,
+    "inner_rows": 6,
+    "square": 0.025,
+    "name": "chessboard-9x6-25mm",
+    "kind": "chessboard",
+    "size_m": [
+      0.25,
+      0.17500000000000002
+    ],
+    "counts": "inner corners"
+  },
+  "board_scale_note": "square length is the printed nominal value unless it was measured; it does not affect K or D, only metric extrinsics, and rescales them linearly",
+  "source_session": "/home/dragon/SO101-mujoco/LLM-control/calib/intrinsics-02",
+  "valid_for": "this device at this resolution, pixel format and declared transform only; re-calibrate if any of those change"
+}

@@ -1,0 +1,220 @@
+{
+  "archived_at": "2026-09-17T15:06:44.346576+02:00",
+  "source_run": "LLM-control/runs/loop-20260917-144747-637473",
+  "cutoff_sequence": 52,
+  "world": 1,
+  "seed": 4,
+  "cameras": {
+    "modality": "rgb",
+    "depth_available": false,
+    "environment_camera": "side",
+    "environment_placement": "side",
+    "environment_mounting": "world_fixed",
+    "wrist_camera": "wrist",
+    "wrist_mounting": "robot_wrist",
+    "cameras": [
+      "side",
+      "wrist"
+    ],
+    "resolution": {
+      "width": 640,
+      "height": 480
+    },
+    "environment_fov_deg": 50.0,
+    "side_angles_deg": {
+      "azimuth": 130.0,
+      "elevation": -32.0
+    },
+    "note": "side placement is a simulation starting point, not a calibrated copy of physical hardware",
+    "side_resolved": {
+      "lookat": [
+        0.17,
+        0.0,
+        0.125
+      ],
+      "distance": 0.6613576679335923,
+      "azimuth": 130.0,
+      "elevation": -32.0,
+      "fov_deg": 50.0,
+      "eye": [
+        0.5305158585900223,
+        -0.42964606966184515,
+        0.4754661687863575
+      ],
+      "framed": {
+        "low": [
+          0.0,
+          -0.308144647592461,
+          0.0
+        ],
+        "high": [
+          0.34,
+          0.308144647592461,
+          0.25
+        ]
+      }
+    }
+  },
+  "image_count": 66,
+  "tasks": [
+    {
+      "title": "抓起绿色方块",
+      "user_instruction": "抓起绿色方块",
+      "task_id": "196620d46da148a8ab20f950c2653452",
+      "start_time": "2026-09-17T12:48:24.003080+00:00",
+      "end_time": "2026-09-17T12:49:44.905391+00:00",
+      "sequence_range": [
+        2,
+        10
+      ],
+      "steps": 5,
+      "budget": 40,
+      "failed_requests": 0,
+      "final_task": {
+        "id": "196620d46da148a8ab20f950c2653452",
+        "instruction": "在纯RGB模式抓起绿色方块并保持悬空",
+        "status": "succeeded",
+        "steps": 5,
+        "max_steps": 40,
+        "failures": 0,
+        "verification": "codex_visual",
+        "evidence": "纯RGB操作：在当前侧视图确认绿色25毫米方块单独位于z=0桌面，以propose object_height=0.025 plane_z=0估计位置，extent两轴34毫米；靠近后腕部RGB复算一致。闭合夹爪后TCP从z=0.01991抬至0.06483米。侧视图显示绿色方块随夹爪离开桌面，腕部图显示方块持续夹在两指之间。保持2秒后的新双RGB图像显示未掉落；夹爪保持闭合。无深度输入或物体仿真真值。",
+        "evidence_frame": "4f1043b227694006:frame-7"
+      },
+      "execution_metrics": {
+        "task_id": "196620d46da148a8ab20f950c2653452",
+        "turn_id": "01a0af68-f2f8-7843-ba6c-8acfa28e8096",
+        "model": "gpt-6-astra",
+        "reasoning_effort": "low",
+        "user_received_at": "2026-09-17T12:48:05.910Z",
+        "turn_started_at": "2026-09-17T12:48:05.895Z",
+        "turn_completed_at": "2026-09-17T12:49:49.769Z",
+        "user_to_final_seconds": 103.859,
+        "runtime_turn_duration_ms": 103881,
+        "time_to_first_token_ms": 4869,
+        "robot_begin_to_complete_seconds": 80.902,
+        "simulation_elapsed_seconds": 10.92,
+        "requested_command_seconds": 9.5,
+        "model_response_count": 11,
+        "tokens": {
+          "input_tokens": 1144905,
+          "cached_input_tokens": 950656,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 1774,
+          "reasoning_output_tokens": 79,
+          "total_tokens": 1146679
+        },
+        "uncached_input_tokens": 194249,
+        "image_token_breakdown": null,
+        "model_inference_seconds": null,
+        "per_command_execution_wall_seconds": null
+      }
+    },
+    {
+      "title": "将绿色方块放到红色方块上",
+      "user_instruction": "放在红色方块上方",
+      "task_id": "15a06f8978384624ae2a72e5942c2f78",
+      "start_time": "2026-09-17T12:52:52.055660+00:00",
+      "end_time": "2026-09-17T12:54:38.019221+00:00",
+      "sequence_range": [
+        12,
+        22
+      ],
+      "steps": 6,
+      "budget": 40,
+      "failed_requests": 0,
+      "final_task": {
+        "id": "15a06f8978384624ae2a72e5942c2f78",
+        "instruction": "将夹持的绿色方块放在红色方块上方，保持纯RGB模式",
+        "status": "succeeded",
+        "steps": 6,
+        "max_steps": 40,
+        "failures": 0,
+        "verification": "codex_visual",
+        "evidence": "纯RGB模式，以红色25毫米方块直立于z=0桌面的显式假设，从当前侧视颜色轮廓估计中心及32毫米extent，靠近后查看腕部图核实。绿色方块缓慢下降后已张开夹爪，先向上再横向退开，静置2秒。最新侧视RGB清楚显示绿色方块叠在红色方块上、两者上下接合且无倾倒，与退开后的前一帧一致；机械臂已远离堆叠。结果为图像判断，未使用深度或物体仿真坐标。",
+        "evidence_frame": "4f1043b227694006:frame-14"
+      },
+      "execution_metrics": {
+        "task_id": "15a06f8978384624ae2a72e5942c2f78",
+        "turn_id": "01a0af6d-2e15-7f11-9f19-14527a25506a",
+        "model": "gpt-6-astra",
+        "reasoning_effort": "low",
+        "user_received_at": "2026-09-17T12:52:43.175Z",
+        "turn_started_at": "2026-09-17T12:52:43.160Z",
+        "turn_completed_at": "2026-09-17T12:54:42.983Z",
+        "user_to_final_seconds": 119.808,
+        "runtime_turn_duration_ms": 119823,
+        "time_to_first_token_ms": 1693,
+        "robot_begin_to_complete_seconds": 105.964,
+        "simulation_elapsed_seconds": 14.38,
+        "requested_command_seconds": 12.5,
+        "model_response_count": 12,
+        "tokens": {
+          "input_tokens": 1378956,
+          "cached_input_tokens": 1367424,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 1883,
+          "reasoning_output_tokens": 83,
+          "total_tokens": 1380839
+        },
+        "uncached_input_tokens": 11532,
+        "image_token_breakdown": null,
+        "model_inference_seconds": null,
+        "per_command_execution_wall_seconds": null
+      }
+    },
+    {
+      "title": "将红色方块放到绿色方块上",
+      "user_instruction": "将红色方块放到绿色方块上",
+      "task_id": "4571fbe8bbf446dd8dede045854fc504",
+      "start_time": "2026-09-17T12:59:38.183073+00:00",
+      "end_time": "2026-09-17T13:03:51.974414+00:00",
+      "sequence_range": [
+        24,
+        52
+      ],
+      "steps": 19,
+      "budget": 60,
+      "failed_requests": 0,
+      "final_task": {
+        "id": "4571fbe8bbf446dd8dede045854fc504",
+        "instruction": "将红色方块放到绿色方块上；先移开上层绿色方块，再叠放红色方块，保持纯RGB",
+        "status": "succeeded",
+        "steps": 19,
+        "max_steps": 60,
+        "failures": 0,
+        "verification": "codex_visual",
+        "evidence": "先依据已知红色方块25毫米高度与当前RGB堆叠画面，以plane_z=0.025定位上层绿色方块，并用腕部图复核，将其移至经RGB射线与z=0桌面求交确认的旁边空位。释放、退开和等待后重新定位两块方块，抓起红色方块叠在绿色方块上。现已打开夹爪并抬起横向退开，等待2秒后最新侧视RGB显示红色在上、绿色在下，两块直立接合，堆叠与退开前后保持一致，没有倾倒。全程纯RGB、相机标定和明确平面假设，无深度或物体仿真真值。",
+        "evidence_frame": "4f1043b227694006:frame-34"
+      },
+      "execution_metrics": {
+        "task_id": "4571fbe8bbf446dd8dede045854fc504",
+        "turn_id": "01a0af73-5886-7040-8bed-e0ef5685f497",
+        "model": "gpt-6-astra",
+        "reasoning_effort": "low",
+        "user_received_at": "2026-09-17T12:59:27.257Z",
+        "turn_started_at": "2026-09-17T12:59:27.241Z",
+        "turn_completed_at": "2026-09-17T13:03:57.413Z",
+        "user_to_final_seconds": 270.156,
+        "runtime_turn_duration_ms": 270171,
+        "time_to_first_token_ms": 3198,
+        "robot_begin_to_complete_seconds": 253.791,
+        "simulation_elapsed_seconds": 41.06,
+        "requested_command_seconds": 35.0,
+        "model_response_count": 28,
+        "tokens": {
+          "input_tokens": 3686622,
+          "cached_input_tokens": 3658496,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 4466,
+          "reasoning_output_tokens": 12,
+          "total_tokens": 3691088
+        },
+        "uncached_input_tokens": 28126,
+        "image_token_breakdown": null,
+        "model_inference_seconds": null,
+        "per_command_execution_wall_seconds": null
+      }
+    }
+  ]
+}

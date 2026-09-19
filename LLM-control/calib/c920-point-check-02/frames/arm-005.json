@@ -1,0 +1,12 @@
+{
+  "image": "arm-005.png",
+  "saved_at": "2026-09-18T17:36:56.627+02:00",
+  "shape": [
+    1080,
+    1920,
+    3
+  ],
+  "dtype": "uint8",
+  "stage": "point-check",
+  "record": 5
+}
