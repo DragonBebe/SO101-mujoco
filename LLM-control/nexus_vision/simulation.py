@@ -25,6 +25,14 @@ from so101_nexus.mujoco.move_env import MoveEnv
 from .cameras import CameraSuite, WRIST
 from .perception import intersect_pixel_with_plane, locate_color, unproject_pixel
 
+#: Arm joint order, matching the MJCF, the real servo bus (ID 1-5) and
+#: extrinsics.json's joint_convention; index 5 in target/low/high is the gripper.
+JOINT_NAMES = ('shoulder_pan', 'shoulder_lift', 'elbow_flex', 'wrist_flex', 'wrist_roll')
+#: Bound on a single 'joints' step with delta_deg: keeps one low-level command
+#: from swinging a joint across a large arc blind, same spirit as 'move's
+#: per-call seconds cap.
+MAX_JOINT_DELTA_DEG = 25.0
+
 TASKS = {
     'Touch': (TouchConfig, TouchEnv), 'LookAt': (LookAtConfig, LookAtEnv),
     'Move': (MoveConfig, MoveEnv), 'PickLift': (PickConfig, PickLiftEnv),
@@ -357,8 +365,12 @@ class VisualSimulation:
             cameras[name] = entry
         obs = {'task':self.task, 'instruction':self.env.task_description,
                'frame_id':self.frame_id, 'time':float(self.data.time),
-               'robot': {'joints':self.data.qpos[self.qadr].tolist(),
+               'robot': {'joint_names':JOINT_NAMES,
+                         'joints':self.data.qpos[self.qadr].tolist(),
+                         'joints_deg':np.degrees(self.data.qpos[self.qadr[:5]]).tolist(),
                          'joint_velocities':self.data.qvel[self.dadr].tolist(),
+                         'joint_limits_deg':{'low':np.degrees(self.low[:5]).tolist(),
+                                             'high':np.degrees(self.high[:5]).tolist()},
                          'tcp':self.env._get_tcp_pose().tolist()},
                'cameras':cameras, 'perception':self.perception_report()}
         (self.directory/'observation.json').write_text(json.dumps(obs, indent=2)+'\n')
@@ -499,6 +511,33 @@ class VisualSimulation:
                         seed=self.solve_ik(start+(position-start)*t,seed=seed,mode=mode);path.append(seed)
                     for q in path:self._move_joints(q,seconds/len(path))
                 else:self._move_joints(end,seconds)
+            self._advance(25)
+        elif action == 'joints':
+            seconds = number(command.get('seconds',2),0.2,8,'seconds')
+            has_delta, has_target = 'delta_deg' in command, 'target_deg' in command
+            if has_delta == has_target:
+                raise ValueError("joints needs exactly one of delta_deg or target_deg")
+            values = command['delta_deg'] if has_delta else command['target_deg']
+            if not isinstance(values,dict) or not values or not set(values) <= set(JOINT_NAMES):
+                raise ValueError(f'joints keys must be a nonempty subset of {JOINT_NAMES}')
+            current_deg = np.degrees(self.target[:5])
+            target_deg = current_deg.copy()
+            for i,name in enumerate(JOINT_NAMES):
+                if name not in values:continue
+                if has_delta:
+                    step = number(values[name],-MAX_JOINT_DELTA_DEG,MAX_JOINT_DELTA_DEG,name)
+                    target_deg[i] = current_deg[i]+step
+                else:
+                    target_deg[i] = number(values[name],-180,180,name)
+            target_rad = np.radians(target_deg)
+            low_deg, high_deg = np.degrees(self.low[:5]), np.degrees(self.high[:5])
+            if not np.all((target_rad >= self.low[:5]) & (target_rad <= self.high[:5])):
+                raise ValueError('target outside joint limits (deg): '
+                                 f'low={low_deg.round(1).tolist()} high={high_deg.round(1).tolist()}')
+            # No inverse kinematics: this sets joint targets directly, the way a
+            # teleoperator or a real per-joint script would, at whatever TCP
+            # pose that produces. The caller reads that pose back from `observe`.
+            self._move_joints(target_rad,seconds)
             self._advance(25)
         elif action == 'gripper':
             opening=number(command.get('opening'),0,1,'opening')

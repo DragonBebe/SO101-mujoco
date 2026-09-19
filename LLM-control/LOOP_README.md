@@ -135,8 +135,8 @@ bash LLM-control/run_rgbcal.sh sim-camera
 ### RGB 模态的范围与限制
 
 - 可用：两路真实渲染 RGB、相机标定、正运动学与本体状态、颜色区域候选、上面两个平面估计器，
-  以及 `move` / `look_at` / `gripper` / `wait`。环境相机和腕部相机都能跑平面估计，先用环境
-  相机粗定位、靠近后再用腕部相机校正。
+  以及 `move` / `look_at` / `gripper` / `wait` / `joints`。环境相机和腕部相机都能跑平面估计，
+  先用环境相机粗定位、靠近后再用腕部相机校正。
 - 不可用：`method:"depth"` 明确报错，不会静默回退，也不会用零深度顶替；`depth` 字段为 `null`
   并附 `depth_note`，磁盘上不生成 `.npy`。
 - 平面假设失效的场景：堆叠或悬空物体（高度未知）、非水平支撑面、掩码被严重遮挡或与同色背景
@@ -182,7 +182,7 @@ bash LLM-control/run_loop.sh command '{"action":"observe"}'
 | `reset` | 可选 `seed`；仅在任务结束/取消后重建场景，旧帧/点失效 |
 | `shutdown` | 关闭服务及窗口 |
 
-低层 `command` 支持 `move`、`look_at`、`gripper`、`wait`，其参数同
+低层 `command` 支持 `move`、`look_at`、`gripper`、`wait`、`joints`，其中前四个的参数同
 [视觉接口](VISION_README.md#命令协议)。例如下面的 JSON **必须换成刚返回的 ID、
 步数和当前可达坐标** 后才能发出：
 
@@ -208,6 +208,28 @@ bash LLM-control/run_loop.sh command '{"action":"observe"}'
 
 朝下姿态在较大伸展半径处存在运动学上限：本机在半径约 0.23 m 处，`orientation:"down"`
 最高只能到 z≈0.09，再高 IK 会失败。悬停高度应从大到小逐档重试，不要把这类失败当成定位错误。
+
+### 不经过 IK 的关节直接控制：`joints`
+
+`move`/`look_at` 都在内部对目标笛卡尔位置做数值逆解（`solve_ik`／`look_at` 的
+最小二乘）。`joints` 不做任何逆解：直接设定 5 个手臂关节（不含夹爪）的目标角度，
+像真机示教或逐关节脚本一样，落到什么笛卡尔姿态由物理和运动学决定，事后从
+`observe` 的 `robot.tcp`／画面里读出来，不是预先解出来的。
+
+```json
+{"action": "joints", "delta_deg": {"shoulder_pan": 8, "wrist_flex": -5}, "seconds": 1.0}
+```
+
+- 关节名固定为 `shoulder_pan`、`shoulder_lift`、`elbow_flex`、`wrist_flex`、`wrist_roll`
+  （与真机舵机 ID 1–5、`extrinsics.json` 的 `joint_convention` 一致）；夹爪仍只能用
+  `gripper` 动作单独控制。
+- 二选一：`delta_deg`（相对当前目标角度的增量，**单关节单步 ±25° 上限**，超限直接拒绝、
+  不移动）或 `target_deg`（绝对目标角度）。未提到的关节保持原目标不变。
+- 超出该关节行程范围会被拒绝并报告该轴的上下限（度），不做静默裁剪。
+- `observe`／`step` 返回的 `robot` 块新增 `joint_names`、`joints_deg`（当前实际角度，度）、
+  `joint_limits_deg`，配合画面反馈做纯关节空间控制时不用手动换算弧度。
+- 用途：练习/评测不依赖解析式逆解的操控（更贴近真机纯示教/关节脚本的约束），或者在
+  `move` 的 IK 解算失败、卡在奇异位形时做小幅度关节级微调退出。
 
 有效动作尝试消耗步数，包括 IK 失败；连续三次动作失败会暂停，运行期异常也会
 暂停。旧 `expected_step` 拒绝重复运动。网络超时后先查状态，不能直接重发。

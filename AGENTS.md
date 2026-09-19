@@ -32,6 +32,10 @@ another API model, a keyword-only language parser, or substitute a canned replay
    and a bounded low-level command. Inspect actual returned pose and new images,
    then decide the next step. Re-localize moved objects; saved points do not track.
    Use raised waypoints and inspect clutter; IK is not a collision-free planner.
+   `move`/`look_at` solve inverse kinematics for you; `joints` does not — it sets
+   arm joint targets directly (`delta_deg` or `target_deg`, degrees, ±25°/step),
+   and the resulting pose is only known once observed. Use it when the task or
+   the user asks for joint-space/non-IK control.
 5. On error/timeout, query status and observe before retrying. Never blindly resend
    a physical command. Respect pause/cancel, task budgets, and user corrections.
 6. For placement, open the gripper, retreat, wait for settling, then inspect fresh

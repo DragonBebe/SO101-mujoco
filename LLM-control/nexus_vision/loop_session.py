@@ -8,7 +8,7 @@ import uuid
 from .cameras import suite_from_options
 from .workspace import WorkspaceSimulation, scene_description
 
-MOTION = {'move', 'look_at', 'gripper', 'wait'}
+MOTION = {'move', 'look_at', 'gripper', 'wait', 'joints'}
 ACTIVE = {'running', 'paused'}
 
 
@@ -108,7 +108,7 @@ class LoopSession:
                 raise ValueError('Step budget exhausted; complete or cancel this task')
             motion = command.get('command')
             if not isinstance(motion, dict) or motion.get('action') not in MOTION:
-                raise ValueError('step.command must be move, look_at, gripper or wait')
+                raise ValueError('step.command must be move, look_at, gripper, wait or joints')
             self.task['steps'] += 1
             try:
                 obs = self.sim.execute(motion)
