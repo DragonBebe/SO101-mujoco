@@ -17,6 +17,7 @@
 | `nexus_vision/camera_viewer.py` | 按模态排版的 RGB/深度预览；双窗口模式使用独立进程 |
 | `third_party/so101-nexus` | 上游仿真环境、机器人资产和物理实现，保留许可证及包配置 |
 | `vision.py`、`nexus_vision/replay.py`、`evaluate.py` | 七个固定视觉任务的独立回放和物理评分 |
+| `run_realsim.sh`、`realsim/` | 真实桌面 → MuJoCo 场景映射：标定相机观测方块的位置和朝向，镜像进仿真或存成可步进快照，见 [REALSIM_README.md](REALSIM_README.md) |
 | `tests`、`examples/vision` | 闭环、感知、服务、视觉任务回归测试与可复现案例 |
 
 一次控制循环是：观察图像 → 用当前帧定位（`rgbd` 走深度反投影，`rgb` 走显式平面假设）→ 规划有界低层动作 → 经 IK、执行器和物理仿真执行 → 获取新图像与实际姿态。物体运动来自接触、摩擦和重力。IK 不保证路径无碰撞；`ok:true` 只说明动作执行成功，闭环任务的 `codex_visual` 是模型根据反馈作出的判断。
@@ -44,6 +45,12 @@ cd LLM-control
 PYTHONPATH=third_party/so101-nexus/src MUJOCO_GL=egl .venv-loop/bin/python vision.py replay --task all
 PYTHONPATH=third_party/so101-nexus/src MUJOCO_GL=egl .venv-loop/bin/python -m pytest tests -q --confcutdir=. --rootdir=. --import-mode=importlib
 ```
+
+真机方向另有两条链路，都不改动上面的仿真闭环：相机标定见 [RGBCAL_README.md](RGBCAL_README.md)
+（状态与结论在 [RGBCAL_SUMMARY.md](RGBCAL_SUMMARY.md)），把标定好的真实桌面映射成 MuJoCo 场景见
+[REALSIM_README.md](REALSIM_README.md)（验证记录 [logs/2026-09-21-realsim-mapping](logs/2026-09-21-realsim-mapping/README.md)）。
+`realsim` 真实侧跑 `.venv-rgbcal`、仿真侧跑 `.venv-loop`，物体通过场景 JSON 交接；新增 `arm-stream` / `sync` / `arm-replay` 通过独立最新关节反馈 JSON 和原始 JSONL 持续镜像、录制和回放。
+已有 `ServoBus` 控制进程可选开启只读后台发布；夹爪未知标定会明确标记，启动与验证见 realsim 文档第 10 节。
 
 `run_vision.sh` 是可选的独立环境入口，首次使用需要 uv，并会按 `requirements-vision.lock` 重建 `.venv-vision`。主流程只需 `.venv-loop`。
 

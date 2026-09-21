@@ -1,0 +1,42 @@
+{
+  "samples": 848,
+  "status": {
+    "status": "live",
+    "age_s": 0.024654507000377635,
+    "last_valid_sampled_at": 1790017811.5587533,
+    "error": null,
+    "gripper": {
+      "ticks": 2497,
+      "status": "uncalibrated"
+    },
+    "mapping_zero_status": {
+      "shoulder_pan": "unverified_pinned",
+      "shoulder_lift": "handeye_fitted",
+      "elbow_flex": "handeye_fitted",
+      "wrist_flex": "handeye_fitted",
+      "wrist_roll": "visual_estimate"
+    },
+    "joint_angles_rad": {
+      "shoulder_pan": -0.13195456322770316,
+      "shoulder_lift": -1.6496050225001346,
+      "elbow_flex": 1.4308479708161308,
+      "wrist_flex": 1.320970477974157,
+      "wrist_roll": -1.4119905443057421
+    },
+    "elapsed_s": 28.599147474997153,
+    "refresh_hz": 58.673077631666956,
+    "received_hz": 29.40647097034083,
+    "applied": 842,
+    "replay": false
+  },
+  "processing_s_ms": {
+    "median": 0.264770002104342,
+    "p95": 0.3395710009499453,
+    "max": 0.42980600119335577
+  },
+  "age_ms": {
+    "median": 17.4184415009222,
+    "p95": 24.51167314848135,
+    "max": 33.90959500029567
+  }
+}

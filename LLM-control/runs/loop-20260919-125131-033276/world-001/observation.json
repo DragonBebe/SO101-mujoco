@@ -1,0 +1,169 @@
+{
+  "task": "PickAndPlace-v2",
+  "instruction": "Pick up the red cube, center it on the blue circle, and release it onto the table.",
+  "frame_id": "c0135e69c41b4bf5:frame-90",
+  "time": 159.0999999999278,
+  "robot": {
+    "joint_names": [
+      "shoulder_pan",
+      "shoulder_lift",
+      "elbow_flex",
+      "wrist_flex",
+      "wrist_roll"
+    ],
+    "joints": [
+      0.8203557476935619,
+      -0.8725784721996092,
+      0.8730805418464773,
+      1.3264890548589015,
+      -4.2563612860330795e-05,
+      -0.17456757345808613
+    ],
+    "joints_deg": [
+      47.00292204214011,
+      -49.99506375101104,
+      50.02383022279821,
+      76.00222441371258,
+      -0.0024387153777257085
+    ],
+    "joint_velocities": [
+      -1.7721217844269994e-09,
+      -6.279570072153988e-09,
+      -8.819190093325313e-11,
+      -7.930321039534475e-13,
+      2.8892592604535967e-15,
+      4.033688248234792e-18
+    ],
+    "joint_limits_deg": {
+      "low": [
+        -109.99987525598623,
+        -100.00000275052231,
+        -96.82986737710912,
+        -94.99984017946129,
+        -157.21086991836626
+      ],
+      "high": [
+        109.99987525598623,
+        100.00000275052231,
+        96.82986737710912,
+        94.99984017946129,
+        157.21086991836626
+      ]
+    },
+    "tcp": [
+      0.13845700685753762,
+      -0.10827912057236637,
+      0.06391866761029213,
+      0.11266219017811786,
+      0.4178680588305611,
+      0.900332996454106,
+      -0.04576037379020137
+    ]
+  },
+  "cameras": {
+    "calibrated": {
+      "camera_id": "calibrated",
+      "placement": "calibrated",
+      "modality": "rgb",
+      "mounting": "world_fixed",
+      "width": 960,
+      "height": 540,
+      "rgb": "/home/dragon/SO101-mujoco/LLM-control/runs/loop-20260919-125131-033276/world-001/0090-calibrated.png",
+      "calibration": {
+        "width": 960,
+        "height": 540,
+        "fx": 701.9122611144447,
+        "fy": 702.3231676025142,
+        "cx": 462.01711962642844,
+        "cy": 255.49727789780016,
+        "position": [
+          0.7668524980545044,
+          -0.044837020337581635,
+          0.46098652482032776
+        ],
+        "rotation": [
+          [
+            -0.03617709847263173,
+            -0.5827832221984863,
+            0.8118219971656799
+          ],
+          [
+            0.999339119648841,
+            -0.01821465790271759,
+            0.031457625329494476
+          ],
+          [
+            -0.003545916295961682,
+            0.8124235272407532,
+            0.5830569863319397
+          ]
+        ]
+      },
+      "depth": null,
+      "depth_note": "no depth in the rgb modality; none is rendered or saved"
+    },
+    "wrist": {
+      "camera_id": "wrist",
+      "placement": "wrist",
+      "modality": "rgb",
+      "mounting": "robot_wrist",
+      "width": 640,
+      "height": 480,
+      "rgb": "/home/dragon/SO101-mujoco/LLM-control/runs/loop-20260919-125131-033276/world-001/0090-wrist.png",
+      "calibration": {
+        "width": 640,
+        "height": 480,
+        "fx": 415.69220539707135,
+        "fy": 415.69220539707135,
+        "cx": 319.5,
+        "cy": 239.5,
+        "position": [
+          0.16432403773069382,
+          -0.05429061874747276,
+          0.11323036625981331
+        ],
+        "rotation": [
+          [
+            0.625387044877808,
+            0.7309907674789429,
+            0.27302664518356323
+          ],
+          [
+            -0.7421298602676139,
+            0.4490732252597809,
+            0.49757060408592224
+          ],
+          [
+            0.24111056162128897,
+            -0.5137954354286194,
+            0.8233346343040466
+          ]
+        ]
+      },
+      "depth": null,
+      "depth_note": "no depth in the rgb modality; none is rendered or saved"
+    }
+  },
+  "perception": {
+    "modality": "rgb",
+    "depth_available": false,
+    "environment_camera": "calibrated",
+    "cameras": [
+      "calibrated",
+      "wrist"
+    ],
+    "resolution": {
+      "calibrated": {
+        "width": 960,
+        "height": 540
+      },
+      "wrist": {
+        "width": 640,
+        "height": 480
+      }
+    },
+    "localize": "method 'depth' is unavailable: no depth is rendered. method 'plane' with an explicit plane_z: the pixel ray is intersected with that horizontal plane. Depth-free and exact for content that really lies on the plane; wrong by the height error otherwise. This is the only 3D estimator in the rgb modality",
+    "propose": "rendered-colour regions as pixels and boxes, no surface point; pass object_height (and plane_z, default 0) to also estimate where an upright object of that height stands on the plane, and a grasp_center at half its height. Depth-free; assumes the object rests on the plane and is not badly occluded",
+    "sources": "rendered images, camera calibration and robot forward kinematics"
+  }
+}

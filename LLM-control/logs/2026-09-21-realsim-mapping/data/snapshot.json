@@ -1,0 +1,161 @@
+{
+  "schema": "realsim/snapshot/1",
+  "written_at": "2026-09-21T16:27:40.107+02:00",
+  "catalogue": {
+    "schema": "realsim/blocks/1",
+    "measured_at": "2026-09-21",
+    "source": "/home/dragon/SO101-mujoco/LLM-control/calib/realsim-real-01/blocks.json",
+    "note": "Session catalogue for the offline real-image run on calib/c920-point-check-02 frames (captured 2026-09-18, camera confirmed in place at the time). The 30.5 mm edge is NOT a calliper measurement: it is what `run_realsim.sh measure` fits from six archived frames (30.2, 30.5, 30.2, 30.5, 31.3, 31.4 mm) and from one live 2026-09-21 frame (30.9 mm). The nominal 25 mm in realsim/config/blocks.json comes from the grasp log and is contradicted by every one of those frames. Measure the block before relying on either number.",
+    "tolerances": {
+      "note": "same reasoning as the default catalogue, scaled to a 30.5 mm block",
+      "position_mm": 6.0,
+      "yaw_deg": 10.0
+    },
+    "blocks": [
+      {
+        "id": "red_cube",
+        "colour": "red",
+        "size_m": [
+          0.0305,
+          0.0305,
+          0.0305
+        ],
+        "size_source": "fitted from 6 archived C920 frames with run_realsim.sh measure (30.2-31.4 mm, median 30.5); inherits the calibration's metric scale; NOT measured with a calliper",
+        "size_measured": false,
+        "height_m": 0.0305,
+        "symmetry_step_deg": 90.0,
+        "shape": "box",
+        "origin": "geometric centre of the box",
+        "physics": {
+          "mass_kg": 0.01,
+          "mass_source": "so101_nexus CubeObject default; not weighed",
+          "friction": [
+            1.0,
+            0.005,
+            0.0001
+          ],
+          "friction_source": "MuJoCo default; not identified"
+        },
+        "note": ""
+      }
+    ]
+  },
+  "world_frame": "z = 0 is the measured table surface; origin on the table below the robot base origin; x is the base x axis projected onto the table. This frame is the MuJoCo world of the mirror.",
+  "applied": {
+    "placed": [
+      {
+        "id": "red_cube",
+        "position_m": [
+          0.36484396369876626,
+          0.035917629159248066,
+          0.01525
+        ],
+        "quaternion_wxyz": [
+          0.9995664064865739,
+          0.0,
+          0.0,
+          0.029444847147120486
+        ],
+        "yaw_deg": 3.3746186915674157,
+        "size_m": [
+          0.0305,
+          0.0305,
+          0.0305
+        ],
+        "colour": "red",
+        "state": "detected",
+        "age_s": 0.0,
+        "observed_at": "",
+        "source": "filtered"
+      }
+    ],
+    "skipped": [],
+    "arm": null,
+    "from_frame_index": 1,
+    "captured_at": "2026-09-18T17:33:12.901+02:00",
+    "stepped": true,
+    "note": "mirror: state is set from the observation and only mj_forward is called, so the simulation cannot move a block away from where the camera saw it"
+  },
+  "state": {
+    "time_s": 1.3999999999999921,
+    "blocks": [
+      {
+        "id": "red_cube",
+        "position_m": [
+          0.36484396369876626,
+          0.035917629159248066,
+          0.015204620028474475
+        ],
+        "quaternion_wxyz": [
+          0.9995664064865739,
+          2.8010981517835035e-17,
+          3.0772294153732827e-19,
+          0.029444847147120486
+        ],
+        "parked": false
+      }
+    ],
+    "joints_deg": [
+      69.99999999187438,
+      -84.99863604682834,
+      85.02478347901715,
+      30.00732903089334,
+      1.0975793977718849e-09
+    ]
+  },
+  "qpos": [
+    1.2217304762542118,
+    -1.4835060587214917,
+    1.4839624175041282,
+    0.523726691318368,
+    1.9156374293175904e-11,
+    1.221730476430819,
+    0.36484396369876626,
+    0.035917629159248066,
+    0.015204620028474475,
+    0.9995664064865739,
+    2.8010981517835035e-17,
+    3.0772294153732827e-19,
+    0.029444847147120486
+  ],
+  "qvel": [
+    -8.778443711319183e-10,
+    -1.0890589260558726e-08,
+    -4.722603820963246e-09,
+    -1.0042416562763364e-11,
+    4.8898241994267265e-14,
+    -8.162568715011883e-17,
+    -1.1647716962155855e-18,
+    1.0285517319280057e-18,
+    1.5439038936193583e-16,
+    5.640073136586757e-16,
+    -2.036634470271256e-16,
+    2.8941233233810688e-31
+  ],
+  "ctrl": [
+    1.2217304763960306,
+    -1.4835298641951802,
+    1.4835298641951802,
+    0.5235987755982988,
+    0.0,
+    1.2217304763960306
+  ],
+  "time_s": 1.3999999999999921,
+  "note": "a simulation initialised from the observation; stepping it predicts, it does not observe, and nothing here is written back to the real side",
+  "physics_parameters": {
+    "source": "defaults, not identified from the real blocks",
+    "blocks": [
+      {
+        "id": "red_cube",
+        "mass_kg": 0.01,
+        "mass_source": "so101_nexus CubeObject default; not weighed",
+        "friction": [
+          1.0,
+          0.005,
+          0.0001
+        ],
+        "friction_source": "MuJoCo default; not identified"
+      }
+    ]
+  }
+}

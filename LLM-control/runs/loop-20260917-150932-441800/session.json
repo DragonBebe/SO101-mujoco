@@ -1,0 +1,84 @@
+{
+  "task": {
+    "id": "d050029a5af24ccfb29dc178bb944641",
+    "instruction": "将红色方块放在绿色方块上面（纯 RGB 模式；当前绿在红上，需先拆垛）",
+    "status": "succeeded",
+    "steps": 20,
+    "max_steps": 50,
+    "failures": 0,
+    "verification": "codex_visual",
+    "evidence": "纯 RGB 模式完成红叠绿，无深度输入、未读取物体仿真坐标。任务开始时绿在红上，先拆垛：把绿方块从 z=0.025 抓起并放到桌面 (0.1872,-0.1268)（实测落点与目标差 2.6 毫米），再抓红方块叠上去。验证：同一帧对红方块检验两个互斥假设，plane_z=0.025 给出中心 (0.1895,-0.1280)、extent 36×32 毫米，与绿方块作为底座的实测中心 (0.1872,-0.1268) 相距 2.6 毫米；plane_z=0 给出 (0.1700,-0.1108)、extent 膨胀到 40×36 毫米，是假设平面低于真实支撑面的特征，且离绿方块 26 毫米。腕部相机独立复算 plane_z=0.025 得 (0.1897,-0.1279)，与侧视相差 0.2 毫米；其 plane_z=0 的 extent 为 44×46 毫米，同样排除“红方块在桌面”的解释。绿方块在侧视的可见像素从自由摆放时的 765 降到 270，说明上方被覆盖。夹爪张开后先垂直再横向退开、静置 2 秒，侧视图放大后可见单一竖直叠柱：上为红方块、下为绿方块，直立未倾倒，仅投下一个影子；黄色圆柱、紫色方块和蓝色目标区未被移动。该结论为图像判断（codex_visual），非接触传感器或自动评分。",
+    "evidence_frame": "e8d9e297e037434f:frame-36"
+  },
+  "scene": {
+    "name": "workbench",
+    "objects": [
+      "red cube (25 mm)",
+      "green cube (25 mm)",
+      "yellow cylinder (diameter/height 25 mm)",
+      "purple cube (35 mm)"
+    ],
+    "regions": [
+      "blue goal disc (radius 35 mm)"
+    ],
+    "coordinates": "world XYZ in meters; z=0 is the support surface",
+    "perception": "RGB only from the side and wrist cameras; no depth. 3D comes from the plane assumption: intersect a pixel ray with a stated horizontal plane, or give propose an object_height to estimate where an upright object of that size stands on the table. Object locations must still be observed, not assumed",
+    "motion": "IK with joint limits; no general collision-free path planner"
+  },
+  "cameras": {
+    "modality": "rgb",
+    "depth_available": false,
+    "environment_camera": "side",
+    "environment_placement": "side",
+    "environment_mounting": "world_fixed",
+    "wrist_camera": "wrist",
+    "wrist_mounting": "robot_wrist",
+    "cameras": [
+      "side",
+      "wrist"
+    ],
+    "resolution": {
+      "width": 640,
+      "height": 480
+    },
+    "environment_fov_deg": 50.0,
+    "side_angles_deg": {
+      "azimuth": 130.0,
+      "elevation": -32.0
+    },
+    "note": "side placement is a simulation starting point, not a calibrated copy of physical hardware",
+    "side_resolved": {
+      "lookat": [
+        0.17,
+        0.0,
+        0.125
+      ],
+      "distance": 0.6613576679335923,
+      "azimuth": 130.0,
+      "elevation": -32.0,
+      "fov_deg": 50.0,
+      "eye": [
+        0.5305158585900223,
+        -0.42964606966184515,
+        0.4754661687863575
+      ],
+      "framed": {
+        "low": [
+          0.0,
+          -0.308144647592461,
+          0.0
+        ],
+        "high": [
+          0.34,
+          0.308144647592461,
+          0.25
+        ]
+      }
+    }
+  },
+  "world": 1,
+  "seed": 4,
+  "running": true,
+  "frame_id": "e8d9e297e037434f:frame-36",
+  "sequence": 116
+}

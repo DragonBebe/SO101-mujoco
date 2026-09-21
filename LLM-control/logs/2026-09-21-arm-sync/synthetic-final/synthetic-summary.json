@@ -1,0 +1,41 @@
+{
+  "synthetic_only": true,
+  "valid_applied_samples": 93,
+  "status_transitions_observed": [
+    "disconnected",
+    "live",
+    "stale"
+  ],
+  "processing_ms_mean": 0.1959445267779282,
+  "processing_ms_max": 0.45592800233862363,
+  "sample_age_ms_mean": 8.576902871017635,
+  "sample_age_ms_max": 20.22702500107698,
+  "summary": {
+    "elapsed_s": 7.005116619002365,
+    "refresh_hz": 59.67066970250233,
+    "received_hz": 13.276010244815112,
+    "applied": 93,
+    "final": {
+      "status": "stale",
+      "age_s": 1.4623013800010085,
+      "last_valid_sampled_at": 1790014102.817787,
+      "error": null,
+      "gripper": {
+        "ticks": 2510,
+        "status": "calibrated",
+        "radians": 0.6,
+        "source": "SYNTHETIC TEST ONLY; not a real calibration"
+      },
+      "joint_angles_rad": {
+        "shoulder_pan": -0.09973310011396169,
+        "shoulder_lift": 0.05352945636905725,
+        "elbow_flex": -0.06207982012055717,
+        "wrist_flex": 0.18247878128862513,
+        "wrist_roll": 0.0007671776931843207,
+        "gripper": 0.6
+      }
+    },
+    "replay": false
+  },
+  "note": "Headless refresh; no display scanout or hardware motion latency measured."
+}

@@ -1,0 +1,811 @@
+{
+  "schema": "realsim/selftest/1",
+  "written_at": "2026-09-21T17:07:39.667+02:00",
+  "catalogue": {
+    "schema": "realsim/blocks/1",
+    "measured_at": "2026-09-21",
+    "source": "/home/dragon/SO101-mujoco/LLM-control/realsim/config/blocks.json",
+    "note": "The three cubes on the real table. The user states all three are 30 mm; that is what is entered here. It replaces the nominal 25 mm quoted in calib/c920-real-grasp-01/LOG.md, which disagreed with every image: fitting the size as a free parameter (run_realsim.sh measure) gives 30.2-31.4 mm across six archived frames and 30.9 mm on a live one. The ~2% left over between 30.0 and those fits is the camera's, not the block's, and is one of the things an independent position measurement would pin down. Mass and friction below are simulation defaults and have not been measured at all.",
+    "tolerances": {
+      "note": "Acceptance thresholds for the estimate, in the table frame. Derived from the block and the gripper: the jaws close on a 30 mm cube with a few mm of lateral slack, so a position error under 5 mm leaves margin, and a yaw error of 10 deg moves a 30 mm cube's corner by 30/2*sqrt(2)*sin(10 deg) = 3.7 mm. Re-derive them for your own gripper before quoting a pass.",
+      "position_mm": 5.0,
+      "yaw_deg": 10.0
+    },
+    "blocks": [
+      {
+        "id": "red_cube",
+        "colour": "red",
+        "size_m": [
+          0.03,
+          0.03,
+          0.03
+        ],
+        "size_source": "user statement 2026-09-21: all three cubes are 30 mm; consistent with 30.2-31.4 mm fitted from images",
+        "size_measured": true,
+        "height_m": 0.03,
+        "symmetry_step_deg": 90.0,
+        "colour_spec": {
+          "name": "red",
+          "hue_deg": [
+            [
+              0.0,
+              15.0
+            ],
+            [
+              345.0,
+              360.0
+            ]
+          ],
+          "min_saturation": 0.35,
+          "min_value": 0.2,
+          "render_rgb": [
+            0.8,
+            0.12,
+            0.12
+          ],
+          "source": "perception's band for this colour name"
+        },
+        "shape": "box",
+        "origin": "geometric centre of the box",
+        "physics": {
+          "mass_kg": 0.01,
+          "mass_source": "so101_nexus CubeObject default; not weighed",
+          "friction": [
+            1.0,
+            0.005,
+            0.0001
+          ],
+          "friction_source": "MuJoCo default; not identified"
+        },
+        "note": "the block grasped first in the 2026-09-18 real run"
+      },
+      {
+        "id": "green_cube",
+        "colour": "green",
+        "size_m": [
+          0.03,
+          0.03,
+          0.03
+        ],
+        "size_source": "user statement 2026-09-21: all three cubes are 30 mm",
+        "size_measured": true,
+        "height_m": 0.03,
+        "symmetry_step_deg": 90.0,
+        "colour_spec": {
+          "name": "green",
+          "hue_deg": [
+            [
+              145.0,
+              182.0
+            ]
+          ],
+          "min_saturation": 0.25,
+          "min_value": 0.2,
+          "render_rgb": [
+            0.12,
+            0.8,
+            0.613
+          ],
+          "source": "measured on calib/realsim-3cubes/frames/spread-001.png with run_realsim.sh colours: this teal cube is hue 160-172, sat p5 0.36. perception's green band stops at 170, so its shaded face crossed into blue and the mask lost a corner. Widened to 145-182, which still ends 4 deg below the blue cube's band"
+        },
+        "shape": "box",
+        "origin": "geometric centre of the box",
+        "physics": {
+          "mass_kg": 0.01,
+          "mass_source": "so101_nexus CubeObject default; not weighed",
+          "friction": [
+            1.0,
+            0.005,
+            0.0001
+          ],
+          "friction_source": "MuJoCo default; not identified"
+        },
+        "note": "teal, not the rendered green perception was written for; it needs its own hue band, see colour_source"
+      },
+      {
+        "id": "blue_cube",
+        "colour": "blue",
+        "size_m": [
+          0.03,
+          0.03,
+          0.03
+        ],
+        "size_source": "user statement 2026-09-21: all three cubes are 30 mm",
+        "size_measured": true,
+        "height_m": 0.03,
+        "symmetry_step_deg": 90.0,
+        "colour_spec": {
+          "name": "blue",
+          "hue_deg": [
+            [
+              186.0,
+              265.0
+            ]
+          ],
+          "min_saturation": 0.35,
+          "min_value": 0.2,
+          "render_rgb": [
+            0.12,
+            0.2843,
+            0.8
+          ],
+          "source": "measured on the same frame: this cube is hue 200-208. The band starts at 186 so it cannot claim the teal cube's pixels"
+        },
+        "shape": "box",
+        "origin": "geometric centre of the box",
+        "physics": {
+          "mass_kg": 0.01,
+          "mass_source": "so101_nexus CubeObject default; not weighed",
+          "friction": [
+            1.0,
+            0.005,
+            0.0001
+          ],
+          "friction_source": "MuJoCo default; not identified"
+        },
+        "note": "blue also matches large background objects (a chair, denim); the footprint and area checks are what reject those"
+      }
+    ]
+  },
+  "summary": {
+    "kind": "SYNTHETIC: rendered frames, not photographs of the real table",
+    "camera": "calibrated",
+    "placements": 9,
+    "detected": 9,
+    "in_frame": 9,
+    "position_error_mm": {
+      "count": 9,
+      "median": 0.15014801471788158,
+      "mean": 0.14555976201368365,
+      "max": 0.2920444233637388,
+      "p90": 0.20656958552072496
+    },
+    "yaw_error_deg": {
+      "count": 9,
+      "median": 0.34441663167285147,
+      "mean": 0.36063318802413197,
+      "max": 0.7291469779338883,
+      "p90": 0.6432642288635207
+    },
+    "height_error_mm": {
+      "count": 9,
+      "median": 0.0,
+      "mean": 0.0,
+      "max": 0.0,
+      "p90": 0.0
+    },
+    "estimate_s": {
+      "count": 9,
+      "median": 1.666,
+      "mean": 1.6809999999999998,
+      "max": 1.734,
+      "p90": 1.7252
+    },
+    "tolerances": {
+      "position_mm": 5.0,
+      "yaw_deg": 10.0,
+      "source": "Acceptance thresholds for the estimate, in the table frame. Derived from the block and the gripper: the jaws close on a 30 mm cube with a few mm of lateral slack, so a position error under 5 mm leaves margin, and a yaw error of 10 deg moves a 30 mm cube's corner by 30/2*sqrt(2)*sin(10 deg) = 3.7 mm. Re-derive them for your own gripper before quoting a pass."
+    },
+    "lift_refusals": [
+      {
+        "lifted_by_mm": 5.0,
+        "refused": false,
+        "best_elevation_mm": 6.0,
+        "height_margin": 0.006592880311692473,
+        "conclusion": "on the assumed plane",
+        "reasons": [],
+        "note": "a block held above the table must not be reported as a pose on the table"
+      },
+      {
+        "lifted_by_mm": 10.0,
+        "refused": false,
+        "best_elevation_mm": 12.0,
+        "height_margin": 0.020912925082983702,
+        "conclusion": "cannot tell from this viewpoint",
+        "reasons": [],
+        "note": "a block held above the table must not be reported as a pose on the table"
+      },
+      {
+        "lifted_by_mm": 20.0,
+        "refused": true,
+        "best_elevation_mm": 24.0,
+        "height_margin": 0.04799105907606638,
+        "conclusion": "not on the assumed plane",
+        "reasons": [
+          "the silhouette is best explained +24 mm from the assumed plane (margin 0.048): the block is not resting on it (lifted, stacked, or the wrong support height was given)"
+        ],
+        "note": "a block held above the table must not be reported as a pose on the table"
+      },
+      {
+        "lifted_by_mm": 40.0,
+        "refused": true,
+        "best_elevation_mm": 24.0,
+        "height_margin": 0.07997589944623318,
+        "conclusion": "not on the assumed plane",
+        "reasons": [
+          "the silhouette is best explained +24 mm from the assumed plane (margin 0.080): the block is not resting on it (lifted, stacked, or the wrong support height was given)"
+        ],
+        "note": "a block held above the table must not be reported as a pose on the table"
+      },
+      {
+        "lifted_by_mm": 80.0,
+        "refused": true,
+        "best_elevation_mm": 48.0,
+        "height_margin": 0.16588326668337372,
+        "conclusion": "not on the assumed plane",
+        "reasons": [
+          "observed/model silhouette area 1.41 is outside [0.75, 1.3]: occluded, merged with another region, or not this block",
+          "the silhouette is best explained +48 mm from the assumed plane (margin 0.166): the block is not resting on it (lifted, stacked, or the wrong support height was given)"
+        ],
+        "note": "a block held above the table must not be reported as a pose on the table"
+      }
+    ],
+    "lift_detection_floor_mm": {
+      "smallest_refused_mm": 20.0,
+      "largest_missed_mm": 10.0,
+      "note": "a block lifted by less than this is reported as a pose on the table; the plane assumption cannot be checked below it from this viewpoint"
+    },
+    "two_block_scene": [
+      {
+        "id": "red_cube",
+        "detected": true,
+        "position_error_mm": 0.16521080450677625,
+        "yaw_error_deg": 1.5054713170983252
+      },
+      {
+        "id": "green_cube",
+        "detected": true,
+        "position_error_mm": 0.25748744073220575,
+        "yaw_error_deg": 0.20623309799801945
+      }
+    ],
+    "what_this_does_not_show": "rendered images share the estimator's own model of the world: they say nothing about the real camera's colour, lighting or blur, and nothing about whether the calibration puts the table where the table is",
+    "passed": true
+  },
+  "placements": [
+    {
+      "index": 1,
+      "truth_position_m": [
+        0.18,
+        -0.12,
+        0.015
+      ],
+      "truth_yaw_deg": 0.5,
+      "in_frame": true,
+      "estimate_s": 1.64,
+      "detected": true,
+      "estimated_position_m": [
+        0.1798270136307139,
+        -0.1200574801471193,
+        0.015
+      ],
+      "estimated_yaw_deg": 1.1217935415959288,
+      "position_error_mm": 0.18228617959581928,
+      "height_error_mm": 0.0,
+      "yaw_error_deg": 0.6217935415959288,
+      "iou": 0.9837812841184238,
+      "area_ratio": 1.009186303111752,
+      "height_check": {
+        "best_elevation_m": 0.0,
+        "best_iou": 0.9837815359542171,
+        "iou_at_assumed_plane": 0.9837815359542171,
+        "margin": 0.0,
+        "decisive": false,
+        "conclusion": "on the assumed plane",
+        "iou_one_block_higher": 0.921082708224536,
+        "sensitivity": 0.06269882772968116,
+        "probes": [
+          {
+            "elevation_m": -0.006,
+            "iou": 0.9676486394172383
+          },
+          {
+            "elevation_m": 0.0,
+            "iou": 0.9837815359542171
+          },
+          {
+            "elevation_m": 0.006,
+            "iou": 0.9723114882423689
+          },
+          {
+            "elevation_m": 0.012,
+            "iou": 0.9567993174155895
+          },
+          {
+            "elevation_m": 0.024,
+            "iou": 0.921082708224536
+          },
+          {
+            "elevation_m": 0.048,
+            "iou": 0.8432346771275631
+          }
+        ],
+        "note": "elevation is re-fitted together with x, y and yaw. The check only refuses when the best height beats the assumed plane by min_height_margin; below that the score landscape is flat and this viewpoint genuinely cannot separate height from position"
+      },
+      "overlay": "/home/dragon/SO101-mujoco/LLM-control/calib/realsim-selftest-30mm/frames/placement-01.png"
+    },
+    {
+      "index": 2,
+      "truth_position_m": [
+        0.18,
+        0.0,
+        0.015
+      ],
+      "truth_yaw_deg": 7.499999999999999,
+      "in_frame": true,
+      "estimate_s": 1.662,
+      "detected": true,
+      "estimated_position_m": [
+        0.17996679802459753,
+        1.5221676187553257e-05,
+        0.015
+      ],
+      "estimated_yaw_deg": 7.155583368327148,
+      "position_error_mm": 0.036524931164678906,
+      "height_error_mm": 0.0,
+      "yaw_error_deg": 0.34441663167285147,
+      "iou": 0.9721146055247464,
+      "area_ratio": 1.006789422487275,
+      "height_check": {
+        "best_elevation_m": 0.0,
+        "best_iou": 0.9721146355443429,
+        "iou_at_assumed_plane": 0.9721146355443429,
+        "margin": 0.0,
+        "decisive": false,
+        "conclusion": "on the assumed plane",
+        "iou_one_block_higher": 0.9237997016371151,
+        "sensitivity": 0.04831493390722774,
+        "probes": [
+          {
+            "elevation_m": -0.006,
+            "iou": 0.9636284479390809
+          },
+          {
+            "elevation_m": 0.0,
+            "iou": 0.9721146355443429
+          },
+          {
+            "elevation_m": 0.006,
+            "iou": 0.9701353785854402
+          },
+          {
+            "elevation_m": 0.012,
+            "iou": 0.9577629855174805
+          },
+          {
+            "elevation_m": 0.024,
+            "iou": 0.9237997016371151
+          },
+          {
+            "elevation_m": 0.048,
+            "iou": 0.8530603715736191
+          }
+        ],
+        "note": "elevation is re-fitted together with x, y and yaw. The check only refuses when the best height beats the assumed plane by min_height_margin; below that the score landscape is flat and this viewpoint genuinely cannot separate height from position"
+      },
+      "overlay": "/home/dragon/SO101-mujoco/LLM-control/calib/realsim-selftest-30mm/frames/placement-02.png"
+    },
+    {
+      "index": 3,
+      "truth_position_m": [
+        0.18,
+        0.12,
+        0.015
+      ],
+      "truth_yaw_deg": 14.499999999999998,
+      "in_frame": true,
+      "estimate_s": 1.666,
+      "detected": true,
+      "estimated_position_m": [
+        0.17987284689009486,
+        0.12000026505755637,
+        0.015
+      ],
+      "estimated_yaw_deg": 13.770853022066104,
+      "position_error_mm": 0.12715338616825997,
+      "height_error_mm": 0.0,
+      "yaw_error_deg": 0.7291469779338883,
+      "iou": 0.9761645591863408,
+      "area_ratio": 1.0017862401885402,
+      "height_check": {
+        "best_elevation_m": 0.0,
+        "best_iou": 0.9761645881329939,
+        "iou_at_assumed_plane": 0.9761645881329939,
+        "margin": 0.0,
+        "decisive": false,
+        "conclusion": "on the assumed plane",
+        "iou_one_block_higher": 0.9190347822845419,
+        "sensitivity": 0.05712980584845195,
+        "probes": [
+          {
+            "elevation_m": -0.006,
+            "iou": 0.9686659805969794
+          },
+          {
+            "elevation_m": 0.0,
+            "iou": 0.9761645881329939
+          },
+          {
+            "elevation_m": 0.006,
+            "iou": 0.9697839486355893
+          },
+          {
+            "elevation_m": 0.012,
+            "iou": 0.953566223835951
+          },
+          {
+            "elevation_m": 0.024,
+            "iou": 0.9190347822845419
+          },
+          {
+            "elevation_m": 0.048,
+            "iou": 0.808407960408384
+          }
+        ],
+        "note": "elevation is re-fitted together with x, y and yaw. The check only refuses when the best height beats the assumed plane by min_height_margin; below that the score landscape is flat and this viewpoint genuinely cannot separate height from position"
+      },
+      "overlay": "/home/dragon/SO101-mujoco/LLM-control/calib/realsim-selftest-30mm/frames/placement-03.png"
+    },
+    {
+      "index": 4,
+      "truth_position_m": [
+        0.26,
+        -0.12,
+        0.015
+      ],
+      "truth_yaw_deg": 21.5,
+      "in_frame": true,
+      "estimate_s": 1.637,
+      "detected": true,
+      "estimated_position_m": [
+        0.2598503006309184,
+        -0.11998840149922224,
+        0.015
+      ],
+      "estimated_yaw_deg": 21.256197067812085,
+      "position_error_mm": 0.15014801471788158,
+      "height_error_mm": 0.0,
+      "yaw_error_deg": 0.24380293218791246,
+      "iou": 0.9755758364239688,
+      "area_ratio": 1.0053421908679878,
+      "height_check": {
+        "best_elevation_m": 0.0,
+        "best_iou": 0.9755758391735165,
+        "iou_at_assumed_plane": 0.9755758391735165,
+        "margin": 0.0,
+        "decisive": false,
+        "conclusion": "on the assumed plane",
+        "iou_one_block_higher": 0.9218994479675403,
+        "sensitivity": 0.053676391205976226,
+        "probes": [
+          {
+            "elevation_m": -0.006,
+            "iou": 0.9662686137431825
+          },
+          {
+            "elevation_m": 0.0,
+            "iou": 0.9755758391735165
+          },
+          {
+            "elevation_m": 0.006,
+            "iou": 0.9722491878612943
+          },
+          {
+            "elevation_m": 0.012,
+            "iou": 0.9575691145371277
+          },
+          {
+            "elevation_m": 0.024,
+            "iou": 0.9218994479675403
+          },
+          {
+            "elevation_m": 0.048,
+            "iou": 0.8499799953847881
+          }
+        ],
+        "note": "elevation is re-fitted together with x, y and yaw. The check only refuses when the best height beats the assumed plane by min_height_margin; below that the score landscape is flat and this viewpoint genuinely cannot separate height from position"
+      },
+      "overlay": "/home/dragon/SO101-mujoco/LLM-control/calib/realsim-selftest-30mm/frames/placement-04.png"
+    },
+    {
+      "index": 5,
+      "truth_position_m": [
+        0.26,
+        0.0,
+        0.015
+      ],
+      "truth_yaw_deg": 28.500000000000004,
+      "in_frame": true,
+      "estimate_s": 1.723,
+      "detected": true,
+      "estimated_position_m": [
+        0.2599423032471967,
+        7.922545480569713e-06,
+        0.015
+      ],
+      "estimated_yaw_deg": 28.126944059975063,
+      "position_error_mm": 0.05823814910296006,
+      "height_error_mm": 0.0,
+      "yaw_error_deg": 0.3730559400249417,
+      "iou": 0.9778411260244949,
+      "area_ratio": 1.0003678933197877,
+      "height_check": {
+        "best_elevation_m": 0.0,
+        "best_iou": 0.9778411387043555,
+        "iou_at_assumed_plane": 0.9778411387043555,
+        "margin": 0.0,
+        "decisive": false,
+        "conclusion": "on the assumed plane",
+        "iou_one_block_higher": 0.9114099194052858,
+        "sensitivity": 0.0664312192990697,
+        "probes": [
+          {
+            "elevation_m": -0.006,
+            "iou": 0.9698171590263206
+          },
+          {
+            "elevation_m": 0.0,
+            "iou": 0.9778411387043555
+          },
+          {
+            "elevation_m": 0.006,
+            "iou": 0.9700634153836469
+          },
+          {
+            "elevation_m": 0.012,
+            "iou": 0.9509526812772235
+          },
+          {
+            "elevation_m": 0.024,
+            "iou": 0.9114099194052858
+          },
+          {
+            "elevation_m": 0.048,
+            "iou": 0.7978241302798136
+          }
+        ],
+        "note": "elevation is re-fitted together with x, y and yaw. The check only refuses when the best height beats the assumed plane by min_height_margin; below that the score landscape is flat and this viewpoint genuinely cannot separate height from position"
+      }
+    },
+    {
+      "index": 6,
+      "truth_position_m": [
+        0.26,
+        0.12,
+        0.015
+      ],
+      "truth_yaw_deg": 35.49999999999999,
+      "in_frame": true,
+      "estimate_s": 1.734,
+      "detected": true,
+      "estimated_position_m": [
+        0.2598454815586947,
+        0.12005809548135518,
+        0.015
+      ],
+      "estimated_yaw_deg": 35.78574639810737,
+      "position_error_mm": 0.16507887102023613,
+      "height_error_mm": 0.0,
+      "yaw_error_deg": 0.2857463981073764,
+      "iou": 0.9788432535327144,
+      "area_ratio": 0.997945822447545,
+      "height_check": {
+        "best_elevation_m": 0.0,
+        "best_iou": 0.9788432650479584,
+        "iou_at_assumed_plane": 0.9788432650479584,
+        "margin": 0.0,
+        "decisive": false,
+        "conclusion": "on the assumed plane",
+        "iou_one_block_higher": 0.9081149267165719,
+        "sensitivity": 0.07072833833138648,
+        "probes": [
+          {
+            "elevation_m": -0.006,
+            "iou": 0.9715362222631136
+          },
+          {
+            "elevation_m": 0.0,
+            "iou": 0.9788432650479584
+          },
+          {
+            "elevation_m": 0.006,
+            "iou": 0.9691928374310785
+          },
+          {
+            "elevation_m": 0.012,
+            "iou": 0.9486044614144605
+          },
+          {
+            "elevation_m": 0.024,
+            "iou": 0.9081149267165719
+          },
+          {
+            "elevation_m": 0.048,
+            "iou": 0.8373704284054458
+          }
+        ],
+        "note": "elevation is re-fitted together with x, y and yaw. The check only refuses when the best height beats the assumed plane by min_height_margin; below that the score landscape is flat and this viewpoint genuinely cannot separate height from position"
+      }
+    },
+    {
+      "index": 7,
+      "truth_position_m": [
+        0.34,
+        -0.12,
+        0.015
+      ],
+      "truth_yaw_deg": 42.5,
+      "in_frame": true,
+      "estimate_s": 1.711,
+      "detected": true,
+      "estimated_position_m": [
+        0.3399417346754685,
+        -0.12009724365188473,
+        0.015
+      ],
+      "estimated_yaw_deg": 42.15021119022632,
+      "position_error_mm": 0.11336302692960665,
+      "height_error_mm": 0.0,
+      "yaw_error_deg": 0.34978880977367977,
+      "iou": 0.9800112485975105,
+      "area_ratio": 1.0015708514133892,
+      "height_check": {
+        "best_elevation_m": 0.0,
+        "best_iou": 0.9800112520679014,
+        "iou_at_assumed_plane": 0.9800112520679014,
+        "margin": 0.0,
+        "decisive": false,
+        "conclusion": "on the assumed plane",
+        "iou_one_block_higher": 0.9114282522142139,
+        "sensitivity": 0.06858299985368754,
+        "probes": [
+          {
+            "elevation_m": -0.006,
+            "iou": 0.9695859424634038
+          },
+          {
+            "elevation_m": 0.0,
+            "iou": 0.9800112520679014
+          },
+          {
+            "elevation_m": 0.006,
+            "iou": 0.9721715909476643
+          },
+          {
+            "elevation_m": 0.012,
+            "iou": 0.9522571183515472
+          },
+          {
+            "elevation_m": 0.024,
+            "iou": 0.9114282522142139
+          },
+          {
+            "elevation_m": 0.048,
+            "iou": 0.8370471456408208
+          }
+        ],
+        "note": "elevation is re-fitted together with x, y and yaw. The check only refuses when the best height beats the assumed plane by min_height_margin; below that the score landscape is flat and this viewpoint genuinely cannot separate height from position"
+      }
+    },
+    {
+      "index": 8,
+      "truth_position_m": [
+        0.34,
+        0.0,
+        0.015
+      ],
+      "truth_yaw_deg": 49.5,
+      "in_frame": true,
+      "estimate_s": 1.691,
+      "detected": true,
+      "estimated_position_m": [
+        0.33981518406450206,
+        -1.1934591714598172e-05,
+        0.015
+      ],
+      "estimated_yaw_deg": 49.37749882359375,
+      "position_error_mm": 0.18520087605997146,
+      "height_error_mm": 0.0,
+      "yaw_error_deg": 0.12250117640625574,
+      "iou": 0.9805673903566604,
+      "area_ratio": 1.0011571963761232,
+      "height_check": {
+        "best_elevation_m": 0.0,
+        "best_iou": 0.980567392368657,
+        "iou_at_assumed_plane": 0.980567392368657,
+        "margin": 0.0,
+        "decisive": false,
+        "conclusion": "on the assumed plane",
+        "iou_one_block_higher": 0.90855234270627,
+        "sensitivity": 0.07201504966238692,
+        "probes": [
+          {
+            "elevation_m": -0.006,
+            "iou": 0.9698681524003139
+          },
+          {
+            "elevation_m": 0.0,
+            "iou": 0.980567392368657
+          },
+          {
+            "elevation_m": 0.006,
+            "iou": 0.9723657509218748
+          },
+          {
+            "elevation_m": 0.012,
+            "iou": 0.9512943598552429
+          },
+          {
+            "elevation_m": 0.024,
+            "iou": 0.90855234270627
+          },
+          {
+            "elevation_m": 0.048,
+            "iou": 0.8328476609796376
+          }
+        ],
+        "note": "elevation is re-fitted together with x, y and yaw. The check only refuses when the best height beats the assumed plane by min_height_margin; below that the score landscape is flat and this viewpoint genuinely cannot separate height from position"
+      }
+    },
+    {
+      "index": 9,
+      "truth_position_m": [
+        0.34,
+        0.12,
+        0.015
+      ],
+      "truth_yaw_deg": 56.5,
+      "in_frame": true,
+      "estimate_s": 1.665,
+      "detected": true,
+      "estimated_position_m": [
+        0.3397428026195117,
+        0.1201383454107941,
+        0.015
+      ],
+      "estimated_yaw_deg": 56.67544628451436,
+      "position_error_mm": 0.2920444233637388,
+      "height_error_mm": 0.0,
+      "yaw_error_deg": 0.17544628451435318,
+      "iou": 0.9795633850988009,
+      "area_ratio": 1.0012129029779955,
+      "height_check": {
+        "best_elevation_m": 0.0,
+        "best_iou": 0.979563453136599,
+        "iou_at_assumed_plane": 0.979563453136599,
+        "margin": 0.0,
+        "decisive": false,
+        "conclusion": "on the assumed plane",
+        "iou_one_block_higher": 0.9183718597324144,
+        "sensitivity": 0.06119159340418456,
+        "probes": [
+          {
+            "elevation_m": -0.006,
+            "iou": 0.9711125959509135
+          },
+          {
+            "elevation_m": 0.0,
+            "iou": 0.979563453136599
+          },
+          {
+            "elevation_m": 0.006,
+            "iou": 0.972614902564951
+          },
+          {
+            "elevation_m": 0.012,
+            "iou": 0.9555915453090447
+          },
+          {
+            "elevation_m": 0.024,
+            "iou": 0.9183718597324144
+          },
+          {
+            "elevation_m": 0.048,
+            "iou": 0.8445719459621239
+          }
+        ],
+        "note": "elevation is re-fitted together with x, y and yaw. The check only refuses when the best height beats the assumed plane by min_height_margin; below that the score landscape is flat and this viewpoint genuinely cannot separate height from position"
+      }
+    }
+  ]
+}

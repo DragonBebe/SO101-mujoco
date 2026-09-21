@@ -1,0 +1,74 @@
+{
+  "task": null,
+  "scene": {
+    "name": "workbench",
+    "objects": [
+      "red cube (25 mm)",
+      "green cube (25 mm)",
+      "yellow cylinder (diameter/height 25 mm)",
+      "purple cube (35 mm)"
+    ],
+    "regions": [
+      "blue goal disc (radius 35 mm)"
+    ],
+    "coordinates": "world XYZ in meters; z=0 is the support surface",
+    "perception": "RGB only from the side and wrist cameras; no depth, so no 3D localization from images is available",
+    "motion": "IK with joint limits; no general collision-free path planner"
+  },
+  "cameras": {
+    "modality": "rgb",
+    "depth_available": false,
+    "environment_camera": "side",
+    "environment_placement": "side",
+    "environment_mounting": "world_fixed",
+    "wrist_camera": "wrist",
+    "wrist_mounting": "robot_wrist",
+    "cameras": [
+      "side",
+      "wrist"
+    ],
+    "resolution": {
+      "width": 640,
+      "height": 480
+    },
+    "environment_fov_deg": 50.0,
+    "side_angles_deg": {
+      "azimuth": 130.0,
+      "elevation": -32.0
+    },
+    "note": "side placement is a simulation starting point, not a calibrated copy of physical hardware",
+    "side_resolved": {
+      "lookat": [
+        0.17,
+        0.0,
+        0.125
+      ],
+      "distance": 0.6613576679335923,
+      "azimuth": 130.0,
+      "elevation": -32.0,
+      "fov_deg": 50.0,
+      "eye": [
+        0.5305158585900223,
+        -0.42964606966184515,
+        0.4754661687863575
+      ],
+      "framed": {
+        "low": [
+          0.0,
+          -0.308144647592461,
+          0.0
+        ],
+        "high": [
+          0.34,
+          0.308144647592461,
+          0.25
+        ]
+      }
+    }
+  },
+  "world": 1,
+  "seed": 4,
+  "running": true,
+  "frame_id": "c2284396f1594bda:frame-2",
+  "sequence": 2
+}

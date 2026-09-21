@@ -1,0 +1,133 @@
+{
+  "task": "PickAndPlace-v2",
+  "instruction": "Pick up the red cube, center it on the blue circle, and release it onto the table.",
+  "frame_id": "e8d9e297e037434f:frame-36",
+  "time": 77.36000000000213,
+  "robot": {
+    "joints": [
+      0.42424448474523213,
+      -1.5432789105612141,
+      0.7461382679186082,
+      1.644595092971527,
+      -0.04318053813591546,
+      1.74528174827445
+    ],
+    "joint_velocities": [
+      -1.4401583717851845e-08,
+      -1.771386935057907e-08,
+      1.3650955490417545e-09,
+      4.912469942020298e-13,
+      2.955095858538454e-14,
+      3.1825477725448273e-18
+    ],
+    "tcp": [
+      0.1507877227535434,
+      -0.052207047318468494,
+      0.13636213710749012,
+      0.3489623324490975,
+      0.23868825813552422,
+      0.9043378195813885,
+      -0.05853472503305246
+    ]
+  },
+  "cameras": {
+    "side": {
+      "camera_id": "side",
+      "placement": "side",
+      "modality": "rgb",
+      "mounting": "world_fixed",
+      "width": 640,
+      "height": 480,
+      "rgb": "/home/dragon/SO101-mujoco/LLM-control/runs/loop-20260917-150932-441800/world-001/0036-side.png",
+      "calibration": {
+        "width": 640,
+        "height": 480,
+        "fx": 514.6816858200817,
+        "fy": 514.6816858200817,
+        "cx": 319.5,
+        "cy": 239.5,
+        "position": [
+          0.5305158495903015,
+          -0.4296460747718811,
+          0.47546616196632385
+        ],
+        "rotation": [
+          [
+            0.7660444302244436,
+            -0.340625524520874,
+            0.5451148152351379
+          ],
+          [
+            0.6427876065740676,
+            0.4059416949748993,
+            -0.6496425271034241
+          ],
+          [
+            -5.506811007194301e-09,
+            0.8480480909347534,
+            0.5299192667007446
+          ]
+        ]
+      },
+      "depth": null,
+      "depth_note": "no depth in the rgb modality; none is rendered or saved"
+    },
+    "wrist": {
+      "camera_id": "wrist",
+      "placement": "wrist",
+      "modality": "rgb",
+      "mounting": "robot_wrist",
+      "width": 640,
+      "height": 480,
+      "rgb": "/home/dragon/SO101-mujoco/LLM-control/runs/loop-20260917-150932-441800/world-001/0036-wrist.png",
+      "calibration": {
+        "width": 640,
+        "height": 480,
+        "fx": 415.69220539707135,
+        "fy": 415.69220539707135,
+        "cx": 319.5,
+        "cy": 239.5,
+        "position": [
+          0.13712451234459877,
+          0.01550588698592037,
+          0.1716294139623642
+        ],
+        "rotation": [
+          [
+            0.6425064083930181,
+            0.7233719825744629,
+            -0.25282102823257446
+          ],
+          [
+            -0.39085678978111105,
+            0.5931583642959595,
+            0.7038424015045166
+          ],
+          [
+            0.6591027809623498,
+            -0.3534064292907715,
+            0.6638429164886475
+          ]
+        ]
+      },
+      "depth": null,
+      "depth_note": "no depth in the rgb modality; none is rendered or saved"
+    }
+  },
+  "perception": {
+    "modality": "rgb",
+    "depth_available": false,
+    "environment_camera": "side",
+    "cameras": [
+      "side",
+      "wrist"
+    ],
+    "resolution": {
+      "width": 640,
+      "height": 480
+    },
+    "localize": "method 'depth' is unavailable: no depth is rendered. method 'plane' with an explicit plane_z: the pixel ray is intersected with that horizontal plane. Depth-free and exact for content that really lies on the plane; wrong by the height error otherwise. This is the only 3D estimator in the rgb modality",
+    "propose": "rendered-colour regions as pixels and boxes, no surface point; pass object_height (and plane_z, default 0) to also estimate where an upright object of that height stands on the plane, and a grasp_center at half its height. Depth-free; assumes the object rests on the plane and is not badly occluded",
+    "sources": "rendered images, camera calibration and robot forward kinematics"
+  }
+}

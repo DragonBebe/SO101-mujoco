@@ -1,0 +1,197 @@
+{
+  "schema": "so101-log-metrics/1",
+  "session": "Codex 01a0c517-85a6-7413-bb33-da1ec7bd7231",
+  "source": "usage-source.jsonl：按 response_id 去重、响应时间窗口求和；model-source.json 来自 turn_context。",
+  "timezone": "CEST (UTC+02:00)",
+  "phases": [
+    {
+      "id": "precheck",
+      "model": "gpt-6-astra",
+      "start": "2026-09-21T18:33:03.740Z",
+      "end": "2026-09-21T19:01:11.446Z",
+      "minutes": 28.12843333333333,
+      "responses": 100,
+      "input": 336939,
+      "cache_read": 14591232,
+      "cache_write": 0,
+      "output": 27129,
+      "reasoning_output": 5997,
+      "image_tokens": null,
+      "service_begin_to_complete_s": null
+    },
+    {
+      "id": "mapping",
+      "model": "gpt-6-astra",
+      "start": "2026-09-21T19:01:11.446Z",
+      "end": "2026-09-21T19:12:00.288Z",
+      "minutes": 10.814033333333333,
+      "responses": 25,
+      "input": 220866,
+      "cache_read": 1701632,
+      "cache_write": 0,
+      "output": 18152,
+      "reasoning_output": 2831,
+      "image_tokens": null,
+      "service_begin_to_complete_s": null
+    },
+    {
+      "id": "stack",
+      "model": "gpt-6-astra",
+      "start": "2026-09-21T19:12:00.288Z",
+      "end": "2026-09-21T19:33:51.969Z",
+      "minutes": 21.86135,
+      "responses": 75,
+      "input": 477424,
+      "cache_read": 8988160,
+      "cache_write": 0,
+      "output": 23980,
+      "reasoning_output": 6957,
+      "image_tokens": null,
+      "service_begin_to_complete_s": null
+    }
+  ],
+  "turn_checks": [
+    {
+      "turn": "01a0c517-8701-7082-a1ef-14dfe432b47d",
+      "sum": {
+        "input_tokens": 3907463,
+        "cached_input_tokens": 3779072,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 39620,
+        "reasoning_output_tokens": 6691,
+        "total_tokens": 3947083
+      },
+      "reported": {
+        "input_tokens": 3907463,
+        "cached_input_tokens": 3779072,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 39620,
+        "reasoning_output_tokens": 6691,
+        "total_tokens": 3947083
+      },
+      "match": true
+    },
+    {
+      "turn": "01a0c53b-26e4-7912-8cc7-4967d0c9ec38",
+      "sum": {
+        "input_tokens": 430129,
+        "cached_input_tokens": 420224,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 815,
+        "reasoning_output_tokens": 15,
+        "total_tokens": 430944
+      },
+      "reported": {
+        "input_tokens": 430129,
+        "cached_input_tokens": 420224,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 815,
+        "reasoning_output_tokens": 15,
+        "total_tokens": 430944
+      },
+      "match": true
+    },
+    {
+      "turn": "01a0c53c-b685-7f02-ad82-c9153405c9a4",
+      "sum": {
+        "input_tokens": 302208,
+        "cached_input_tokens": 295424,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 593,
+        "reasoning_output_tokens": 67,
+        "total_tokens": 302801
+      },
+      "reported": {
+        "input_tokens": 302208,
+        "cached_input_tokens": 295424,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 593,
+        "reasoning_output_tokens": 67,
+        "total_tokens": 302801
+      },
+      "match": true
+    },
+    {
+      "turn": "01a0c53e-35e8-7f50-86a2-a90b0a3be282",
+      "sum": {
+        "input_tokens": 1551663,
+        "cached_input_tokens": 1520128,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 2718,
+        "reasoning_output_tokens": 959,
+        "total_tokens": 1554381
+      },
+      "reported": {
+        "input_tokens": 1551663,
+        "cached_input_tokens": 1520128,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 2718,
+        "reasoning_output_tokens": 959,
+        "total_tokens": 1554381
+      },
+      "match": true
+    },
+    {
+      "turn": "01a0c540-9a7b-7c93-b22a-19ecd8492980",
+      "sum": {
+        "input_tokens": 6148608,
+        "cached_input_tokens": 5999232,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 15049,
+        "reasoning_output_tokens": 3960,
+        "total_tokens": 6163657
+      },
+      "reported": {
+        "input_tokens": 6148608,
+        "cached_input_tokens": 5999232,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 15049,
+        "reasoning_output_tokens": 3960,
+        "total_tokens": 6163657
+      },
+      "match": true
+    },
+    {
+      "turn": "01a0c54c-6d85-7101-8276-a6bb768023c3",
+      "sum": {
+        "input_tokens": 7227900,
+        "cached_input_tokens": 7071872,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 9362,
+        "reasoning_output_tokens": 1078,
+        "total_tokens": 7237262
+      },
+      "reported": {
+        "input_tokens": 7227900,
+        "cached_input_tokens": 7071872,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 9362,
+        "reasoning_output_tokens": 1078,
+        "total_tokens": 7237262
+      },
+      "match": true
+    },
+    {
+      "turn": "01a0c557-f67f-7680-80a1-76b1fe0cf8d4",
+      "sum": {
+        "input_tokens": 11388082,
+        "cached_input_tokens": 10689792,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 42132,
+        "reasoning_output_tokens": 9788,
+        "total_tokens": 11430214
+      },
+      "reported": {
+        "input_tokens": 11388082,
+        "cached_input_tokens": 10689792,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 42132,
+        "reasoning_output_tokens": 9788,
+        "total_tokens": 11430214
+      },
+      "match": true
+    }
+  ],
+  "current_return_and_archive_turn": "未计入：归档时本轮尚未结束",
+  "time_note": "窗口为响应写入时间；跨边界响应不能再拆分。服务无 begin/complete，物理仿真时间不适用。"
+}

@@ -1,0 +1,33 @@
+{
+  "source": "actions.jsonl custom real controller; no loop session.json exists",
+  "cutoff_seq": 303,
+  "cutoff_frame": 156,
+  "commit": "db54a2e9a6b1c8e310d44f36a59c1e0d8441fcb5",
+  "uncommitted": true,
+  "source_run": "2026-09-21-real-joint-grasp",
+  "frame_timestamps": "Unix UTC seconds; observation at is after image copy and bus read, not camera exposure time",
+  "initial_ticks": {
+    "1": 2019,
+    "2": 973,
+    "3": 2961,
+    "4": 2701,
+    "5": 2149,
+    "6": 2497
+  },
+  "final_ticks": {
+    "1": 2013,
+    "2": 979,
+    "3": 2958,
+    "4": 2698,
+    "5": 2151,
+    "6": 2494
+  },
+  "errors": {
+    "1": -6,
+    "2": 6,
+    "3": -3,
+    "4": -3,
+    "5": 2,
+    "6": -3
+  }
+}

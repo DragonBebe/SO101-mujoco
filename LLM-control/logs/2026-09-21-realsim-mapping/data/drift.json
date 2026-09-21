@@ -1,0 +1,39 @@
+{
+  "matches": 107,
+  "inliers": 54,
+  "inlier_fraction": 0.5046728971962616,
+  "rotation_deg": 2.2059240556014252,
+  "rotation_determined": true,
+  "rotation_note": "good to a few tenths of a degree: a two-view essential matrix is weakly conditioned when the baseline is small next to the scene depth. The verdict uses the displacement, not this",
+  "rotation_vector_deg": {
+    "pitch_x": -0.9700102695670957,
+    "yaw_y": -1.9415093748772925,
+    "roll_z": -0.394616729596625
+  },
+  "translation_direction": [
+    0.3005015301974115,
+    0.3008583842568193,
+    -0.9050873233955883
+  ],
+  "translation_note": "direction only, in the reference camera frame; two views cannot give its length without a known length in the scene",
+  "median_displacement_px": 55.19927215576172,
+  "displacement_median_xy_px": [
+    -50.581512451171875,
+    24.819198608398438
+  ],
+  "degrees_per_pixel": 0.04151963991128642,
+  "homography_inlier_fraction": 0.29906542056074764,
+  "homography_note": "a high fraction means one plane, or a near-pure rotation, explains the matches; the rotation stays usable but the translation direction does not",
+  "reference": "/home/dragon/SO101-mujoco/LLM-control/calib/setup-03/reference.png",
+  "limit_px": 3.0,
+  "camera_moved": true,
+  "verdict": "the camera has moved: matched scene points are a median 55 px apart, of the order of 2.2 degrees of rotation, against a 3 px limit. The extrinsic, the table plane and the sim-camera export all have to be redone",
+  "what_to_redo": [
+    "run_rgbcal.sh lock (a new setup session for the current viewpoint)",
+    "run_rgbcal.sh handeye-collect / handeye-solve / handeye-verify",
+    "run_rgbcal.sh table-plane",
+    "run_rgbcal.sh sim-camera",
+    "run_realsim.sh scale-check, until the error is inside the tolerance"
+  ],
+  "caveats": "feature matching counts everything that moved, including people, chairs and the blocks; a low inlier fraction means the scene changed a lot, not that the camera did not move"
+}

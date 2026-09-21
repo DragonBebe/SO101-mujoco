@@ -1,0 +1,1449 @@
+{
+  "schema": "realsim/scene/1",
+  "captured_at": "2026-09-21T17:56:30.421+02:00",
+  "written_at": "2026-09-21T17:57:04.956+02:00",
+  "frame_index": 2,
+  "frames": {
+    "reference": "table",
+    "table": "z = 0 is the measured table surface; origin on the table below the robot base origin; x is the base x axis projected onto the table. This frame is the MuJoCo world of the mirror.",
+    "base": "robot base frame of the hand-eye extrinsic",
+    "object": "axis-aligned box, origin at its geometric centre, which is the origin of the mirroring MuJoCo free-joint body",
+    "convention": "T_a_b maps coordinates in b to a; T_table_object = T_table_camera x T_camera_object",
+    "units": "metres, radians; quaternions are [w, x, y, z] (MuJoCo order)"
+  },
+  "reference_frame": "table",
+  "calibration": {
+    "sources": {
+      "intrinsics": "/home/dragon/SO101-mujoco/LLM-control/calib/c920-intrinsics-01/intrinsics.json",
+      "extrinsics": "/home/dragon/SO101-mujoco/LLM-control/calib/c920-handeye-03/extrinsics.json",
+      "table": "/home/dragon/SO101-mujoco/LLM-control/calib/c920-table/table.json"
+    },
+    "versions": {
+      "intrinsics": "8c396350eec3",
+      "extrinsics": "88c4cdbf9037",
+      "table": "be54a9f02c3a"
+    },
+    "imaging": {
+      "device": "/dev/v4l/by-id/usb-046d_HD_Pro_Webcam_C920_B222F89F-video-index0",
+      "width": 1920,
+      "height": 1080,
+      "fps": 30.0,
+      "fourcc": "MJPG",
+      "autofocus": false,
+      "focus": 0.0,
+      "auto_exposure": null,
+      "exposure": null,
+      "auto_wb": null,
+      "hflip": false
+    },
+    "intrinsics_resolution": {
+      "width": 1920,
+      "height": 1080
+    },
+    "undistorted_K": [
+      [
+        1403.824511533441,
+        0.0,
+        924.5342377547513
+      ],
+      [
+        0.0,
+        1404.6463565172294,
+        511.49455403278915
+      ],
+      [
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "distortion": "removed: frames are undistorted into K_new before use",
+    "table_plane": {
+      "normal_base": [
+        -0.015918676645599476,
+        -0.028753255689907317,
+        0.9994597770901457
+      ],
+      "offset_m": -0.017149566886206016,
+      "equation": "normal . p = offset  (p in base coordinates, metres)",
+      "z_of_xy": {
+        "a": 0.01592728092764828,
+        "b": 0.028768797253272492,
+        "c_m": -0.017158836482780458,
+        "meaning": "z = a*x + b*y + c"
+      }
+    },
+    "table_fit_residual_rms_mm": 0.38655634458326726,
+    "T_base_table": [
+      [
+        0.999873289839194,
+        1.0842021724855044e-19,
+        -0.015918676645599476,
+        0.0002729984098735938
+      ],
+      [
+        -0.0004577717841722628,
+        0.9995864348480447,
+        -0.028753255689907317,
+        0.0004931058816502492
+      ],
+      [
+        0.01591209323567361,
+        0.02875689948126487,
+        0.9994597770901457,
+        -0.01714030229728001
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "T_table_camera_opencv": [
+      [
+        -0.03617709872149837,
+        0.5827832133171598,
+        -0.8118219902194205,
+        0.7668524888864684
+      ],
+      [
+        0.9993391036119114,
+        0.018214658340846828,
+        -0.03145762568388452,
+        -0.04483702207660312
+      ],
+      [
+        -0.0035459159939496034,
+        -0.8124235056282235,
+        -0.5830570074894149,
+        0.46098653960407077
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "usable_for_motion": false,
+    "usable_for_motion_reasons": [
+      "no supervised motion check has passed for this extrinsic yet"
+    ],
+    "motion_note": "this mapping reads the camera only. usable_for_motion describes the calibration, and is not made true by a good looking overlay"
+  },
+  "camera": {
+    "width": 1920,
+    "height": 1080,
+    "fx": 1403.824511533441,
+    "fy": 1404.6463565172294,
+    "cx": 924.5342377547513,
+    "cy": 511.49455403278915,
+    "position": [
+      0.7668524888864684,
+      -0.04483702207660312,
+      0.46098653960407077
+    ],
+    "rotation": [
+      [
+        -0.03617709872149837,
+        -0.5827832133171598,
+        0.8118219902194205
+      ],
+      [
+        0.9993391036119114,
+        -0.018214658340846828,
+        0.03145762568388452
+      ],
+      [
+        -0.0035459159939496034,
+        0.8124235056282235,
+        0.5830570074894149
+      ]
+    ],
+    "frame": "table",
+    "distortion": "none: undistorted image only",
+    "axes": "rotation maps OpenGL camera axes into the table frame, the convention nexus_vision.perception uses",
+    "T_table_camera_opencv": [
+      [
+        -0.03617709872149837,
+        0.5827832133171598,
+        -0.8118219902194205,
+        0.7668524888864684
+      ],
+      [
+        0.9993391036119114,
+        0.018214658340846828,
+        -0.03145762568388452,
+        -0.04483702207660312
+      ],
+      [
+        -0.0035459159939496034,
+        -0.8124235056282235,
+        -0.5830570074894149,
+        0.46098653960407077
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ]
+  },
+  "images": {
+    "raw": "/home/dragon/SO101-mujoco/LLM-control/calib/realsim-model/frames/frame-0002.png",
+    "overlay": "/home/dragon/SO101-mujoco/LLM-control/calib/realsim-model/overlay/frame-0002.png",
+    "undistorted_note": "the undistorted frame is reproducible from the raw one and the recorded calibration; only the raw frame is archived"
+  },
+  "catalogue": {
+    "schema": "realsim/blocks/1",
+    "measured_at": "2026-09-21",
+    "source": "/home/dragon/SO101-mujoco/LLM-control/realsim/config/blocks.json",
+    "note": "The three cubes on the real table. The user states all three are 30 mm; that is what is entered here. It replaces the nominal 25 mm quoted in calib/c920-real-grasp-01/LOG.md, which disagreed with every image: fitting the size as a free parameter (run_realsim.sh measure) gives 30.2-31.4 mm across six archived frames and 30.9 mm on a live one. The ~2% left over between 30.0 and those fits is the camera's, not the block's, and is one of the things an independent position measurement would pin down. Mass and friction below are simulation defaults and have not been measured at all.",
+    "tolerances": {
+      "note": "Acceptance thresholds for the estimate, in the table frame. Derived from the block and the gripper: the jaws close on a 30 mm cube with a few mm of lateral slack, so a position error under 5 mm leaves margin, and a yaw error of 10 deg moves a 30 mm cube's corner by 30/2*sqrt(2)*sin(10 deg) = 3.7 mm. Re-derive them for your own gripper before quoting a pass.",
+      "position_mm": 5.0,
+      "yaw_deg": 10.0
+    },
+    "blocks": [
+      {
+        "id": "red_cube",
+        "colour": "red",
+        "size_m": [
+          0.03,
+          0.03,
+          0.03
+        ],
+        "size_source": "user statement 2026-09-21: all three cubes are 30 mm; consistent with 30.2-31.4 mm fitted from images",
+        "size_measured": true,
+        "height_m": 0.03,
+        "symmetry_step_deg": 90.0,
+        "colour_spec": {
+          "name": "red",
+          "hue_deg": [
+            [
+              0.0,
+              15.0
+            ],
+            [
+              345.0,
+              360.0
+            ]
+          ],
+          "min_saturation": 0.35,
+          "min_value": 0.2,
+          "render_rgb": [
+            0.8,
+            0.12,
+            0.12
+          ],
+          "source": "perception's band for this colour name"
+        },
+        "shape": "box",
+        "origin": "geometric centre of the box",
+        "physics": {
+          "mass_kg": 0.01,
+          "mass_source": "so101_nexus CubeObject default; not weighed",
+          "friction": [
+            1.0,
+            0.005,
+            0.0001
+          ],
+          "friction_source": "MuJoCo default; not identified"
+        },
+        "note": "the block grasped first in the 2026-09-18 real run"
+      },
+      {
+        "id": "green_cube",
+        "colour": "green",
+        "size_m": [
+          0.03,
+          0.03,
+          0.03
+        ],
+        "size_source": "user statement 2026-09-21: all three cubes are 30 mm",
+        "size_measured": true,
+        "height_m": 0.03,
+        "symmetry_step_deg": 90.0,
+        "colour_spec": {
+          "name": "green",
+          "hue_deg": [
+            [
+              145.0,
+              182.0
+            ]
+          ],
+          "min_saturation": 0.25,
+          "min_value": 0.2,
+          "render_rgb": [
+            0.12,
+            0.8,
+            0.613
+          ],
+          "source": "measured on calib/realsim-3cubes/frames/spread-001.png with run_realsim.sh colours: this teal cube is hue 160-172, sat p5 0.36. perception's green band stops at 170, so its shaded face crossed into blue and the mask lost a corner. Widened to 145-182, which still ends 4 deg below the blue cube's band"
+        },
+        "shape": "box",
+        "origin": "geometric centre of the box",
+        "physics": {
+          "mass_kg": 0.01,
+          "mass_source": "so101_nexus CubeObject default; not weighed",
+          "friction": [
+            1.0,
+            0.005,
+            0.0001
+          ],
+          "friction_source": "MuJoCo default; not identified"
+        },
+        "note": "teal, not the rendered green perception was written for; it needs its own hue band, see colour_source"
+      },
+      {
+        "id": "blue_cube",
+        "colour": "blue",
+        "size_m": [
+          0.03,
+          0.03,
+          0.03
+        ],
+        "size_source": "user statement 2026-09-21: all three cubes are 30 mm",
+        "size_measured": true,
+        "height_m": 0.03,
+        "symmetry_step_deg": 90.0,
+        "colour_spec": {
+          "name": "blue",
+          "hue_deg": [
+            [
+              186.0,
+              265.0
+            ]
+          ],
+          "min_saturation": 0.35,
+          "min_value": 0.2,
+          "render_rgb": [
+            0.12,
+            0.2843,
+            0.8
+          ],
+          "source": "measured on the same frame: this cube is hue 200-208. The band starts at 186 so it cannot claim the teal cube's pixels"
+        },
+        "shape": "box",
+        "origin": "geometric centre of the box",
+        "physics": {
+          "mass_kg": 0.01,
+          "mass_source": "so101_nexus CubeObject default; not weighed",
+          "friction": [
+            1.0,
+            0.005,
+            0.0001
+          ],
+          "friction_source": "MuJoCo default; not identified"
+        },
+        "note": "blue also matches large background objects (a chair, denim); the footprint and area checks are what reject those"
+      }
+    ]
+  },
+  "objects": [
+    {
+      "id": "red_cube",
+      "block": {
+        "id": "red_cube",
+        "colour": "red",
+        "size_m": [
+          0.03,
+          0.03,
+          0.03
+        ],
+        "size_source": "user statement 2026-09-21: all three cubes are 30 mm; consistent with 30.2-31.4 mm fitted from images",
+        "size_measured": true,
+        "height_m": 0.03,
+        "symmetry_step_deg": 90.0,
+        "colour_spec": {
+          "name": "red",
+          "hue_deg": [
+            [
+              0.0,
+              15.0
+            ],
+            [
+              345.0,
+              360.0
+            ]
+          ],
+          "min_saturation": 0.35,
+          "min_value": 0.2,
+          "render_rgb": [
+            0.8,
+            0.12,
+            0.12
+          ],
+          "source": "perception's band for this colour name"
+        },
+        "shape": "box",
+        "origin": "geometric centre of the box",
+        "physics": {
+          "mass_kg": 0.01,
+          "mass_source": "so101_nexus CubeObject default; not weighed",
+          "friction": [
+            1.0,
+            0.005,
+            0.0001
+          ],
+          "friction_source": "MuJoCo default; not identified"
+        },
+        "note": "the block grasped first in the 2026-09-18 real run"
+      },
+      "state": "detected",
+      "observations": 1,
+      "misses_since_seen": 0,
+      "observed_at": "",
+      "age_s": 0.0,
+      "fresh": true,
+      "source_image": null,
+      "frame_index": null,
+      "pose": {
+        "position_m": [
+          0.3405097540792595,
+          0.10311694911915087,
+          0.015
+        ],
+        "quaternion_wxyz": [
+          0.7465948896770177,
+          0.0,
+          0.0,
+          0.6652789420297036
+        ],
+        "yaw_rad": 1.4557347496570232,
+        "yaw_deg": 83.40745724588089,
+        "symmetry_step_deg": 90.0,
+        "yaw_note": "folded into [0, symmetry_step); the block model cannot distinguish poses a whole step apart"
+      },
+      "pose_filtered": {
+        "position_m": [
+          0.3405097540792595,
+          0.10311694911915087,
+          0.015
+        ],
+        "quaternion_wxyz": [
+          0.7465948896770177,
+          0.0,
+          0.0,
+          0.6652789420297036
+        ],
+        "yaw_rad": 1.4557347496570232,
+        "yaw_deg": 83.40745724588089,
+        "symmetry_step_deg": 90.0,
+        "yaw_note": "folded into [0, symmetry_step); the block model cannot distinguish poses a whole step apart"
+      },
+      "filter": {
+        "position_alpha": 0.5,
+        "yaw_alpha": 0.5,
+        "reset_on_this_frame": true,
+        "note": "pose is the raw single-frame fit; pose_filtered is smoothed. Both are logged so the filter can be undone"
+      },
+      "pose_base": {
+        "position_m": [
+          0.3405008262937537,
+          0.10298023483106795,
+          0.006235141054271771
+        ],
+        "note": "the same pose expressed in the robot base frame via T_base_table; the yaw is about the table normal, not the base z axis"
+      },
+      "pixel": [
+        1310,
+        785
+      ],
+      "bbox": [
+        1266,
+        732,
+        1355,
+        837
+      ],
+      "outline_uv": [
+        [
+          1267.1870541182327,
+          778.8939437022023
+        ],
+        [
+          1276.8205479531698,
+          730.1717701061751
+        ],
+        [
+          1348.0548420275672,
+          737.4668610345528
+        ],
+        [
+          1354.7150325900816,
+          788.8631123503283
+        ],
+        [
+          1342.347323090071,
+          838.1366292536845
+        ],
+        [
+          1270.365813898666,
+          830.1350144340339
+        ]
+      ],
+      "measured": [
+        "x",
+        "y",
+        "yaw"
+      ],
+      "assumed": {
+        "support_plane_z_m": 0.0,
+        "block_height_m": 0.03,
+        "roll_pitch": "zero: the block is assumed to lie flat on the plane",
+        "centre_height_m": 0.015,
+        "centre_height_origin": "support plane + half the known block height; a consequence of known geometry, not a depth measurement"
+      },
+      "quality": {
+        "iou": 0.9484956192118563,
+        "area_ratio": 0.9815668898154395,
+        "mask_area_px": 7888.0,
+        "model_area_px": 8036.130886080675,
+        "carved_footprint_m": [
+          0.03200000000000003,
+          0.034
+        ],
+        "carve_centre_m": [
+          0.34075038925858325,
+          0.10261514998009875,
+          0.0
+        ],
+        "height_check": {
+          "best_elevation_m": -0.006,
+          "best_iou": 0.951838277021523,
+          "iou_at_assumed_plane": 0.948495613177689,
+          "margin": 0.0033426638438339706,
+          "decisive": false,
+          "conclusion": "on the assumed plane",
+          "iou_one_block_higher": 0.8959599184086376,
+          "sensitivity": 0.0525356947690514,
+          "probes": [
+            {
+              "elevation_m": -0.006,
+              "iou": 0.951838277021523
+            },
+            {
+              "elevation_m": 0.0,
+              "iou": 0.948495613177689
+            },
+            {
+              "elevation_m": 0.006,
+              "iou": 0.9412007503643968
+            },
+            {
+              "elevation_m": 0.012,
+              "iou": 0.9287595991258067
+            },
+            {
+              "elevation_m": 0.024,
+              "iou": 0.8959599184086376
+            },
+            {
+              "elevation_m": 0.048,
+              "iou": 0.8248661429909643
+            }
+          ],
+          "note": "elevation is re-fitted together with x, y and yaw. The check only refuses when the best height beats the assumed plane by min_height_margin; below that the score landscape is flat and this viewpoint genuinely cannot separate height from position"
+        }
+      },
+      "method": "rgb_silhouette_fit_on_known_plane",
+      "association": {
+        "method": "first sight, ordered by position",
+        "note": "only one block of this colour"
+      }
+    },
+    {
+      "id": "green_cube",
+      "block": {
+        "id": "green_cube",
+        "colour": "green",
+        "size_m": [
+          0.03,
+          0.03,
+          0.03
+        ],
+        "size_source": "user statement 2026-09-21: all three cubes are 30 mm",
+        "size_measured": true,
+        "height_m": 0.03,
+        "symmetry_step_deg": 90.0,
+        "colour_spec": {
+          "name": "green",
+          "hue_deg": [
+            [
+              145.0,
+              182.0
+            ]
+          ],
+          "min_saturation": 0.25,
+          "min_value": 0.2,
+          "render_rgb": [
+            0.12,
+            0.8,
+            0.613
+          ],
+          "source": "measured on calib/realsim-3cubes/frames/spread-001.png with run_realsim.sh colours: this teal cube is hue 160-172, sat p5 0.36. perception's green band stops at 170, so its shaded face crossed into blue and the mask lost a corner. Widened to 145-182, which still ends 4 deg below the blue cube's band"
+        },
+        "shape": "box",
+        "origin": "geometric centre of the box",
+        "physics": {
+          "mass_kg": 0.01,
+          "mass_source": "so101_nexus CubeObject default; not weighed",
+          "friction": [
+            1.0,
+            0.005,
+            0.0001
+          ],
+          "friction_source": "MuJoCo default; not identified"
+        },
+        "note": "teal, not the rendered green perception was written for; it needs its own hue band, see colour_source"
+      },
+      "state": "detected",
+      "observations": 1,
+      "misses_since_seen": 0,
+      "observed_at": "",
+      "age_s": 0.0,
+      "fresh": true,
+      "source_image": null,
+      "frame_index": null,
+      "pose": {
+        "position_m": [
+          0.3331342443403683,
+          0.006564202133378475,
+          0.015
+        ],
+        "quaternion_wxyz": [
+          0.7360408689604185,
+          0.0,
+          0.0,
+          0.6769371013764809
+        ],
+        "yaw_rad": 1.4871866258650646,
+        "yaw_deg": 85.2095170103696,
+        "symmetry_step_deg": 90.0,
+        "yaw_note": "folded into [0, symmetry_step); the block model cannot distinguish poses a whole step apart"
+      },
+      "pose_filtered": {
+        "position_m": [
+          0.3331342443403683,
+          0.006564202133378475,
+          0.015
+        ],
+        "quaternion_wxyz": [
+          0.7360408689604185,
+          0.0,
+          0.0,
+          0.6769371013764809
+        ],
+        "yaw_rad": 1.4871866258650646,
+        "yaw_deg": 85.2095170103696,
+        "symmetry_step_deg": 90.0,
+        "yaw_note": "folded into [0, symmetry_step); the block model cannot distinguish poses a whole step apart"
+      },
+      "filter": {
+        "position_alpha": 0.5,
+        "yaw_alpha": 0.5,
+        "reset_on_this_frame": true,
+        "note": "pose is the raw single-frame fit; pose_filtered is smoothed. Both are logged so the filter can be undone"
+      },
+      "pose_base": {
+        "position_m": [
+          0.3331262511068876,
+          0.006470794997026789,
+          0.0033412236159360564
+        ],
+        "note": "the same pose expressed in the robot base frame via T_base_table; the yaw is about the table normal, not the base z axis"
+      },
+      "pixel": [
+        1083,
+        766
+      ],
+      "bbox": [
+        1047,
+        715,
+        1121,
+        818
+      ],
+      "outline_uv": [
+        [
+          1044.485668174563,
+          812.3705596502731
+        ],
+        [
+          1047.8534920637078,
+          762.3006983220781
+        ],
+        [
+          1051.1161969286663,
+          713.7955424462887
+        ],
+        [
+          1120.009590373179,
+          719.3761889349627
+        ],
+        [
+          1119.4921705643208,
+          769.4228532368227
+        ],
+        [
+          1114.1084840689045,
+          818.4970045397129
+        ]
+      ],
+      "measured": [
+        "x",
+        "y",
+        "yaw"
+      ],
+      "assumed": {
+        "support_plane_z_m": 0.0,
+        "block_height_m": 0.03,
+        "roll_pitch": "zero: the block is assumed to lie flat on the plane",
+        "centre_height_m": 0.015,
+        "centre_height_origin": "support plane + half the known block height; a consequence of known geometry, not a depth measurement"
+      },
+      "quality": {
+        "iou": 0.9577673241676916,
+        "area_ratio": 0.9777690557283082,
+        "mask_area_px": 6849.0,
+        "model_area_px": 7004.721574971918,
+        "carved_footprint_m": [
+          0.02999999999999997,
+          0.03
+        ],
+        "carve_centre_m": [
+          0.3332512691317636,
+          0.006938171367434786,
+          0.0
+        ],
+        "height_check": {
+          "best_elevation_m": 0.0,
+          "best_iou": 0.9577685437582623,
+          "iou_at_assumed_plane": 0.9577685437582623,
+          "margin": 0.0,
+          "decisive": false,
+          "conclusion": "on the assumed plane",
+          "iou_one_block_higher": 0.8768626638995426,
+          "sensitivity": 0.08090587985871966,
+          "probes": [
+            {
+              "elevation_m": -0.006,
+              "iou": 0.9563257823140847
+            },
+            {
+              "elevation_m": 0.0,
+              "iou": 0.9577685437582623
+            },
+            {
+              "elevation_m": 0.006,
+              "iou": 0.9479206150655147
+            },
+            {
+              "elevation_m": 0.012,
+              "iou": 0.9253934355442476
+            },
+            {
+              "elevation_m": 0.024,
+              "iou": 0.8768626638995426
+            },
+            {
+              "elevation_m": 0.048,
+              "iou": 0.7836558108129174
+            }
+          ],
+          "note": "elevation is re-fitted together with x, y and yaw. The check only refuses when the best height beats the assumed plane by min_height_margin; below that the score landscape is flat and this viewpoint genuinely cannot separate height from position"
+        }
+      },
+      "method": "rgb_silhouette_fit_on_known_plane",
+      "association": {
+        "method": "first sight, ordered by position",
+        "note": "only one block of this colour"
+      }
+    },
+    {
+      "id": "blue_cube",
+      "block": {
+        "id": "blue_cube",
+        "colour": "blue",
+        "size_m": [
+          0.03,
+          0.03,
+          0.03
+        ],
+        "size_source": "user statement 2026-09-21: all three cubes are 30 mm",
+        "size_measured": true,
+        "height_m": 0.03,
+        "symmetry_step_deg": 90.0,
+        "colour_spec": {
+          "name": "blue",
+          "hue_deg": [
+            [
+              186.0,
+              265.0
+            ]
+          ],
+          "min_saturation": 0.35,
+          "min_value": 0.2,
+          "render_rgb": [
+            0.12,
+            0.2843,
+            0.8
+          ],
+          "source": "measured on the same frame: this cube is hue 200-208. The band starts at 186 so it cannot claim the teal cube's pixels"
+        },
+        "shape": "box",
+        "origin": "geometric centre of the box",
+        "physics": {
+          "mass_kg": 0.01,
+          "mass_source": "so101_nexus CubeObject default; not weighed",
+          "friction": [
+            1.0,
+            0.005,
+            0.0001
+          ],
+          "friction_source": "MuJoCo default; not identified"
+        },
+        "note": "blue also matches large background objects (a chair, denim); the footprint and area checks are what reject those"
+      },
+      "state": "detected",
+      "observations": 1,
+      "misses_since_seen": 0,
+      "observed_at": "",
+      "age_s": 0.0,
+      "fresh": true,
+      "source_image": null,
+      "frame_index": null,
+      "pose": {
+        "position_m": [
+          0.3360844677468277,
+          0.037754356802881445,
+          0.015
+        ],
+        "quaternion_wxyz": [
+          0.7373278881503709,
+          0.0,
+          0.0,
+          0.6755350363642986
+        ],
+        "yaw_rad": 1.4833802071875903,
+        "yaw_deg": 84.99142528509056,
+        "symmetry_step_deg": 90.0,
+        "yaw_note": "folded into [0, symmetry_step); the block model cannot distinguish poses a whole step apart"
+      },
+      "pose_filtered": {
+        "position_m": [
+          0.3360844677468277,
+          0.037754356802881445,
+          0.015
+        ],
+        "quaternion_wxyz": [
+          0.7373278881503709,
+          0.0,
+          0.0,
+          0.6755350363642986
+        ],
+        "yaw_rad": 1.4833802071875903,
+        "yaw_deg": 84.99142528509056,
+        "symmetry_step_deg": 90.0,
+        "yaw_note": "folded into [0, symmetry_step); the block model cannot distinguish poses a whole step apart"
+      },
+      "filter": {
+        "position_alpha": 0.5,
+        "yaw_alpha": 0.5,
+        "reset_on_this_frame": true,
+        "note": "pose is the raw single-frame fit; pose_filtered is smoothed. Both are logged so the filter can be undone"
+      },
+      "pose_base": {
+        "position_m": [
+          0.3360761006900647,
+          0.03764669997644188,
+          0.004285099988481707
+        ],
+        "note": "the same pose expressed in the robot base frame via T_base_table; the yaw is about the table normal, not the base z axis"
+      },
+      "pixel": [
+        1156,
+        774
+      ],
+      "bbox": [
+        1114,
+        723,
+        1196,
+        825
+      ],
+      "outline_uv": [
+        [
+          1117.066575076394,
+          819.2451560193742
+        ],
+        [
+          1117.9194075319335,
+          768.6687142458591
+        ],
+        [
+          1123.2023961992538,
+          720.0811707629127
+        ],
+        [
+          1192.833782404163,
+          725.9080023176156
+        ],
+        [
+          1195.048523485051,
+          776.4944195065752
+        ],
+        [
+          1187.4399063589635,
+          825.641575435328
+        ]
+      ],
+      "measured": [
+        "x",
+        "y",
+        "yaw"
+      ],
+      "assumed": {
+        "support_plane_z_m": 0.0,
+        "block_height_m": 0.03,
+        "roll_pitch": "zero: the block is assumed to lie flat on the plane",
+        "centre_height_m": 0.015,
+        "centre_height_origin": "support plane + half the known block height; a consequence of known geometry, not a depth measurement"
+      },
+      "quality": {
+        "iou": 0.9432749615838234,
+        "area_ratio": 0.9663390712731736,
+        "mask_area_px": 7109.0,
+        "model_area_px": 7356.6310328668915,
+        "carved_footprint_m": [
+          0.03199999999999997,
+          0.032
+        ],
+        "carve_centre_m": [
+          0.3368690623390567,
+          0.03756638691151127,
+          0.0
+        ],
+        "height_check": {
+          "best_elevation_m": -0.006,
+          "best_iou": 0.9546744580372243,
+          "iou_at_assumed_plane": 0.9432748188768191,
+          "margin": 0.011399639160405206,
+          "decisive": false,
+          "conclusion": "on the assumed plane",
+          "iou_one_block_higher": 0.8791297478192371,
+          "sensitivity": 0.06414507105758194,
+          "probes": [
+            {
+              "elevation_m": -0.006,
+              "iou": 0.9546744580372243
+            },
+            {
+              "elevation_m": 0.0,
+              "iou": 0.9432748188768191
+            },
+            {
+              "elevation_m": 0.006,
+              "iou": 0.9298230799943357
+            },
+            {
+              "elevation_m": 0.012,
+              "iou": 0.9139548306487412
+            },
+            {
+              "elevation_m": 0.024,
+              "iou": 0.8791297478192371
+            },
+            {
+              "elevation_m": 0.048,
+              "iou": 0.7983755583299851
+            }
+          ],
+          "note": "elevation is re-fitted together with x, y and yaw. The check only refuses when the best height beats the assumed plane by min_height_margin; below that the score landscape is flat and this viewpoint genuinely cannot separate height from position"
+        }
+      },
+      "method": "rgb_silhouette_fit_on_known_plane",
+      "association": {
+        "method": "first sight, ordered by position",
+        "note": "only one block of this colour"
+      }
+    }
+  ],
+  "rejected": [
+    {
+      "block_id": "red_cube",
+      "reasons": [
+        "no part of this colour region meets the assumed plane; it is not where a block resting on it would appear"
+      ],
+      "pixel": [
+        1112,
+        256
+      ],
+      "bbox": [
+        1099,
+        233,
+        1126,
+        280
+      ],
+      "quality": {
+        "mask_area_px": 151.0
+      }
+    },
+    {
+      "block_id": "blue_cube",
+      "reasons": [
+        "silhouette fit iou 0.34 is below 0.70",
+        "observed/model silhouette area 1.41 is outside [0.75, 1.3]: occluded, merged with another region, or not this block"
+      ],
+      "pixel": [
+        1650,
+        375
+      ],
+      "bbox": [
+        1528,
+        280,
+        1761,
+        411
+      ],
+      "quality": {
+        "iou": 0.3364584271819639,
+        "area_ratio": 1.4102854528462723,
+        "mask_area_px": 5053.0,
+        "model_area_px": 3582.9625766910613,
+        "carved_footprint_m": [
+          0.06,
+          0.07400000000000001
+        ],
+        "carve_centre_m": [
+          -0.012810309826221934,
+          0.4153251557644425,
+          0.0
+        ],
+        "height_check": {
+          "best_elevation_m": 0.024,
+          "best_iou": 0.3373006976552108,
+          "iou_at_assumed_plane": 0.33645857539187535,
+          "margin": 0.0008421222633354652,
+          "decisive": false,
+          "conclusion": "cannot tell from this viewpoint",
+          "iou_one_block_higher": 0.3373006976552108,
+          "sensitivity": -0.0008421222633354652,
+          "probes": [
+            {
+              "elevation_m": -0.006,
+              "iou": 0.33647945703487786
+            },
+            {
+              "elevation_m": 0.0,
+              "iou": 0.33645857539187535
+            },
+            {
+              "elevation_m": 0.006,
+              "iou": 0.3367480274823496
+            },
+            {
+              "elevation_m": 0.012,
+              "iou": 0.33719639587104394
+            },
+            {
+              "elevation_m": 0.024,
+              "iou": 0.3373006976552108
+            },
+            {
+              "elevation_m": 0.048,
+              "iou": 0.3322854448318438
+            }
+          ],
+          "note": "elevation is re-fitted together with x, y and yaw. The check only refuses when the best height beats the assumed plane by min_height_margin; below that the score landscape is flat and this viewpoint genuinely cannot separate height from position"
+        }
+      }
+    },
+    {
+      "block_id": "blue_cube",
+      "reasons": [
+        "silhouette fit iou 0.27 is below 0.70",
+        "observed/model silhouette area 1.31 is outside [0.75, 1.3]: occluded, merged with another region, or not this block"
+      ],
+      "pixel": [
+        1410,
+        348
+      ],
+      "bbox": [
+        1304,
+        307,
+        1523,
+        402
+      ],
+      "quality": {
+        "iou": 0.2745529443015382,
+        "area_ratio": 1.3101152559205496,
+        "mask_area_px": 5031.0,
+        "model_area_px": 3840.1201552797575,
+        "carved_footprint_m": [
+          0.034,
+          0.06999999999999998
+        ],
+        "carve_centre_m": [
+          -0.03805747839412456,
+          0.25077912457815005,
+          0.0
+        ],
+        "height_check": {
+          "best_elevation_m": 0.048,
+          "best_iou": 0.2779154652461373,
+          "iou_at_assumed_plane": 0.2745471398568083,
+          "margin": 0.003368325389329019,
+          "decisive": false,
+          "conclusion": "cannot tell from this viewpoint",
+          "iou_one_block_higher": 0.27717177025608775,
+          "sensitivity": -0.0026246303992794595,
+          "probes": [
+            {
+              "elevation_m": -0.006,
+              "iou": 0.27382890057787274
+            },
+            {
+              "elevation_m": 0.0,
+              "iou": 0.2745471398568083
+            },
+            {
+              "elevation_m": 0.006,
+              "iou": 0.27538913675365667
+            },
+            {
+              "elevation_m": 0.012,
+              "iou": 0.27622251797493963
+            },
+            {
+              "elevation_m": 0.024,
+              "iou": 0.27717177025608775
+            },
+            {
+              "elevation_m": 0.048,
+              "iou": 0.2779154652461373
+            }
+          ],
+          "note": "elevation is re-fitted together with x, y and yaw. The check only refuses when the best height beats the assumed plane by min_height_margin; below that the score landscape is flat and this viewpoint genuinely cannot separate height from position"
+        }
+      }
+    },
+    {
+      "block_id": "blue_cube",
+      "reasons": [
+        "silhouette fit iou 0.20 is below 0.70",
+        "observed/model silhouette area 0.43 is outside [0.75, 1.3]: occluded, merged with another region, or not this block"
+      ],
+      "pixel": [
+        1352,
+        201
+      ],
+      "bbox": [
+        1344,
+        148,
+        1360,
+        252
+      ],
+      "quality": {
+        "iou": 0.19900283074417474,
+        "area_ratio": 0.432017369497777,
+        "mask_area_px": 839.0,
+        "model_area_px": 1942.0515452314867,
+        "carved_footprint_m": [
+          0.06800000000000006,
+          0.01400000000000001
+        ],
+        "carve_centre_m": [
+          -0.30114406789146647,
+          0.2554433501473172,
+          0.0
+        ],
+        "height_check": {
+          "best_elevation_m": -0.006,
+          "best_iou": 0.2003401854031877,
+          "iou_at_assumed_plane": 0.19900090482468163,
+          "margin": 0.0013392805785060746,
+          "decisive": false,
+          "conclusion": "on the assumed plane",
+          "iou_one_block_higher": 0.1931208793648119,
+          "sensitivity": 0.005880025459869737,
+          "probes": [
+            {
+              "elevation_m": -0.006,
+              "iou": 0.2003401854031877
+            },
+            {
+              "elevation_m": 0.0,
+              "iou": 0.19900090482468163
+            },
+            {
+              "elevation_m": 0.006,
+              "iou": 0.197596226661107
+            },
+            {
+              "elevation_m": 0.012,
+              "iou": 0.19614272932227841
+            },
+            {
+              "elevation_m": 0.024,
+              "iou": 0.1931208793648119
+            },
+            {
+              "elevation_m": 0.048,
+              "iou": 0.18643482731781783
+            }
+          ],
+          "note": "elevation is re-fitted together with x, y and yaw. The check only refuses when the best height beats the assumed plane by min_height_margin; below that the score landscape is flat and this viewpoint genuinely cannot separate height from position"
+        }
+      }
+    },
+    {
+      "block_id": "blue_cube",
+      "reasons": [
+        "carved footprint 678 x 548 mm is not one 30 mm block seen from here; the pose fit was not attempted"
+      ],
+      "pixel": [
+        1584,
+        123
+      ],
+      "bbox": [
+        1310,
+        0,
+        1837,
+        322
+      ],
+      "quality": {
+        "mask_area_px": 79205.0,
+        "carved_footprint_m": [
+          0.678,
+          0.548
+        ]
+      }
+    },
+    {
+      "block_id": "blue_cube",
+      "reasons": [
+        "carved footprint 8 x 6 mm is not one 30 mm block seen from here; the pose fit was not attempted"
+      ],
+      "pixel": [
+        1100,
+        406
+      ],
+      "bbox": [
+        1077,
+        375,
+        1117,
+        425
+      ],
+      "quality": {
+        "mask_area_px": 1026.0,
+        "carved_footprint_m": [
+          0.007999999999999998,
+          0.006000000000000004
+        ]
+      }
+    },
+    {
+      "block_id": "blue_cube",
+      "reasons": [
+        "no part of this colour region meets the assumed plane; it is not where a block resting on it would appear"
+      ],
+      "pixel": [
+        1276,
+        117
+      ],
+      "bbox": [
+        1250,
+        109,
+        1300,
+        128
+      ],
+      "quality": {
+        "mask_area_px": 388.0
+      }
+    },
+    {
+      "block_id": "blue_cube",
+      "reasons": [
+        "no part of this colour region meets the assumed plane; it is not where a block resting on it would appear"
+      ],
+      "pixel": [
+        1413,
+        270
+      ],
+      "bbox": [
+        1390,
+        260,
+        1429,
+        278
+      ],
+      "quality": {
+        "mask_area_px": 348.0
+      }
+    },
+    {
+      "block_id": "blue_cube",
+      "reasons": [
+        "no part of this colour region meets the assumed plane; it is not where a block resting on it would appear"
+      ],
+      "pixel": [
+        1440,
+        7
+      ],
+      "bbox": [
+        1426,
+        0,
+        1453,
+        15
+      ],
+      "quality": {
+        "mask_area_px": 249.0
+      }
+    },
+    {
+      "block_id": "blue_cube",
+      "reasons": [
+        "no part of this colour region meets the assumed plane; it is not where a block resting on it would appear"
+      ],
+      "pixel": [
+        1662,
+        327
+      ],
+      "bbox": [
+        1653,
+        319,
+        1671,
+        338
+      ],
+      "quality": {
+        "mask_area_px": 213.0
+      }
+    },
+    {
+      "block_id": "blue_cube",
+      "reasons": [
+        "carved footprint 14 x 4 mm is not one 30 mm block seen from here; the pose fit was not attempted"
+      ],
+      "pixel": [
+        1309,
+        19
+      ],
+      "bbox": [
+        1297,
+        0,
+        1314,
+        40
+      ],
+      "quality": {
+        "mask_area_px": 209.0,
+        "carved_footprint_m": [
+          0.01400000000000001,
+          0.004000000000000002
+        ]
+      }
+    },
+    {
+      "block_id": "blue_cube",
+      "reasons": [
+        "no part of this colour region meets the assumed plane; it is not where a block resting on it would appear"
+      ],
+      "pixel": [
+        1575,
+        373
+      ],
+      "bbox": [
+        1562,
+        364,
+        1598,
+        390
+      ],
+      "quality": {
+        "mask_area_px": 207.0
+      }
+    },
+    {
+      "block_id": "blue_cube",
+      "reasons": [
+        "no part of this colour region meets the assumed plane; it is not where a block resting on it would appear"
+      ],
+      "pixel": [
+        1407,
+        7
+      ],
+      "bbox": [
+        1397,
+        0,
+        1428,
+        15
+      ],
+      "quality": {
+        "mask_area_px": 179.0
+      }
+    },
+    {
+      "block_id": "blue_cube",
+      "reasons": [
+        "no part of this colour region meets the assumed plane; it is not where a block resting on it would appear"
+      ],
+      "pixel": [
+        1079,
+        389
+      ],
+      "bbox": [
+        1073,
+        382,
+        1091,
+        403
+      ],
+      "quality": {
+        "mask_area_px": 176.0
+      }
+    },
+    {
+      "block_id": "blue_cube",
+      "reasons": [
+        "no part of this colour region meets the assumed plane; it is not where a block resting on it would appear"
+      ],
+      "pixel": [
+        1601,
+        388
+      ],
+      "bbox": [
+        1592,
+        373,
+        1613,
+        398
+      ],
+      "quality": {
+        "mask_area_px": 170.0
+      }
+    }
+  ],
+  "summary": {
+    "detected": 3,
+    "stale": 0,
+    "lost": 0,
+    "blocks": 3
+  },
+  "usable_for_simulation": true,
+  "note": "positions and yaw are camera measurements under the stated plane assumption; centre height, roll and pitch are consequences of the measured table and the catalogue block size, not observations",
+  "robot": null,
+  "timing": {
+    "estimate_s": 12.115,
+    "note": "time from frame in hand to record built; it excludes capture and disk"
+  },
+  "warnings": [
+    "this calibration is not cleared to drive the real arm: no supervised motion check has passed for this extrinsic yet"
+  ],
+  "source": {
+    "raw_frame": "/home/dragon/SO101-mujoco/LLM-control/calib/realsim-model/frames/scene-001.png",
+    "live": false,
+    "captured_at_from": "the archived frame's own sidecar"
+  },
+  "model_joint_offsets": {
+    "wrist_roll": {
+      "radians": -1.5707963267948966,
+      "status": "visual_estimate",
+      "source": "2026-09-21 real photos frames 0001/0030/0065 vs same-feedback MuJoCo renders: camera support on front, not lateral; negative quarter-turn matches gross orientation. Approximate visual estimate; exact zero and uncertainty NOT measured. See logs/2026-09-21-real-joint-grasp/ee-mapping-fix/README.md"
+    }
+  }
+}

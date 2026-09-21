@@ -1,0 +1,29 @@
+{
+  "status": "live",
+  "age_s": 0.01440207900304813,
+  "last_valid_sampled_at": 1790019880.7156773,
+  "error": null,
+  "gripper": {
+    "ticks": 2494,
+    "status": "uncalibrated"
+  },
+  "mapping_zero_status": {
+    "shoulder_pan": "unverified_pinned",
+    "shoulder_lift": "handeye_fitted",
+    "elbow_flex": "handeye_fitted",
+    "wrist_flex": "handeye_fitted",
+    "wrist_roll": "visual_estimate"
+  },
+  "joint_angles_rad": {
+    "shoulder_pan": -0.13502327400044045,
+    "shoulder_lift": -1.6465363117273975,
+    "elbow_flex": 1.4323823262024995,
+    "wrist_flex": 1.320970477974157,
+    "wrist_roll": -1.4119905443057421
+  },
+  "elapsed_s": 2097.7459021509967,
+  "refresh_hz": 59.635440055787676,
+  "received_hz": 29.864913541607052,
+  "applied": 62649,
+  "replay": false
+}

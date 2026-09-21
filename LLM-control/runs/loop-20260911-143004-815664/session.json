@@ -1,0 +1,33 @@
+{
+  "task": {
+    "id": "731cdfe619e944ea96df923935498eca",
+    "instruction": "用紫色、绿色、红色方块搭一个金字塔，下方两个方块中有空隙。空隙为一个方块边长的1/2",
+    "status": "succeeded",
+    "steps": 42,
+    "max_steps": 60,
+    "failures": 0,
+    "verification": "codex_visual",
+    "evidence": "按用户确认12.5mm空隙，红绿25mm方块为下层，紫色35mm方块跨放上方。底座放稳后当前RGB-D边缘矩形拟合间隙12.31mm（约毫米级图像测量误差），随后紫色放下、松爪、退离并静置3秒。最终俯视图紫色横跨红绿且稳定；RGB-D紫色顶面z=59.91mm，红绿可见顶面z=24.94mm，支持紫色底面由两底座支撑。与放紫色前帧76比较，最终红色272个可见像素全部位于原轮廓内，绿色321个仅2个超出，未发现底座明显移位，原空隙保留。间隙为近似测量，非精确计量验证。",
+    "evidence_frame": "7a5dc67abdf047cf:frame-92"
+  },
+  "scene": {
+    "name": "workbench",
+    "objects": [
+      "red cube (25 mm)",
+      "green cube (25 mm)",
+      "yellow cylinder (diameter/height 25 mm)",
+      "purple cube (35 mm)"
+    ],
+    "regions": [
+      "blue goal disc (radius 35 mm)"
+    ],
+    "coordinates": "world XYZ in meters; z=0 is the support surface",
+    "perception": "RGB-D only; object locations must be observed, not assumed",
+    "motion": "IK with joint limits; no general collision-free path planner"
+  },
+  "world": 1,
+  "seed": 4,
+  "running": true,
+  "frame_id": "7a5dc67abdf047cf:frame-92",
+  "sequence": 127
+}

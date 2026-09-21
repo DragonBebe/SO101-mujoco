@@ -1,0 +1,77 @@
+{
+  "schema": "realsim/blocks/1",
+  "measured_at": "2026-09-21",
+  "note": "The three cubes on the real table. The user states all three are 30 mm; that is what is entered here. It replaces the nominal 25 mm quoted in calib/c920-real-grasp-01/LOG.md, which disagreed with every image: fitting the size as a free parameter (run_realsim.sh measure) gives 30.2-31.4 mm across six archived frames and 30.9 mm on a live one. The ~2% left over between 30.0 and those fits is the camera's, not the block's, and is one of the things an independent position measurement would pin down. Mass and friction below are simulation defaults and have not been measured at all.",
+  "tolerances": {
+    "note": "Acceptance thresholds for the estimate, in the table frame. Derived from the block and the gripper: the jaws close on a 30 mm cube with a few mm of lateral slack, so a position error under 5 mm leaves margin, and a yaw error of 10 deg moves a 30 mm cube's corner by 30/2*sqrt(2)*sin(10 deg) = 3.7 mm. Re-derive them for your own gripper before quoting a pass.",
+    "position_mm": 5.0,
+    "yaw_deg": 10.0
+  },
+  "blocks": [
+    {
+      "id": "red_cube",
+      "colour": "red",
+      "edge_mm": 30.0,
+      "size_source": "user statement 2026-09-21: all three cubes are 30 mm; consistent with 30.2-31.4 mm fitted from images",
+      "size_measured": true,
+      "physics": {
+        "mass_kg": 0.01,
+        "mass_source": "so101_nexus CubeObject default; not weighed",
+        "friction": [
+          1.0,
+          0.005,
+          0.0001
+        ],
+        "friction_source": "MuJoCo default; not identified"
+      },
+      "note": "the block grasped first in the 2026-09-18 real run"
+    },
+    {
+      "id": "green_cube",
+      "colour": "green",
+      "edge_mm": 30.0,
+      "size_source": "user statement 2026-09-21: all three cubes are 30 mm",
+      "size_measured": true,
+      "physics": {
+        "mass_kg": 0.01,
+        "mass_source": "so101_nexus CubeObject default; not weighed",
+        "friction": [
+          1.0,
+          0.005,
+          0.0001
+        ],
+        "friction_source": "MuJoCo default; not identified"
+      },
+      "note": "teal, not the rendered green perception was written for; it needs its own hue band, see colour_source",
+      "hue_deg": [
+        145.0,
+        182.0
+      ],
+      "min_saturation": 0.25,
+      "colour_source": "measured on calib/realsim-3cubes/frames/spread-001.png with run_realsim.sh colours: this teal cube is hue 160-172, sat p5 0.36. perception's green band stops at 170, so its shaded face crossed into blue and the mask lost a corner. Widened to 145-182, which still ends 4 deg below the blue cube's band"
+    },
+    {
+      "id": "blue_cube",
+      "colour": "blue",
+      "edge_mm": 30.0,
+      "size_source": "user statement 2026-09-21: all three cubes are 30 mm",
+      "size_measured": true,
+      "physics": {
+        "mass_kg": 0.01,
+        "mass_source": "so101_nexus CubeObject default; not weighed",
+        "friction": [
+          1.0,
+          0.005,
+          0.0001
+        ],
+        "friction_source": "MuJoCo default; not identified"
+      },
+      "note": "blue also matches large background objects (a chair, denim); the footprint and area checks are what reject those",
+      "hue_deg": [
+        186.0,
+        265.0
+      ],
+      "colour_source": "measured on the same frame: this cube is hue 200-208. The band starts at 186 so it cannot claim the teal cube's pixels"
+    }
+  ]
+}

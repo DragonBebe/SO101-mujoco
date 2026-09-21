@@ -1,0 +1,46 @@
+[
+  {
+    "timestamp": "2026-09-21T17:50:49.777Z",
+    "model": "gpt-6-astra"
+  },
+  {
+    "timestamp": "2026-09-21T18:29:43.290Z",
+    "model": "gpt-6-astra"
+  },
+  {
+    "timestamp": "2026-09-21T18:31:25.580Z",
+    "model": "gpt-6-astra"
+  },
+  {
+    "timestamp": "2026-09-21T18:33:03.728Z",
+    "model": "gpt-6-astra"
+  },
+  {
+    "timestamp": "2026-09-21T18:35:40.548Z",
+    "model": "gpt-6-astra"
+  },
+  {
+    "timestamp": "2026-09-21T18:43:26.652Z",
+    "model": "gpt-6-astra"
+  },
+  {
+    "timestamp": "2026-09-21T18:48:35.474Z",
+    "model": "gpt-6-astra"
+  },
+  {
+    "timestamp": "2026-09-21T19:01:11.433Z",
+    "model": "gpt-6-astra"
+  },
+  {
+    "timestamp": "2026-09-21T19:04:03.157Z",
+    "model": "gpt-6-astra"
+  },
+  {
+    "timestamp": "2026-09-21T19:28:18.286Z",
+    "model": "gpt-6-astra"
+  },
+  {
+    "timestamp": "2026-09-21T19:34:50.975Z",
+    "model": "gpt-6-astra"
+  }
+]

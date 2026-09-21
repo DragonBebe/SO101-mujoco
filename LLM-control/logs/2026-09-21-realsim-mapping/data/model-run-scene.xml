@@ -1,0 +1,88 @@
+<mujoco model="realsim_capture">
+  <!--
+  Captured tabletop scene, written by realsim (run_realsim.sh export).
+
+  schema        realsim/mjcf/1
+  captured at   2026-09-21T17:56:30.421+02:00
+  frame index   2
+  world frame   the measured table: z = 0 is the table surface, the origin
+                is the point of the table below the robot base origin, and x
+                is the base x axis projected onto the table.
+  units         metres, radians. Quaternions are [w, x, y, z].
+
+  Blocks placed:
+    red_cube     x   340.5  y   103.1  z   15.0 mm   yaw   83.4 deg   (filtered)
+    green_cube   x   333.1  y     6.6  z   15.0 mm   yaw   85.2 deg   (filtered)
+    blue_cube    x   336.1  y    37.8  z   15.0 mm   yaw   85.0 deg   (filtered)
+
+  What was measured and what was assumed:
+    measured by the camera   x, y and yaw of each block
+    assumed, not measured    the centre height (table plane + half the known
+                             block edge), and zero roll and pitch
+
+  Calibration used:
+    intrinsics   /home/dragon/SO101-mujoco/LLM-control/calib/c920-intrinsics-01/intrinsics.json
+    extrinsics   /home/dragon/SO101-mujoco/LLM-control/calib/c920-handeye-03/extrinsics.json
+    table        /home/dragon/SO101-mujoco/LLM-control/calib/c920-table/table.json
+    intrinsics   sha256:8c396350eec3
+    extrinsics   sha256:88c4cdbf9037
+    table        sha256:be54a9f02c3a
+
+  Accuracy: the block positions are as accurate as the calibration behind
+  them, and nothing in this file re-checks that. Run
+  "run_realsim.sh drift" and "run_realsim.sh scale-check" for the current
+  state of both. Mass and friction below are simulation defaults that have
+  never been identified from the real blocks.
+
+  Robot model included from /home/dragon/SO101-mujoco/LLM-control/third_party/so101-nexus/src/so101_nexus/assets/SO101_menagerie/so101.xml
+
+  The blocks carry their captured pose on their bodies, so the scene opens
+  already in the captured state. The arm does not: unless the record carried
+  servo readings, the keyframe below holds the simulation's own home pose and
+  is named to say so. Load it from the keyframe control in your viewer.
+  -->
+
+  <include file="/home/dragon/SO101-mujoco/LLM-control/third_party/so101-nexus/src/so101_nexus/assets/SO101_menagerie/so101.xml"/>
+  <!-- After the include on purpose: the robot model sets meshdir="assets",
+       which MuJoCo resolves against THIS file's directory. An absolute
+       meshdir here is what lets the scene live anywhere. -->
+  <compiler angle="radian" meshdir="/home/dragon/SO101-mujoco/LLM-control/third_party/so101-nexus/src/so101_nexus/assets/SO101_menagerie/assets" autolimits="true"/>
+
+  <option timestep="0.002" integrator="implicitfast"/>
+
+  <visual>
+    <global offwidth="1920" offheight="1080"/>
+    <quality shadowsize="4096"/>
+  </visual>
+
+  <worldbody>
+    <light name="overhead" pos="0.3 0 1.2" dir="0 0 -1" directional="true"/>
+    <light name="fill" pos="0.9 -0.5 0.8" dir="-0.6 0.35 -0.7" diffuse="0.3 0.3 0.3"/>
+    <geom name="table" type="plane" size="0 0 0.01" rgba="0.78 0.76 0.74 1"
+          pos="0 0 0" contype="1" conaffinity="1"/>
+
+    <body name="red_cube" pos="0.340509754 0.103116949 0.015000000" quat="0.746594890 0.000000000 0.000000000 0.665278942">
+      <freejoint name="red_cube_joint"/>
+      <geom name="red_cube_geom" type="box" size="0.015000000 0.015000000 0.015000000" rgba="0.8000 0.1200 0.1200 1" mass="0.01" friction="1.0 0.005 0.0001"/>
+    </body>
+    <body name="green_cube" pos="0.333134244 0.006564202 0.015000000" quat="0.736040869 0.000000000 0.000000000 0.676937101">
+      <freejoint name="green_cube_joint"/>
+      <geom name="green_cube_geom" type="box" size="0.015000000 0.015000000 0.015000000" rgba="0.1200 0.8000 0.6130 1" mass="0.01" friction="1.0 0.005 0.0001"/>
+    </body>
+    <body name="blue_cube" pos="0.336084468 0.037754357 0.015000000" quat="0.737327888 0.000000000 0.000000000 0.675535036">
+      <freejoint name="blue_cube_joint"/>
+      <geom name="blue_cube_geom" type="box" size="0.015000000 0.015000000 0.015000000" rgba="0.1200 0.2843 0.8000 1" mass="0.01" friction="1.0 0.005 0.0001"/>
+    </body>
+    <camera name="calibrated" mode="fixed"
+            pos="0.766852489 -0.044837022 0.460986540"
+            xyaxes="-0.036177099 0.999339104 -0.003545916 -0.582783213 -0.018214658 0.812423506"
+            resolution="960 540"
+            sensorsize="0.009600000 0.005400000"
+            focalpixel="701.912256 702.323178"
+            principalpixel="17.482881 -14.002723"/>
+  </worldbody>
+
+  <keyframe>
+    <key name="arm_rest_NOT_observed" qpos="1.221730 -1.483530 1.483530 0.523599 0.000000 1.221730 0.340509754 0.103116949 0.015000000 0.746594890 0.000000000 0.000000000 0.665278942 0.333134244 0.006564202 0.015000000 0.736040869 0.000000000 0.000000000 0.676937101 0.336084468 0.037754357 0.015000000 0.737327888 0.000000000 0.000000000 0.675535036"/>
+  </keyframe>
+</mujoco>

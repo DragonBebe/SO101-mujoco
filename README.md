@@ -18,6 +18,17 @@ bash LLM-control/run_loop.sh serve --camera-modality rgbd --environment-camera s
 bash LLM-control/run_loop.sh serve --viewer --realtime --camera-viewer
 ```
 
+真机方向：环境相机标定见 [RGBCAL_SUMMARY](LLM-control/RGBCAL_SUMMARY.md)；把标定好的真实桌面
+（方块的位置与朝向）映射成 MuJoCo 场景，做镜像或可步进的仿真快照，见
+[REALSIM_README](LLM-control/REALSIM_README.md)。映射只读相机和舵机，不下发任何运动指令。
+新增 `arm-stream` / `sync` / `arm-replay` 提供关节实际反馈镜像、录制与回放；已有控制进程可通过 `SO101_FEEDBACK_PATH` 发布状态。夹爪角度需补实测标定，详见该文档第 10 节。
+
+```bash
+bash LLM-control/run_realsim.sh check                      # 有哪些标定和方块
+bash LLM-control/run_realsim.sh observe --session my-run   # 一帧 -> 一份场景状态
+bash LLM-control/run_realsim.sh mirror --scene LLM-control/calib/my-run/scene.json --viewer
+```
+
 无图形桌面时使用 `MUJOCO_GL=egl bash LLM-control/run_loop.sh serve`。服务启动后，在当前 Codex 对话中提交任务。VS Code 的任务入口在 `.vscode/tasks.json`。
 
 清理范围、依赖判断和删除清单见 [CLEANUP.md](LLM-control/CLEANUP.md)。

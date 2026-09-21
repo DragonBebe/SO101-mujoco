@@ -1,0 +1,126 @@
+{
+  "task": {
+    "id": "8a96a83801bb43619dac559921119d6c",
+    "instruction": "不使用逆运动学(IK)，仅用关节级点动(joints，delta_deg/target_deg)加夹爪开合，把红色方块抓起并放入蓝色目标圆盘。每步只发一个有界关节指令，根据双相机画面与本体反馈决定下一步。",
+    "status": "cancelled",
+    "steps": 0,
+    "max_steps": 150,
+    "failures": 0,
+    "verification": null
+  },
+  "scene": {
+    "name": "workbench",
+    "objects": [
+      "red cube (25 mm)",
+      "green cube (25 mm)",
+      "yellow cylinder (diameter/height 25 mm)",
+      "purple cube (35 mm)"
+    ],
+    "regions": [
+      "blue goal disc (radius 35 mm)"
+    ],
+    "coordinates": "world XYZ in meters; z=0 is the support surface",
+    "perception": "RGB only from the calibrated and wrist cameras; no depth. 3D comes from the plane assumption: intersect a pixel ray with a stated horizontal plane, or give propose an object_height to estimate where an upright object of that size stands on the table. Object locations must still be observed, not assumed",
+    "motion": "IK with joint limits; no general collision-free path planner"
+  },
+  "cameras": {
+    "modality": "rgb",
+    "depth_available": false,
+    "environment_camera": "calibrated",
+    "environment_placement": "calibrated",
+    "environment_mounting": "world_fixed",
+    "wrist_camera": "wrist",
+    "wrist_mounting": "robot_wrist",
+    "cameras": [
+      "calibrated",
+      "wrist"
+    ],
+    "resolution": {
+      "width": 640,
+      "height": 480
+    },
+    "environment_resolution": {
+      "width": 960,
+      "height": 540
+    },
+    "environment_fov_deg": 42.0440647552381,
+    "calibrated_source": "/home/dragon/SO101-mujoco/LLM-control/calib/c920-sim-camera/sim_camera.json",
+    "calibrated_scale": 0.5,
+    "note": "calibrated placement reproduces the measured real RGB camera (undistorted intrinsics and pose relative to the table); simulated images still differ in lighting, texture and the robot model",
+    "calibrated_resolved": {
+      "width": 960,
+      "height": 540,
+      "fx": 701.9122557667205,
+      "fy": 702.3231782586147,
+      "cx": 462.01711887737565,
+      "cy": 255.49727701639458,
+      "position": [
+        0.7668524888864684,
+        -0.04483702207660312,
+        0.46098653960407077
+      ],
+      "rotation": [
+        [
+          -0.03617709872149837,
+          -0.5827832133171598,
+          0.8118219902194205
+        ],
+        [
+          0.9993391036119114,
+          -0.018214658340846828,
+          0.03145762568388452
+        ],
+        [
+          -0.0035459159939496034,
+          0.8124235056282235,
+          0.5830570074894149
+        ]
+      ],
+      "fov_deg": {
+        "horizontal": 68.70967861160291,
+        "vertical": 42.0440647552381
+      },
+      "full_resolution": {
+        "width": 1920,
+        "height": 1080
+      },
+      "source": "/home/dragon/SO101-mujoco/LLM-control/calib/c920-sim-camera/sim_camera.json",
+      "robot_base_in_world": {
+        "T_world_base": [
+          [
+            0.999873289839194,
+            -0.0004577717841722628,
+            0.01591209323567361,
+            3.528472996407448e-20
+          ],
+          [
+            1.0842021724855044e-19,
+            0.9995864348480447,
+            0.02875689948126487,
+            1.4255929584954802e-19
+          ],
+          [
+            -0.015918676645599476,
+            -0.028753255689907317,
+            0.9994597770901457,
+            0.017149566886206016
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "height_m": 0.017149566886206016,
+        "tilt_deg": 1.8834048412557869,
+        "note": "the simulation stands the base upright at the world origin; the calibrated base frame sits this far above and tilted from the table, largely absorbing joint-zero/extrinsic compensation, so the robot as seen by the simulated camera differs from the real image by about this much"
+      }
+    }
+  },
+  "world": 1,
+  "seed": 4,
+  "running": false,
+  "frame_id": "7b89ef343ee2499d:frame-4",
+  "sequence": 13
+}

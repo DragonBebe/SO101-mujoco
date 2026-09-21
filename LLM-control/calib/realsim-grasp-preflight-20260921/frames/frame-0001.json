@@ -1,0 +1,25 @@
+{
+  "image": "frame-0001.png",
+  "saved_at": "2026-09-21T20:34:02.292+02:00",
+  "shape": [
+    1080,
+    1920,
+    3
+  ],
+  "dtype": "uint8",
+  "camera": {
+    "device": "/dev/v4l/by-id/usb-046d_HD_Pro_Webcam_C920_B222F89F-video-index0",
+    "width": 1920,
+    "height": 1080,
+    "fps": 30.0,
+    "fourcc": "MJPG",
+    "autofocus": false,
+    "focus": 0.0,
+    "auto_exposure": null,
+    "exposure": null,
+    "auto_wb": null,
+    "hflip": false
+  },
+  "stage": "realsim-observe",
+  "frame_index": 1
+}

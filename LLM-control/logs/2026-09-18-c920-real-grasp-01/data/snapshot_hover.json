@@ -1,0 +1,191 @@
+{
+  "captured_at": "2026-09-18T17:51:28.664+02:00",
+  "motion_status": {
+    "usable_for_motion": false,
+    "reasons": [
+      "no supervised motion check has passed for this extrinsic yet"
+    ]
+  },
+  "candidates": [
+    {
+      "pixel": [
+        1772,
+        297
+      ],
+      "bbox": [
+        1637,
+        133,
+        1920,
+        455
+      ],
+      "area": 40267,
+      "footprint_m": [
+        0.462,
+        0.15199999999999997
+      ],
+      "plausible_cube": false,
+      "grasp_centre_base": [
+        -0.18454024044886227,
+        0.5158892439571638,
+        0.007250208766037316
+      ],
+      "footprint_centre_base": [
+        -0.1843412569907923,
+        0.5162486596532877,
+        -0.005243038447589506
+      ],
+      "assumptions": {
+        "plane": "measured table + 0 mm (table frame z = support height)",
+        "object_height_m": 0.025,
+        "method": "rgb_two_plane_carve"
+      },
+      "colour": "red",
+      "frames_seen": 5,
+      "jitter_mm": 3.1541234466481827
+    },
+    {
+      "pixel": [
+        1455,
+        123
+      ],
+      "bbox": [
+        1378,
+        0,
+        1500,
+        245
+      ],
+      "area": 13495,
+      "footprint_m": [
+        0.5680000000000001,
+        0.23199999999999998
+      ],
+      "plausible_cube": false,
+      "grasp_centre_base": [
+        -0.5335532559414796,
+        0.4045646528611637,
+        -0.0015112941696635556
+      ],
+      "footprint_centre_base": [
+        -0.5333542724834096,
+        0.4049240685572875,
+        -0.014004541383290377
+      ],
+      "assumptions": {
+        "plane": "measured table + 0 mm (table frame z = support height)",
+        "object_height_m": 0.025,
+        "method": "rgb_two_plane_carve"
+      },
+      "colour": "red",
+      "frames_seen": 5,
+      "jitter_mm": 2.007155946984792
+    },
+    {
+      "pixel": [
+        1142,
+        644
+      ],
+      "bbox": [
+        1106,
+        596,
+        1178,
+        692
+      ],
+      "area": 6128,
+      "footprint_m": [
+        0.04200000000000001,
+        0.034
+      ],
+      "plausible_cube": true,
+      "grasp_centre_base": [
+        0.24814039953212805,
+        0.039946893962412966,
+        0.00044934589972414965
+      ],
+      "footprint_centre_base": [
+        0.24833938299019803,
+        0.04030630965853681,
+        -0.012043901313902672
+      ],
+      "assumptions": {
+        "plane": "measured table + 0 mm (table frame z = support height)",
+        "object_height_m": 0.025,
+        "method": "rgb_two_plane_carve"
+      },
+      "colour": "red",
+      "frames_seen": 5,
+      "jitter_mm": 0.04209084364817724
+    },
+    {
+      "pixel": [
+        1903,
+        475
+      ],
+      "bbox": [
+        1879,
+        444,
+        1920,
+        517
+      ],
+      "area": 1515,
+      "footprint_m": [
+        0.013999999999999997,
+        0.012000000000000009
+      ],
+      "plausible_cube": true,
+      "grasp_centre_base": [
+        0.08706512673633182,
+        0.48282268257151617,
+        0.010624858550286376
+      ],
+      "footprint_centre_base": [
+        0.08726411019440182,
+        0.48318209826764,
+        -0.001868388663340445
+      ],
+      "assumptions": {
+        "plane": "measured table + 0 mm (table frame z = support height)",
+        "object_height_m": 0.025,
+        "method": "rgb_two_plane_carve"
+      },
+      "colour": "red",
+      "frames_seen": 1,
+      "jitter_mm": null
+    },
+    {
+      "pixel": [
+        1505,
+        211
+      ],
+      "bbox": [
+        1491,
+        187,
+        1515,
+        232
+      ],
+      "area": 445,
+      "footprint_m": [
+        0.016000000000000014,
+        0.008000000000000005
+      ],
+      "plausible_cube": false,
+      "grasp_centre_base": [
+        -0.2815616178262753,
+        0.3718278052408818,
+        0.0015604477101164218
+      ],
+      "footprint_centre_base": [
+        -0.2813626343682053,
+        0.3721872209370057,
+        -0.0109327995035104
+      ],
+      "assumptions": {
+        "plane": "measured table + 0 mm (table frame z = support height)",
+        "object_height_m": 0.025,
+        "method": "rgb_two_plane_carve"
+      },
+      "colour": "red",
+      "frames_seen": 5,
+      "jitter_mm": 1.4902281544035483
+    }
+  ]
+}

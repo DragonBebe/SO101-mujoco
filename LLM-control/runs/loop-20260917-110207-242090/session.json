@@ -1,0 +1,33 @@
+{
+  "task": {
+    "id": "ae8cc247d77343d8a5cb8ebaab30d868",
+    "instruction": "将绿色方块放在红色方块上方。",
+    "status": "succeeded",
+    "steps": 12,
+    "max_steps": 60,
+    "failures": 0,
+    "verification": "codex_visual",
+    "evidence": "已张开夹爪、抬起并横向退开，静置2秒后俯视图显示绿色方块位于红色方块上，红色边缘在下方可见，堆叠未倾倒。当前RGB-D绿色顶面为[0.21655,-0.06333,0.04985]米，与先前红色顶面[0.21839,-0.06237,0.02495]米相比水平差约2.1毫米、高差约24.9毫米，符合25毫米方块稳定叠放。",
+    "evidence_frame": "85da1143664b43d3:frame-16"
+  },
+  "scene": {
+    "name": "workbench",
+    "objects": [
+      "red cube (25 mm)",
+      "green cube (25 mm)",
+      "yellow cylinder (diameter/height 25 mm)",
+      "purple cube (35 mm)"
+    ],
+    "regions": [
+      "blue goal disc (radius 35 mm)"
+    ],
+    "coordinates": "world XYZ in meters; z=0 is the support surface",
+    "perception": "RGB-D only; object locations must be observed, not assumed",
+    "motion": "IK with joint limits; no general collision-free path planner"
+  },
+  "world": 1,
+  "seed": 4,
+  "running": true,
+  "frame_id": "85da1143664b43d3:frame-16",
+  "sequence": 25
+}
