@@ -14,7 +14,8 @@ rows=[dict(json.loads(l),_seq=i) for i,l in enumerate((RUN/'actions.jsonl').read
 frames={r['frame']:r for r in rows if 'ticks' in r}
 last=max(frames)
 phases=[('setup',1,3,'连接、保持'),('lift-red',4,28,'抬起红色方块'),('stack-cancelled',29,58,'红块放桌、绿块堆叠（用户终止）')]
-if last>58: phases.append(('return',59,last,'回到启动时姿态'))
+last_event_frame=max(r.get('frame',0) for r in rows)
+if last_event_frame>58: phases.append(('return',59,last_event_frame,'回到启动时姿态'))
 allmetrics=[]
 for name,lo,hi,label in phases:
  selected=[]
@@ -25,11 +26,13 @@ for name,lo,hi,label in phases:
  file='events-setup.jsonl' if name=='setup' else f'task-{name}.jsonl'
  (OUT/file).write_text(''.join(json.dumps(r,ensure_ascii=False)+'\n' for r in selected))
  observations=[r for r in selected if 'ticks' in r]
- allmetrics.append(dict(id=name,what=label,first_frame=lo,last_frame=hi,event_first=selected[0]['_seq'],event_last=selected[-1]['_seq'],observed_actions=sum(bool(isinstance(r.get('detail'),dict) and r['detail'].get('command')) for r in observations),errors=sum('error' in r for r in selected),recorded_interval_s=round(observations[-1]['at']-observations[0]['at'],3),service_begin_to_complete_s=None,simulation_time_s=None))
+ allmetrics.append(dict(id=name,what=label,first_frame=lo,last_frame=hi,event_first=selected[0]['_seq'],event_last=selected[-1]['_seq'],observed_actions=sum(bool(isinstance(r.get('detail'),dict) and r['detail'].get('command')) for r in observations),errors=sum('error' in r for r in selected),recorded_interval_s=round(observations[-1]['at']-observations[0]['at'],3) if observations else None,service_begin_to_complete_s=None,simulation_time_s=None))
  table=['# '+label,'','TCP 列为辅助 FK 推导毫米值，不是实测 TCP。完整目标和发令前反馈保留于 JSONL。','', '| 步/帧 | 事件 | 指令 | 实测 ticks（电机1–6） | 辅助 FK mm | 新帧 | 说明 |','|---|---|---|---|---|---|---|']
  for r in observations:
   detail=r.get('detail'); cmd=detail.get('command') if isinstance(detail,dict) else detail
   table.append('| '+ ' | '.join([str(r['frame']),str(r['_seq']),json.dumps(cmd,ensure_ascii=False),str(list(r['ticks'].values())),str([round(v,2) for v in r['tcp_fk_auxiliary_mm']]),f"{r['frame']:04d}-env/wrist.png",'仅关键帧入档，其余原图保留于本地 runs'])+' |')
+ for r in selected:
+  if 'error' in r: table.append(f"| {r['frame']} | {r['_seq']} | observe/错误 | 无新反馈 | 无 | 无新图 | {r['error']} |")
  (OUT/f'ACTIONS-{name}.md').write_text('\n'.join(table)+'\n')
 keys=[1,27,28,37,39,50,51,58]
 if last>58: keys.append(last)
@@ -61,7 +64,7 @@ for tid in {r['turn_id'] for r in usage}:
  checks.append({'turn_id':tid,'sum':sums,'last_turn_token_usage':rs[-1].get('turn_token_usage'),'matches':all(sums[k]==rs[-1]['turn_token_usage'].get(k,0) for k in sums)})
 dump('metrics.json',{'schema':'so101-log-metrics/1','session':SESSION.stem,'timezone':'CEST (UTC+02:00)','model_source':'model-source.json','cutoff_seq':len(rows),'cutoff_frame':last,'phases':allmetrics,'task_usage':{'start':start,'end_exclusive':cut,'responses':len(usage),'input':tot['input_tokens']-tot['cached_input_tokens'],'cache_read':tot['cached_input_tokens'],'cache_write':tot['cache_write_input_tokens'],'output':tot['output_tokens'],'image_tokens':None,'checks':checks},'exclusions':'当前终止/归档/回位轮未结束，token未计入；对话结束时间及服务begin/complete不存在，不推算。'})
 initial=frames[1]['ticks']; final=frames[last]['ticks']
-dump('summary.json',{'stack_status':'cancelled_by_user','red_on_table':'visually_confirmed','green_stacked':False,'last_frame':last,'cutoff_seq':len(rows),'initial_ticks':initial,'latest_ticks':final,'return_requested':True,'return_status':'pending' if last<=58 else 'see RETURN.md and fresh visual verification','initial_to_latest_delta_ticks':{k:final[k]-v for k,v in initial.items()},'source_run':str(RUN),'code_base_commit':'d9749fe90271bb5bd6a0d84346788b0fd139c342'})
+dump('summary.json',{'stack_status':'cancelled_by_user','red_on_table':'visually_confirmed','green_stacked':False,'last_frame':last,'cutoff_seq':len(rows),'initial_ticks':initial,'latest_ticks':final,'return_requested':True,'return_status':('blocked_camera_disconnected' if last_event_frame>last else 'pending') if last<=58 else 'see RETURN.md and fresh visual verification','protocol_frame':last_event_frame,'initial_to_latest_delta_ticks':{k:final[k]-v for k,v in initial.items()},'source_run':str(RUN),'code_base_commit':'d9749fe90271bb5bd6a0d84346788b0fd139c342'})
 (OUT/'source/git-status.txt').write_text(subprocess.check_output(['git','status','--short','--branch'],text=True))
 manifest=[]
 for p in sorted(OUT.rglob('*')):

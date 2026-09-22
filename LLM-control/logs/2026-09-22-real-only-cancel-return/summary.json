@@ -3,7 +3,7 @@
   "red_on_table": "visually_confirmed",
   "green_stacked": false,
   "last_frame": 58,
-  "cutoff_seq": 110,
+  "cutoff_seq": 111,
   "initial_ticks": {
     "1": 2013,
     "2": 979,
@@ -21,7 +21,8 @@
     "6": 2423
   },
   "return_requested": true,
-  "return_status": "pending",
+  "return_status": "blocked_camera_disconnected",
+  "protocol_frame": 59,
   "initial_to_latest_delta_ticks": {
     "1": 12,
     "2": 782,

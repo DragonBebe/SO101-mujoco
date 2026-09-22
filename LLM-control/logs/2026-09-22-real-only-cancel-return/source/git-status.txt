@@ -3,5 +3,12 @@
  M LLM-control/logs/2026-09-21-real-joint-grasp/live/env.png
  M LLM-control/logs/2026-09-21-real-joint-grasp/live/wrist.png
  M LLM-control/logs/2026-09-21-real-joint-grasp/raw-feedback.jsonl
- M LLM-control/logs/2026-09-21-real-joint-grasp/tools/joint_control.py
-?? LLM-control/logs/2026-09-22-real-only-cancel-return/
+ M LLM-control/logs/2026-09-22-real-only-cancel-return/README.md
+ M LLM-control/logs/2026-09-22-real-only-cancel-return/SHA256SUMS
+ M LLM-control/logs/2026-09-22-real-only-cancel-return/metrics.json
+ M LLM-control/logs/2026-09-22-real-only-cancel-return/source/git-status.txt
+ M LLM-control/logs/2026-09-22-real-only-cancel-return/summary.json
+ M LLM-control/logs/2026-09-22-real-only-cancel-return/tools/build_archive.py
+?? LLM-control/logs/2026-09-22-real-only-cancel-return/ACTIONS-return.md
+?? LLM-control/logs/2026-09-22-real-only-cancel-return/RETURN.md
+?? LLM-control/logs/2026-09-22-real-only-cancel-return/task-return.jsonl

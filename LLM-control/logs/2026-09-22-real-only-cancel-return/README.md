@@ -2,7 +2,7 @@
 
 抬红块：视觉确认成功，24次运动动作。红块放桌：释放并撤离后确认。绿块叠红块：用户终止，未完成；本阶段28次运动动作，绿块未抓起。
 
-堆叠快照截止：源 actions.jsonl 第110行（_seq=110）、frame=58。回位为后续独立阶段，执行后追加 RETURN.md。最新机器可读截止见 [summary.json](summary.json)。没有虚构begin/complete、task_id或自动评分。
+堆叠快照截止：源 actions.jsonl 第110行（_seq=110）、frame=58。回位尚未执行，实时相机断连阻塞；独立记录见 [RETURN.md](RETURN.md)。错误事件截止_seq=111、协议frame=59，没有第59帧图像。最新机器可读截止见 [summary.json](summary.json)。没有虚构begin/complete、task_id或自动评分。
 
 ## 元信息
 

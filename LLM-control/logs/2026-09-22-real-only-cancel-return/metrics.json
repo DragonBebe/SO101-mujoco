@@ -3,7 +3,7 @@
   "session": "rollout-2026-09-22T20-15-58-01a0ca54-ee62-7c01-9b59-26b8fa9d1e0f",
   "timezone": "CEST (UTC+02:00)",
   "model_source": "model-source.json",
-  "cutoff_seq": 110,
+  "cutoff_seq": 111,
   "cutoff_frame": 58,
   "phases": [
     {
@@ -44,6 +44,19 @@
       "recorded_interval_s": 2065.353,
       "service_begin_to_complete_s": null,
       "simulation_time_s": null
+    },
+    {
+      "id": "return",
+      "what": "回到启动时姿态",
+      "first_frame": 59,
+      "last_frame": 59,
+      "event_first": 111,
+      "event_last": 111,
+      "observed_actions": 0,
+      "errors": 1,
+      "recorded_interval_s": null,
+      "service_begin_to_complete_s": null,
+      "simulation_time_s": null
     }
   ],
   "task_usage": {
@@ -56,24 +69,6 @@
     "output": 15443,
     "image_tokens": null,
     "checks": [
-      {
-        "turn_id": "01a0ca7b-6007-7453-840e-f10c088cfc53",
-        "sum": {
-          "input_tokens": 7077452,
-          "cached_input_tokens": 6971008,
-          "cache_write_input_tokens": 0,
-          "output_tokens": 9271
-        },
-        "last_turn_token_usage": {
-          "input_tokens": 7077452,
-          "cached_input_tokens": 6971008,
-          "cache_write_input_tokens": 0,
-          "output_tokens": 9271,
-          "reasoning_output_tokens": 2108,
-          "total_tokens": 7086723
-        },
-        "matches": true
-      },
       {
         "turn_id": "01a0ca72-7c7b-75c1-be50-bd9daac6fcf9",
         "sum": {
@@ -89,6 +84,24 @@
           "output_tokens": 6172,
           "reasoning_output_tokens": 1981,
           "total_tokens": 8065370
+        },
+        "matches": true
+      },
+      {
+        "turn_id": "01a0ca7b-6007-7453-840e-f10c088cfc53",
+        "sum": {
+          "input_tokens": 7077452,
+          "cached_input_tokens": 6971008,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 9271
+        },
+        "last_turn_token_usage": {
+          "input_tokens": 7077452,
+          "cached_input_tokens": 6971008,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 9271,
+          "reasoning_output_tokens": 2108,
+          "total_tokens": 7086723
         },
         "matches": true
       }
