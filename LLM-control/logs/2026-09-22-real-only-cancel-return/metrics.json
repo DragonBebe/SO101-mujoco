@@ -1,0 +1,98 @@
+{
+  "schema": "so101-log-metrics/1",
+  "session": "rollout-2026-09-22T20-15-58-01a0ca54-ee62-7c01-9b59-26b8fa9d1e0f",
+  "timezone": "CEST (UTC+02:00)",
+  "model_source": "model-source.json",
+  "cutoff_seq": 110,
+  "cutoff_frame": 58,
+  "phases": [
+    {
+      "id": "setup",
+      "what": "连接、保持",
+      "first_frame": 1,
+      "last_frame": 3,
+      "event_first": 1,
+      "event_last": 3,
+      "observed_actions": 1,
+      "errors": 0,
+      "recorded_interval_s": 203.02,
+      "service_begin_to_complete_s": null,
+      "simulation_time_s": null
+    },
+    {
+      "id": "lift-red",
+      "what": "抬起红色方块",
+      "first_frame": 4,
+      "last_frame": 28,
+      "event_first": 4,
+      "event_last": 52,
+      "observed_actions": 24,
+      "errors": 0,
+      "recorded_interval_s": 494.253,
+      "service_begin_to_complete_s": null,
+      "simulation_time_s": null
+    },
+    {
+      "id": "stack-cancelled",
+      "what": "红块放桌、绿块堆叠（用户终止）",
+      "first_frame": 29,
+      "last_frame": 58,
+      "event_first": 53,
+      "event_last": 110,
+      "observed_actions": 28,
+      "errors": 0,
+      "recorded_interval_s": 2065.353,
+      "service_begin_to_complete_s": null,
+      "simulation_time_s": null
+    }
+  ],
+  "task_usage": {
+    "start": "2026-09-22T18:48:15.763Z",
+    "end_exclusive": "2026-09-22T19:31:32.473Z",
+    "responses": 113,
+    "input": 210442,
+    "cache_read": 14926208,
+    "cache_write": 0,
+    "output": 15443,
+    "image_tokens": null,
+    "checks": [
+      {
+        "turn_id": "01a0ca7b-6007-7453-840e-f10c088cfc53",
+        "sum": {
+          "input_tokens": 7077452,
+          "cached_input_tokens": 6971008,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 9271
+        },
+        "last_turn_token_usage": {
+          "input_tokens": 7077452,
+          "cached_input_tokens": 6971008,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 9271,
+          "reasoning_output_tokens": 2108,
+          "total_tokens": 7086723
+        },
+        "matches": true
+      },
+      {
+        "turn_id": "01a0ca72-7c7b-75c1-be50-bd9daac6fcf9",
+        "sum": {
+          "input_tokens": 8059198,
+          "cached_input_tokens": 7955200,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 6172
+        },
+        "last_turn_token_usage": {
+          "input_tokens": 8059198,
+          "cached_input_tokens": 7955200,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 6172,
+          "reasoning_output_tokens": 1981,
+          "total_tokens": 8065370
+        },
+        "matches": true
+      }
+    ]
+  },
+  "exclusions": "当前终止/归档/回位轮未结束，token未计入；对话结束时间及服务begin/complete不存在，不推算。"
+}

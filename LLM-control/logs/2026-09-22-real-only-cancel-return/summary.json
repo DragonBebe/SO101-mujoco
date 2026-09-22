@@ -1,0 +1,35 @@
+{
+  "stack_status": "cancelled_by_user",
+  "red_on_table": "visually_confirmed",
+  "green_stacked": false,
+  "last_frame": 58,
+  "cutoff_seq": 110,
+  "initial_ticks": {
+    "1": 2013,
+    "2": 979,
+    "3": 2958,
+    "4": 2698,
+    "5": 2151,
+    "6": 2495
+  },
+  "latest_ticks": {
+    "1": 2025,
+    "2": 1761,
+    "3": 2782,
+    "4": 1882,
+    "5": 3054,
+    "6": 2423
+  },
+  "return_requested": true,
+  "return_status": "pending",
+  "initial_to_latest_delta_ticks": {
+    "1": 12,
+    "2": 782,
+    "3": -176,
+    "4": -816,
+    "5": 903,
+    "6": -72
+  },
+  "source_run": "LLM-control/runs/real-only-20260922-204451",
+  "code_base_commit": "d9749fe90271bb5bd6a0d84346788b0fd139c342"
+}

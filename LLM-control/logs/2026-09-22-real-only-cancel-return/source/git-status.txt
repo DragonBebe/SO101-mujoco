@@ -1,0 +1,7 @@
+## realsim-sync-and-real-stack-20260921...origin/realsim-sync-and-real-stack-20260921
+ M LLM-control/logs/2026-09-21-real-joint-grasp/ee-mapping-fix/live-converted.jsonl
+ M LLM-control/logs/2026-09-21-real-joint-grasp/live/env.png
+ M LLM-control/logs/2026-09-21-real-joint-grasp/live/wrist.png
+ M LLM-control/logs/2026-09-21-real-joint-grasp/raw-feedback.jsonl
+ M LLM-control/logs/2026-09-21-real-joint-grasp/tools/joint_control.py
+?? LLM-control/logs/2026-09-22-real-only-cancel-return/

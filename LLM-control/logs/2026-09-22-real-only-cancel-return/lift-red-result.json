@@ -1,0 +1,13 @@
+{
+  "instruction": "抬起红色方块",
+  "outcome": "succeeded",
+  "verification": "vlm_visual",
+  "evidence_frames": [
+    27,
+    28
+  ],
+  "evidence": "红块随夹爪上移；第27和28帧环境图清楚显示红块与绿蓝支撑块之间有间隙，静置约14秒后仍保持夹持。绿蓝块留在桌面。",
+  "controller": "joints; no IK; max 10 deg per joint per command",
+  "final_state": "holding red cube, torque enabled; controller and cameras remain running",
+  "note": "未用辅助FK声称精确抬升距离；早期试提未确认离开支撑，稍收紧后再次抬升。"
+}
